@@ -100,8 +100,8 @@
 			label = "Sym.";
 			bindings = <
 			&kp N1 &kp N2 &kp N3 &kp N4 &kp N5		                                    &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-			&kp IT_LESS &kp IT_USD &kp IT_LPAR &kp IT_LBRC &kp IT_LBKT  &kp IT_EQL &kp IT_QUES &kp IT_SQUOT &kp IT_MINUS &kp IT_AST
-			&kp IT_GREAT &kp IT_PERC &kp IT_RPAR &kp IT_RBRC &kp IT_RBKT 	&kp IT_AT &kp IT_EXCL &kp IT_DQUOT &kp IT_PLUS &kp IT_FSLH
+			&kp LESS_THAN     &kp AT_SIGN  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp LEFT_BRACKET     &kp EQUAL     &sk TILDE        &kp SINGLE_QUOTE   &kp PLUS   &kp ASTERISK
+			&kp GREATER_THAN  &kp DOLLAR   &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET    &kp PERCENT   &kp EXCLAMATION  &kp DOUBLE_QUOTES  &kp MINUS  &sk CARET
 														&mo FNC  &mo SYM2       &trans &trans
 			>;
 		};
@@ -132,9 +132,10 @@
 		symbols_2_layer {
 			label = "Sym.2";
 			bindings = <
-			&kp IT_CARET &kp IT_UNDER &kp IT_PND &kp IT_EUR &kp IT_HASH         &none &none &none &none &none 
-			&kp IT_BKTK &kp IT_TILDE &kp IT_BSLH &kp IT_PIPE &kp IT_AND         &none &none &none &none &none
-			&none 			&none 			 &kp IT_SECT &kp IT_CCED &kp IT_DEG				  &none &none &none &none &none
+			&sk LS(SINGLE_QUOTE)  &kp UNDERSCORE    &kp MINUS             &kp AMPERSAND  &kp POUND    &none  &none  &none  &none  &none
+			&sk TILDE             &sk SINGLE_QUOTE  &kp NON_US_BACKSLASH  &kp PIPE       &kp SLASH    &none  &none  &none  &none  &none
+			&sk CARET             &none             &none                 &none          &kp RA(W)    &none  &none  &none  &none  &none
+
 																	&none &none        	&none &none 
 			>;
 		};
@@ -143,9 +144,9 @@
 		accent_layer {
 			label = "Accent";
 			bindings = <
-			&none &none &none &kp IT_CEGR &none                         &none &none &none &none &none 
-			&kp IT_AGRV &kp IT_IGRV &kp IT_OGRV &kp IT_EGRV &kp IT_EACU &none &none &none &none &none
-			&none &none &none &kp IT_UGRV &none                         &none &none &none &none &none
+			&none &none &none &none &none                               &none &none &none &none &none 
+			&none &none &none &none &none                               &none &none &none &none &none 
+			&none &none &none &none &none                               &none &none &none &none &none 
 									&none &none                         &none &none 
 			>;
 		};
