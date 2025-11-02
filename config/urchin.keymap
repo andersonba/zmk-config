@@ -103,16 +103,16 @@
 &kp Q  &kp W  &kp E  &kp R      &kp T           &kp Y      &kp U            &kp I      &kp O    &kp P
 &kp A  &kp S  &kp D  &kp F      &kp G           &kp H      &kp J            &kp K      &kp L    &kp SEMICOLON
 &kp Z  &kp X  &kp C  &kp V      &kp B           &kp N      &kp M            &kp COMMA  &kp DOT  &kp SLASH
-                     &lt 1 TAB  &qt LSHIFT ESC  &kp SPACE  &lt 2 BACKSPACE
+                     &lt 1 ESC  &qt LSHIFT TAB  &kp SPACE  &lt 2 BACKSPACE
             >;
         };
 
         ext_layer {
             bindings = <
-&kp LG(Q)  &kp LG(W)     &trans        &kp LG(R)      &kp LG(T)      &kp C_VOL_UP       &kp LG(LEFT_BRACKET)  &kp UP_ARROW    &kp LG(RIGHT_BRACKET)  &trans
-&sk RCTRL  &sk LEFT_GUI  &sk LEFT_ALT  &kp LS(LG(R))  &kp LG(LS(T))  &kp C_VOLUME_DOWN  &kp LEFT_ARROW        &kp DOWN_ARROW  &kp RIGHT_ARROW        &kp DELETE
-&kp LG(Z)  &kp LG(X)     &kp LG(C)     &kp LG(V)      &trans         &kp RC(BACKSPACE)  &kp BACKSPACE         &kp N2          &kp N3                 &kp ESCAPE
-                                       &trans         &trans         &kp ENTER          &mo 3
+&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)    &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp UP_ARROW    &kp LG(RIGHT_BRACKET)  &kp DELETE
+&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp LG(TAB)  &kp LG(H)        &kp LEFT_ARROW        &kp DOWN_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
+&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)    &kp LG(N)        &kp LG(TAB)           &none           &kp LG(LS(TAB))        &kp LC(BACKSPACE)
+                                         &trans        &trans       &lt 3 LG(SPACE)  &kp ENTER
             >;
 
             label = "Ext.";
@@ -131,10 +131,10 @@
 
         fnc_layer {
             bindings = <
-&kp F1     &kp F2    &kp F3    &kp F4  &kp F5  &kp F6   &kp F7   &kp F8           &kp F9  &kp F10
-&sk LCTRL  &sk LGUI  &sk LALT  &none   &none   &kp F11  &kp F12  &kp PRINTSCREEN  &none   &none
-&none      &none     &none     &none   &none   &none    &none    &none            &none   &none
-                               &trans  &trans  &trans   &trans
+&kp F1     &kp F2          &kp F3    &kp F4        &kp F5  &kp F6   &kp F7   &kp F8           &kp F9  &kp F10
+&sk LCTRL  &sk LEFT_SHIFT  &sk LALT  &sk LEFT_GUI  &none   &kp F11  &kp F12  &kp PRINTSCREEN  &none   &none
+&none      &none           &none     &none         &none   &none    &none    &none            &none   &none
+                                     &trans        &trans  &trans   &trans
             >;
 
             label = "FNs";
@@ -142,10 +142,10 @@
 
         sym2_layer {
             bindings = <
-&trans  &trans  &trans             &trans          &trans        &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &both_parenthesis  &both_brackets  &both_braces  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans             &trans          &trans        &trans  &trans  &trans  &trans  &trans
-                                   &trans          &trans        &trans  &trans
+&none  &none  &none              &none           &none         &none   &none   &none  &none  &none
+&none  &none  &both_parenthesis  &both_brackets  &both_braces  &none   &none   &none  &none  &none
+&none  &none  &none              &none           &none         &none   &none   &none  &none  &none
+                                 &trans          &trans        &trans  &trans
             >;
 
             label = "Sym2";
@@ -154,9 +154,9 @@
         settings_layer {
             label = "Sett.";
             bindings = <
-&bootloader     &none  &none  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 3  &none  &none  &none  &bootloader
-&none           &none  &none  &none       &bt BT_SEL 1  &bt BT_SEL 4  &none  &none  &none  &none
-&studio_unlock  &none  &none  &none       &bt BT_SEL 2  &bt BT_SEL 5  &none  &none  &none  &studio_unlock
+&bootloader     &none  &none  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 3  &kp C_PLAY_PAUSE  &kp C_VOLUME_UP    &kp C_STOP  &bootloader
+&lock           &none  &none  &none       &bt BT_SEL 1  &bt BT_SEL 4  &kp C_PREV        &kp C_VOLUME_DOWN  &kp C_NEXT  &none
+&studio_unlock  &none  &none  &none       &bt BT_SEL 2  &bt BT_SEL 5  &none             &none              &none       &studio_unlock
                               &none       &none         &none         &none
             >;
         };
