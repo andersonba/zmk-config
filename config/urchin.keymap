@@ -109,10 +109,10 @@
 
         ext_layer {
             bindings = <
-&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)    &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp UP_ARROW    &kp LG(RIGHT_BRACKET)  &kp DELETE
-&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp LG(TAB)  &kp LG(H)        &kp LEFT_ARROW        &kp DOWN_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
-&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)    &kp LG(N)        &kp LG(TAB)           &none           &kp LG(LS(TAB))        &kp LC(BACKSPACE)
-                                         &trans        &trans       &lt 3 LG(SPACE)  &kp ENTER
+&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)  &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp UP_ARROW    &kp LG(RIGHT_BRACKET)  &kp DELETE
+&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp TAB    &kp LG(H)        &kp LEFT_ARROW        &kp DOWN_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
+&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)  &kp LG(N)        &kp LG(LS(TAB))       &none           &kp LG(TAB)            &kp LC(BACKSPACE)
+                                         &trans        &trans     &lt 3 LG(SPACE)  &kp ENTER
             >;
 
             label = "Ext.";
