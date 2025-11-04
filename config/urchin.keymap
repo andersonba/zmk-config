@@ -169,7 +169,7 @@
         fnc_layer {
             bindings = <
 &kp F1     &kp F2          &kp F3    &kp F4        &kp F5   &kp F6           &kp F7         &kp F8         &kp F9           &kp F10
-&sk LCTRL  &kp LEFT_SHIFT  &sk LALT  &sk LEFT_GUI  &kp TAB  &kp TAB          &sk RIGHT_GUI  &sk RIGHT_ALT  &kp RIGHT_SHIFT  &sk RCTRL
+&sk LCTRL  &sk LEFT_SHIFT  &sk LALT  &sk LEFT_GUI  &kp TAB  &kp TAB          &sk RIGHT_GUI  &sk RIGHT_ALT  &sk RIGHT_SHIFT  &sk RCTRL
 &kp F11    &kp F12         &none     &none         &none    &kp PRINTSCREEN  &none          &none          &none            &none
                                      &trans        &trans   &trans           &trans
             >;
