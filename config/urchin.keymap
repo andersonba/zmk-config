@@ -119,11 +119,13 @@
         combo_esc {
             bindings = <&kp ESC>;
             key-positions = <17 16>;
+            layers = <0>;
         };
 
         combo_capsword {
             bindings = <&caps_word>;
             key-positions = <10 31>;
+            layers = <0>;
         };
     };
 
