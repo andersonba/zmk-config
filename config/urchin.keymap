@@ -41,6 +41,36 @@
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
+
+        mt_parenthesis: mt_parenthesis {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_PARENTHESIS";
+            bindings = <&both_parenthesis>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+        };
+
+        mt_bracket: mt_bracket {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_BRACKET";
+            bindings = <&both_brackets>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+        };
+
+        mt_brace: mt_brace {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_BRACE";
+            bindings = <&both_braces>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+        };
     };
 
     macros {
@@ -109,9 +139,9 @@
 
         ext_layer {
             bindings = <
-&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)  &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp UP_ARROW    &kp LG(RIGHT_BRACKET)  &kp DELETE
-&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp TAB    &kp LG(H)        &kp LEFT_ARROW        &kp DOWN_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
-&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)  &kp LG(N)        &kp LG(LS(TAB))       &kp LG(L)       &kp LG(TAB)            &kp LA(BACKSPACE)
+&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)  &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp LG(H)     &kp LG(RIGHT_BRACKET)  &kp DELETE
+&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp TAB    &kp LEFT_ARROW   &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
+&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)  &kp LG(N)        &kp LG(LS(TAB))       &kp LG(L)     &kp LG(TAB)            &kp LA(BACKSPACE)
                                          &trans        &trans     &lt 3 LG(SPACE)  &kp ENTER
             >;
 
@@ -120,10 +150,10 @@
 
         sym_layer {
             bindings = <
-&kp N1            &kp N2      &kp N3                 &kp N4           &kp N5    &kp N6       &kp N7           &kp N8             &kp N9     &kp N0
-&kp LESS_THAN     &kp AT      &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp LBKT  &kp EQUAL    &sk TILDE        &kp APOS           &kp PLUS   &kp ASTERISK
-&kp GREATER_THAN  &kp DOLLAR  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RBKT  &kp PERCENT  &kp EXCLAMATION  &kp DOUBLE_QUOTES  &kp MINUS  &sk CARET
-                                                     &mo 3            &mo 4     &trans       &trans
+&kp N1            &kp N2      &kp N3                              &kp N4                      &kp N5                      &kp N6       &kp N7           &kp N8             &kp N9     &kp N0
+&kp LESS_THAN     &kp AT      &mt_parenthesis 0 LEFT_PARENTHESIS  &mt_brace 0 LS(LEFT_BRACE)  &mt_bracket 0 LEFT_BRACKET  &kp EQUAL    &sk TILDE        &kp APOS           &kp PLUS   &kp ASTERISK
+&kp GREATER_THAN  &kp DOLLAR  &kp RIGHT_PARENTHESIS               &kp RIGHT_BRACE             &kp RBKT                    &kp PERCENT  &kp EXCLAMATION  &kp DOUBLE_QUOTES  &kp MINUS  &sk CARET
+                                                                  &mo 3                       &mo 4                       &trans       &trans
             >;
 
             label = "Sym.";
