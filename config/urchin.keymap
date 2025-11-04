@@ -120,6 +120,11 @@
             bindings = <&kp ESC>;
             key-positions = <17 16>;
         };
+
+        combo_capsword {
+            bindings = <&caps_word>;
+            key-positions = <10 31>;
+        };
     };
 
     keymap {
@@ -139,10 +144,10 @@
 
         ext_layer {
             bindings = <
-&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)  &kp LG(GRAVE)    &kp LG(LEFT_BRACKET)  &kp LG(H)     &kp LG(RIGHT_BRACKET)  &kp DELETE
-&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp TAB    &kp LEFT_ARROW   &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
-&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)  &kp LG(N)        &kp LG(LS(TAB))       &kp LG(L)     &kp LG(TAB)            &kp LA(BACKSPACE)
-                                         &trans        &trans     &lt 3 LG(SPACE)  &kp ENTER
+&kp LG(Q)  &kp LG(W)       &kp LG(S)     &kp LG(R)     &kp LG(T)  &kp LG(GRAVE)   &kp LG(LEFT_BRACKET)  &kp LG(H)     &kp LG(RIGHT_BRACKET)  &kp DELETE
+&sk RCTRL  &sk LEFT_SHIFT  &sk LEFT_ALT  &sk LEFT_GUI  &kp TAB    &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW        &kp BACKSPACE
+&kp LG(Z)  &kp LG(X)       &kp LG(C)     &kp LG(V)     &kp LG(A)  &kp LG(N)       &kp LG(LS(TAB))       &kp LG(L)     &kp LG(TAB)            &kp LA(BACKSPACE)
+                                         &trans        &trans     &kp LG(SPACE)   &kp ENTER
             >;
 
             label = "Ext.";
@@ -161,10 +166,10 @@
 
         fnc_layer {
             bindings = <
-&kp F1     &kp F2          &kp F3    &kp F4        &kp F5   &kp F6   &kp F7   &kp F8           &kp F9  &kp F10
-&sk LCTRL  &sk LEFT_SHIFT  &sk LALT  &sk LEFT_GUI  &kp TAB  &kp F11  &kp F12  &kp PRINTSCREEN  &none   &none
-&none      &none           &none     &none         &none    &none    &none    &none            &none   &none
-                                     &trans        &trans   &trans   &trans
+&kp F1     &kp F2          &kp F3    &kp F4        &kp F5   &kp F6           &kp F7         &kp F8         &kp F9           &kp F10
+&sk LCTRL  &kp LEFT_SHIFT  &sk LALT  &sk LEFT_GUI  &kp TAB  &kp TAB          &sk RIGHT_GUI  &sk RIGHT_ALT  &kp RIGHT_SHIFT  &sk RCTRL
+&kp F11    &kp F12         &none     &none         &none    &kp PRINTSCREEN  &none          &none          &none            &none
+                                     &trans        &trans   &trans           &trans
             >;
 
             label = "FNs";
