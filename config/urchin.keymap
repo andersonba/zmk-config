@@ -113,10 +113,10 @@
         combo_settings {
             timeout-ms = <200>;
             key-positions = <30 31>;
-            bindings = <&mo 5>;
+            bindings = <&mo 4>;
         };
 
-        Esc {
+        combo_esc {
             bindings = <&kp ESC>;
             key-positions = <17 16>;
         };
@@ -153,7 +153,7 @@
 &kp N1            &kp N2      &kp N3                              &kp N4                      &kp N5                      &kp N6       &kp N7           &kp N8             &kp N9     &kp N0
 &kp LESS_THAN     &kp AT      &mt_parenthesis 0 LEFT_PARENTHESIS  &mt_brace 0 LS(LEFT_BRACE)  &mt_bracket 0 LEFT_BRACKET  &kp EQUAL    &sk TILDE        &kp APOS           &kp PLUS   &kp ASTERISK
 &kp GREATER_THAN  &kp DOLLAR  &kp RIGHT_PARENTHESIS               &kp RIGHT_BRACE             &kp RBKT                    &kp PERCENT  &kp EXCLAMATION  &kp DOUBLE_QUOTES  &kp MINUS  &sk CARET
-                                                                  &mo 3                       &mo 4                       &trans       &trans
+                                                                  &mo 3                       &trans                      &trans       &trans
             >;
 
             label = "Sym.";
@@ -168,17 +168,6 @@
             >;
 
             label = "FNs";
-        };
-
-        sym2_layer {
-            bindings = <
-&none  &none  &none              &none           &none         &none   &none   &none  &none  &none
-&none  &none  &both_parenthesis  &both_brackets  &both_braces  &none   &none   &none  &none  &none
-&none  &none  &none              &none           &none         &none   &none   &none  &none  &none
-                                 &trans          &trans        &trans  &trans
-            >;
-
-            label = "Sym2";
         };
 
         settings_layer {
