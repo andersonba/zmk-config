@@ -1,24 +1,47 @@
 manifest:
   remotes:
-    # zmk official
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-      # kyek / duckyb
     - name: duckyb
       url-base: https://github.com/duckyb
-      # nice-view-gem
+    - name: urob
+      url-base: https://github.com/urob
     - name: m165437
       url-base: https://github.com/M165437
+
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0
+      revision: v0.3
       import: app/west.yml
     - name: urchin-zmk-module
       remote: duckyb
       revision: main
+    - name: zmk-helpers
+      remote: urob
+      revision: main
+
+    # ZMK modules
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: main
+    - name: zmk-auto-layer
+      remote: urob
+      revision: main
+    - name: zmk-leader-key
+      remote: urob
+      revision: main
+    - name: zmk-tri-state
+      remote: urob
+      revision: main
+    - name: zmk-unicode
+      remote: urob
+      revision: main
+    
+    # Custom Nice!View
     - name: nice-view-gem
       remote: m165437
       revision: main
+
   self:
     path: config
