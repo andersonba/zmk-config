@@ -4,18 +4,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <input/processors.dtsi>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
-
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/behaviors.h>
-
-#define HOST_OS 2 // = macOS; Must be set before including helper.h
-
+#include <behaviors/num_word.dtsi>
+#include <behaviors/unicode.dtsi>
 #include <zmk-helpers/helper.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
 
 #define XXX &none
 #define ___ &trans
