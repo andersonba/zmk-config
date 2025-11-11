@@ -45,11 +45,11 @@
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 
-#include "behaviors/hrm.dtsi"
-#include "behaviors/combos.dtsi"
-#include "behaviors/leader.dtsi"
-#include "behaviors/mouse.dtsi"
-#include "behaviors/macros.dtsi"
+#include "modules/hrm.dtsi"
+#include "modules/combos.dtsi"
+#include "modules/leader.dtsi"
+#include "modules/mouse.dtsi"
+#include "modules/macros.dtsi"
 
 // Trigger tap-action on all interrupts.
 #define MT_CORE                                                                \
