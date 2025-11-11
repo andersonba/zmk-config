@@ -16,8 +16,6 @@ draw_config:
   line_spacing: 1.2
   arc_radius: 6.0
   append_colon_to_layer_header: true
-  separate_combo_diagrams: true
-  combo_diagrams_scale: 3
   small_pad: 2.0
   shrink_wide_legends: 6
   glyph_tap_size: 18
