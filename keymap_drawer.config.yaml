@@ -1,9 +1,25 @@
 draw_config:
   dark_mode: auto
-  draw_key_sides: true
-  glyph_tap_size: 18
-  glyph_hold_size: 15
-  glyph_shifted_size: 15
+  key_rx: 4.0
+  key_ry: 4.0
+  inner_pad_w: 1.0
+  inner_pad_h: 1.0
+  line_spacing: 1.0
+  arc_radius: 4.0
+  append_colon_to_layer_header: false
+  small_pad: 4.0
+  shrink_wide_legends: 5
+  combo_w: 24
+  combo_h: 26
+  glyph_tap_size: 16
+  glyph_hold_size: 13
+  glyph_shifted_size: 12
+  glyphs:
+    escape: |
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>location-exit</title>
+        <path d="M22 12L18 8V11H10V13H18V16M20 18A10 10 0 1 1 20 6H17.27A8 8 0
+        1 0 17.27 18Z" transform="rotate(-135)" transform-origin="center"/>
+      </svg>
   svg_extra_style: |
     svg.keymap {
       font-family: Ubuntu Mono, Inconsolata, Consolas, Liberation Mono, Menlo, monospace;
@@ -158,20 +174,6 @@ parse_config:
     # Behaviors
     "&magic_shift": { "t": Magic, "h": "Shift" }
 
-    # Home rows
-    "&hml LGUI A":
-      tap: "A"
-      shifted: $$mdi:apple-keyboard-command$$
-    "&hml LALT S":
-      tap: "S"
-      shifted: $$mdi:apple-keyboard-option$$
-    "&hml LSHFT D":
-      tap: "D"
-      shifted: $$mdi:apple-keyboard-shift$$
-    "&hml LCTRL F":
-      tap: "F"
-      shifted: $$mdi:apple-keyboard-control$$
-
   # ZMK
   zmk_keycode_map:
     # Symbols
@@ -308,27 +310,14 @@ parse_config:
 
     # Modifiers
     LCTRL: $$mdi:apple-keyboard-control$$
-    LEFT_CONTROL: $$mdi:apple-keyboard-control$$
     LALT: $$mdi:apple-keyboard-option$$
-    LEFT_ALT: $$mdi:apple-keyboard-option$$
     LSHIFT: $$mdi:apple-keyboard-shift$$
-    LEFT_SHIFT: $$mdi:apple-keyboard-shift$$
-    LSHFT: $$mdi:apple-keyboard-shift$$
-    LCMD: $$mdi:apple-keyboard-command$$
-    LG: $$mdi:apple-keyboard-command$$
-    LEFT_GUI: $$mdi:apple-keyboard-command$$
-    LEFT_COMMAND: $$mdi:apple-keyboard-command$$
+    LGUI: $$mdi:apple-keyboard-command$$
     RCTRL: $$mdi:apple-keyboard-control$$
-    RIGHT_CONTROL: $$mdi:apple-keyboard-control$$
     RALT: $$mdi:apple-keyboard-option$$
-    RIGHT_ALT: $$mdi:apple-keyboard-option$$
     RSHIFT: $$mdi:apple-keyboard-shift$$
-    RIGHT_SHIFT: $$mdi:apple-keyboard-shift$$
-    RSHFT: $$mdi:apple-keyboard-shift$$
-    RCMD: $$mdi:apple-keyboard-command$$
-    RG: $$mdi:apple-keyboard-command$$
+    RGUI: $$mdi:apple-keyboard-command$$
     PSCRN: $$mdi:printer-outline$$
-    RIGHT_COMMAND: $$mdi:apple-keyboard-command$$
     PAGE_UP:
       tap: "PgUp"
       shifted: ""
@@ -340,7 +329,9 @@ parse_config:
       shifted: ""
 
     # "Meh" key
-    LS(LC(LALT)): $$mdi:star-three-points$$
+    LG(LC(LALT)): $$mdi:star-three-points$$
+    # "Hyper" key
+    LG(LC(LS(LALT))): $$mdi:star-four-points$$
 
     # Arrows
     UP: $$mdi:arrow-up-bold$$
@@ -359,8 +350,8 @@ parse_config:
     RET:
       type: enter
       tap: $$mdi:keyboard-return$$
-    ESC: $$mdi:keyboard-esc$$
-    ESCAPE: $$mdi:keyboard-esc$$
+    ESC: $$escape$$
+    ESCAPE: $$escape$$
     TAB: $$mdi:keyboard-tab$$
     LS(TAB): $$mdi:keyboard-tab-reverse$$
     SPACE: $$mdi:keyboard-space$$
@@ -431,13 +422,5 @@ parse_config:
     LG(V):
       tap: "V"
       hold: $$mdi:apple-keyboard-command$$
-
-    # Zoom
-    RG(RS(A)):
-      tap: $$mdi:microphone$$
-      hold: zoom
-    RG(RS(V)):
-      tap: $$mdi:video$$
-      hold: zoom
 
   # zmk_combos:
