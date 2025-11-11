@@ -9,6 +9,7 @@ on:
 
 jobs:
   draw:
+    if: "!contains(github.event.head_commit.message, '[skip-draw]')"
     uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
     permissions:
       contents: write
