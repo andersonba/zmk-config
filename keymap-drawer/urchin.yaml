@@ -211,113 +211,113 @@ layers:
   - '&msc SCRL_UP'
   - '&msc SCRL_DOWN'
 combos:
-- p: [2, 3]
+- p: [1, 2]
   k: $$escape$$
   l: [Base, Nav, Num]
-- p: [3, 4]
+- p: [2, 3]
   k: '&smart_mouse'
   l: [Base, Nav, Num]
-- p: [14, 15]
+- p: [11, 12]
   k: '&hml LS(LALT)TAB'
   l: [Base, Nav, Num]
-- p: [15, 16]
+- p: [12, 13]
   k: {t: '&leader', h: 'Sft+$$mdi:apple-keyboard-control$$'}
   l: [Base, Nav, Num]
-- p: [14, 15, 16]
+- p: [11, 12, 13]
   k: {t: '&leader_sft', h: 'Sft+Ctl+$$mdi:apple-keyboard-option$$'}
   l: [Base, Nav, Num]
   a: top
   o: 1.35
-- p: [26, 28]
+- p: [21, 23]
   k: Ctl+X
   l: [Base, Nav, Num]
   a: bottom
   o: 0.15
-- p: [26, 27]
+- p: [21, 22]
   k: Ctl+INS
   l: [Base, Nav, Num]
-- p: [27, 28]
+- p: [22, 23]
   k: Sft+INS
   l: [Base, Nav, Num]
-- p: [7, 8]
+- p: [6, 7]
   k: {t: '$$mdi:backspace$$', type: backspace}
   l: [Base, Nav, Num]
-- p: [8, 9]
+- p: [7, 8]
   k: $$mdi:backspace-reverse-outline$$
   l: [Base, Nav, Num]
-- p: [19, 20]
+- p: [16, 17]
   k: {t: (, h: 'Sft+$$mdi:apple-keyboard-control$$', s: <}
   l: [Base, Num]
-- p: [20, 21]
+- p: [17, 18]
   k: {t: ), h: 'Sft+$$mdi:apple-keyboard-option$$', s: '>'}
   l: [Base, Num]
-- p: [19, 20]
+- p: [16, 17]
   k: <
   l: [Nav]
   hidden: true
-- p: [20, 21]
+- p: [17, 18]
   k: '>'
   l: [Nav]
   hidden: true
-- p: [31, 32]
+- p: [26, 27]
   k: {t: '[', s: '{'}
   l: [Base, Num]
-- p: [32, 33]
+- p: [27, 28]
   k: {t: ']', s: '}'}
   l: [Base, Num]
-- p: [31, 32]
+- p: [26, 27]
   k: '{'
   l: [Nav]
   hidden: true
-- p: [32, 33]
+- p: [27, 28]
   k: '}'
   l: [Nav]
   hidden: true
-- p: [2, 14]
+- p: [1, 11]
   k: '@'
   l: [Base, Nav, Num]
-- p: [3, 15]
+- p: [2, 12]
   k: '#'
   l: [Base, Nav, Num]
-- p: [4, 16]
+- p: [3, 13]
   k: $
   l: [Base, Nav, Num]
-- p: [5, 17]
+- p: [4, 14]
   k: '%'
   l: [Base, Nav, Num]
-- p: [14, 26]
+- p: [11, 21]
   k: {t: '`', s: '~'}
   l: [Base, Nav, Num]
-- p: [15, 27]
+- p: [12, 22]
   k: {t: \, s: '|'}
   l: [Base, Nav, Num]
-- p: [16, 28]
+- p: [13, 23]
   k: {t: '=', s: +}
   l: [Base, Nav, Num]
-- p: [17, 29]
+- p: [14, 24]
   k: '~'
   l: [Base, Nav, Num]
-- p: [6, 18]
+- p: [5, 15]
   k: ^
   l: [Base, Nav, Num]
-- p: [7, 19]
+- p: [6, 16]
   k: +
   l: [Base, Nav, Num]
-- p: [8, 20]
+- p: [7, 17]
   k: '*'
   l: [Base, Nav, Num]
-- p: [9, 21]
+- p: [8, 18]
   k: '&'
   l: [Base, Nav, Num]
-- p: [18, 30]
+- p: [15, 25]
   k: _
   l: [Base, Nav, Num]
-- p: [19, 31]
+- p: [16, 26]
   k: {t: '-', s: _}
   l: [Base, Nav, Num]
-- p: [20, 32]
+- p: [17, 27]
   k: {t: /, s: '?'}
   l: [Base, Nav, Num]
-- p: [21, 33]
+- p: [18, 28]
   k: '|'
   l: [Base, Nav, Num]
