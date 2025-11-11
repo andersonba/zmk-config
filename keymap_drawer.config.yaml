@@ -1,19 +1,25 @@
 draw_config:
-  dark_mode: auto
-  key_rx: 4.0
-  key_ry: 4.0
-  inner_pad_w: 1.0
-  inner_pad_h: 1.0
-  line_spacing: 1.0
-  arc_radius: 4.0
-  append_colon_to_layer_header: false
-  small_pad: 4.0
-  shrink_wide_legends: 5
-  combo_w: 24
-  combo_h: 26
-  glyph_tap_size: 16
-  glyph_hold_size: 13
-  glyph_shifted_size: 12
+  n_columns: 1
+  draw_key_sides: true
+  key_w: 60.0
+  key_h: 56.0
+  split_gap: 30.0
+  combo_w: 28.0
+  combo_h: 26.0
+  key_rx: 6.0
+  key_ry: 6.0
+  inner_pad_w: 2.0
+  inner_pad_h: 2.0
+  outer_pad_w: 40.0
+  outer_pad_h: 56.0
+  line_spacing: 1.2
+  arc_radius: 6.0
+  append_colon_to_layer_header: true
+  small_pad: 2.0
+  shrink_wide_legends: 6
+  glyph_tap_size: 18
+  glyph_hold_size: 15
+  glyph_shifted_size: 15
   glyphs:
     escape: |
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>location-exit</title>
