@@ -109,8 +109,6 @@ parse_config:
   zmk_additional_includes:
     - "zmk-helpers/include"
     - "urchin_keylabels.h"
-  zmk_preamble: |
-    #include <zmk-helpers/key-labels/34.h>
   mark_alternate_layer_activators: true
   sticky_label: $$mdi:gesture-tap-hold$$
   trans_legend:
