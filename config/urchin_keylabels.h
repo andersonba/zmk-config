@@ -11,7 +11,7 @@
   │ LT5 LT4 LT3 LT2 LT1 LT0 │    │ RT0 RT1 RT2 RT3 RT4 RT5 │
   │ LM5 LM4 LM3 LM2 LM1 LM0 │    │ RM0 RM1 RM2 RM3 RM4 RM5 │
   │ LB5 LB4 LB3 LB2 LB1 LB0 │    │ RB0 RB1 RB2 RB3 RB4 RB5 │
-  ╰───────────────╮ TL1 TL0 │    │ TR0 TR1 ╭───────────────╯
+  ╰───────────────╮ LH1 LH0 │    │ RH0 RH1 ╭───────────────╯
                   ╰─────────╯    ╰─────────╯             
 */
 
@@ -59,8 +59,8 @@
 #define RB4 34
 #define RB5 35
 
-#define TL0 37  // left thumb keys
-#define TL1 36
+#define LH0 37  // left thumb keys
+#define LH1 36
 
-#define TR0 38  // right thumb keys
-#define TR1 39
+#define RH0 38  // right thumb keys
+#define RH1 39
