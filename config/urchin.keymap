@@ -1,4 +1,3 @@
-/* vim: set ft=c tw=146: */
 #define HOST_OS 2 // macOS
 
 #include <behaviors.dtsi>
@@ -98,3 +97,5 @@ ZMK_BASE_LAYER(Mouse,
                                               ___           ___         ,   U_WH_U        U_WH_D
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
+
+/* vim: set ft=c tw=146: */
