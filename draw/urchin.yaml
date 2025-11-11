@@ -112,9 +112,9 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - '&hmr N7'
-    - '&hmr N8'
-    - '&hmr N9'
+    - {t: '7', s: '&'}
+    - {t: '8', s: '*'}
+    - {t: '9', s: (}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
