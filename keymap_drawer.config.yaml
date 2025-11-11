@@ -16,86 +16,6 @@ draw_config:
   arc_radius: 6.0
   append_colon_to_layer_header: true
   small_pad: 2.0
-  svg_extra_style: |
-    /* For default sytles, see https://github.com/caksoylar/keymap-drawer/blob/main/keymap_drawer/config.py#L85 */
-
-    svg.keymap {
-      font-family: Ubuntu Mono, Inconsolata, Consolas, Liberation Mono, Menlo, monospace;
-      font-size: 12px;
-      font-weight: bold;
-      text-rendering: optimizeLegibility;
-    }
-
-    /* Color accent for held keys */
-    rect.held, rect.combo.held {
-        fill: #ffc;
-    }
-
-    /* Technique borrowed and extended from https://github.com/englmaxi/zmk-config/blob/master/keymap-drawer/config.yaml */
-    .sym_sub_text.tap {
-      translate: -5px 2px;
-      font-size: 20px;
-    }
-    .sym_sub_text.shifted {
-      translate: 10px 13px;
-      font-size: 10px;
-      opacity: 1.0;
-    }
-    .combo.sym_sub_text.tap {
-      translate: -1px 1px;
-    }
-    .combo.sym_sub_text.shifted {
-      translate: 7px 5px;
-      font-size: 10px;
-      opacity: 1.0;
-    }
-
-    /* Toggle */
-    .toggle.shifted {
-      translate: -10px 12px;
-    }
-
-    .toggle.hold {
-      translate: 13px -23px;
-    }
-
-    /* Variant for tap-dances */
-    .tap_dance.tap {
-      translate: -7px 0px;
-      font-size: 12px;
-    }
-    .tap_dance.shifted {
-      translate: 7px 17px;
-      font-size: 12px;
-      opacity: 1.0;
-    }
-
-    /* Variant for symbol next to symbol */
-    .sym_by_sym.tap {
-      translate: -6px 0px;
-    }
-    .sym_by_sym.shifted {
-      translate: 10px 12px;
-      opacity: 1.0;
-    }
-
-    .combo.sym_by_sym.tap {
-      translate: -35px 0px;
-    }
-    .combo.sym_by_sym.shifted {
-      translate: 35px 20px;
-      opacity: 1.0;
-    }
-
-    .combo.sym_by_sym.hold {
-      visibility: hidden;
-    }
-
-    /* hide hold box for combo sym_by_sym */
-    .combo.sym_by_sym.hold > path[stroke="none"][fill="none"] {
-      visibility: hidden;
-    }
-
   shrink_wide_legends: 6
   glyph_tap_size: 18
   glyph_hold_size: 15
@@ -110,38 +30,18 @@ draw_config:
   use_local_cache: true
 
 parse_config:
-  zmk_additional_includes: ["zmk-helpers/include"]
+  zmk_additional_includes:
+    - "zmk-helpers/include"
+    - "urchin_keylabels.h"
+  zmk_preamble: |
+    #include <zmk-helpers/key-labels/34.h>
+    #define CONFIG_WIRELESS
   mark_alternate_layer_activators: true
   sticky_label: $$mdi:gesture-tap-hold$$
   trans_legend:
     tap: $$mdi:transfer$$
     type: trans
   raw_binding_map:
-    # Layers
-    "&ltq 2 SPACE":
-      tap: $$mdi:keyboard-space$$
-      hold: $$mdi:symbol$$
-    "&ltq 3 ENTER":
-      tap: $$mdi:keyboard-return$$
-      hold: $$mdi:numeric$$
-    "&ltq 1 DELETE":
-      tap: $$mdi:backspace-reverse-outline$$
-      hold: $$mdi:navigation-variant$$
-
-    # Home rows
-    "&hml LGUI A":
-      tap: "A"
-      shifted: $$mdi:apple-keyboard-command$$
-    "&hml LALT S":
-      tap: "S"
-      shifted: $$mdi:apple-keyboard-option$$
-    "&hml LSHFT D":
-      tap: "D"
-      shifted: $$mdi:apple-keyboard-shift$$
-    "&hml LCTRL F":
-      tap: "F"
-      shifted: $$mdi:apple-keyboard-control$$
-
     # Modifiers
     "&caps_word": $$mdi:alpha-w-box$$
 
@@ -190,6 +90,34 @@ parse_config:
       tap: $$mdi:backup-restore$$
     "&bootloader":
       tap: $$mdi:progress-download$$
+
+    # Layers
+    "&ltq 2 SPACE":
+      tap: $$mdi:keyboard-space$$
+      hold: $$mdi:symbol$$
+    "&ltq 3 ENTER":
+      tap: $$mdi:keyboard-return$$
+      hold: $$mdi:numeric$$
+    "&ltq 1 DELETE":
+      tap: $$mdi:backspace-reverse-outline$$
+      hold: $$mdi:navigation-variant$$
+
+    # Behaviors
+    "&magic_shift": { "t": Magic, "h": "Shift" }
+
+    # Home rows
+    "&hml LGUI A":
+      tap: "A"
+      shifted: $$mdi:apple-keyboard-command$$
+    "&hml LALT S":
+      tap: "S"
+      shifted: $$mdi:apple-keyboard-option$$
+    "&hml LSHFT D":
+      tap: "D"
+      shifted: $$mdi:apple-keyboard-shift$$
+    "&hml LCTRL F":
+      tap: "F"
+      shifted: $$mdi:apple-keyboard-control$$
 
   # ZMK
   zmk_keycode_map:
