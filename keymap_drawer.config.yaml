@@ -116,15 +116,8 @@ parse_config:
   trans_legend:
     tap: $$mdi:transfer$$
     type: trans
-
   raw_binding_map:
     # Layers
-    "&ltq 1 BACKSPACE":
-      tap: $$mdi:backspace$$
-      hold: "$$mdi:navigation-variant$$"
-    "&ltq 3 TAB":
-      tap: $$mdi:keyboard-tab$$
-      hold: $$mdi:numeric$$
     "&ltq 2 SPACE":
       tap: $$mdi:keyboard-space$$
       hold: $$mdi:symbol$$
@@ -134,145 +127,28 @@ parse_config:
     "&ltq 1 DELETE":
       tap: $$mdi:backspace-reverse-outline$$
       hold: $$mdi:navigation-variant$$
+
     # Home rows
-    "&hml_dot_colon LSHFT":
-      tap: "."
-      shifted: ":"
-      hold: "Shift"
-    "&hml_qns_excl LGUI":
-      tap: "?"
-      shifted: "!"
-      hold: "GUI"
-    "&hml LCTRL SQT":
-      tap: "'"
-      shifted: '"'
-      hold: "Ctrl"
-    "&hml LALT MINUS":
-      tap: "-"
-      shifted: "_"
-      hold: "Alt"
-    "&hm LEFT_GUI A":
+    "&hml LGUI A":
       tap: "A"
       shifted: $$mdi:apple-keyboard-command$$
-    "&hm LEFT_ALT S":
+    "&hml LALT S":
       tap: "S"
       shifted: $$mdi:apple-keyboard-option$$
-    "&hm LEFT_CONTROL D":
+    "&hml LSHFT D":
       tap: "D"
-      shifted: $$mdi:apple-keyboard-control$$
-    "&hm LEFT_SHIFT F":
+      shifted: $$mdi:apple-keyboard-shift$$
+    "&hml LCTRL F":
       tap: "F"
-      shifted: $$mdi:apple-keyboard-shift$$
-    "&hm RIGHT_SHIFT J":
-      tap: "J"
-      shifted: $$mdi:apple-keyboard-shift$$
-    "&hm RIGHT_CONTROL K":
-      tap: "K"
       shifted: $$mdi:apple-keyboard-control$$
-    "&hm RIGHT_ALT L":
-      tap: "L"
-      shifted: $$mdi:apple-keyboard-option$$
-    # self behaviors
-    "&cma_smcln":
-      tap: ","
-      shifted: ";"
-    "&at_hash":
-      tap: "@"
-      shifted: "#"
-    "&hm LG(LS(V)) P":
-      tap: "P"
-      shifted: $$mdi:content-copy$$
-    "&cp_pst_cut_mv":
-      tap: "Super Copy"
-    "&undo_redo":
-      tap: "Undo Redo"
-    "&nav_word":
-      tap: "NAV Hold"
-    "&num_dance":
-      tap: "NUM Word"
-    "&ss_zone":
-      tap: "Screenshot"
-    "&ss_mc_zone":
-      tap: "Screenshot"
-    "&close_win":
-      tap: "Close Window"
-    "&close_app":
-      tap: "Close App"
-    "&find":
-      tap: "Find"
-    "&find_all":
-      tap: "Find All"
-    "&new_tab":
-      tap: "New Tab"
-    "&new_private_tab":
-      tap: "Incognito"
-    "&save_file":
-      tap: "Save"
-    "&refresh":
-      tap: "Refresh"
-    "&select_nxt_word":
-      tap: "Select Word"
-    "&zoom_out":
-      tap: "Zoom In"
-    "&zoom_in":
-      tap: "Zoom Out"
-    "&zoom_reset":
-      tap: "Zoom Reset"
-    # Mouse
-    "&msc SCRL_UP":
-      tap: $$mdi:pan-up$$
-      hold: ""
-      shifted: ""
-    "&msc SCRL_DOWN":
-      tap: $$mdi:pan-down$$
-      hold: ""
-      shifted: ""
-    "&msc SCRL_LEFT":
-      tap: $$mdi:pan-left$$
-      hold: ""
-      shifted: ""
-    "&msc SCRL_RIGHT":
-      tap: $$mdi:pan-right$$
-      hold: ""
-      shifted: ""
-    "&mmv MOVE_LEFT":
-      tap: $$mdi:menu-left$$
-      hold: ""
-      shifted: $$mdi:mouse$$
-    "&mmv MOVE_RIGHT":
-      tap: $$mdi:menu-right$$
-      hold: ""
-      shifted: $$mdi:mouse$$
-    "&mmv MOVE_UP":
-      tap: $$mdi:menu-up$$
-      hold: ""
-      shifted: $$mdi:mouse$$
-    "&mmv MOVE_DOWN":
-      tap: $$mdi:menu-down$$
-      hold: ""
-      shifted: $$mdi:mouse$$
-    "&mkp LCLK":
-      tap: $$mdi:mouse-left-click-outline$$
-    "&mkp RCLK":
-      tap: $$mdi:mouse-right-click-outline$$
-    "&mkp MCLK":
-      tap: $$mdi:mouse-scroll-wheel$$
+
     # Modifiers
     "&caps_word": $$mdi:alpha-w-box$$
-    "&kt RSHIFT":
-      tap: $$mdi:apple-keyboard-shift$$
-      hold: $$mdi:toggle-switch$$
 
     # Empty
     "&none":
       tap: $$mdi:minus-circle-outline$$
       type: none
-
-    # Whitespace
-    "&bkspc_del":
-      type: backspace
-      tap: $$mdi:backspace$$
-      shifted: $$mdi:backspace-reverse-outline$$
 
     # Bluetooth
     "&bt BT_SEL 0":
@@ -307,6 +183,7 @@ parse_config:
       shifted: $$mdi:bluetooth-connect$$
       tap: ""
       hold: $$mdi:arrow-down-bold$$
+
     # Reset
     "&sys_reset":
       type: bootloader
@@ -381,7 +258,6 @@ parse_config:
     APOS: .
     DOUBLE_QUOTES: '"'
     DQT: '"'
-
     LESS_THAN: <
     LT: <
     PERIOD: "."
@@ -481,6 +357,7 @@ parse_config:
     INSERT:
       tap: "Ins"
       shifted: ""
+
     # "Meh" key
     LS(LC(LALT)): $$mdi:star-three-points$$
 
@@ -547,6 +424,7 @@ parse_config:
     C_AL_LOCK: $$mdi:lock$$
     K_CANCEL: $$mdi:close-box$$
     K_FIND: $$mdi:apple-finder$$
+
     # Command +
     LG(A):
       tap: "A"
@@ -572,6 +450,7 @@ parse_config:
     LG(V):
       tap: "V"
       hold: $$mdi:apple-keyboard-command$$
+
     # Zoom
     RG(RS(A)):
       tap: $$mdi:microphone$$
@@ -581,37 +460,3 @@ parse_config:
       hold: zoom
 
   zmk_combos:
-    combo_to_2:
-      align: top
-    combo_to_3:
-      align: top
-    combo_bt_clear:
-      align: top
-      offset: 0.03
-    combo_mute:
-      align: top
-      offset: 0.15
-    combo_minus:
-      key:
-        shifted: "_"
-        hold: "-"
-    combo_equal:
-      key:
-        shifted: "+"
-        hold: "="
-    combo_backslash:
-      key:
-        shifted: "|"
-        hold: \
-    combo_lbkt:
-      key:
-        shifted: "{"
-        hold: "["
-    combo_rbkt:
-      key:
-        shifted: "}"
-        hold: "]"
-    combo_semicolon:
-      key:
-        shifted: ":"
-        hold: ";"
