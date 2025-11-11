@@ -1,3 +1,7 @@
+&leader {  // leader-key config
+  timeout-ms = <220>;
+};
+
 ZMK_LEADER_SEQUENCE(usb,        &out OUT_USB,   U S B)
 ZMK_LEADER_SEQUENCE(ble,        &out OUT_BLE,   B L E)
 ZMK_LEADER_SEQUENCE(reset,      &sys_reset,     R E S E T)
