@@ -13,8 +13,9 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/behaviors.h>
 
-#include <zmk-helpers/helper.h>
+#define HOST_OS 2 // = macOS; Must be set before including helper.h
 
+#include <zmk-helpers/helper.h>
 #include "urchin_keylabels.h"
 
 #define XXX &none
