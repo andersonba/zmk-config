@@ -387,4 +387,4 @@ parse_config:
       tap: $$mdi:video$$
       hold: zoom
 
-  zmk_combos:
+  # zmk_combos:
