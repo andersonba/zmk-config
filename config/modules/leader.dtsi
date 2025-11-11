@@ -7,7 +7,7 @@
             leader: leader { \
                 compatible = "zmk,behavior-leader-key"; \
                 #binding-cells = <0>; \
-                ignore-keys = <LSHFT RSHFT>; \
+                ignore-keys = <LSHIFT RSHIFT>; \
                 leader_sequence_ ## name { \
                     bindings = <leader_bindings>; \
                     sequence = <leader_sequence>; \

@@ -50,14 +50,14 @@ MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
 // Tap: repeat after alpha, else sticky-shift |
 // Shift + tap/ double-tap: caps-word | Hold: shift.
-#define MAGIC_SHIFT &magic_shift LSHFT 0
+#define MAGIC_SHIFT &magic_shift LSHIFT 0
 ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
              flavor = "balanced"; tapping-term-ms = <200>;
              quick-tap-ms = <QUICK_TAP_MS>;)
 ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
               mods = <(MOD_LSFT)>;)
 ZMK_ADAPTIVE_KEY(
-    shift_repeat, bindings = <&sk LSHFT>;
+    shift_repeat, bindings = <&sk LSHIFT>;
     repeat {
       trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
       bindings = <&key_repeat>;
@@ -100,10 +100,10 @@ SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
-ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>;
+ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; wait-ms = <0>;
           tap-ms = <5>;)
 
-// Tap: backspace | Lshft + tap: delete | Rshft + tap: shift-delete.
+// Tap: backspace | Lshift + tap: delete | Rshift + tap: shift-delete.
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
               mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
 
@@ -112,7 +112,7 @@ ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
 // Sticky shift + leader.
-ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
+ZMK_MACRO(leader_sft, bindings = <&sk LSHIFT &leader>;)
 
 // Smart-mouse, requires tri-state module.
 ZMK_TRI_STATE(
@@ -128,7 +128,7 @@ ZMK_TRI_STATE(
 #define PIN_WIN   &kp LG(LC(LS(Q)))       // Pin window across desktops.
 #define PIN_APP   &kp LG(LC(LS(A)))       // Pin application across desktops.
 #define DSK_MGR   &kp LA(GRAVE)           // Desktop manager.
-#define VOL_DOWN  &hmr RSHFT C_VOL_DN
+#define VOL_DOWN  &hmr RSHIFT C_VOL_DN
 
 /* Keymap */
 

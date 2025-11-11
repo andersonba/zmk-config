@@ -13,12 +13,12 @@ layers:
     - {t: '''', s: '"'}
     - {t: A, h: '$$mdi:apple-keyboard-command$$'}
     - {t: R, h: '$$mdi:apple-keyboard-option$$'}
-    - {t: S, h: LSHFT}
+    - {t: S, h: '$$mdi:apple-keyboard-shift$$'}
     - {t: T, h: '$$mdi:apple-keyboard-control$$'}
     - G
     - M
     - {t: N, h: '$$mdi:apple-keyboard-control$$'}
-    - {t: E, h: RSHFT}
+    - {t: E, h: '$$mdi:apple-keyboard-shift$$'}
     - {t: I, h: '$$mdi:apple-keyboard-option$$'}
     - {t: O, h: '$$mdi:apple-keyboard-command$$'}
     - Z
@@ -48,7 +48,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: LSHFT, h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: ▽, type: trans}
     - PG DN
@@ -83,12 +83,12 @@ layers:
     - {t: ▽, type: trans}
     - {t: F11, h: '$$mdi:apple-keyboard-command$$'}
     - {t: F4, h: '$$mdi:apple-keyboard-option$$'}
-    - {t: F5, h: LSHFT}
+    - {t: F5, h: '$$mdi:apple-keyboard-shift$$'}
     - {t: F6, h: '$$mdi:apple-keyboard-control$$'}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: 'Gui+Ctl+$$mdi:arrow-left-bold$$', h: '$$mdi:apple-keyboard-control$$'}
-    - {t: '$$mdi:volume-low$$', h: RSHFT}
+    - {t: '$$mdi:volume-low$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: 'Gui+Ctl+$$mdi:arrow-right-bold$$', h: '$$mdi:apple-keyboard-option$$'}
     - {t: ▽, type: trans}
     - F10
@@ -118,7 +118,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: '0', h: '$$mdi:apple-keyboard-command$$', s: )}
     - {t: '4', h: '$$mdi:apple-keyboard-option$$', s: $}
-    - {t: '5', h: LSHFT, s: '%'}
+    - {t: '5', h: '$$mdi:apple-keyboard-shift$$', s: '%'}
     - {t: '6', h: '$$mdi:apple-keyboard-control$$', s: ^}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
