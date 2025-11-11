@@ -51,6 +51,10 @@
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 
+&leader {  // leader-key config
+  timeout-ms = <220>;
+};
+
 // Custom behaviors
 
 /* Homerow mods */
