@@ -68,9 +68,9 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 
 /* Combos, leader key sequences, mouse emulation */
 
-#include "combos.dtsi" // Must be sourced after HRM-combo hack.
-#include "leader.dtsi"
-#include "mouse.dtsi"
+#include "behaviors/combos.dtsi"
+#include "behaviors/leader.dtsi"
+#include "behaviors/mouse.dtsi"
 #include "behaviors/macros.dtsi"
 
 // Trigger tap-action on all interrupts.
