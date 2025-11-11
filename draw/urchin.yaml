@@ -31,10 +31,10 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
+    - {t: Magic, h: Shift}
+    - {t: '&num_dance', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Fn}
-    - {t: '&num_dance', h: Num}
-    - {t: Magic, h: Shift}
   Nav:
     - Alt+F4
     - {t: ▽, type: trans}
@@ -66,61 +66,66 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - $$mdi:close-box$$
+    - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - $$mdi:close-box$$
   Fn:
-    - F12
-    - F7
-    - F8
-    - F9
-    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - $$mdi:skip-previous$$
     - $$mdi:volume-high$$
     - $$mdi:skip-next$$
     - {t: ▽, type: trans}
-    - {t: F11, h: '$$mdi:apple-keyboard-command$$'}
-    - {t: F4, h: '$$mdi:apple-keyboard-option$$'}
-    - {t: F5, h: '$$mdi:apple-keyboard-shift$$'}
-    - {t: F6, h: '$$mdi:apple-keyboard-control$$'}
     - {t: ▽, type: trans}
+    - F7
+    - F8
+    - F9
+    - F12
     - {t: ▽, type: trans}
     - {t: 'Gui+Ctl+$$mdi:arrow-left-bold$$', h: '$$mdi:apple-keyboard-control$$'}
     - {t: '$$mdi:volume-low$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: 'Gui+Ctl+$$mdi:arrow-right-bold$$', h: '$$mdi:apple-keyboard-option$$'}
     - {t: ▽, type: trans}
-    - F10
+    - {t: ▽, type: trans}
+    - {t: F4, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: F5, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: F6, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: F11, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: Alt+`, s: Alt+~}
+    - Gui+Ctl+Sft+Q
+    - Gui+Ctl+Sft+A
+    - {t: ▽, type: trans}
     - F1
     - F2
     - F3
-    - {t: ▽, type: trans}
-    - Gui+Ctl+Sft+A
-    - Gui+Ctl+Sft+Q
-    - {t: Alt+`, s: Alt+~}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - F10
+    - $$mdi:play-pause$$
+    - $$mdi:volume-off$$
     - {t: ▽, type: trans}
     - {type: held}
-    - $$mdi:volume-off$$
-    - $$mdi:play-pause$$
   Num:
     - {t: ▽, type: trans}
-    - {t: '7', s: '&'}
-    - {t: '8', s: '*'}
-    - {t: '9', s: (}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '&hmr N7'
+    - '&hmr N8'
+    - '&hmr N9'
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: '0', h: '$$mdi:apple-keyboard-command$$', s: )}
-    - {t: '4', h: '$$mdi:apple-keyboard-option$$', s: $}
+    - {t: ▽, type: trans}
+    - {t: '4', h: '$$mdi:apple-keyboard-control$$', s: $}
     - {t: '5', h: '$$mdi:apple-keyboard-shift$$', s: '%'}
-    - {t: '6', h: '$$mdi:apple-keyboard-control$$', s: ^}
-    - {t: ▽, type: trans}
+    - {t: '6', h: '$$mdi:apple-keyboard-option$$', s: ^}
+    - {t: '0', h: '$$mdi:apple-keyboard-command$$', s: )}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -132,13 +137,8 @@ layers:
     - {t: '3', s: '#'}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - {type: held}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Sys:
     - {h: '1', s: '$$mdi:bluetooth-connect$$'}
