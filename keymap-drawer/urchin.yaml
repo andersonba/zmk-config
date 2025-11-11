@@ -226,9 +226,13 @@ combos:
 - p: [14, 15, 16]
   k: {t: '&leader_sft', h: 'Sft+Ctl+$$mdi:apple-keyboard-option$$'}
   l: [Base, Nav, Num]
+  a: top
+  o: 1.35
 - p: [26, 28]
   k: Ctl+X
   l: [Base, Nav, Num]
+  a: bottom
+  o: 0.15
 - p: [26, 27]
   k: Ctl+INS
   l: [Base, Nav, Num]
@@ -250,9 +254,11 @@ combos:
 - p: [19, 20]
   k: <
   l: [Nav]
+  hidden: true
 - p: [20, 21]
   k: '>'
   l: [Nav]
+  hidden: true
 - p: [31, 32]
   k: {t: '[', s: '{'}
   l: [Base, Num]
@@ -262,9 +268,11 @@ combos:
 - p: [31, 32]
   k: '{'
   l: [Nav]
+  hidden: true
 - p: [32, 33]
   k: '}'
   l: [Nav]
+  hidden: true
 - p: [2, 14]
   k: '@'
   l: [Base, Nav, Num]
