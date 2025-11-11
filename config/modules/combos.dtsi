@@ -1,11 +1,10 @@
 /*                KEY POSITIONS
-
  * ╭─────────────────────╮ ╭─────────────────────╮
  * │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
  * │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
  * │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
  * ╰───────╮ LH2 LH1 LH0 │ │ RH0 RH1 RH2 ╭───────╯
- * ╰─────────────╯ ╰─────────────╯
+ *        ╰─────────────╯ ╰─────────────╯
  */
 
 #define COMBO_TERM_FAST 18
@@ -20,7 +19,7 @@ ZMK_COMBO(mouse, &smart_mouse, LT2 LT1,     BASE NAV NUM, COMBO_TERM_FAST, COMBO
 
 // Combos overlapping HRMs are set up as hold-taps themselves to allow for instantaneous
 // chording of mods. Custom hold-tap instances can be bootstrapped on the go using the
-// 8-argument version of ZMK_COMBO defined in base.keymap.
+// 8-argument version of ZMK_COMBO defined in hrm.dtsi.
 ZMK_COMBO(tab,   &hml LS(LALT)TAB, LM3 LM2, BASE NAV NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(ldr,   &leader,      LM2 LM1,     BASE NAV NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LCTRL),    KEYS_R)
 ZMK_COMBO(ldrsh, &leader_sft,  LM3 LM2 LM1, BASE NAV NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LC(LALT)), KEYS_R)
