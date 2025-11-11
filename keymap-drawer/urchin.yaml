@@ -11,10 +11,10 @@ layers:
   - I
   - O
   - P
-  - {t: A, h: LGUI}
-  - {t: S, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: D, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: F, h: '$$mdi:apple-keyboard-control$$'}
+  - {t: A, s: '$$mdi:apple-keyboard-command$$'}
+  - {t: S, s: '$$mdi:apple-keyboard-option$$'}
+  - {t: D, s: '$$mdi:apple-keyboard-shift$$'}
+  - {t: F, s: '$$mdi:apple-keyboard-control$$'}
   - G
   - H
   - {t: J, h: '$$mdi:apple-keyboard-control$$'}
@@ -34,7 +34,7 @@ layers:
   - {t: '$$mdi:keyboard-space$$', h: Symbols, s: '&dot_spc'}
   - {t: '$$mdi:keyboard-return$$', h: Extras}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '&shift_repeat', h: '$$mdi:apple-keyboard-shift$$', s: '$$mdi:alpha-w-box$$'}
+  - {t: Magic, h: Shift}
   Graphite:
   - B
   - L
@@ -69,7 +69,7 @@ layers:
   - {t: '$$mdi:keyboard-space$$', h: Symbols, s: '&dot_spc'}
   - {t: '$$mdi:keyboard-return$$', h: Extras}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '&shift_repeat', h: '$$mdi:apple-keyboard-shift$$', s: '$$mdi:alpha-w-box$$'}
+  - {t: Magic, h: Shift}
   Symbols:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
