@@ -72,8 +72,8 @@ ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
-// Alt+Tab swapper, requires tri-state module.
-ZMK_TRI_STATE(swapper, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+// LGUI+Tab swapper, requires tri-state module.
+ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
               ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
 
 // Define mod-morph with a *single* mod trigger for less repetition.
@@ -121,14 +121,13 @@ ZMK_TRI_STATE(
         <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
     ignored-layers = <MOUSE NAV FN>;)
 
-// Misc aliases. [TODO: clean up]
-#define CANCEL    &kp K_CANCEL            // Cancel caps-word & auto-layers.
-#define DSK_PREV  &hmr LCTRL LG(LC(LEFT)) // Previous desktop.
-#define DSK_NEXT  &hmr LALT LG(LC(RIGHT)) // Next     desktop.
-#define PIN_WIN   &kp LG(LC(LS(Q)))       // Pin window across desktops.
-#define PIN_APP   &kp LG(LC(LS(A)))       // Pin application across desktops.
-#define DSK_MGR   &kp LA(GRAVE)           // Desktop manager.
-#define VOL_DOWN  &hmr RSHIFT C_VOL_DN
+
+#define CANCEL    &kp K_CANCEL         // Cancel caps-word & auto-layers.
+#define WIN_CYCLE &kp LG(GRAVE)       // Cycle through windows.
+#define VOL_DOWN  &hml LSHIFT C_VOL_DN // Volume down.
+#define ALFRED &kp LG(SPACE)
+#define TRANSLATE &kp LA(SPACE)
+#define CHATGPT &kp LS(LA(SPACE))
 
 /* Keymap */
 

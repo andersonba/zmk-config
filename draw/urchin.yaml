@@ -36,8 +36,8 @@ layers:
     - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Fn}
   Nav:
-    - Alt+F4
-    - {t: ▽, type: trans}
+    - Gui+Q
+    - Gui+W
     - $$mdi:keyboard-tab-reverse$$
     - '&swapper'
     - {t: ▽, type: trans}
@@ -71,7 +71,7 @@ layers:
     - {type: held}
     - {t: ▽, type: trans}
   Fn:
-    - {t: ▽, type: trans}
+    - '&hml LG(GRAVE)'
     - $$mdi:skip-previous$$
     - $$mdi:volume-high$$
     - $$mdi:skip-next$$
@@ -82,9 +82,9 @@ layers:
     - F9
     - F12
     - {t: ▽, type: trans}
-    - {t: 'Gui+Ctl+$$mdi:arrow-left-bold$$', h: '$$mdi:apple-keyboard-control$$'}
+    - {t: ▽, type: trans}
     - {t: '$$mdi:volume-low$$', h: '$$mdi:apple-keyboard-shift$$'}
-    - {t: 'Gui+Ctl+$$mdi:arrow-right-bold$$', h: '$$mdi:apple-keyboard-option$$'}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: F4, h: '$$mdi:apple-keyboard-control$$'}
@@ -93,9 +93,9 @@ layers:
     - {t: F11, h: '$$mdi:apple-keyboard-command$$'}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: Alt+`, s: Alt+~}
-    - Gui+Ctl+Sft+Q
-    - Gui+Ctl+Sft+A
+    - Sft+Alt+$$mdi:keyboard-space$$
+    - Alt+$$mdi:keyboard-space$$
+    - Gui+$$mdi:keyboard-space$$
     - {t: ▽, type: trans}
     - F1
     - F2
