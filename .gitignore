@@ -1,0 +1,10 @@
+# ZMK build
+/build
+/firmware
+
+# Local development workspace (created by 'just init')
+/zmk-workspace
+
+# Python virtual environment
+/.venv
+__pycache__
