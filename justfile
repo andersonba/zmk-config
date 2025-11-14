@@ -18,6 +18,7 @@ init:
     pip install west
     pip install keymap-drawer
     pip install yq
+    pip install watchdog
 
     if [ ! -d zmk-workspace/zmk/.west ]; then
         echo "📥 Initializing ZMK workspace..."
@@ -179,6 +180,21 @@ draw:
     keymap -c "draw/config.yaml" parse -z "config/urchin.keymap" --virtual-layers Combos >"draw/urchin.yaml"
     yq -Yi '.combos.[].l = ["Combos"]' "draw/urchin.yaml"
     keymap -c "draw/config.yaml" draw "draw/urchin.yaml" -k "ferris/sweep" >"draw/urchin.svg"
+
+draw-debug:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    source .venv/bin/activate
+    keymap -c "draw/config.yaml" parse -z "config/urchin.keymap" >"draw/urchin.yaml"
+    keymap -c "draw/config.yaml" draw "draw/urchin.yaml" -k "ferris/sweep" >"draw/urchin.svg"
+
+watch command='draw':
+    #!/usr/bin/env bash
+    set -euo pipefail
+    source .venv/bin/activate
+    just {{command}}
+    open "resources/watch-draw.html"
+    watchmedo shell-command -R -w -v -c 'just {{command}} && echo "¤ Updated"' config/ draw/config.yaml
 
 # Clean build artifacts
 clean:
