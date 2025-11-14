@@ -124,6 +124,7 @@ ZMK_TRI_STATE(
 
 #define CANCEL    &kp K_CANCEL         // Cancel caps-word & auto-layers.
 #define WIN_CYCLE &kp LG(GRAVE)       // Cycle through windows.
+#define WIN_CYCLE_REV &hml LGUI LG(LS(GRAVE)) // Cycle through windows in reverse.
 #define VOL_DOWN  &hml LSHIFT C_VOL_DN // Volume down.
 #define ALFRED &kp LG(SPACE)
 #define TRANSLATE &kp LA(SPACE)

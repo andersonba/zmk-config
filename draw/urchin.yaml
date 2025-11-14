@@ -36,7 +36,7 @@ layers:
     - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Fn}
   Nav:
-    - Gui+Q
+    - {t: Gui+`, s: Gui+~}
     - Gui+W
     - $$mdi:keyboard-tab-reverse$$
     - '&swapper'
@@ -46,7 +46,7 @@ layers:
     - {t: '$$mdi:arrow-up-bold$$', h: Ctl+HOME}
     - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
     - {t: ▽, type: trans}
-    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: Gui+Sft+`, h: '$$mdi:apple-keyboard-command$$', s: Gui+Sft+~}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
@@ -71,7 +71,7 @@ layers:
     - {type: held}
     - {t: ▽, type: trans}
   Fn:
-    - '&hml LG(GRAVE)'
+    - {t: ▽, type: trans}
     - $$mdi:skip-previous$$
     - $$mdi:volume-high$$
     - $$mdi:skip-next$$
