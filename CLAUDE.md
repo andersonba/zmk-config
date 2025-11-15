@@ -59,8 +59,6 @@ The repository uses a modular configuration approach:
   - `behaviors.dtsi` - Custom key behaviors
   - `combos.dtsi` - Key combinations
   - `hrm.dtsi` - Homerow mods configuration
-  - `mouse.dtsi` - Mouse emulation
-  - `leader.dtsi` - Leader key configuration
   - `macros.dtsi` - Macros configuration
   - `apps/` - Application-specific bindings
 
@@ -72,7 +70,6 @@ This repository uses **vanilla ZMK** (official zmkfirmware/zmk) with additional 
 - `urob/zmk-helpers` - Convenience macros for ZMK configuration
 - `urob/zmk-adaptive-key` - Adaptive key module
 - `urob/zmk-auto-layer` - Auto-layer module
-- `urob/zmk-leader-key` - Leader key module
 - `urob/zmk-tri-state` - Tri-state module
 - `urob/zmk-unicode` - Unicode module
 - `nice-view-gem` - Custom Nice!View display theme
