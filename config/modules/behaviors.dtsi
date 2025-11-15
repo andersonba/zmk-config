@@ -6,10 +6,6 @@
   quick-release;
 };
 
-&sl { // Sticky Layer - Allow sticky mods to chord across sticky layers.
-  ignore-modifiers;
-};
-
 &lt { // Layer Tap
   flavor = "balanced";
   tapping-term-ms = <200>;
@@ -34,43 +30,12 @@
 ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
 ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
 
-#define NAV_LEFT  &mt_home 0   LEFT  // Tap: left  | Long-tap: start of line.
-#define NAV_RIGHT &mt_end 0    RIGHT // Tap: right | Long-tap: end   of line.
-#define NAV_UP    &mt LC(HOME) UP    // Tap: up    | Long-tap: start of doc.
-#define NAV_DOWN  &mt LC(END)  DOWN  // Tap: down  | Long-tap: end   of doc.
-#define NAV_BSPC  &mt LC(BSPC) BSPC  // Tap: bspc  | Long-tap: delete word bwd.
-#define NAV_DEL   &mt LC(DEL)  DEL   // Tap: del   | Long-tap: delete word fwd.
-
 // Mask CTRL on left/right hold to avoid accidental jumps to start/end of doc.
 #define MASK_MODS(NAME, MODS, BINDING) \
   ZMK_MOD_MORPH(NAME, bindings = <BINDING>, <BINDING>; mods = <MODS>;)
 
 MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
-
-// Tap: repeat after alpha, else sticky-shift |
-// Shift + tap/ double-tap: caps-word | Hold: shift.
-#define MAGIC_SHIFT &magic_shift LSHIFT 0
-ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
-             flavor = "balanced"; tapping-term-ms = <200>;
-             quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
-              mods = <(MOD_LSFT)>;)
-ZMK_ADAPTIVE_KEY(
-    shift_repeat, bindings = <&sk LSHIFT>;
-    repeat {
-      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-      bindings = <&key_repeat>;
-      max-prior-idle-ms = <1200>;
-      strict-modifiers;
-    };)
-
-// Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num NUM 0
-ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
-             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
-              tapping-term-ms = <200>;)
 
 // LGUI+Tab swapper, requires tri-state module.
 ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
@@ -92,11 +57,7 @@ SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 // Tap: qmark | Shift + tap: excl.
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 
-// Tap: left/right parenthesis | Shft + tap: less-than/greater-than.
-SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
-SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
-
-// Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
+// Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: layer.
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
@@ -111,25 +72,5 @@ ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
 ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
-// Sticky shift + leader.
-ZMK_MACRO(leader_sft, bindings = <&sk LSHIFT &leader>;)
-
-// Smart-mouse, requires tri-state module.
-ZMK_TRI_STATE(
-    smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
-    ignored-key-positions =
-        <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MOUSE NAV FN>;)
-
-
-#define CANCEL    &kp K_CANCEL         // Cancel caps-word & auto-layers.
-#define WIN_CYCLE &kp LG(GRAVE)       // Cycle through windows.
-#define WIN_CYCLE_REV &hml LGUI LG(LS(GRAVE)) // Cycle through windows in reverse.
-#define VOL_DOWN  &hml LSHIFT C_VOL_DN // Volume down.
-#define ALFRED &kp LG(SPACE)
-#define TRANSLATE &kp LA(SPACE)
-#define CHATGPT &kp LS(LA(SPACE))
-
-/* Keymap */
-
-ZMK_CONDITIONAL_LAYER(sys, NAV NUM, SYS) // NAV + NUM --> SYS.
+ZMK_CONDITIONAL_LAYER(sys, NAV SYM, SYS) // NAV + NUM --> SYS.
+ZMK_CONDITIONAL_LAYER(fn, NUM SYM, FN) // NAV + SYM --> FN.
