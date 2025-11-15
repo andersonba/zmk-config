@@ -25,7 +25,7 @@
 #define NAV_RIGHT &mt_end 0    RIGHT           // Tap: right | Long-tap: end   of line.
 #define NAV_UP    &mt LC(HOME) UP              // Tap: up    | Long-tap: start of doc.
 #define NAV_DOWN  &mt LC(END)  DOWN            // Tap: down  | Long-tap: end   of doc.
-#define MT_BSPC  &mt LC(BSPC) bs_del           // Tap: bspc | Lshift + tap: delete | Long-tap: delete word bwd.
+#define MT_BSPC  &mt LC(BSPC) &bs_del           // Tap: bspc | Lshift + tap: delete | Long-tap: delete word bwd.
 #define MT_DEL   &mt LC(DEL)  DEL             // Tap: del   | Long-tap: delete word fwd.
 #define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.
 #define WIN_CYCLE &kp LG(GRAVE)                // Cycle through windows.
@@ -105,7 +105,7 @@ ZMK_LAYER(Sys,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   XXX           XXX           XXX           XXX              XXX           XXX           XXX           XXX          &bootloader 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sys_reset    XXX           XXX           XXX           &kp mac_lock     XXX           XXX           XXX           XXX          &sys_reset 
+    &sys_reset    XXX           XXX           XXX           &kp &mac_lock     XXX           XXX           XXX           XXX          &sys_reset 
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
