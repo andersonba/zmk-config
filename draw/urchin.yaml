@@ -1,262 +1,264 @@
 layout: {zmk_keyboard: urchin}
 layers:
   Base:
-  - Q
-  - W
-  - E
-  - R
-  - T
-  - Y
-  - U
-  - I
-  - O
-  - P
-  - {t: A, h: '$$mdi:apple-keyboard-control$$'}
-  - {t: S, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: D, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: F, h: '$$mdi:apple-keyboard-shift$$'}
-  - G
-  - H
-  - {t: J, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: K, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: L, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '''', h: '$$mdi:apple-keyboard-control$$', s: '"'}
-  - Z
-  - X
-  - C
-  - V
-  - B
-  - N
-  - M
-  - {t: ',', s: ;}
-  - {t: ., s: ':'}
-  - {t: '?', s: '!'}
-  - {t: '$$mdi:keyboard-return$$', h: Num}
-  - {t: '$$mdi:keyboard-tab$$', h: Sym}
-  - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
-  - $$mdi:backspace$$
+    - Q
+    - W
+    - E
+    - R
+    - T
+    - Y
+    - U
+    - I
+    - O
+    - P
+    - {t: A, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: S, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: D, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: F, h: '$$mdi:apple-keyboard-shift$$'}
+    - G
+    - H
+    - {t: J, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: K, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: L, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: '''', h: '$$mdi:apple-keyboard-control$$', s: '"'}
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - N
+    - M
+    - {t: ',', s: ;}
+    - {t: ., s: ':'}
+    - {t: '?', s: '!'}
+    - {t: '$$mdi:keyboard-return$$', h: Num}
+    - {t: '$$mdi:keyboard-tab$$', h: Sym}
+    - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
+    - $$mdi:backspace$$
   Sym:
-  - '`'
-  - ''
-  - ''
-  - ''
-  - (
-  - )
-  - '&'
-  - '*'
-  - '~'
-  - ':'
-  - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-  - '['
-  - ']'
-  - $
-  - '%'
-  - ^
-  - +
-  - ''
-  - ''
-  - ''
-  - ''
-  - '{'
-  - '}'
-  - '!'
-  - '@'
-  - '#'
-  - '|'
-  - {t: ▽, type: trans}
-  - {type: held}
-  - '-'
-  - _
+    - '`'
+    - ''
+    - ''
+    - ''
+    - (
+    - )
+    - '&'
+    - '*'
+    - '~'
+    - ':'
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - '['
+    - ']'
+    - $
+    - '%'
+    - ^
+    - +
+    - ''
+    - ''
+    - ''
+    - ''
+    - '{'
+    - '}'
+    - '!'
+    - '@'
+    - '#'
+    - '|'
+    - {t: ▽, type: trans}
+    - {type: held}
+    - '-'
+    - _
   Nav:
-  - $$mdi:arrow-u-up-left$$
-  - {t: W, s: '$$mdi:apple-keyboard-command$$'}
-  - $$mdi:keyboard-tab-reverse$$
-  - $$mdi:swap-horizontal$$
-  - ''
-  - ''
-  - $$mdi:arrow-left$$
-  - PG UP
-  - $$mdi:arrow-right$$
-  - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
-  - $$mdi:arrow-u-down-left$$
-  - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-  - ''
-  - {t: '$$mdi:arrow-left-bold$$', h: HOME}
-  - {t: '$$mdi:arrow-down-bold$$', h: Ctl+END}
-  - {t: '$$mdi:arrow-up-bold$$', h: Ctl+HOME}
-  - {t: '$$mdi:arrow-right-bold$$', h: END}
-  - ''
-  - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - PG DN
-  - ''
-  - $$mdi:close-box$$
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
+    - $$mdi:arrow-u-up-left$$
+    - {t: W, s: '$$mdi:apple-keyboard-command$$'}
+    - $$mdi:keyboard-tab-reverse$$
+    - $$mdi:swap-horizontal$$
+    - ''
+    - ''
+    - $$mdi:arrow-left$$
+    - PG UP
+    - $$mdi:arrow-right$$
+    - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
+    - $$mdi:arrow-u-down-left$$
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - ''
+    - {t: '$$mdi:arrow-left-bold$$', h: HOME}
+    - {t: '$$mdi:arrow-down-bold$$', h: Ctl+END}
+    - {t: '$$mdi:arrow-up-bold$$', h: Ctl+HOME}
+    - {t: '$$mdi:arrow-right-bold$$', h: END}
+    - ''
+    - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PG DN
+    - ''
+    - $$mdi:close-box$$
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
   Num:
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '7'
-  - '8'
-  - '9'
-  - ''
-  - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-  - ''
-  - ''
-  - {t: '4', h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: '5', h: '$$mdi:apple-keyboard-command$$'}
-  - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '0', h: '$$mdi:apple-keyboard-control$$'}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '1'
-  - '2'
-  - '3'
-  - ''
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - '7'
+    - '8'
+    - '9'
+    - ''
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - ''
+    - ''
+    - {t: '4', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: '5', h: '$$mdi:apple-keyboard-command$$'}
+    - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
+    - {t: '0', h: '$$mdi:apple-keyboard-control$$'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   Fn:
-  - ''
-  - $$mdi:skip-previous$$
-  - $$mdi:volume-high$$
-  - $$mdi:skip-next$$
-  - ''
-  - ''
-  - F7
-  - F8
-  - F9
-  - F12
-  - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:volume-off$$', h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '$$mdi:volume-low$$', h: '$$mdi:apple-keyboard-command$$'}
-  - {t: '$$mdi:play-pause$$', h: '$$mdi:apple-keyboard-shift$$'}
-  - ''
-  - ''
-  - {t: F4, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: F5, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: F6, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: F11, h: '$$mdi:apple-keyboard-control$$'}
-  - ''
-  - ''
-  - Sft+Alt+$$mdi:keyboard-space$$
-  - Alt+$$mdi:keyboard-space$$
-  - Gui+$$mdi:keyboard-space$$
-  - ''
-  - F1
-  - F2
-  - F3
-  - F10
-  - {type: held}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+    - ''
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-high$$
+    - $$mdi:skip-next$$
+    - ''
+    - ''
+    - F7
+    - F8
+    - F9
+    - F12
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:volume-off$$', h: '$$mdi:apple-keyboard-option$$'}
+    - {t: '$$mdi:volume-low$$', h: '$$mdi:apple-keyboard-command$$'}
+    - {t: '$$mdi:play-pause$$', h: '$$mdi:apple-keyboard-shift$$'}
+    - ''
+    - ''
+    - {t: F4, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: F5, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: F6, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: F11, h: '$$mdi:apple-keyboard-control$$'}
+    - ''
+    - ''
+    - Sft+Alt+$$mdi:keyboard-space$$
+    - Alt+$$mdi:keyboard-space$$
+    - Gui+$$mdi:keyboard-space$$
+    - ''
+    - F1
+    - F2
+    - F3
+    - F10
+    - {type: held}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   Sys:
-  - {h: '1', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '2', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '3', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '4', s: '$$mdi:bluetooth-connect$$'}
-  - $$mdi:bluetooth-off$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - $$mdi:progress-download$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - $$mdi:progress-download$$
-  - {t: '$$mdi:backup-restore$$', type: bootloader}
-  - ''
-  - ''
-  - ''
-  - $$mdi:lock$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: '$$mdi:backup-restore$$', type: bootloader}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {type: held}
-  - {t: ▽, type: trans}
+    - {h: '1', s: '$$mdi:bluetooth-connect$$'}
+    - {h: '2', s: '$$mdi:bluetooth-connect$$'}
+    - {h: '3', s: '$$mdi:bluetooth-connect$$'}
+    - {h: '4', s: '$$mdi:bluetooth-connect$$'}
+    - $$mdi:bluetooth-off$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:progress-download$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:progress-download$$
+    - {t: '$$mdi:backup-restore$$', type: bootloader}
+    - ''
+    - ''
+    - ''
+    - $$mdi:lock$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - {t: '$$mdi:backup-restore$$', type: bootloader}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {type: held}
+    - {t: ▽, type: trans}
+  Combos: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
 combos:
-- p: [12, 13]
-  k: $$escape$$
-  l: [Base, Sym, Nav, Num, Fn, Sys]
-- p: [21, 23]
-  k: $$mdi:content-cut$$
-  l: [Base]
-  a: bottom
-  o: 0.15
-- p: [21, 22]
-  k: $$mdi:content-copy$$
-  l: [Base]
-- p: [22, 23]
-  k: $$mdi:content-paste$$
-  l: [Base]
-- p: [16, 17]
-  k: $$escape$$
-  l: [Base, Sym, Nav, Num, Fn, Sys]
-- p: [13, 16]
-  k: $$mdi:alpha-w-box$$
-  l: [Base]
-  a: top
-  o: 1.2
-- p: [4, 5]
-  k: $$mdi:code-parentheses$$
-  l: [Base]
-- p: [14, 15]
-  k: $$mdi:code-brackets$$
-  l: [Base]
-- p: [24, 25]
-  k: $$mdi:code-braces$$
-  l: [Base]
-- p: [4, 3]
-  k: (
-  l: [Base]
-- p: [5, 6]
-  k: )
-  l: [Base]
-- p: [14, 13]
-  k: '['
-  l: [Base]
-- p: [15, 16]
-  k: ']'
-  l: [Base]
-- p: [24, 23]
-  k: '{'
-  l: [Base]
-- p: [25, 26]
-  k: '}'
-  l: [Base]
+  - p: [12, 13]
+    k: $$escape$$
+    l: [Combos]
+  - p: [21, 23]
+    k: $$mdi:content-cut$$
+    l: [Combos]
+    a: bottom
+    o: 0.15
+  - p: [21, 22]
+    k: $$mdi:content-copy$$
+    l: [Combos]
+  - p: [22, 23]
+    k: $$mdi:content-paste$$
+    l: [Combos]
+  - p: [16, 17]
+    k: $$escape$$
+    l: [Combos]
+  - p: [13, 16]
+    k: $$mdi:alpha-w-box$$
+    l: [Combos]
+    a: top
+    o: 1.2
+  - p: [4, 5]
+    k: $$mdi:code-parentheses$$
+    l: [Combos]
+  - p: [14, 15]
+    k: $$mdi:code-brackets$$
+    l: [Combos]
+  - p: [24, 25]
+    k: $$mdi:code-braces$$
+    l: [Combos]
+  - p: [4, 3]
+    k: (
+    l: [Combos]
+  - p: [5, 6]
+    k: )
+    l: [Combos]
+  - p: [14, 13]
+    k: '['
+    l: [Combos]
+  - p: [15, 16]
+    k: ']'
+    l: [Combos]
+  - p: [24, 23]
+    k: '{'
+    l: [Combos]
+  - p: [25, 26]
+    k: '}'
+    l: [Combos]
