@@ -72,5 +72,5 @@ ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
 ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
-ZMK_CONDITIONAL_LAYER(sys, NAV SYM, SYS) // NAV + NUM --> SYS.
+ZMK_CONDITIONAL_LAYER(sys, NAV NUM, SYS) // NAV + NUM --> SYS.
 ZMK_CONDITIONAL_LAYER(fn, NUM SYM, FN) // NAV + SYM --> FN.

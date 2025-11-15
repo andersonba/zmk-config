@@ -31,10 +31,45 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
-    - {t: '$$mdi:keyboard-return$$', h: Num}
-    - {t: '$$mdi:keyboard-tab$$', h: Sym}
+    - {t: '$$mdi:keyboard-return$$', h: Sym}
+    - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Nav, s: '&dot_spc'}
     - $$mdi:backspace$$
+  Num:
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - '7'
+    - '8'
+    - '9'
+    - ''
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - ''
+    - ''
+    - {t: '4', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: '5', h: '$$mdi:apple-keyboard-command$$'}
+    - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
+    - {t: '0', h: '$$mdi:apple-keyboard-control$$'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   Sym:
     - '`'
     - ''
@@ -66,8 +101,8 @@ layers:
     - '@'
     - '#'
     - '|'
-    - {t: ▽, type: trans}
     - {type: held}
+    - {t: ▽, type: trans}
     - '-'
     - _
   Nav:
@@ -105,41 +140,6 @@ layers:
     - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
-  Num:
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - '7'
-    - '8'
-    - '9'
-    - ''
-    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-    - ''
-    - ''
-    - {t: '4', h: '$$mdi:apple-keyboard-shift$$'}
-    - {t: '5', h: '$$mdi:apple-keyboard-command$$'}
-    - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
-    - {t: '0', h: '$$mdi:apple-keyboard-control$$'}
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - '1'
-    - '2'
-    - '3'
-    - ''
-    - {type: held}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
   Fn:
     - ''
     - $$mdi:skip-previous$$
@@ -163,9 +163,9 @@ layers:
     - {t: F11, h: '$$mdi:apple-keyboard-control$$'}
     - ''
     - ''
-    - Sft+Alt+$$mdi:keyboard-space$$
-    - Alt+$$mdi:keyboard-space$$
-    - Gui+$$mdi:keyboard-space$$
+    - $$chatgpt$$
+    - $$mdi:translate$$
+    - $$alfred$$
     - ''
     - F1
     - F2

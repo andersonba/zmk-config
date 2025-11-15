@@ -8,9 +8,9 @@
 
 // Layers
 #define BASE 0
-#define SYM 1 
-#define NAV 2
-#define NUM 3
+#define NUM 1
+#define SYM 2 
+#define NAV 3
 #define FN 4
 #define SYS 5
 
@@ -25,14 +25,14 @@
 #define NAV_RIGHT &mt_end 0    RIGHT           // Tap: right | Long-tap: end   of line.
 #define NAV_UP    &mt LC(HOME) UP              // Tap: up    | Long-tap: start of doc.
 #define NAV_DOWN  &mt LC(END)  DOWN            // Tap: down  | Long-tap: end   of doc.
-#define MT_BSPC  &mt LC(BSPC) &bs_del           // Tap: bspc | Lshift + tap: delete | Long-tap: delete word bwd.
-#define MT_DEL   &mt LC(DEL)  DEL             // Tap: del   | Long-tap: delete word fwd.
+#define MT_BSPC  &mt LC(BSPC) BSPC             // tap: bspc | long-tap: delete word backward
+#define MT_DEL   &mt LC(DEL)  DEL              // Tap: del   | Long-tap: delete word fwd.
 #define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.
 #define WIN_CYCLE &kp LG(GRAVE)                // Cycle through windows.
 #define WIN_CYCLE_REV &hml LCTRL LG(LS(GRAVE)) // Cycle through windows in reverse.
 #define VOL_DOWN  &hml LGUI C_VOL_DN           // Volume down.
-#define PLAY_PAUSE &hml LSHIFT C_PP             // Play/pause.
-#define MUTE &hml LALT C_MUTE                // Mute.
+#define PLAY_PAUSE &hml LSHIFT C_PP            // Play/pause.
+#define MUTE &hml LALT C_MUTE                  // Mute.
 #define ALFRED &kp LG(SPACE)
 #define TRANSLATE &kp LA(SPACE)
 #define CHATGPT &kp LS(LA(SPACE))
@@ -47,9 +47,22 @@ ZMK_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N         &kp M         &comma_morph  &dot_morph    &qexcl       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              &lt NUM RET   &lt SYM TAB     &lt_spc NAV 0  MT_BSPC
+                                              &lt SYM RET   &lt NUM TAB     &lt_spc NAV 0  MT_BSPC
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
+
+ZMK_LAYER(Num,
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    XXX           XXX           XXX           XXX           XXX             XXX           &kp N7        &kp N8         &kp N9       XXX          
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &sk LCTRL     &sk LALT      &sk LGUI      &sk LSHIFT    XXX            XXX          &hmr RSHIFT N4 &hmr RGUI N5 &hmr RALT N6  &hmr RCTRL N0
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    XXX           XXX           XXX           XXX           XXX             XXX           &kp N1        &kp N2        &kp N3        XXX         
+//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              ___           ___             ___           ___
+//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+)
+
 
 ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -75,18 +88,6 @@ ZMK_LAYER(Nav,
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
-ZMK_LAYER(Num,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           XXX           XXX           XXX             XXX           &kp N7        &kp N8         &kp N9       XXX          
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LCTRL     &sk LALT      &sk LGUI      &sk LSHIFT    XXX            XXX          &hmr RSHIFT N4 &hmr RGUI N5 &hmr RALT N6  &hmr RCTRL N0
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX             XXX           &kp N1        &kp N2        &kp N3        XXX         
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___             ___           ___
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
-)
-
 ZMK_LAYER(Fn,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     XXX           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT     XXX            XXX           &kp F7        &kp F8        &kp F9        &kp F12       
@@ -105,7 +106,7 @@ ZMK_LAYER(Sys,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   XXX           XXX           XXX           XXX              XXX           XXX           XXX           XXX          &bootloader 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sys_reset    XXX           XXX           XXX           &kp &mac_lock     XXX           XXX           XXX           XXX          &sys_reset 
+    &sys_reset    XXX           XXX           XXX           &mac_lock     XXX           XXX           XXX           XXX          &sys_reset 
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
