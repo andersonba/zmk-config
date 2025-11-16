@@ -32,8 +32,8 @@ layers:
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
     - {t: '$$mdi:keyboard-tab$$', h: '$$mdi:apple-keyboard-shift$$'}
-    - {t: $$escape$$, h: Sym}
-    - {t: '$$mdi:keyboard-space$$', h: Num, s: '&dot_spc'}
+    - {t: $$escape$$, h: Num}
+    - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
     - ''
@@ -67,44 +67,44 @@ layers:
     - '3'
     - ''
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - {type: held}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Sym:
-    - '`'
-    - ''
-    - ''
-    - ''
+    - ':'
+    - '~'
+    - '*'
+    - '&'
     - (
     - )
-    - '&'
-    - '*'
-    - '~'
-    - ':'
-    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - ''
+    - ''
+    - ''
+    - '`'
+    - +
+    - ^
+    - '%'
+    - $
     - '['
     - ']'
-    - $
-    - '%'
-    - ^
-    - +
-    - ''
-    - ''
-    - ''
-    - ''
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - '|'
+    - '#'
+    - '@'
+    - '!'
     - '{'
     - '}'
-    - '!'
-    - '@'
-    - '#'
-    - '|'
+    - ''
     - {t: ▽, type: trans}
-    - {type: held}
-    - '-'
+    - {t: ▽, type: trans}
+    - ''
     - _
+    - '-'
+    - {type: held}
+    - {t: ▽, type: trans}
   Nav:
     - $$mdi:arrow-u-up-left$$
     - {t: W, s: '$$mdi:apple-keyboard-command$$'}

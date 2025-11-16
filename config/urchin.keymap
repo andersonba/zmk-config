@@ -47,7 +47,7 @@ ZMK_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N         &kp M         &comma_morph  &dot_morph    &qexcl       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                             &mt LSHIFT TAB  &lt SYM ESC     &lt_spc NUM 0 &lt NAV RET
+                                             &mt LSHIFT TAB &lt NUM ESC    &lt_spc SYM 0 &lt NAV RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
@@ -66,13 +66,13 @@ ZMK_LAYER(Num,
 
 ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE     XXX            XXX           XXX           &kp LPAR         &kp RPAR      &kp AMPS      &kp ASTRK     &kp TILDE      &kp COLON          
+    &kp COLON    &kp TILDE     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      XXX           XXX           XXX           &kp GRAVE
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     &kp LBKT          &kp RBKT      &kp DLLR      &kp PRCNT     &kp CARET     &kp PLUS 
+    &kp PLUS     &kp CARET     &kp PRCNT     &kp DLLR      &kp LBKT           &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX            XXX          XXX           XXX            &kp LBRC         &kp RBRC      &kp EXCL      &kp AT        &kp HASH      &kp PIPE         
+    &kp PIPE     &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      XXX           ___           ___           XXX
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___               &kp MINUS     &kp UNDER
+                                             &kp UNDER    &kp MINUS           ___           ___
 //                                          ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 )
 

@@ -81,4 +81,4 @@ ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
 ZMK_CONDITIONAL_LAYER(sys, SYM NUM, SYS)
-ZMK_CONDITIONAL_LAYER(fn, NUM NAV, FN)
+ZMK_CONDITIONAL_LAYER(fn, SYM NAV, FN)
