@@ -31,8 +31,8 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
-    - {t: '$$mdi:keyboard-tab$$', h: '$$mdi:apple-keyboard-shift$$'}
-    - {t: $$escape$$, h: Num}
+    - {t: $$escape$$, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
@@ -71,7 +71,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Sym:
-    - ':'
+    - '`'
     - '~'
     - '*'
     - '&'
@@ -80,7 +80,7 @@ layers:
     - ''
     - ''
     - ''
-    - '`'
+    - \
     - +
     - ^
     - '%'
@@ -100,7 +100,7 @@ layers:
     - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - ''
+    - /
     - _
     - '-'
     - {type: held}

@@ -214,15 +214,15 @@ parse_config:
     UNDER: _
     SLASH:
       tap: "/"
-      shifted: "?"
+      shifted: ""
     FSLH:
       tap: "/"
-      shifted: "?"
+      shifted: ""
     QUESTION: "?"
     QMARK: "?"
     BACKSLASH:
       tap: '\'
-      shifted: "|"
+      shifted: ""
     BSLH:
       tap: '\'
       shifted: "|"
