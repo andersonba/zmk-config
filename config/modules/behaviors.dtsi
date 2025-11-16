@@ -64,6 +64,14 @@ SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
 ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; wait-ms = <0>;
           tap-ms = <5>;)
 
+// Tap: esc | Hold: layer.
+ZMK_HOLD_TAP(lt_esc,
+             flavor = "hold-preferred";
+             tapping-term-ms = <200>;
+             quick-tap-ms = <QUICK_TAP_MS>;
+             bindings = <&kp>, <&kp>;
+)
+
 // Tap: backspace | Lshift + tap: delete | Rshift + tap: shift-delete.
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
               mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
@@ -72,5 +80,5 @@ ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
 ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
               tapping-term-ms = <200>;)
 
-ZMK_CONDITIONAL_LAYER(sys, NAV NUM, SYS) // NAV + NUM --> SYS.
-ZMK_CONDITIONAL_LAYER(fn, NUM SYM, FN) // NAV + SYM --> FN.
+ZMK_CONDITIONAL_LAYER(sys, SYM NUM, SYS)
+ZMK_CONDITIONAL_LAYER(fn, NUM NAV, FN)

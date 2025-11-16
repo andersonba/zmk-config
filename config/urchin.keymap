@@ -29,9 +29,9 @@
 #define MT_DEL   &mt LC(DEL)  DEL              // Tap: del   | Long-tap: delete word fwd.
 #define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.
 #define WIN_CYCLE &kp LG(GRAVE)                // Cycle through windows.
-#define WIN_CYCLE_REV &hml LCTRL LG(LS(GRAVE)) // Cycle through windows in reverse.
-#define VOL_DOWN  &hml LGUI C_VOL_DN           // Volume down.
-#define PLAY_PAUSE &hml LSHIFT C_PP            // Play/pause.
+#define WIN_CYCLE_REV &hml LGUI LG(LS(GRAVE))  // Cycle through windows in reverse.
+#define VOL_DOWN  &hml LSHIFT C_VOL_DN         // Volume down.
+#define PLAY_PAUSE &hml LCTRL C_PP             // Play/pause.
 #define MUTE &hml LALT C_MUTE                  // Mute.
 #define ALFRED &kp LG(SPACE)
 #define TRANSLATE &kp LA(SPACE)
@@ -43,21 +43,21 @@ ZMK_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp Q         &kp W         &kp E         &kp R         &kp T           &kp Y         &kp U         &kp I         &kp O         &kp P        
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &hml LCTRL A &hml LALT S   &hml LGUI D   &hml LSHIFT F  &kp G           &kp H        &hmr RSHIFT J &hmr RGUI K   &hmr RALT L   &hmr RCTRL SQT
+    &hml LGUI A &hml LALT S   &hml LSHIFT D   &hml LCTRL F  &kp G           &kp H        &hmr RCTRL J &hmr RSHIFT K   &hmr RALT L   &hmr RGUI SQT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N         &kp M         &comma_morph  &dot_morph    &qexcl       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              &lt SYM RET   &lt NUM TAB     &lt_spc NAV 0  MT_BSPC
+                                             &mt LSHIFT TAB  &lt SYM ESC     &lt_spc NUM 0 &lt NAV RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
 ZMK_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           XXX           XXX           XXX             XXX           &kp N7        &kp N8         &kp N9       XXX          
+    XXX           XXX           XXX           XXX           XXX             &kp PLUS     &kp N7        &kp N8         &kp N9       XXX          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LCTRL     &sk LALT      &sk LGUI      &sk LSHIFT    XXX            XXX          &hmr RSHIFT N4 &hmr RGUI N5 &hmr RALT N6  &hmr RCTRL N0
+    &sk LGUI     &sk LALT      &sk LSHIFT    &sk LCTRL      XXX             XXX          &hmr RCTRL N4 &hmr RSHIFT N5 &hmr RALT N6  &hmr RGUI N0
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX             XXX           &kp N1        &kp N2        &kp N3        XXX         
+    XXX           XXX           XXX           XXX           XXX             &kp COMMA    &kp N1        &kp N2        &kp N3        XXX         
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -68,7 +68,7 @@ ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp GRAVE     XXX            XXX           XXX           &kp LPAR         &kp RPAR      &kp AMPS      &kp ASTRK     &kp TILDE      &kp COLON          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LCTRL     &sk LALT      &sk LGUI      &sk LSHIFT     &kp LBKT         &kp RBKT      &kp DLLR      &kp PRCNT     &kp CARET     &kp PLUS 
+    &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     &kp LBKT          &kp RBKT      &kp DLLR      &kp PRCNT     &kp CARET     &kp PLUS 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX            XXX          XXX           XXX            &kp LBRC         &kp RBRC      &kp EXCL      &kp AT        &kp HASH      &kp PIPE         
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -80,7 +80,7 @@ ZMK_LAYER(Nav,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     WIN_CYCLE     &kp LG(W)     &kp LS(TAB)   &swapper      XXX             XXX           GO_BACK       &kp PG_UP     GO_FORWD      MT_DEL          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    WIN_CYCLE_REV &sk LALT      &sk LGUI      &sk LSHIFT     XXX            NAV_LEFT      NAV_DOWN      NAV_UP       NAV_RIGHT      XXX      
+    WIN_CYCLE_REV &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             NAV_LEFT      NAV_DOWN      NAV_UP       NAV_RIGHT      XXX      
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp LG(Q)     XXX           XXX           XXX           XXX             XXX           XXX           &kp PG_DN     XXX           CANCEL          
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -92,7 +92,7 @@ ZMK_LAYER(Fn,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     XXX           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT     XXX            XXX           &kp F7        &kp F8        &kp F9        &kp F12       
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LCTRL     MUTE          VOL_DOWN      PLAY_PAUSE       XXX            XXX          &hmr RSHIFT F4 &hmr RGUI F5 &hmr LALT F6  &hmr RCTRL F11
+    &sk LGUI      MUTE          VOL_DOWN      PLAY_PAUSE     XXX            XXX          &hmr RCTRL F4 &hmr RSHIFT F5 &hmr LALT F6  &hmr RGUI F11
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           XXX           CHATGPT       TRANSLATE      ALFRED         XXX           &kp F1        &kp F2        &kp F3        &kp F10       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯

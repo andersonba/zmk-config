@@ -158,11 +158,16 @@ parse_config:
     "&both_par": $$mdi:code-parentheses$$
     "&both_brk": $$mdi:code-brackets$$
     "&both_brc": $$mdi:code-braces$$
+    "&smart_shift":
+      tap: $$mdi:apple-keyboard-shift$$
+      hold: $$mdi:gesture-tap-hold$$
 
     # Shorter
     "MT_BSPC": $$mdi:backspace$$
     "WIN_CYCLE": $$mdi:arrow-u-up-left$$
-    "WIN_CYCLE_REV": $$mdi:arrow-u-down-left$$
+    "WIN_CYCLE_REV":
+      tap: $$mdi:arrow-u-down-left$$
+      hold: $$mdi:apple-keyboard-command$$
     "CHATGPT": $$chatgpt$$
     "TRANSLATE": $$mdi:translate$$
     "ALFRED": $$alfred$$
