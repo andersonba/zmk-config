@@ -64,13 +64,9 @@ SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
 ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; wait-ms = <0>;
           tap-ms = <5>;)
 
-// Tap: esc | Hold: layer.
-ZMK_HOLD_TAP(lt_esc,
-             flavor = "hold-preferred";
-             tapping-term-ms = <200>;
-             quick-tap-ms = <QUICK_TAP_MS>;
-             bindings = <&kp>, <&kp>;
-)
+// Tap: bspc | Hold: shift
+ZMK_HOLD_TAP(lt_shift, bindings = <&sk>, <&kp>; flavor = "balanced";
+             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 
 // Tap: backspace | Lshift + tap: delete | Rshift + tap: shift-delete.
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
