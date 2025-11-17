@@ -10,3 +10,9 @@ ZMK_MACRO(both_brc, bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;)
 // Mac
 ZMK_MACRO(mac_lock, bindings = <&kp LC(LG(Q))>;)
 ZMK_MACRO(mac_cut, bindings = <&kp LG(X)>;)
+// Paste with controlled repeat rate (slower than default)
+ZMK_MACRO(mac_delayed_paste,
+  wait-ms = <200>;  // delay between repeats (milliseconds)
+  tap-ms = <10>;     // duration of each keypress
+  bindings = <&kp LG(V)>;
+)
