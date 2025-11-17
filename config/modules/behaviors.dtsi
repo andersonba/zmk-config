@@ -75,5 +75,14 @@ ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(mt_copy, bindings = <&mac_cut>, <&kp>; MT_CORE)
 
+// Paste with initial delay before repeat
+ZMK_HOLD_TAP(ht_delayed_paste,
+  bindings = <&kp>, <&kp>;
+  flavor = "hold-preferred";
+  tapping-term-ms = <300>;  // delay before repeat starts (ms)
+  quick-tap-ms = <0>;
+  hold-trigger-key-positions = <0>;
+)
+
 ZMK_CONDITIONAL_LAYER(sys, SYM NUM, SYS)
 ZMK_CONDITIONAL_LAYER(fn, SYM NAV, FN)
