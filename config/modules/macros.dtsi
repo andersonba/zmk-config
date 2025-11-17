@@ -9,3 +9,4 @@ ZMK_MACRO(both_brc, bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;)
 
 // Mac
 ZMK_MACRO(mac_lock, bindings = <&kp LC(LG(Q))>;)
+ZMK_MACRO(mac_cut, bindings = <&kp LG(X)>;)
