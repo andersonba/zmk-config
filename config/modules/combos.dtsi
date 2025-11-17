@@ -13,11 +13,13 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+#define COPY_CUT &mt_copy LG(C) LG(X)
+
 /* Horizontal combos - left hand */
 ZMK_COMBO(esc,   &kp ESC,      LM2 LM1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(bspc,  &kp BSPC,     LT2 LT1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(cut,   &kp LG(X),    LB3 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(copy,  &copy_cut,    LB3 LB2,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(copy,  COPY_CUT,     LB3 LB2,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(paste, &kp LG(V),    LB2 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* Horizontal combos - right hand */

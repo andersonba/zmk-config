@@ -174,7 +174,7 @@ parse_config:
 
     # Combos
     "&kp LG(X)": $$mdi:content-cut$$
-    "&copy_cut": $$mdi:content-copy$$
+    "&mt_copy": $$mdi:content-copy$$
     "&kp LG(V)": $$mdi:content-paste$$
     "&kp LG(LBKT)": $$mdi:arrow-left$$
     "&kp LG(RBKT)": $$mdi:arrow-right$$

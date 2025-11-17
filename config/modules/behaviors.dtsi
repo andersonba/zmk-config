@@ -72,9 +72,8 @@ ZMK_HOLD_TAP(lt_shift, bindings = <&sk>, <&kp>; flavor = "balanced";
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
               mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
 
-// Tap: copy | double-tap: cut.
-ZMK_TAP_DANCE(copy_cut, bindings = <&kp LG(C)>, <&kp LG(X)>;
-              tapping-term-ms = <200>;)
+// Tap: copy | long-tap: cut.
+ZMK_HOLD_TAP(mt_copy, bindings = <&kp>, <&kp>; MT_CORE)
 
 ZMK_CONDITIONAL_LAYER(sys, SYM NUM, SYS)
 ZMK_CONDITIONAL_LAYER(fn, SYM NAV, FN)
