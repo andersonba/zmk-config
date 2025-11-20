@@ -35,6 +35,41 @@ layers:
     - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
+  Graphite:
+    - B
+    - L
+    - D
+    - W
+    - Z
+    - SQ
+    - F
+    - O
+    - U
+    - J
+    - {t: N, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: R, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: T, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: S, h: '$$mdi:apple-keyboard-control$$'}
+    - G
+    - Y
+    - {t: H, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: A, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: E, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: I, h: '$$mdi:apple-keyboard-command$$'}
+    - Q
+    - X
+    - M
+    - C
+    - V
+    - K
+    - P
+    - {t: ',', s: ;}
+    - {t: ., s: ':'}
+    - {t: '?', s: '!'}
+    - {t: '$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: '$$mdi:keyboard-tab$$', h: Num}
+    - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
+    - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
     - ''
     - ''
@@ -184,8 +219,8 @@ layers:
     - ''
     - ''
     - ''
-    - ''
-    - ''
+    - {t: Graphite, h: toggle}
+    - {t: Base, h: toggle}
     - $$mdi:progress-download$$
     - ''
     - ''
