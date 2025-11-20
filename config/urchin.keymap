@@ -8,11 +8,12 @@
 
 // Layers
 #define BASE 0
-#define NUM 1
-#define SYM 2 
-#define NAV 3
-#define FN 4
-#define SYS 5
+#define GRAPHITE 1
+#define NUM 2
+#define SYM 3
+#define NAV 4
+#define FN 5
+#define SYS 6
 
 #include "modules/globals.dtsi"
 #include "modules/hrm.dtsi"
@@ -47,6 +48,18 @@ ZMK_LAYER(Base,
     &hml LGUI A &hml LALT S   &hml LSHIFT D   &hml LCTRL F  &kp G           &kp H        &hmr RCTRL J &hmr RSHIFT K   &hmr RALT L   &hmr RGUI SQT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B           &kp N         &kp M         &comma_morph  &dot_morph    &qexcl       
+//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              SHIFT_BSPC    &lt NUM TAB    &lt_spc SYM 0 &lt NAV RET
+//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+)
+
+ZMK_LAYER(Graphite,
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &kp B         &kp L         &kp D         &kp W         &kp Z           &kp SQ        &kp F         &kp O         &kp U         &kp J        
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &hml LGUI N &hml LALT R   &hml LSHIFT T   &hml LCTRL S  &kp G           &kp Y        &hmr RCTRL H &hmr RSHIFT A   &hmr RALT E   &hmr RGUI I
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp Q         &kp X         &kp M         &kp C         &kp V           &kp K         &kp P         &comma_morph  &dot_morph    &qexcl       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               SHIFT_BSPC    &lt NUM TAB    &lt_spc SYM 0 &lt NAV RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -103,7 +116,7 @@ ZMK_LAYER(Fn,
 
 ZMK_LAYER(Sys,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       XXX           XXX           XXX           XXX           XXX          
+    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       XXX           XXX           XXX          &to GRAPHITE  &to BASE          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   XXX           XXX           XXX           XXX              XXX           XXX           XXX           XXX          &bootloader 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
