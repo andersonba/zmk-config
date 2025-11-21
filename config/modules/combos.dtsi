@@ -7,8 +7,8 @@
  *            ╰─────────╯ ╰─────────╯
  */
 
-#define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 30
+#define COMBO_TERM_FAST 24  // Fast combo for horizontal combos
+#define COMBO_TERM_SLOW 40  // Slow combo for vertical combos
 
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
@@ -16,21 +16,23 @@
 #define COPY_CUT &mt_copy 0 LG(C)
 #define PASTE &ht_delayed_paste LG(V) LG(V)
 
-/* Horizontal combos - left hand */
+/* HORIZONTAL COMBOS */
+
+/* left hand */
 ZMK_COMBO(esc,   &kp ESC,      LM2 LM1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(bspc,  &kp BSPC,     LT2 LT1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(cut,   &kp LG(X),    LB3 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(copy,  COPY_CUT,     LB3 LB2,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(paste, PASTE,        LB2 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-/* Horizontal combos - right hand */
+/* right hand */
 ZMK_COMBO(resc,  &kp ESC,      RM1 RM2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbspc,  &kp BSPC,     RT1 RT2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-/* Horizontal combos - left+right hands */
+/* left+right hands */
 ZMK_COMBO(caps, &caps_word, LM2 RM2, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-/* Symbol combos */
+/* symbol combos */
 ZMK_COMBO(both_par, &both_par, LT0 RT0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(both_brk, &both_brk, LM0 RM0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(both_brc, &both_brc, LB0 RB0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -40,3 +42,5 @@ ZMK_COMBO(lbkt,  &kp LBKT,     LM0 LM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FA
 ZMK_COMBO(rbkt,  &kp RBKT,     RM0 RM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lbrc,  &kp LBRC,     LB0 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbrc,  &kp RBRC,     RB0 RB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* VERTICAL COMBOS */
