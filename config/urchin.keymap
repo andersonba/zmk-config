@@ -22,10 +22,10 @@
 #include "modules/macros.dtsi"
 
 // Shorter names
-#define NAV_LEFT  &mt_home 0   LEFT            // Tap: left  | Long-tap: start of line.
-#define NAV_RIGHT &mt_end 0    RIGHT           // Tap: right | Long-tap: end   of line.
-#define NAV_UP    &mt LC(HOME) UP              // Tap: up    | Long-tap: start of doc.
-#define NAV_DOWN  &mt LC(END)  DOWN            // Tap: down  | Long-tap: end   of doc.
+#define NAV_LEFT  &nav_left                    // Tap: left  | Ctrl+Tap: start of line.
+#define NAV_RIGHT &nav_right                   // Tap: right | Ctrl+Tap: end   of line.
+#define NAV_UP    &nav_up                      // Tap: up    | Ctrl+Tap: start of doc.
+#define NAV_DOWN  &nav_down                    // Tap: down  | Ctrl+Tap: end   of doc.
 #define MT_BSPC  &mt LC(BSPC) BSPC             // tap: bspc | long-tap: delete word backward
 #define MT_DEL   &mt LC(DEL)  DEL              // Tap: del   | Long-tap: delete word fwd.
 #define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.

@@ -72,6 +72,18 @@ ZMK_HOLD_TAP(lt_shift, bindings = <&sk>, <&kp>; flavor = "balanced";
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
               mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
 
+// Tap: Up | Ctrl + Up: Start of document (Ctrl+Home)
+ZMK_MOD_MORPH(nav_up, bindings = <&kp UP>, <&kp LC(HOME)>; mods = <(MOD_LCTL)>;)
+
+// Tap: Down | Ctrl + Down: End of document (Ctrl+End)
+ZMK_MOD_MORPH(nav_down, bindings = <&kp DOWN>, <&kp LC(END)>; mods = <(MOD_LCTL)>;)
+
+// Tap: Left | Ctrl + Left: Start of line (Home)
+ZMK_MOD_MORPH(nav_left, bindings = <&kp LEFT>, <&kp HOME>; mods = <(MOD_LCTL)>;)
+
+// Tap: Right | Ctrl + Right: End of line (End)
+ZMK_MOD_MORPH(nav_right, bindings = <&kp RIGHT>, <&kp END>; mods = <(MOD_LCTL)>;)
+
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(mt_copy, bindings = <&mac_cut>, <&kp>; MT_CORE)
 
