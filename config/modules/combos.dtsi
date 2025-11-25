@@ -1,0 +1,48 @@
+/*                KEY POSITIONS
+ * ╭─────────────────────╮ ╭─────────────────────╮
+ * │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+ * │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+ * │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+ * ╰───────────╮ LH1 LH0 │ │ RH0 RH1 ╭──────────╯
+ *            ╰─────────╯ ╰─────────╯
+ */
+
+#define COMBO_TERM_FAST 24  // Fast combo for horizontal combos
+#define COMBO_TERM_SLOW 40  // Slow combo for vertical combos
+
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
+
+#define COPY_CUT &mt_copy 0 LG(C)
+#define PASTE &ht_delayed_paste LG(V) LG(V)
+
+/* HORIZONTAL COMBOS */
+
+/* left hand */
+ZMK_COMBO(esc,   &kp ESC,      LM2 LM1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(bspc,  &kp BSPC,     LT2 LT1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(del,   &kp DEL,      LT3 LT2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(cut,   &kp LG(X),    LB3 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(copy,  COPY_CUT,     LB3 LB2,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(paste, PASTE,        LB2 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* right hand */
+ZMK_COMBO(resc,  &kp ESC,     RM1 RM2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbspc, &kp BSPC,    RT1 RT2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rdel,  &kp DEL,     RT2 RT3,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* left+right hands */
+ZMK_COMBO(caps, &caps_word, LM2 RM2, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* symbol combos */
+ZMK_COMBO(both_par, &both_par, LT0 RT0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brk, &both_brk, LM0 RM0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brc, &both_brc, LB0 RB0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lpar,  &kp LPAR,     LT0 LT1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rpar,  &kp RPAR,     RT0 RT1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbkt,  &kp LBKT,     LM0 LM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbkt,  &kp RBKT,     RM0 RM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbrc,  &kp LBRC,     LB0 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbrc,  &kp RBRC,     RB0 RB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* VERTICAL COMBOS */

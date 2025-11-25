@@ -1,0 +1,12 @@
+#include <dt-bindings/zmk/behaviors.h>
+#include <dt-bindings/zmk/keys.h>
+#include <zmk-helpers/helper.h>
+
+// Both chars
+ZMK_MACRO(both_par, bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brk, bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brc, bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;)
+
+// Mac
+ZMK_MACRO(mac_lock, bindings = <&kp LC(LG(Q))>;)
+ZMK_MACRO(mac_cut, bindings = <&kp LG(X)>;)

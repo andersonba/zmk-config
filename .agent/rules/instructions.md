@@ -1,6 +1,10 @@
-# CLAUDE.md
+---
+trigger: always_on
+---
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# Agent Instructions
+
+This file provides guidance to Agents when working with code in this repository.
 
 ## Overview
 

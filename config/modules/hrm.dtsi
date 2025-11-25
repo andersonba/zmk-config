@@ -1,0 +1,20 @@
+#define HRM_TAPPING_TERM 280
+
+#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS, TAPPING_TERM, PRIOR_IDLE) \
+  ZMK_HOLD_TAP(NAME, \
+    bindings = <HOLD>, <TAP>; \
+    flavor = "balanced"; \
+    tapping-term-ms = <TAPPING_TERM>; \
+    quick-tap-ms = <QUICK_TAP_MS>; \
+    require-prior-idle-ms = <PRIOR_IDLE>; \
+    hold-trigger-key-positions = <TRIGGER_POS>; \
+    hold-trigger-on-release; \
+  )
+
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS, HRM_TAPPING_TERM, PRIOR_IDLE) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS, HRM_TAPPING_TERM, PRIOR_IDLE) // Right-hand HRMs.
+
+// Hack: Make HRM combos tap-only (cf, ZMK issue #544).
+#define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE) \
+  MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE THUMBS, HRM_TAPPING_TERM, PRIOR_IDLE) \
+  ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)

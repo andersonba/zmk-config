@@ -1,5 +1,8 @@
+name: Build ZMK firmware
+
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
+    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
