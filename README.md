@@ -2,6 +2,8 @@
 
 My personal ZMK firmware configuration for the [Urchin](https://github.com/duckyb/urchin) split keyboard.
 
+![Photo](resources/photo.jpg)
+
 ## Features
 
 - **Home Row Mods**: Optimized for comfort and speed, allowing modifiers without leaving the home row.
