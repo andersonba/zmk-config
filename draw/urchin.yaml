@@ -33,7 +33,7 @@ layers:
     - {t: '?', s: '!'}
     - {t: '$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '$$mdi:keyboard-tab$$', h: Num}
-    - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
+    - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
   Graphite:
     - B
@@ -68,56 +68,56 @@ layers:
     - {t: '?', s: '!'}
     - {t: '$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '$$mdi:keyboard-tab$$', h: Num}
-    - {t: '$$mdi:keyboard-space$$', h: Sym, s: '&dot_spc'}
+    - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - +
+    - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: W, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: E, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: R, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: T, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: +, h: '-'}
     - '7'
     - '8'
     - '9'
-    - ''
-    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-    - ''
-    - ''
+    - '='
+    - {t: A, h: '$$mdi:apple-keyboard-command$$', s: '$$mdi:apple-keyboard-command$$'}
+    - {t: S, h: '$$mdi:apple-keyboard-option$$', s: '$$mdi:apple-keyboard-command$$'}
+    - {t: D, h: '$$mdi:apple-keyboard-shift$$', s: '$$mdi:apple-keyboard-command$$'}
+    - {t: F, h: '$$mdi:apple-keyboard-control$$', s: '$$mdi:apple-keyboard-command$$'}
+    - {t: G, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: '*', h: /}
     - {t: '4', h: '$$mdi:apple-keyboard-control$$'}
     - {t: '5', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
     - {t: '0', h: '$$mdi:apple-keyboard-command$$'}
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - {t: ',', s: <}
+    - {t: Z, s: '$$mdi:apple-keyboard-command$$'}
+    - $$mdi:content-cut$$
+    - {t: C, s: '$$mdi:apple-keyboard-command$$'}
+    - $$mdi:content-paste$$
+    - {t: B, s: '$$mdi:apple-keyboard-command$$'}
+    - ','
     - '1'
     - '2'
     - '3'
-    - ''
+    - .
     - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Sym:
     - '`'
-    - '~'
+    - ^
     - '*'
     - '&'
     - (
     - )
-    - ''
-    - ''
-    - ''
-    - \
     - +
-    - ^
+    - ''
+    - '|'
+    - \
+    - '='
+    - '~'
     - '%'
     - $
     - '['
@@ -126,23 +126,23 @@ layers:
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - '|'
+    - /
     - '#'
     - '@'
     - '!'
     - '{'
     - '}'
-    - ''
+    - '='
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - /
+    - {t: ▽, type: trans}
     - _
     - '-'
     - {type: held}
     - {t: ▽, type: trans}
   Nav:
     - $$mdi:arrow-u-up-left$$
-    - {t: W, s: '$$mdi:apple-keyboard-command$$'}
+    - ''
     - $$mdi:keyboard-tab-reverse$$
     - $$mdi:swap-horizontal$$
     - ''
@@ -161,7 +161,7 @@ layers:
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right-bold$$
     - ''
-    - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
+    - ''
     - ''
     - ''
     - ''
@@ -254,6 +254,9 @@ combos:
   - p: [2, 3]
     k: {t: '$$mdi:backspace$$', type: backspace}
     l: [Combos]
+  - p: [1, 2]
+    k: $$mdi:backspace-reverse-outline$$
+    l: [Combos]
   - p: [21, 23]
     k: $$mdi:content-cut$$
     l: [Combos]
@@ -270,6 +273,9 @@ combos:
     l: [Combos]
   - p: [6, 7]
     k: {t: '$$mdi:backspace$$', type: backspace}
+    l: [Combos]
+  - p: [7, 8]
+    k: $$mdi:backspace-reverse-outline$$
     l: [Combos]
   - p: [12, 17]
     k: $$mdi:alpha-w-box$$

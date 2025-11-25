@@ -40,6 +40,13 @@
 #define GO_BACK &kp LG(LBKT)
 #define GO_FORWD &kp LG(RBKT)
 #define SHIFT_BSPC &lt_shift LSHIFT BSPC
+#define NUM_A &hml LGUI LG(A)
+#define NUM_S &hml LALT LG(S)
+#define NUM_D &hml LSHIFT LG(D)
+#define NUM_F &hml LCTRL LG(F)
+#define NUM_PLUS &mt MINUS PLUS
+#define NUM_MULTI &mt SLASH ASTERISK
+
 
 ZMK_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -67,11 +74,11 @@ ZMK_LAYER(Graphite,
 
 ZMK_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           XXX           XXX           XXX             &kp PLUS     &kp N7        &kp N8         &kp N9       XXX          
+    &kp LG(Q)     &kp LG(W)     &kp LG(E)     &kp LG(R)     &kp LG(T)       NUM_PLUS     &kp N7        &kp N8         &kp N9        &kp EQUAL          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sk LGUI     &sk LALT      &sk LSHIFT    &sk LCTRL      XXX             XXX          &hmr RCTRL N4 &hmr RSHIFT N5 &hmr RALT N6  &hmr RGUI N0
+    NUM_A         NUM_S         NUM_D         NUM_F         &kp LG(G)       NUM_MULTI    &hmr RCTRL N4 &hmr RSHIFT N5 &hmr RALT N6  &hmr RGUI N0
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX             &kp COMMA    &kp N1        &kp N2        &kp N3        XXX         
+    &kp LG(Z)     &kp LG(X)     &kp LG(C)     &kp LG(V)     &kp LG(B)       &kp COMMA    &kp N1        &kp N2        &kp N3         &kp DOT         
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -80,11 +87,11 @@ ZMK_LAYER(Num,
 
 ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE    &kp TILDE     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      XXX           XXX           XXX           &kp BACKSLASH
+    &kp GRAVE    &kp CARET     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      &kp PLUS      XXX           &kp PIPE      &kp BACKSLASH
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp PLUS     &kp CARET     &kp PRCNT     &kp DLLR      &kp LBKT           &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
+    &kp EQUAL    &kp TILDE     &kp PRCNT     &kp DLLR      &kp LBKT           &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp PIPE     &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      XXX           ___           ___           &kp SLASH
+    &kp SLASH    &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      &kp EQUAL     ___           ___           ___
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                              &kp UNDER    &kp MINUS           ___           ___
 //                                          ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -92,11 +99,11 @@ ZMK_LAYER(Sym,
 
 ZMK_LAYER(Nav,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    WIN_CYCLE     &kp LG(W)     &kp LS(TAB)   &swapper      XXX             XXX           GO_BACK       &kp PG_UP     GO_FORWD      MT_DEL          
+    WIN_CYCLE     XXX           &kp LS(TAB)   &swapper      XXX             XXX           GO_BACK       &kp PG_UP     GO_FORWD      MT_DEL          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     WIN_CYCLE_REV &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             NAV_LEFT      NAV_DOWN      NAV_UP       NAV_RIGHT      XXX      
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LG(Q)     XXX           XXX           XXX           XXX             XXX           XXX           &kp PG_DN     XXX           CANCEL          
+    XXX           XXX           XXX           XXX           XXX             XXX           XXX           &kp PG_DN     XXX           CANCEL          
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

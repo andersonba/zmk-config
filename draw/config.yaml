@@ -182,6 +182,7 @@ parse_config:
 
     # Macros
     "&mac_lock": $$mdi:lock$$
+    "&dot_spc": ""
 
   # ZMK
   zmk_keycode_map:
@@ -206,9 +207,7 @@ parse_config:
     LPAR: (
     RIGHT_PARENTHESIS: )
     RPAR: )
-    EQUAL:
-      tap: "="
-      shifted: "+"
+    EQUAL: "="
     PLUS: +
     MINUS: "-"
     UNDERSCORE: _
@@ -251,12 +250,8 @@ parse_config:
     LESS_THAN: <
     LT: <
     PERIOD: "."
-    DOT:
-      tap: "."
-      shifted: ">"
-    COMMA:
-      tap: ","
-      shifted: "<"
+    DOT: "."
+    COMMA: ","
     GREATER_THAN: ">"
     GT: ">"
     LEFT_BRACKET: "["
@@ -409,6 +404,21 @@ parse_config:
       shifted: $$mdi:apple-keyboard-command$$
     LG(Q):
       tap: "Q"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(E):
+      tap: "E"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(R):
+      tap: "R"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(T):
+      tap: "T"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(G):
+      tap: "G"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(B):
+      tap: "B"
       shifted: $$mdi:apple-keyboard-command$$
 
   zmk_combos:
