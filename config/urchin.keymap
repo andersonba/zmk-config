@@ -26,8 +26,7 @@
 #define NAV_RIGHT &kp RIGHT                    // Tap: right | Cmd+Tap: end   of line (native).
 #define NAV_UP    &kp UP                       // Tap: up    | Cmd+Tap: start of doc (native).
 #define NAV_DOWN  &kp DOWN                     // Tap: down  | Cmd+Tap: end   of doc (native).
-#define MT_BSPC  &mt LC(BSPC) BSPC             // tap: bspc | long-tap: delete word backward
-#define MT_DEL   &mt LC(DEL)  DEL              // Tap: del   | Long-tap: delete word fwd.
+#define MT_DEL    &mt LA(DEL) DEL              // Tap: del   | Long-tap: delete word fwd.
 #define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.
 #define WIN_CYCLE &kp LG(GRAVE)                // Cycle through windows.
 #define WIN_CYCLE_REV &hml LGUI LG(LS(GRAVE))  // Cycle through windows in reverse.
@@ -39,7 +38,7 @@
 #define CHATGPT &kp LS(LA(SPACE))
 #define GO_BACK &kp LG(LBKT)
 #define GO_FORWD &kp LG(RBKT)
-#define SHIFT_BSPC &lt_shift LSHIFT BSPC
+#define SHIFT_BSPC &lt_shift LSHIFT LA(BSPC)
 #define NUM_A &hml LGUI LG(A)
 #define NUM_S &hml LALT LG(S)
 #define NUM_D &hml LSHIFT LG(D)

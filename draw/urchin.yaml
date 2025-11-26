@@ -31,7 +31,7 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
-    - {t: '$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: 'Alt+$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
@@ -66,7 +66,7 @@ layers:
     - {t: ',', s: ;}
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
-    - {t: '$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: 'Alt+$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
@@ -150,7 +150,7 @@ layers:
     - $$mdi:arrow-left$$
     - PG UP
     - $$mdi:arrow-right$$
-    - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
+    - {t: '$$mdi:backspace-reverse-outline$$', h: 'Alt+$$mdi:backspace-reverse-outline$$'}
     - {t: '$$mdi:arrow-u-down-left$$', h: '$$mdi:apple-keyboard-command$$'}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
