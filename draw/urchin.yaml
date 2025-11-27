@@ -142,16 +142,16 @@ layers:
     - {t: ▽, type: trans}
   Nav:
     - $$mdi:arrow-u-up-left$$
+    - {t: '$$mdi:arrow-u-down-left$$', h: '$$mdi:apple-keyboard-command$$'}
     - ''
-    - $$mdi:keyboard-tab-reverse$$
-    - $$mdi:swap-horizontal$$
+    - ''
     - ''
     - ''
     - $$mdi:arrow-left$$
-    - PG UP
+    - $$mdi:swap-horizontal$$
     - $$mdi:arrow-right$$
     - {t: '$$mdi:backspace-reverse-outline$$', h: 'Alt+$$mdi:backspace-reverse-outline$$'}
-    - {t: '$$mdi:arrow-u-down-left$$', h: '$$mdi:apple-keyboard-command$$'}
+    - ''
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
@@ -167,8 +167,8 @@ layers:
     - ''
     - ''
     - ''
-    - ''
     - PG DN
+    - PG UP
     - ''
     - $$mdi:close-box$$
     - {t: ▽, type: trans}

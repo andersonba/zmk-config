@@ -98,11 +98,11 @@ ZMK_LAYER(Sym,
 
 ZMK_LAYER(Nav,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    WIN_CYCLE     XXX           &kp LS(TAB)   &swapper      XXX             XXX           GO_BACK       &kp PG_UP     GO_FORWD      MT_DEL          
+    WIN_CYCLE     WIN_CYCLE_REV XXX           XXX           XXX             XXX           GO_BACK       &swapper     GO_FORWD      MT_DEL          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    WIN_CYCLE_REV &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             NAV_LEFT      NAV_DOWN      NAV_UP       NAV_RIGHT      XXX      
+    XXX           &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             NAV_LEFT      NAV_DOWN      NAV_UP       NAV_RIGHT      XXX      
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX             XXX           XXX           &kp PG_DN     XXX           CANCEL          
+    XXX           XXX           XXX           XXX           XXX             XXX           &kp PG_DN     &kp PG_UP    XXX           CANCEL          
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
