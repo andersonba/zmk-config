@@ -70,6 +70,41 @@ layers:
     - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
+  Focal:
+    - V
+    - L
+    - H
+    - G
+    - K
+    - Q
+    - F
+    - O
+    - U
+    - J
+    - {t: S, h: '$$mdi:apple-keyboard-command$$'}
+    - {t: R, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: N, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: T, h: '$$mdi:apple-keyboard-control$$'}
+    - B
+    - Y
+    - {t: C, h: '$$mdi:apple-keyboard-control$$'}
+    - {t: A, h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: E, h: '$$mdi:apple-keyboard-option$$'}
+    - {t: I, h: '$$mdi:apple-keyboard-command$$'}
+    - Z
+    - X
+    - M
+    - D
+    - P
+    - {t: '''', s: '"'}
+    - W
+    - {t: ., s: ':'}
+    - {t: ',', s: ;}
+    - {t: '?', s: '!'}
+    - {t: 'Alt+$$mdi:backspace$$', h: '$$mdi:apple-keyboard-shift$$'}
+    - {t: '$$mdi:keyboard-tab$$', h: Num}
+    - {t: '$$mdi:keyboard-space$$', h: Sym}
+    - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
     - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
     - {t: W, s: '$$mdi:apple-keyboard-command$$'}
@@ -218,7 +253,7 @@ layers:
     - $$mdi:bluetooth-off$$
     - ''
     - ''
-    - ''
+    - {t: Focal, h: toggle}
     - {t: Graphite, h: toggle}
     - {t: Base, h: toggle}
     - $$mdi:progress-download$$
