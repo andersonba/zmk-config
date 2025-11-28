@@ -8,13 +8,14 @@
 
 // Layers
 #define BASE 0
-#define GRAPHITE 1
-#define FOCAL 2
-#define NUM 3
-#define SYM 4
-#define NAV 5
-#define FN 6
-#define SYS 7
+#define COLEMAK 1
+#define GRAPHITE 2
+#define FOCAL 3
+#define NUM 4
+#define SYM 5
+#define NAV 6
+#define FN 7
+#define SYS 8
 
 #include "modules/globals.dtsi"
 #include "modules/hrm.dtsi"
@@ -59,6 +60,20 @@ ZMK_LAYER(Base,
                                               SHIFT_BSPC    &lt NUM TAB    &lt_spc SYM 0 &lt NAV RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
+
+
+ZMK_LAYER(Colemak,
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &kp Q         &kp W         &kp F         &kp P         &kp B           &kp J         &kp L         &kp U         &kp Y         &kp SEMI 
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &hml LGUI A &hml LALT R   &hml LSHIFT S   &hml LCTRL T  &kp G           &kp M        &hmr RCTRL N &hmr RSHIFT E   &hmr RALT I   &hmr RGUI O
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp Z         &kp X         &kp C         &kp D         &kp V           &kp K         &kp H         &comma_morph  &dot_morph    &qexcl
+//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              SHIFT_BSPC    &lt NUM TAB    &lt_spc SYM 0 &lt NAV RET
+//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+)
+
 
 ZMK_LAYER(Graphite,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -137,7 +152,7 @@ ZMK_LAYER(Fn,
 
 ZMK_LAYER(Sys,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       XXX           XXX           &to FOCAL    &to GRAPHITE  &to BASE          
+    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       XXX          &to FOCAL    &to GRAPHITE  &to COLEMAK    &to BASE          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   XXX           XXX           XXX           XXX              XXX           XXX           XXX           XXX          &bootloader 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
