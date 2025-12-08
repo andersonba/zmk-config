@@ -114,7 +114,7 @@ layers:
     - )
     - +
     - ''
-    - '|'
+    - ''
     - \
     - '='
     - '~'
@@ -126,7 +126,7 @@ layers:
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - /
+    - '|'
     - '#'
     - '@'
     - '!'
@@ -135,7 +135,7 @@ layers:
     - '='
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - /
     - _
     - '-'
     - {type: held}
@@ -200,7 +200,7 @@ layers:
     - ''
     - $$chatgpt$$
     - $$mdi:translate$$
-    - $$alfred$$
+    - ''
     - ''
     - F1
     - F2

@@ -200,7 +200,6 @@ ZMK_COMBO(rbrc,  &kp RBRC,     RB0 RB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FA
 #define VOL_DOWN  &hml LSHIFT C_VOL_DN         // Volume down.
 #define PLAY_PAUSE &hml LCTRL C_PP             // Play/pause.
 #define MUTE &hml LALT C_MUTE                  // Mute.
-#define ALFRED &kp LG(SPACE)
 #define TRANSLATE &kp LA(SPACE)
 #define CHATGPT &kp LS(LA(SPACE))
 #define GO_BACK &kp LG(LBKT)
@@ -255,11 +254,11 @@ ZMK_LAYER(Num,
 
 ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE    &kp CARET     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      &kp PLUS      XXX           &kp PIPE      &kp BACKSLASH
+    &kp GRAVE    &kp CARET     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      &kp PLUS      XXX           XXX           &kp BACKSLASH
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp EQUAL    &kp TILDE     &kp PRCNT     &kp DLLR      &kp LBKT           &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp SLASH    &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      &kp EQUAL     ___           ___           ___
+    &kp PIPE     &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      &kp EQUAL     ___           ___           &kp SLASH
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp UNDER    &kp MINUS           ___           ___
 //                                          ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -283,7 +282,7 @@ ZMK_LAYER(Fn,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &sk LGUI      MUTE          VOL_DOWN      PLAY_PAUSE     XXX            XXX          &hmr RCTRL F4 &hmr RSHIFT F5 &hmr LALT F6  &hmr RGUI F11
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           CHATGPT       TRANSLATE      ALFRED         XXX           &kp F1        &kp F2        &kp F3        &kp F10       
+    XXX           XXX           CHATGPT       TRANSLATE      XXX            XXX           &kp F1        &kp F2        &kp F3        &kp F10       
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___            ___            ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -295,7 +294,7 @@ ZMK_LAYER(Sys,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   XXX           XXX           XXX           XXX              XXX           XXX           XXX           XXX          &bootloader 
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sys_reset    XXX           XXX           XXX           &mac_lock     XXX           XXX           XXX           XXX          &sys_reset 
+    &sys_reset    XXX           XXX           XXX           &mac_lock        XXX           XXX           XXX           XXX          &sys_reset 
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
