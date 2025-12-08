@@ -257,7 +257,6 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
-@media (prefers-color-scheme: dark) {
 svg.keymap { fill: #d1d6db; }
 rect.key { fill: #3f4750; }
 rect.key, rect.combo { stroke: #60666c; }
@@ -267,7 +266,6 @@ text.label, text.footer { stroke: black; }
 text.trans { fill: #7e8184; }
 path.combo { stroke: #7f7f7f; }
 
-}
 svg.keymap {
   font-family: Ubuntu Mono, Inconsolata, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
@@ -277,7 +275,7 @@ svg.keymap {
 
 /* Color accent for held keys */
 rect.held, rect.combo.held {
-    fill: #ffc;
+    fill: #FFD700;
 }
 
 /* Technique borrowed and extended from https://github.com/englmaxi/zmk-config/blob/master/keymap-drawer/config.yaml */
