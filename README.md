@@ -9,7 +9,6 @@ My personal ZMK firmware configuration for the [Urchin](https://github.com/ducky
 - **Home Row Mods**: Optimized for comfort and speed, allowing modifiers without leaving the home row.
 - **Combos**: Extensive use of combos for common actions like `Escape`, `Backspace`, and `Delete`.
 - **Mirrored Layers**: Symbol and Number layers designed for logical flow and reduced cognitive load.
-- **MacOS Optimization**: Dedicated shortcuts for window management and common macOS commands.
 - **Automated Visualization**: Keymap changes are automatically visualized using [keymap-drawer](https://github.com/caksoylar/keymap-drawer).
 
 ## Layout
