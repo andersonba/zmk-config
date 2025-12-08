@@ -241,11 +241,11 @@ ZMK_LAYER(Graphite,
 
 ZMK_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp LG(Q)     &kp LG(W)     &kp LG(E)     &kp LG(R)     &kp LG(T)       NUM_PLUS     &kp N7        &kp N8         &kp N9        &kp EQUAL          
+    XXX           XXX           XXX           XXX           XXX             NUM_PLUS     &kp N7        &kp N8         &kp N9        &kp EQUAL          
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    NUM_A         NUM_S         NUM_D         NUM_F         &kp LG(G)       NUM_MULTI    &hmr RCTRL N4 &hmr RSHIFT N5 &hmr RALT N6  &hmr RGUI N0
+    &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             NUM_MULTI    &hmr RCTRL N4 &hmr RSHIFT N5 &hmr RALT N6  &hmr RGUI N0
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LG(Z)     &kp LG(X)     &kp LG(C)     &kp LG(V)     &kp LG(B)       &kp COMMA    &kp N1        &kp N2        &kp N3         &kp DOT         
+    XXX           XXX           XXX           XXX           XXX             &kp COMMA    &kp N1        &kp N2        &kp N3         &kp DOT         
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___             ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -254,13 +254,13 @@ ZMK_LAYER(Num,
 
 ZMK_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE    &kp CARET     &kp ASTRK     &kp AMPS      &kp LPAR           &kp RPAR      &kp PLUS      XXX           XXX           &kp BACKSLASH
+    &kp GRAVE    &kp CARET     &kp ASTRK     &kp AMPS       &kp LPAR          &kp RPAR      XXX           &kp PIPE      &kp BACKSLASH &kp SLASH
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp EQUAL    &kp TILDE     &kp PRCNT     &kp DLLR      &kp LBKT           &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
+    &kp EQUAL    &kp TILDE     &kp PRCNT     &kp DLLR       &kp LBKT          &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp PIPE     &kp HASH      &kp AT        &kp EXCL      &kp LBRC           &kp RBRC      &kp EQUAL     ___           ___           &kp SLASH
+    &kp HASH      &kp AT        &kp LT        &kp GT        &kp LBRC          &kp RBRC      XXX           ___           ___           ___
 //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              &kp UNDER    &kp MINUS           ___           ___
+                                              &kp UNDER     &kp MINUS         ___           ___
 //                                          ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
 )
 

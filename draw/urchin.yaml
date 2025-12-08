@@ -71,31 +71,31 @@ layers:
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', h: Nav}
   Num:
-    - {t: Q, s: '$$mdi:apple-keyboard-command$$'}
-    - {t: W, s: '$$mdi:apple-keyboard-command$$'}
-    - {t: E, s: '$$mdi:apple-keyboard-command$$'}
-    - {t: R, s: '$$mdi:apple-keyboard-command$$'}
-    - {t: T, s: '$$mdi:apple-keyboard-command$$'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - {t: +, h: '-'}
     - '7'
     - '8'
     - '9'
     - '='
-    - {t: A, h: '$$mdi:apple-keyboard-command$$', s: '$$mdi:apple-keyboard-command$$'}
-    - {t: S, h: '$$mdi:apple-keyboard-option$$', s: '$$mdi:apple-keyboard-command$$'}
-    - {t: D, h: '$$mdi:apple-keyboard-shift$$', s: '$$mdi:apple-keyboard-command$$'}
-    - {t: F, h: '$$mdi:apple-keyboard-control$$', s: '$$mdi:apple-keyboard-command$$'}
-    - {t: G, s: '$$mdi:apple-keyboard-command$$'}
+    - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+    - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
+    - ''
     - {t: '*', h: /}
     - {t: '4', h: '$$mdi:apple-keyboard-control$$'}
     - {t: '5', h: '$$mdi:apple-keyboard-shift$$'}
     - {t: '6', h: '$$mdi:apple-keyboard-option$$'}
     - {t: '0', h: '$$mdi:apple-keyboard-command$$'}
-    - {t: Z, s: '$$mdi:apple-keyboard-command$$'}
-    - $$mdi:content-cut$$
-    - {t: C, s: '$$mdi:apple-keyboard-command$$'}
-    - $$mdi:content-paste$$
-    - {t: B, s: '$$mdi:apple-keyboard-command$$'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - ','
     - '1'
     - '2'
@@ -112,10 +112,10 @@ layers:
     - '&'
     - (
     - )
-    - +
     - ''
-    - ''
+    - '|'
     - \
+    - /
     - '='
     - '~'
     - '%'
@@ -126,16 +126,16 @@ layers:
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
     - {t: '$$mdi:apple-keyboard-command$$', h: '$$mdi:gesture-tap-hold$$'}
-    - '|'
     - '#'
     - '@'
-    - '!'
+    - <
+    - '>'
     - '{'
     - '}'
-    - '='
+    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - /
+    - {t: ▽, type: trans}
     - _
     - '-'
     - {type: held}
