@@ -1,4 +1,4 @@
-# Multi-Board ZMK Firmware
+# Multi-Board ZMK Config
 
 | [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)           |
 | -------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
