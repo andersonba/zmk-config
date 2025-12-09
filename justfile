@@ -74,39 +74,59 @@ update:
     west update
     west zephyr-export
 
-# Build firmware: specific target (left/right) or both if no target specified
-build target="":
+# Build firmware: board (default: urchin) and side (left/right/all)
+build board="urchin" side="all":
     #!/usr/bin/env bash
     set -euo pipefail
 
-    if [ -z "{{target}}" ]; then
-        echo "🔨 Building both targets..."
-        just build left
-        just build right
+    if [ "{{board}}" == "all" ]; then
+        just build urchin {{side}}
+        just build crosses {{side}}
+        just build corne {{side}}
+        exit 0
+    fi
+
+    if [ "{{side}}" == "all" ]; then
+        echo "🔨 Building {{board}} (both sides)..."
+        just build {{board}} left
+        just build {{board}} right
         exit 0
     fi
 
     source .venv/bin/activate
 
-    case {{target}} in
-        "left")
-            BOARD="nice_nano_v2"
-            SHIELD="urchin_left nice_view_adapter nice_view_gem"
+    # Define shields and display adapters based on board
+    case {{board}} in
+        "urchin")
+            SHIELD_NAME="urchin"
+            EXTRA_MODULES="nice_view_adapter nice_view_gem"
             ;;
-        "right")
-            BOARD="nice_nano_v2"
-            SHIELD="urchin_right nice_view_adapter nice_view_gem"
+        "corne")
+            SHIELD_NAME="corne"
+            EXTRA_MODULES="nice_view_adapter nice_view"
+            ;;
+        "crosses")
+            SHIELD_NAME="crosses"
+            EXTRA_MODULES="" # Assuming no display for now
             ;;
         *)
-            echo "Unknown target: {{target}}"
-            echo "Available targets: left, right"
+            echo "Unknown board: {{board}}"
             exit 1
             ;;
     esac
 
-    echo "🔨 Building {{target}} (${BOARD} + ${SHIELD})..."
+    # Validate side
+    if [[ "{{side}}" != "left" && "{{side}}" != "right" ]]; then
+        echo "Invalid side: {{side}}. Use 'left', 'right', or 'all'."
+        exit 1
+    fi
 
-    # Build from within the ZMK directory (where .west is)
+    BOARD="nice_nano_v2"
+    SHIELD="${SHIELD_NAME}_{{side}} ${EXTRA_MODULES}"
+
+    echo "🔨 Building {{board}} {{side}} (${BOARD} + ${SHIELD})..."
+
+    # Build from within the ZMK directory
     (
         cd zmk-workspace/zmk
 
@@ -126,21 +146,23 @@ build target="":
     )
 
     mkdir -p firmware
-    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/{{target}}.uf2
+    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/{{board}}_{{side}}.uf2
 
-    echo "✅ Firmware built: firmware/{{target}}.uf2"
+    echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
 
 # Flash firmware (requires keyboard in bootloader mode)
-flash target:
+flash side board="urchin":
     #!/usr/bin/env bash
     set -euo pipefail
 
-    if [ ! -f firmware/{{target}}.uf2 ]; then
-        echo "No firmware found. Building first..."
-        just build {{target}}
+    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
+
+    if [ ! -f "$FIRMWARE_FILE" ]; then
+        echo "No firmware found at $FIRMWARE_FILE. Building first..."
+        just build {{board}} {{side}}
     fi
 
-    echo "❯ Flashing the {{target}} side..."
+    echo "❯ Flashing {{board}} {{side}}..."
 
     # Function to find NICENANO mount point
     find_keyboard() {
@@ -160,8 +182,8 @@ flash target:
     echo "Keyboard found at: $KEYBOARD"
 
     # Copy firmware to keyboard
-    echo "❯ Copying {{target}} side firmware to NICENANO..."
-    error_msg=$(cp firmware/{{target}}.uf2 "$KEYBOARD/" 2>&1) || {
+    echo "❯ Copying firmware to NICENANO..."
+    error_msg=$(cp "$FIRMWARE_FILE" "$KEYBOARD/" 2>&1) || {
         if [[ $error_msg == *"fcopyfile failed: Input/output error"* ]]; then
             # macOS errors out on cp to the NICENANO, but it's actually successful
             :
@@ -171,30 +193,65 @@ flash target:
         fi
     }
 
-    echo "Flashed the {{target}} side 🚀"
+    echo "Flashed {{board}} {{side}} 🚀"
 
-draw:
+draw board="urchin":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
-    keymap -c "draw/config.yaml" parse -z "config/urchin.keymap" --virtual-layers Combos >"draw/urchin.yaml"
-    yq -Yi '.combos.[].l = ["Combos"]' "draw/urchin.yaml"
-    keymap -c "draw/config.yaml" draw "draw/urchin.yaml" -k "ferris/sweep" >"draw/urchin.svg"
 
-draw-debug:
+    if [ "{{board}}" == "all" ]; then
+        just draw urchin
+        just draw crosses
+        just draw corne
+        exit 0
+    fi
+    
+    KEYMAP_FILE="config/{{board}}.keymap"
+    YAML_FILE="draw/{{board}}.yaml"
+    SVG_FILE="draw/{{board}}.svg"
+
+    echo "🎨 Drawing keymap for {{board}}..."
+
+    case {{board}} in
+        "urchin") LAYOUT_ARGS="-k ferris/sweep";;
+        "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
+        "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
+        *) echo "Unknown board: {{board}}"; exit 1;;
+    esac
+
+    keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" --virtual-layers Combos >"$YAML_FILE"
+    yq -Yi '.combos.[].l = ["Combos"]' "$YAML_FILE"
+    keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
+    
+    echo "✅ Drawn to $SVG_FILE"
+
+draw-debug board="urchin":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
-    keymap -c "draw/config.yaml" parse -z "config/urchin.keymap" >"draw/urchin.yaml"
-    keymap -c "draw/config.yaml" draw "draw/urchin.yaml" -k "ferris/sweep" >"draw/urchin.svg"
+    
+    KEYMAP_FILE="config/{{board}}.keymap"
+    YAML_FILE="draw/{{board}}.yaml"
+    SVG_FILE="draw/{{board}}.svg"
+    
+    case {{board}} in
+        "urchin") LAYOUT_ARGS="-k ferris/sweep";;
+        "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
+        "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
+        *) echo "Unknown board: {{board}}"; exit 1;;
+    esac
 
-watch command='draw':
+    keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" >"$YAML_FILE"
+    keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
+
+watch command='draw' board="urchin":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
-    just {{command}}
+    just {{command}} {{board}}
     open "resources/watch-draw.html"
-    watchmedo shell-command -R -w -v -c 'just {{command}} && echo "¤ Updated"' config/ draw/config.yaml
+    watchmedo shell-command -R -w -v -c 'just {{command}} {{board}} && echo "¤ Updated"' config/ draw/config.yaml
 
 # Clean build artifacts
 clean:

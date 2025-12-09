@@ -3,16 +3,28 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+    chosen {
+        zmk,physical-layout = &gggw_crosses_36_layout;
+    };
+};
+
 /* source keypos definitions */
 #include <zmk-helpers/key-labels/34.h>
 
 /* map logical keys to physical position */
+/* Crosses: 5x3 + 3 thumbs (36 keys total) */
+/* We map the 34 logic keys to the 5 columns and inner 2 thumbs */
+/* The extra (outer) thumb is set to trans/default */
+
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
     ZMK_LAYER(name, \
         LT RT \
         LM RM \
         LB RB \
-        LH RH \
+        &kp LGUI LH  RH &kp RALT \
     )
 
 #include "base.dtsi"

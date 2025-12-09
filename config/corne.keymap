@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ */
+
+/* source keypos definitions */
+#include <zmk-helpers/key-labels/34.h>
+
+/* map logical keys to physical position */
+/* Corne: 6x3 + 3 thumbs */
+/* We map the 34 logic keys to the inner 5 columns and inner 2 thumbs */
+/* Outer columns and extra thumbs are set to default/trans */
+
+#define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
+    ZMK_LAYER(name, \
+        &kp TAB    LT  RT  &kp BSPC  \
+        &kp LCTRL  LM  RM  &kp SQT   \
+        &kp LSHFT  LB  RB  &kp ESC   \
+             &kp LGUI LH  RH  &kp RALT \
+    )
+
+#include "base.dtsi"

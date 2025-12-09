@@ -1,51 +1,100 @@
-# Urchin ZMK Firmware
+# Multi-Board ZMK Firmware
 
-My personal ZMK firmware configuration for the [Urchin](https://github.com/duckyb/urchin) split keyboard.
+| [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)           |
+| -------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| <img src="resources/urchin.jpg" alt="Urchin keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
+| **34 keys** (3x5+2 thumbs)                               | **36 keys** (3x5+3 thumbs)                                          | **42 keys** (3x6+3 thumbs)                             |
 
-![Photo](resources/photo.jpg)
+My personal [ZMK](https://zmk.dev/) firmware configuration shared across three different keyboards. Features a unified logical layout with board-specific physical mappings.
+
+## Architecture
+
+This project uses a **modular architecture** to share keymap logic across different keyboard layouts:
+
+- **`config/base.dtsi`**: Core keymap logic (layers, combos, behaviors) for 34 logical keys
+- **Board-specific keymaps**: Map the 34 logical keys to each keyboard's physical layout
+  - `urchin.keymap`: 34 keys (direct mapping)
+  - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
+  - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
 
 ## Features
 
-- **Home Row Mods**: Optimized for comfort and speed, allowing modifiers without leaving the home row.
-- **Combos**: Extensive use of combos for common actions like `Escape`, `Backspace`, and `Delete`.
-- **Mirrored Layers**: Symbol and Number layers designed for logical flow and reduced cognitive load.
-- **Automated Visualization**: Keymap changes are automatically visualized using [keymap-drawer](https://github.com/caksoylar/keymap-drawer).
+- **Home Row Mods**: Inspired by [urob's timeless layout](https://github.com/urob/zmk-config)
+- **Smart Combos**: Essential actions (Esc, Enter, Cut/Copy/Paste) without extra keys
+- **Adaptive Keys**: Context-aware key behaviors using [urob/zmk-adaptive-key](https://github.com/urob/zmk-adaptive-key)
+- **Auto-Sentence**: Automatic capitalization and period insertion
+- **Mouse Support**: Integrated mouse keys and pointer control
+- **Shared Configuration**: DRY approach with `default.conf` for common settings
 
 ## Layout
 
-![Keymap Layout](draw/urchin.svg)
+| [🪸 Urchin](https://github.com/duckyb/urchin)      | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)    |
+| ------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| <img src="draw/urchin.svg" alt="Urchin layout" /> | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
 
 ## Setup
 
-This project uses [mise](https://mise.jdx.dev/) to manage dependencies and [just](https://github.com/casey/just) for running commands.
+This project uses [mise](https://mise.jdx.dev/) for tool management and [just](https://github.com/casey/just) for commands.
 
-1.  **Install `mise`**: Follow the instructions at [mise.jdx.dev](https://mise.jdx.dev/).
-2.  **Initialize the environment**:
-
-    ```bash
-    mise exec -- just init
-    ```
-
-    This will set up the Python virtual environment, install West, and download necessary ZMK modules.
+1. **Install `mise`**: Follow instructions at [mise.jdx.dev](https://mise.jdx.dev/)
+2. **Initialize environment**:
+   ```bash
+   mise exec -- just init
+   ```
 
 ## Commands
 
-Run these commands from the project root using `mise exec -- just <command>` or simply `just <command>` if you have `mise` activated.
+All commands support multiple boards. Run with `mise exec -- just <command>` or `just <command>` if mise is activated.
 
-| Command            | Description                                           |
-| :----------------- | :---------------------------------------------------- |
-| `just build`       | Build firmware for both sides.                        |
-| `just build left`  | Build firmware for the left side only.                |
-| `just build right` | Build firmware for the right side only.               |
-| `just flash left`  | Flash the left side (requires bootloader mode).       |
-| `just flash right` | Flash the right side (requires bootloader mode).      |
-| `just clean`       | Clean build artifacts.                                |
-| `just clean-all`   | Clean everything, including the ZMK workspace.        |
-| `just update`      | Update ZMK and dependencies.                          |
-| `just draw`        | Generate the keymap layout image (`draw/urchin.svg`). |
+### Build Firmware
 
-## Customization
+```bash
+just build [board] [side]    # board: urchin (default), corne, crosses
+                              # side: left, right, all (default)
+```
 
-- **Keymap**: Edit `config/urchin.keymap` to change the base layout and layers.
-- **Combos**: Edit `config/modules/combos.dtsi` to add or modify key combinations.
-- **Macros**: Edit `config/modules/macros.dtsi` for custom macro definitions.
+Examples:
+
+- `just build` → Build Urchin (both sides)
+- `just build corne left` → Build Corne left side
+- `just build crosses all` → Build Crosses (both sides)
+
+### Flash Firmware
+
+```bash
+just flash <side> [board]    # side: left, right (required)
+                              # board: urchin (default), corne, crosses
+```
+
+Examples:
+
+- `just flash left` → Flash Urchin left (default board)
+- `just flash right corne` → Flash Corne right side
+
+### Generate Keymap Visualization
+
+```bash
+just draw [board]             # board: urchin (default), corne, crosses
+```
+
+Examples:
+
+- `just draw` → Generate `draw/urchin.svg`
+- `just draw corne` → Generate `draw/corne.svg`
+
+### Other Commands
+
+| Command          | Description                         |
+| ---------------- | ----------------------------------- |
+| `just clean`     | Clean build artifacts               |
+| `just clean-all` | Clean everything (workspace + venv) |
+| `just update`    | Update ZMK and dependencies         |
+| `just check`     | Verify environment setup            |
+
+## Credits
+
+- [urob/zmk-config](https://github.com/urob/zmk-config) — Home-row mods and ZMK helpers
+- [caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer) — Keymap visualization
+- [duckyb/urchin](https://github.com/duckyb/urchin) — Urchin keyboard design
+- [Good-Great-Grand-Wonderful/crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) — Crosses keyboard design
+- [foostan/crkbd](https://github.com/foostan/crkbd) — Corne keyboard design

@@ -1,0 +1,270 @@
+#define HOST_OS 2
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <zmk-helpers/helper.h>
+
+#include <dt-bindings/zmk/behaviors.h>
+#include <behaviors/num_word.dtsi>
+#include <behaviors/unicode.dtsi>
+
+// Layers
+#define BASE 0
+#define GRAPHITE 1
+#define NUM 2
+#define SYM 3
+#define NAV 4
+#define FN 5
+#define SYS 6
+
+// Timings
+#define QUICK_TAP_MS 150
+#define HRM_TAPPING_TERM 230
+#define HRM_PRIOR_IDLE 130
+#define TAPPING_TERM_MS 230
+#define TAPPING_TERM_MS_TAP 230
+#define STICKY_RELEASE_MS 900
+#define PASTE_DELAY_MS 300
+#define COMBO_TERM_FAST 35
+#define COMBO_TERM_SLOW 50
+#define COMBO_IDLE_FAST 100
+#define COMBO_IDLE_SLOW 50
+
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define THUMBS LH1 LH0 RH0 RH1
+
+#define XXX &none
+#define ___ &trans
+
+#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS, TAPPING_TERM, PRIOR_IDLE) \
+  ZMK_HOLD_TAP(NAME, \
+    bindings = <HOLD>, <TAP>; \
+    flavor = "balanced"; \
+    tapping-term-ms = <TAPPING_TERM>; \
+    quick-tap-ms = <QUICK_TAP_MS>; \
+    require-prior-idle-ms = <PRIOR_IDLE>; \
+    hold-trigger-key-positions = <TRIGGER_POS>; \
+    hold-trigger-on-release; \
+  )
+
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Right-hand HRMs.
+
+// Hack: Make HRM combos tap-only (cf, ZMK issue #544).
+#define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE) \
+  MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) \
+  ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
+
+// Both chars
+ZMK_MACRO(both_par, bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brk, bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brc, bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;)
+
+// Mac
+ZMK_MACRO(mac_lock, bindings = <&kp LC(LG(Q))>;)
+ZMK_MACRO(mac_cut, bindings = <&kp LG(X)>;)
+
+&sk { // Sticky Key
+  release-after-ms = <STICKY_RELEASE_MS>;
+  quick-release;
+};
+
+&lt { // Layer Tap
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+};
+
+&caps_word {
+  /delete-property/ ignore-modifiers;
+};
+
+// Trigger tap-action on all interrupts.
+#define MT_CORE \
+  flavor = "tap-preferred"; \
+  tapping-term-ms = <TAPPING_TERM_MS_TAP>; \
+  quick-tap-ms = <TAPPING_TERM_MS_TAP>; \
+  hold-trigger-key-positions = <0>;
+
+&mt { 
+  MT_CORE
+};
+
+// LGUI+Tab swapper, requires tri-state module.
+ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+              ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
+
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
+                bindings = <BINDING1>, <BINDING2>;)
+
+// Tap: comma | Shift + tap: semicolon | Ctrl + shift + tap: <.
+SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &comma_inner_morph)
+SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
+
+// Tap: dot | Shift + tap: colon | Ctrl + shift + tap: >.
+SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
+SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
+
+// Tap: qmark | Shift + tap: excl.
+SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
+
+// Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: layer.
+ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
+             tapping-term-ms = <TAPPING_TERM_MS>; quick-tap-ms = <QUICK_TAP_MS>;)
+SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
+ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; wait-ms = <0>;
+          tap-ms = <5>;)
+
+// Tap: bspc | Hold: shift
+ZMK_HOLD_TAP(lt_shift, bindings = <&sk>, <&kp>; flavor = "balanced";
+             tapping-term-ms = <TAPPING_TERM_MS>; quick-tap-ms = <QUICK_TAP_MS>;)
+
+// Tap: backspace | Lshift + tap: delete | Rshift + tap: shift-delete.
+ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
+              mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
+
+// Tap: copy | long-tap: cut (single execution, no repeat).
+ZMK_HOLD_TAP(mt_copy, bindings = <&mac_cut>, <&kp>; MT_CORE)
+
+// Paste with initial delay before repeat
+ZMK_HOLD_TAP(ht_delayed_paste,
+  bindings = <&kp>, <&kp>;
+  flavor = "hold-preferred";
+  tapping-term-ms = <PASTE_DELAY_MS>;  // delay before repeat starts (ms)
+  quick-tap-ms = <0>;
+  hold-trigger-key-positions = <0>;
+)
+
+ZMK_CONDITIONAL_LAYER(sys, SYM NUM, SYS)
+ZMK_CONDITIONAL_LAYER(fn, SYM NAV, FN)
+
+/*                KEY POSITIONS
+ * ╭─────────────────────╮ ╭─────────────────────╮
+ * │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+ * │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+ * │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+ * ╰───────────╮ LH1 LH0 │ │ RH0 RH1 ╭───────────╯
+ *             ╰─────────╯ ╰─────────╯
+ */
+
+#define COPY_CUT &mt_copy 0 LG(C)
+#define PASTE &ht_delayed_paste LG(V) LG(V)
+
+/* HORIZONTAL COMBOS */
+
+/* left hand */
+ZMK_COMBO(esc,   &kp ESC,      LM2 LM1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(bspc,  &kp BSPC,     LT2 LT1,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(del,   &kp DEL,      LT3 LT2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(cut,   &kp LG(X),    LB3 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(copy,  COPY_CUT,     LB3 LB2,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(paste, PASTE,        LB2 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* right hand */
+ZMK_COMBO(resc,  &kp ESC,     RM1 RM2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbspc, &kp BSPC,    RT1 RT2,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rdel,  &kp DEL,     RT2 RT3,     BASE SYM NAV NUM FN SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* left+right hands */
+ZMK_COMBO(caps, &caps_word, LM2 RM2, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* symbol combos */
+ZMK_COMBO(both_par, &both_par, LT0 RT0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brk, &both_brk, LM0 RM0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brc, &both_brc, LB0 RB0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lpar,  &kp LPAR,     LT0 LT1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rpar,  &kp RPAR,     RT0 RT1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbkt,  &kp LBKT,     LM0 LM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbkt,  &kp RBKT,     RM0 RM1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbrc,  &kp LBRC,     LB0 LB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbrc,  &kp RBRC,     RB0 RB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* smart numbers combo */
+ZMK_COMBO(smart_num, &num_word NUM, RM3 RM4, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// Shorter names
+#define NAV_LEFT  &kp LEFT                     // Tap: left  | Cmd+Tap: start of line (native).
+#define NAV_RIGHT &kp RIGHT                    // Tap: right | Cmd+Tap: end   of line (native).
+#define NAV_UP    &kp UP                       // Tap: up    | Cmd+Tap: start of doc (native).
+#define NAV_DOWN  &kp DOWN                     // Tap: down  | Cmd+Tap: end   of doc (native).
+#define MT_DEL    &mt LA(DEL) DEL              // Tap: del   | Long-tap: delete word fwd.
+#define CANCEL    &kp K_CANCEL                 // Cancel caps-word & auto-layers.
+#define WIN_CYCLE &kp LG(GRAVE)                // Cycle through windows.
+#define WIN_CYCLE_REV &hml LGUI LG(LS(GRAVE))  // Cycle through windows in reverse.
+#define VOL_DOWN  &hml LSHIFT C_VOL_DN         // Volume down.
+#define PLAY_PAUSE &hml LCTRL C_PP             // Play/pause.
+#define MUTE &hml LALT C_MUTE                  // Mute.
+#define TRANSLATE &kp LA(SPACE)
+#define CHATGPT &kp LS(LA(SPACE))
+#define GO_BACK &kp LG(LBKT)
+#define GO_FORWD &kp LG(RBKT)
+#define SHIFT_BSPC &lt_shift LSHIFT LA(BSPC)
+#define NUM_A &hml LGUI LG(A)
+#define NUM_S &hml LALT LG(S)
+#define NUM_D &hml LSHIFT LG(D)
+#define NUM_F &hml LCTRL LG(F)
+#define NUM_PLUS &mt MINUS PLUS
+#define NUM_MULTI &mt SLASH ASTERISK
+
+#ifndef ZMK_BASE_LAYER
+#define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
+ZMK_LAYER(name, \
+    LT RT \
+    LM RM \
+    LB RB \
+    LH RH \
+)
+#endif
+
+
+ZMK_BASE_LAYER(Base,
+    &kp Q         &kp W         &kp E         &kp R         &kp T           ,   &kp Y         &kp U         &kp I         &kp O         &kp P        ,
+    &hml LGUI A   &hml LALT S   &hml LSHIFT D &hml LCTRL F  &kp G           ,   &kp H         &hmr RCTRL J  &hmr RSHIFT K &hmr RALT L   &hmr RGUI SQT,
+    &kp Z         &kp X         &kp C         &kp V         &kp B           ,   &kp N         &kp M         &comma_morph  &dot_morph    &qexcl       ,
+                                              SHIFT_BSPC    &lt NUM TAB     ,   &lt_spc SYM 0 &lt NAV RET
+)
+
+ZMK_BASE_LAYER(Graphite,
+    &kp B         &kp L         &kp D         &kp W         &kp Z           ,   &kp SQT       &kp F         &kp O         &kp U         &kp J        ,
+    &hml LGUI N   &hml LALT R   &hml LSHIFT T &hml LCTRL S  &kp G           ,   &kp Y         &hmr RCTRL H  &hmr RSHIFT A &hmr RALT E   &hmr RGUI I  ,
+    &kp Q         &kp X         &kp M         &kp C         &kp V           ,   &kp K         &kp P         &comma_morph  &dot_morph    &qexcl       ,
+                                              SHIFT_BSPC    &lt NUM TAB     ,   &lt_spc SYM 0 &lt NAV RET
+)
+
+ZMK_BASE_LAYER(Num,
+    XXX           XXX           XXX           XXX           XXX             ,   NUM_PLUS      &kp N7        &kp N8        &kp N9        &kp EQUAL    ,
+    &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             ,   NUM_MULTI     &hmr RCTRL N4 &hmr RSHIFT N5&hmr RALT N6  &hmr RGUI N0 ,
+    XXX           XXX           XXX           XXX           XXX             ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT      ,
+                                              ___           ___             ,   ___           ___
+)
+
+ZMK_BASE_LAYER(Sym,
+    &kp GRAVE     &kp CARET     &kp ASTRK     &kp AMPS      &kp LPAR        ,   &kp RPAR      XXX           &kp PIPE      &kp BACKSLASH &kp SLASH    ,
+    &kp EQUAL     &kp TILDE     &kp PRCNT     &kp DLLR      &kp LBKT        ,   &kp RBKT      &sk RCTRL     &sk RSHIFT    &sk RALT      &sk RGUI     ,
+    &kp HASH      &kp AT        &kp LT        &kp GT        &kp LBRC        ,   &kp RBRC      XXX           ___           ___           ___          ,
+                                              &kp UNDER     &kp MINUS       ,   ___           ___
+)
+
+ZMK_BASE_LAYER(Nav,
+    WIN_CYCLE     WIN_CYCLE_REV XXX           XXX           XXX             ,   XXX           GO_BACK       &swapper      GO_FORWD      MT_DEL       ,
+    &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     XXX             ,   NAV_LEFT      NAV_DOWN      NAV_UP        NAV_RIGHT     XXX          ,
+    XXX           XXX           XXX           XXX           XXX             ,   XXX           &kp PG_DN     &kp PG_UP     XXX           CANCEL       ,
+                                              ___           ___             ,   ___           ___
+)
+
+ZMK_BASE_LAYER(Fn,
+    XXX           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    XXX             ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12      ,
+    XXX           MUTE          VOL_DOWN      PLAY_PAUSE    XXX             ,   XXX           &hmr RCTRL F4 &hmr RSHIFT F5&hmr LALT F6  &hmr RGUI F11,
+    XXX           XXX           CHATGPT       TRANSLATE     XXX             ,   XXX           &kp F1        &kp F2        &kp F3        &kp F10      ,
+                                              ___           ___             ,   ___           ___
+)
+
+ZMK_BASE_LAYER(Sys,
+    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR      ,   XXX           XXX           XXX           &to GRAPHITE  &to BASE     ,
+    &bootloader   XXX           XXX           XXX           XXX             ,   XXX           XXX           XXX           XXX           &bootloader  ,
+    &sys_reset    XXX           XXX           XXX           &mac_lock       ,   XXX           XXX           XXX           XXX           &sys_reset   ,
+                                              ___           ___             ,   ___           ___
+)
