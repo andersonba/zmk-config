@@ -179,6 +179,7 @@ parse_config:
     "&kp LG(V)": $$mdi:content-paste$$
     "&kp LG(LBKT)": $$mdi:arrow-left$$
     "&kp LG(RBKT)": $$mdi:arrow-right$$
+    "&num_word": $$mdi:numeric$$
 
     # Macros
     "&mac_lock": $$mdi:lock$$

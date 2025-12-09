@@ -309,3 +309,6 @@ combos:
   - p: [25, 26]
     k: '}'
     l: [Combos]
+  - p: [18, 19]
+    k: $$mdi:numeric$$
+    l: [Combos]
