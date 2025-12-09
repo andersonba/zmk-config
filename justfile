@@ -151,7 +151,7 @@ build board="urchin" side="all":
     echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
 
 # Flash firmware (requires keyboard in bootloader mode)
-flash side board="urchin":
+flash board side:
     #!/usr/bin/env bash
     set -euo pipefail
 

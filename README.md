@@ -50,7 +50,7 @@ All commands support multiple boards. Run with `mise exec -- just <command>` or 
 
 ```bash
 just build [board] [side]    # board: urchin (default), corne, crosses
-                              # side: left, right, all (default)
+                             # side: left, right, all (default)
 ```
 
 Examples:
@@ -62,14 +62,14 @@ Examples:
 ### Flash Firmware
 
 ```bash
-just flash <side> [board]    # side: left, right (required)
-                              # board: urchin (default), corne, crosses
+just flash [board] [side]    # board: urchin, corne, crosses
+                             # side: left, right
 ```
 
 Examples:
 
-- `just flash left` → Flash Urchin left (default board)
-- `just flash right corne` → Flash Corne right side
+- `just flash` → Flash Urchin left (default board and side)
+- `just flash corne right` → Flash Corne right side
 
 ### Generate Keymap Visualization
 
