@@ -74,6 +74,30 @@ update:
     west update
     west zephyr-export
 
+_validate_args board side:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    case {{board}} in
+        "urchin"|"corne"|"crosses")
+            ;;
+        *)
+            echo "❌ Unknown board: {{board}}"
+            echo "   Valid boards: urchin, corne, crosses"
+            exit 1
+            ;;
+    esac
+
+    case {{side}} in
+        "left"|"right")
+            ;;
+        *)
+            echo "❌ Invalid side: {{side}}"
+            echo "   Valid sides: left, right"
+            exit 1
+            ;;
+    esac
+
 # Build firmware: board (default: urchin) and side (left/right/all)
 build board="urchin" side="all":
     #!/usr/bin/env bash
@@ -93,6 +117,8 @@ build board="urchin" side="all":
         exit 0
     fi
 
+    just _validate_args {{board}} {{side}}
+
     source .venv/bin/activate
 
     # Define shields and display adapters based on board
@@ -109,17 +135,7 @@ build board="urchin" side="all":
             SHIELD_NAME="crosses"
             EXTRA_MODULES="" # Assuming no display for now
             ;;
-        *)
-            echo "Unknown board: {{board}}"
-            exit 1
-            ;;
     esac
-
-    # Validate side
-    if [[ "{{side}}" != "left" && "{{side}}" != "right" ]]; then
-        echo "Invalid side: {{side}}. Use 'left', 'right', or 'all'."
-        exit 1
-    fi
 
     BOARD="nice_nano_v2"
     SHIELD="${SHIELD_NAME}_{{side}} ${EXTRA_MODULES}"
@@ -155,8 +171,9 @@ flash board side:
     #!/usr/bin/env bash
     set -euo pipefail
 
-    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
+    just _validate_args {{board}} {{side}}
 
+    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
     if [ ! -f "$FIRMWARE_FILE" ]; then
         echo "No firmware found at $FIRMWARE_FILE. Building first..."
         just build {{board}} {{side}}
