@@ -153,6 +153,9 @@ parse_config:
     "&bootloader":
       tap: $$mdi:progress-download$$
 
+    # Studio
+    "&studio_unlock": $$mdi:lock-open$$
+
     # Behaviors
     "&swapper": $$mdi:swap-horizontal$$
     "&both_par": $$mdi:code-parentheses$$
