@@ -19,9 +19,9 @@
 #define SYS 6
 
 // Timings
-#define QUICK_TAP_MS 150
-#define HRM_TAPPING_TERM 230
-#define HRM_PRIOR_IDLE 130
+#define QUICK_TAP_MS 175
+#define HRM_TAPPING_TERM 280
+#define HRM_PRIOR_IDLE 150
 #define TAPPING_TERM_MS 230
 #define TAPPING_TERM_MS_TAP 230
 #define STICKY_RELEASE_MS 900
@@ -185,6 +185,31 @@ ZMK_COMBO(rbrc,  &kp RBRC,     RB0 RB1,     BASE, COMBO_TERM_FAST, COMBO_IDLE_FA
 
 /* smart numbers combo */
 ZMK_COMBO(smart_num, &num_word NUM, RM3 RM4, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* VERTICAL COMBOS */
+
+/* left hand */
+ZMK_COMBO(at,    &kp AT,       LT3 LM3,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(hash,  &kp HASH,     LT2 LM2,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(dllr,  &kp DLLR,     LT1 LM1,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(prcnt, &kp PRCNT,    LT0 LM0,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+ZMK_COMBO(grave, &kp GRAVE,    LM3 LB3,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(bslh,  &kp BSLH,     LM2 LB2,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(equal, &kp EQUAL,    LM1 LB1,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(tilde, &kp TILDE,    LM0 LB0,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+/* right hand */
+ZMK_COMBO(caret, &kp CARET,    RT0 RM0,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(plus,  &kp PLUS,     RT1 RM1,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(star,  &kp STAR,     RT2 RM2,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(amps,  &kp AMPS,     RT3 RM3,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+ZMK_COMBO(under, &kp UNDER,    RM0 RB0,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(minus, &kp MINUS,    RM1 RB1,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(fslh,  &kp FSLH,     RM2 RB2,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(pipe,  &kp PIPE,     RM3 RB3,     BASE, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
 // Shorter names
 #define NAV_LEFT  &kp LEFT                     // Tap: left  | Cmd+Tap: start of line (native).
 #define NAV_RIGHT &kp RIGHT                    // Tap: right | Cmd+Tap: end   of line (native).

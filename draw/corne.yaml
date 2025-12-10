@@ -369,3 +369,51 @@ combos:
   - p: [21, 22]
     k: $$mdi:numeric$$
     l: [Combos]
+  - p: [2, 14]
+    k: '@'
+    l: [Combos]
+  - p: [3, 15]
+    k: '#'
+    l: [Combos]
+  - p: [4, 16]
+    k: $
+    l: [Combos]
+  - p: [5, 17]
+    k: '%'
+    l: [Combos]
+  - p: [14, 26]
+    k: '`'
+    l: [Combos]
+  - p: [15, 27]
+    k: {t: \, s: '|'}
+    l: [Combos]
+  - p: [16, 28]
+    k: '='
+    l: [Combos]
+  - p: [17, 29]
+    k: '~'
+    l: [Combos]
+  - p: [6, 18]
+    k: ^
+    l: [Combos]
+  - p: [7, 19]
+    k: +
+    l: [Combos]
+  - p: [8, 20]
+    k: '*'
+    l: [Combos]
+  - p: [9, 21]
+    k: '&'
+    l: [Combos]
+  - p: [18, 30]
+    k: _
+    l: [Combos]
+  - p: [19, 31]
+    k: '-'
+    l: [Combos]
+  - p: [20, 32]
+    k: /
+    l: [Combos]
+  - p: [21, 33]
+    k: '|'
+    l: [Combos]
