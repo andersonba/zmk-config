@@ -3,9 +3,9 @@
 | [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)           |
 | -------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
 | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
-| **34 keys** (3x5+2 thumbs)                               | **36 keys** (3x5+3 thumbs)                                          | **42 keys** (3x6+3 thumbs)                             |
+| **34 keys** (3x5+2)                               | **36 keys** (3x5+3)                                          | **42 keys** (3x6+3)                             |
 
-My personal [ZMK](https://zmk.dev/) firmware configuration shared across three different keyboards. Features a unified logical layout with board-specific physical mappings.
+My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
 ## Architecture
 
@@ -23,7 +23,6 @@ This project uses a **modular architecture** to share keymap logic across differ
 - **Smart Combos**: Essential actions (Esc, Enter, Cut/Copy/Paste) without extra keys
 - **Adaptive Keys**: Context-aware key behaviors using [urob/zmk-adaptive-key](https://github.com/urob/zmk-adaptive-key)
 - **Auto-Sentence**: Automatic capitalization and period insertion
-- **Mouse Support**: Integrated mouse keys and pointer control
 - **Shared Configuration**: DRY approach with `default.conf` for common settings
 
 ## Layout
@@ -68,19 +67,19 @@ just flash [board] [side]    # board: urchin, corne, crosses
 
 Examples:
 
-- `just flash` → Flash Urchin left (default board and side)
 - `just flash corne right` → Flash Corne right side
 
 ### Generate Keymap Visualization
 
 ```bash
-just draw [board]             # board: urchin (default), corne, crosses
+just draw [board]             # board: urchin, corne, crosses
 ```
 
 Examples:
 
 - `just draw` → Generate `draw/urchin.svg`
 - `just draw corne` → Generate `draw/corne.svg`
+- `just draw all` → Generate all boards
 
 ### Other Commands
 
