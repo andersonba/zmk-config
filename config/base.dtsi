@@ -264,7 +264,7 @@ ZMK_BASE_LAYER(Fn,
 
 ZMK_BASE_LAYER(Sys,
     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR      ,   XXX           XXX           XXX           &to GRAPHITE  &to BASE     ,
-    &bootloader   XXX           XXX           XXX           XXX             ,   XXX           XXX           XXX           XXX           &bootloader  ,
+    &bootloader   &studio_unlock XXX          XXX           XXX             ,   XXX           XXX           XXX           &studio_unlock &bootloader  ,
     &sys_reset    XXX           XXX           XXX           &mac_lock       ,   XXX           XXX           XXX           XXX           &sys_reset   ,
                                               ___           ___             ,   ___           ___
 )
