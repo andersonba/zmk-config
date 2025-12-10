@@ -8,59 +8,158 @@ init:
 
     echo "🚀 Initializing ZMK workspace..."
 
+    # Step 1: Python environment
     if [ ! -d .venv ]; then
         echo "📦 Creating Python virtual environment..."
         python3 -m venv .venv
+    else
+        echo "✅ Python venv already exists"
     fi
 
     source .venv/bin/activate
-    pip install --upgrade pip
-    pip install west
-    pip install keymap-drawer
-    pip install yq
-    pip install watchdog
 
-    if [ ! -d zmk-workspace/zmk/.west ]; then
-        echo "📥 Initializing ZMK workspace..."
+    # Step 2: Python packages (with version checks)
+    echo "📦 Installing/updating Python packages..."
+    pip install --upgrade pip --quiet
 
-        rm -rf zmk-workspace
-        mkdir -p zmk-workspace
+    for package in west keymap-drawer yq watchdog; do
+        if pip show $package &>/dev/null; then
+            echo "  ✓ $package already installed"
+        else
+            echo "  Installing $package..."
+            pip install $package
+        fi
+    done
 
+    # Step 3: ZMK workspace
+    mkdir -p zmk-workspace
+
+    if [ ! -d zmk-workspace/zmk ]; then
+        echo "📥 Cloning ZMK repository..."
         (
             cd zmk-workspace
-            git clone https://github.com/zmkfirmware/zmk.git
-            cd zmk
+            git clone https://github.com/zmkfirmware/zmk.git || {
+                echo "⚠️  Git clone failed, trying to recover..."
+                rm -rf zmk
+                git clone https://github.com/zmkfirmware/zmk.git
+            }
+        )
+    else
+        echo "✅ ZMK repository already exists"
+    fi
+
+    # Step 4: West initialization
+    if [ ! -d zmk-workspace/zmk/.west ]; then
+        echo "🔧 Initializing West workspace..."
+        (
+            cd zmk-workspace/zmk
             west init -l app/
             west config manifest.path ../../config
             west config manifest.file west.yml
-            west update
-            west zephyr-export
-
-            echo "📦 Installing Zephyr Python requirements..."
-            pip install -r zephyr/scripts/requirements.txt
-
-            echo "🔧 Installing Zephyr SDK..."
-            if [ ! -d ../zephyr-sdk-0.16.8 ]; then
-                if [[ "$OSTYPE" == "darwin"* ]]; then
-                    # macOS
-                    if [[ $(uname -m) == "arm64" ]]; then
-                        SDK_ARCH="aarch64"
-                    else
-                        SDK_ARCH="x86_64"
-                    fi
-                    wget -O zephyr-sdk.tar.xz "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.8/zephyr-sdk-0.16.8_macos-${SDK_ARCH}.tar.xz"
-                    cd ..
-                    tar -xf zmk/zephyr-sdk.tar.xz
-                    rm zmk/zephyr-sdk.tar.xz
-                    cd zephyr-sdk-0.16.8
-                    ./setup.sh -h -c
-                fi
-            else
-                echo "✅ Zephyr SDK already installed"
-            fi
         )
     else
-        echo "✅ ZMK workspace already exists"
+        echo "✅ West workspace already initialized"
+    fi
+
+    # Step 5: West update
+    echo "📥 Updating West modules..."
+    (
+        cd zmk-workspace/zmk
+        west update || {
+            echo "⚠️  West update failed, retrying..."
+            sleep 2
+            west update
+        }
+        west zephyr-export
+    )
+
+    # Step 6: Zephyr Python requirements
+    if [ -f zmk-workspace/zmk/zephyr/scripts/requirements.txt ]; then
+        echo "📦 Installing Zephyr Python requirements..."
+        pip install -q -r zmk-workspace/zmk/zephyr/scripts/requirements.txt
+    fi
+
+    # Step 7: Zephyr SDK with retry and resume
+    echo "🔧 Installing Zephyr SDK (this may take a while)..."
+    SDK_VERSION="0.16.8"
+    SDK_DIR="zmk-workspace/zephyr-sdk-${SDK_VERSION}"
+
+    if [ ! -d "$SDK_DIR" ]; then
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            if [[ $(uname -m) == "arm64" ]]; then
+                SDK_ARCH="aarch64"
+            else
+                SDK_ARCH="x86_64"
+            fi
+
+            SDK_URL="https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${SDK_VERSION}/zephyr-sdk-${SDK_VERSION}_macos-${SDK_ARCH}.tar.xz"
+            SDK_FILE="zmk-workspace/zephyr-sdk.tar.xz"
+
+            # Download with resume capability
+            download_with_retry() {
+                local url=$1
+                local output=$2
+                local max_retries=3
+                local retry=0
+
+                while [ $retry -lt $max_retries ]; do
+                    echo "  Downloading SDK (attempt $((retry+1))/$max_retries)..."
+
+                    # Use curl with resume capability
+                    if command -v curl &> /dev/null; then
+                        curl -L -C - --progress-bar -o "$output" "$url" && return 0
+                    elif command -v wget &> /dev/null; then
+                        wget -c --progress=bar:force -O "$output" "$url" && return 0
+                    else
+                        echo "❌ Neither curl nor wget found. Please install one."
+                        exit 1
+                    fi
+
+                    retry=$((retry + 1))
+                    if [ $retry -lt $max_retries ]; then
+                        echo "  ⚠️  Download failed, retrying in 5 seconds..."
+                        sleep 5
+                    fi
+                done
+
+                echo "❌ Failed to download SDK after $max_retries attempts"
+                echo "  You can manually download from: $url"
+                echo "  And place it at: $output"
+                return 1
+            }
+
+            # Check if partial download exists
+            if [ -f "$SDK_FILE" ]; then
+                echo "  Found partial SDK download, resuming..."
+            fi
+
+            # Download SDK with retry
+            if download_with_retry "$SDK_URL" "$SDK_FILE"; then
+                echo "  Extracting SDK..."
+                (
+                    cd zmk-workspace
+                    tar -xf zephyr-sdk.tar.xz || {
+                        echo "❌ Extraction failed. The archive might be corrupted."
+                        echo "  Removing partial download..."
+                        rm -f zephyr-sdk.tar.xz
+                        exit 1
+                    }
+                    rm -f zephyr-sdk.tar.xz
+                    cd "zephyr-sdk-${SDK_VERSION}"
+                    ./setup.sh -h -c
+                )
+                echo "✅ Zephyr SDK installed successfully"
+            else
+                echo "⚠️  SDK installation incomplete. Run 'just init' again to retry."
+                exit 1
+            fi
+        else
+            echo "⚠️  Non-macOS systems need manual SDK installation"
+            echo "  Download from: https://github.com/zephyrproject-rtos/sdk-ng/releases"
+        fi
+    else
+        echo "✅ Zephyr SDK already installed"
     fi
 
     echo "✨ Setup complete! Run 'just build' to build firmware"
