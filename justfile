@@ -38,10 +38,10 @@ init:
         echo "📥 Cloning ZMK repository..."
         (
             cd zmk-workspace
-            git clone https://github.com/zmkfirmware/zmk.git || {
+            git clone -b v0.3 https://github.com/zmkfirmware/zmk.git || {
                 echo "⚠️  Git clone failed, trying to recover..."
                 rm -rf zmk
-                git clone https://github.com/zmkfirmware/zmk.git
+                git clone -b v0.3 https://github.com/zmkfirmware/zmk.git
             }
         )
     else
