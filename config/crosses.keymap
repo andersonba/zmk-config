@@ -1,9 +1,9 @@
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
     ZMK_LAYER(name, \
-        LT RT \
-        LM RM \
-        LB RB \
-        &kp LGUI LH  RH &kp RALT \
+                 LT  RT           \
+                 LM  RM           \
+                 LB  RB           \
+       &kp LGUI  LH  RH  &kp RALT \
     )
 
 #include <dt-bindings/zmk/pointing.h>
