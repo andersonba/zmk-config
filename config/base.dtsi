@@ -19,9 +19,9 @@
 #define SYS 6
 
 // Timings
-#define QUICK_TAP_MS 175
-#define HRM_TAPPING_TERM 280
-#define HRM_PRIOR_IDLE 150
+#define QUICK_TAP_MS 150
+#define HRM_TAPPING_TERM 230
+#define HRM_PRIOR_IDLE 130
 #define TAPPING_TERM_MS 230
 #define TAPPING_TERM_MS_TAP 230
 #define STICKY_RELEASE_MS 900
