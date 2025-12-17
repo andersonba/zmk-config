@@ -12,12 +12,11 @@
 
 // Layers
 #define BASE 0
-#define GRAPHITE 1
-#define NUM 2
-#define SYM 3
-#define NAV 4
-#define FN 5
-#define SYS 6
+#define NUM 1
+#define SYM 2
+#define NAV 3
+#define FN 4
+#define SYS 5
 
 // Timings
 #define QUICK_TAP_MS 150
@@ -125,7 +124,7 @@ ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; wait-ms = <0>;
           tap-ms = <5>;)
 
 // Tap: bspc | Hold: shift
-ZMK_HOLD_TAP(lt_shift, bindings = <&sk>, <&kp>; flavor = "balanced";
+ZMK_HOLD_TAP(lt_shift, bindings = <&kp>, <&kp>; flavor = "hold-preferred";
              tapping-term-ms = <TAPPING_TERM_MS>; quick-tap-ms = <QUICK_TAP_MS>;)
 
 // Tap: backspace | Lshift + tap: delete | Rshift + tap: shift-delete.
@@ -253,13 +252,6 @@ ZMK_BASE_LAYER(Base,
                                               SHIFT_BSPC    &lt NUM TAB   ,   &lt_spc SYM 0 &lt NAV RET
 )
 
-ZMK_BASE_LAYER(Graphite,
-    &kp B         &kp L         &kp D         &kp W         &kp Z         ,   &kp SQT       &kp F         &kp O         &kp U         &kp J        ,
-    &hml LGUI N   &hml LALT R   &hml LSHIFT T &hml LCTRL S  &kp G         ,   &kp Y         &hmr RCTRL H  &hmr RSHIFT A &hmr RALT E   &hmr RGUI I  ,
-    &kp Q         &kp X         &kp M         &kp C         &kp V         ,   &kp K         &kp P         &comma_morph  &dot_morph    &qexcl       ,
-                                              SHIFT_BSPC    &lt NUM TAB   ,   &lt_spc SYM 0 &lt NAV RET
-)
-
 ZMK_BASE_LAYER(Num,
     XXX           XXX           XXX           XXX           XXX           ,   NUM_PLUS      &kp N7        &kp N8        &kp N9        &kp EQUAL    ,
     &sk LGUI      &sk LALT      &sk LSHIFT    &sk LCTRL     XXX           ,   NUM_MULTI     &hmr RCTRL N4 &hmr RSHIFT N5&hmr RALT N6  &hmr RGUI N0 ,
@@ -289,8 +281,8 @@ ZMK_BASE_LAYER(Fn,
 )
 
 ZMK_BASE_LAYER(Sys,
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR    ,   XXX           XXX           XXX           &to GRAPHITE  &to BASE     ,
+    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR    ,   XXX           XXX           XXX           XXX            XXX         ,
     &bootloader   &studio_unlock XXX          XXX           XXX           ,   XXX           XXX           XXX           &studio_unlock &bootloader ,
-    &sys_reset    XXX           XXX           XXX           &mac_lock     ,   XXX           XXX           XXX           XXX           &sys_reset   ,
+    &sys_reset    XXX           XXX           XXX           &mac_lock     ,   XXX           XXX           XXX           XXX            &sys_reset  ,
                                               ___           ___           ,   ___           ___
 )
