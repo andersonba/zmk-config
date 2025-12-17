@@ -1,3 +1,6 @@
+# Editor
+.history
+
 # ZMK build
 /build
 /firmware
