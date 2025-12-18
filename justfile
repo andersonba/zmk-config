@@ -366,8 +366,11 @@ watch command='draw' board="urchin":
     set -euo pipefail
     source .venv/bin/activate
     just {{command}} {{board}}
-    open "resources/watch-draw.html"
     watchmedo shell-command -R -w -v -c 'just {{command}} {{board}} && echo "¤ Updated"' config/ draw/config.yaml
+
+watch-browser command='draw' board="urchin":
+    open "resources/watch-draw.html"
+    just watch {{command}} {{board}}
 
 # Clean build artifacts
 clean:
