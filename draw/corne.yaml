@@ -43,49 +43,6 @@ layers:
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', type: enter}
     - $$mdi:apple-keyboard-option$$
-  Sym:
-    - $$mdi:keyboard-tab$$
-    - '`'
-    - '@'
-    - '#'
-    - $
-    - '%'
-    - (
-    - )
-    - ''
-    - ''
-    - ''
-    - {t: '$$mdi:backspace$$', type: backspace}
-    - $$mdi:apple-keyboard-control$$
-    - '~'
-    - \
-    - /
-    - '&'
-    - '*'
-    - '['
-    - ']'
-    - '|'
-    - ''
-    - ''
-    - {t: '''', s: '"'}
-    - $$mdi:apple-keyboard-shift$$
-    - ^
-    - <
-    - '>'
-    - '='
-    - +
-    - '{'
-    - '}'
-    - ;
-    - ':'
-    - ''
-    - $$escape$$
-    - {t: ▽, type: trans}
-    - _
-    - '-'
-    - {type: held}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
   Num:
     - $$mdi:keyboard-tab$$
     - $$mdi:arrow-u-up-left$$
@@ -128,6 +85,49 @@ layers:
     - {type: held}
     - '0'
     - '='
+    - {t: ▽, type: trans}
+  Sym:
+    - $$mdi:keyboard-tab$$
+    - '`'
+    - '@'
+    - '#'
+    - $
+    - '%'
+    - (
+    - )
+    - ''
+    - ''
+    - ''
+    - {t: '$$mdi:backspace$$', type: backspace}
+    - $$mdi:apple-keyboard-control$$
+    - '~'
+    - \
+    - /
+    - '&'
+    - '*'
+    - '['
+    - ']'
+    - '|'
+    - ''
+    - ''
+    - {t: '''', s: '"'}
+    - $$mdi:apple-keyboard-shift$$
+    - ^
+    - <
+    - '>'
+    - '='
+    - +
+    - '{'
+    - '}'
+    - ;
+    - ':'
+    - ''
+    - $$escape$$
+    - {t: ▽, type: trans}
+    - _
+    - '-'
+    - {type: held}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Fn:
     - $$mdi:keyboard-tab$$

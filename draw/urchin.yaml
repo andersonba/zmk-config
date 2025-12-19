@@ -35,41 +35,6 @@ layers:
     - {t: '$$mdi:keyboard-tab$$', h: Num}
     - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', type: enter}
-  Sym:
-    - '`'
-    - '@'
-    - '#'
-    - $
-    - '%'
-    - (
-    - )
-    - ''
-    - ''
-    - ''
-    - '~'
-    - \
-    - /
-    - '&'
-    - '*'
-    - '['
-    - ']'
-    - '|'
-    - ''
-    - ''
-    - ^
-    - <
-    - '>'
-    - '='
-    - +
-    - '{'
-    - '}'
-    - ;
-    - ':'
-    - ''
-    - _
-    - '-'
-    - {type: held}
-    - {t: ▽, type: trans}
   Num:
     - $$mdi:arrow-u-up-left$$
     - $$mdi:arrow-left$$
@@ -105,6 +70,41 @@ layers:
     - {type: held}
     - '0'
     - '='
+  Sym:
+    - '`'
+    - '@'
+    - '#'
+    - $
+    - '%'
+    - (
+    - )
+    - ''
+    - ''
+    - ''
+    - '~'
+    - \
+    - /
+    - '&'
+    - '*'
+    - '['
+    - ']'
+    - '|'
+    - ''
+    - ''
+    - ^
+    - <
+    - '>'
+    - '='
+    - +
+    - '{'
+    - '}'
+    - ;
+    - ':'
+    - ''
+    - _
+    - '-'
+    - {type: held}
+    - {t: ▽, type: trans}
   Fn:
     - $$mdi:skip-previous$$
     - $$mdi:skip-next$$
