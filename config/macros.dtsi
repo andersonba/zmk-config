@@ -5,3 +5,8 @@ ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>;
 // Mac
 ZMK_MACRO(lock, bindings = <&kp LC(LG(Q))>;)
 ZMK_MACRO(cut, bindings = <&kp LG(X)>;)
+
+// Symbols: Both chars
+ZMK_MACRO(both_par, bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brk, bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;)
+ZMK_MACRO(both_brc, bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;)

@@ -149,7 +149,9 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
 
 #include "./combos.dtsi"
 
-ZMK_CONDITIONAL_LAYER(fn, NUM SYM, FN)
+// Combos for layers
+ZMK_COMBO(fn, &mo FN,
+    LH0 RH0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(sys, &mo SYS,
     LH1 RH1, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
@@ -189,11 +191,11 @@ ZMK_BASE_LAYER(Num,
 
 ZMK_BASE_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp LPAR      &kp RPAR      XXX           XXX           XXX         ,
+    &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp PIPE      &kp LPAR      &kp RPAR      XXX           XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LBKT      &kp RBKT      &kp PIPE      XXX           XXX         ,
+    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp COLON     &kp LBKT      &kp RBKT      XXX           XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp LBRC      &kp RBRC      &kp SEMI      &kp COLON     XXX         ,
+    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp SEMI      &kp LBRC      &kp RBRC      XXX           XXX         ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp UNDER     &kp MINUS   ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -201,7 +203,7 @@ ZMK_BASE_LAYER(Sym,
 
 ZMK_BASE_LAYER(Fn,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           &kp C_VOL_UP  &kp C_PP      XXX    ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12     ,
+    XXX           XXX           &kp C_VOL_UP  &kp C_PP      XXX         ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12     ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    XXX         ,   XXX           &kp F4        &kp F5        &kp F6        &kp F11     ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
