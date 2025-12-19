@@ -149,6 +149,10 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
 
 #include "./combos.dtsi"
 
+ZMK_CONDITIONAL_LAYER(fn, NUM SYM, FN)
+ZMK_COMBO(sys, &mo SYS,
+    LH1 RH1, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
 #define QMARK_EXCL &qmark_excl
@@ -173,13 +177,13 @@ ZMK_BASE_LAYER(Base,
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp HOME      GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp 7         &kp 8         &kp 9         &kp MINUS   ,
+    &kp HOME      GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp N7        &kp N8        &kp N9        &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp END       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp 4         &kp 5         &kp 6         &kp SLASH   ,
+    &kp END       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LGUI      &kp LALT      &kp LSHIFT    &kp LCTRL     WIN_CYCLE   ,   &kp COMMA     &kp 1         &kp 2         &kp 3         &kp DOT     ,
+    &kp LGUI      &kp LALT      &kp LSHIFT    &kp LCTRL     WIN_CYCLE   ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___         ,   &kp 0         &kp EQUAL
+                                              ___           ___         ,   &kp N0         &kp EQUAL
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 

@@ -184,6 +184,9 @@ combos:
   - p: [2, 3]
     k: {t: '$$mdi:backspace$$', type: backspace}
     l: [Combos]
+  - p: [3, 4]
+    k: {t: 'Alt+$$mdi:backspace$$', type: backspace}
+    l: [Combos]
   - p: [1, 2]
     k: $$mdi:backspace-reverse-outline$$
     l: [Combos]
@@ -202,8 +205,8 @@ combos:
   - p: [7, 8]
     k: $$mdi:backspace-reverse-outline$$
     l: [Combos]
-  - p: [31, 32]
-    k: Fn
+  - p: [5, 6]
+    k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
     l: [Combos]
   - p: [30, 33]
     k: Sys
