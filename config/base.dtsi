@@ -176,11 +176,11 @@ ZMK_BASE_LAYER(Base,
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp HOME      GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp N7        &kp N8        &kp N9        &kp MINUS   ,
+    XXX      XXX       XXX        XXX      XXX   ,   &kp PLUS      &kp N7        &kp N8        &kp N9        &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp END       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
+    XXX       XXX      XXX      XXX     XXX   ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LGUI      &kp LALT      &kp LSHIFT    &kp LCTRL     WIN_CYCLE   ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
+    XXX      XXX      XXX    XXX     XXX   ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___         ,   &kp N0         &kp EQUAL
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -188,11 +188,11 @@ ZMK_BASE_LAYER(Num,
 
 ZMK_BASE_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp PIPE      &kp LPAR      &kp RPAR      XXX           XXX         ,
+    &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   XXX           GO_BACK       GO_FORWD      XXX           &kp PIPE    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp COLON     &kp LBKT      &kp RBKT      XXX           XXX         ,
+    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp COLON   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp SEMI      &kp LBRC      &kp RBRC      XXX           XXX         ,
+    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp SEMI      &kp LBRC      &kp RBRC      XXX           &kp SEMI    ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp UNDER     &kp MINUS   ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

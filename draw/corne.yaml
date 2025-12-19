@@ -42,14 +42,14 @@ layers:
   - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - $$mdi:keyboard-space$$
   - Sym
-  - $$mdi:apple-keyboard-option$$
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   Num:
   - $$mdi:keyboard-tab$$
-  - HOME
-  - $$mdi:arrow-left$$
-  - $$mdi:arrow-up-bold$$
-  - $$mdi:arrow-right$$
-  - PG UP
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - +
   - '7'
   - '8'
@@ -57,11 +57,11 @@ layers:
   - '-'
   - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:apple-keyboard-control$$
-  - END
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-right-bold$$
-  - PG DN
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - '*'
   - '4'
   - '5'
@@ -69,11 +69,11 @@ layers:
   - /
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
-  - $$mdi:apple-keyboard-command$$
-  - $$mdi:apple-keyboard-option$$
-  - $$mdi:apple-keyboard-shift$$
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:arrow-u-up-left$$
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - ','
   - '1'
   - '2'
@@ -85,7 +85,7 @@ layers:
   - {t: ▽, type: trans}
   - '0'
   - '='
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   Sym:
   - $$mdi:keyboard-tab$$
   - '`'
@@ -93,11 +93,11 @@ layers:
   - '#'
   - $
   - '%'
+  - ''
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-right$$
+  - ''
   - '|'
-  - (
-  - )
-  - ''
-  - ''
   - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:apple-keyboard-control$$
   - '~'
@@ -105,11 +105,11 @@ layers:
   - /
   - '&'
   - '*'
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-right-bold$$
   - ':'
-  - '['
-  - ']'
-  - ''
-  - ''
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
   - ^
@@ -121,7 +121,7 @@ layers:
   - '{'
   - '}'
   - ''
-  - ''
+  - ;
   - $$escape$$
   - {t: ▽, type: trans}
   - _
@@ -216,6 +216,33 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
 combos:
+- p: [5, 6]
+  k: $$mdi:code-parentheses$$
+  l: [Base]
+- p: [17, 18]
+  k: $$mdi:code-brackets$$
+  l: [Base]
+- p: [29, 30]
+  k: $$mdi:code-braces$$
+  l: [Base]
+- p: [5, 4]
+  k: (
+  l: [Base]
+- p: [6, 7]
+  k: )
+  l: [Base]
+- p: [17, 16]
+  k: '['
+  l: [Base]
+- p: [18, 19]
+  k: ']'
+  l: [Base]
+- p: [29, 28]
+  k: '{'
+  l: [Base]
+- p: [30, 31]
+  k: '}'
+  l: [Base]
 - p: [15, 16]
   k: $$escape$$
   l: [Base]
@@ -227,7 +254,7 @@ combos:
   l: [Base]
 - p: [19, 20]
   k: $$escape$$
-  l: [Base, Num]
+  l: [Base]
 - p: [20, 21]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
@@ -235,20 +262,8 @@ combos:
   k: {t: '$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
 - p: [8, 9]
-  k: $$mdi:backspace-reverse-outline$$
-  l: [Base, Num]
-- p: [6, 7]
   k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
-- p: [7, 8]
-  k: $$mdi:code-parentheses$$
-  l: [Sym]
-- p: [19, 20]
-  k: $$mdi:code-brackets$$
-  l: [Sym]
-- p: [31, 32]
-  k: $$mdi:code-braces$$
-  l: [Sym]
 - p: [37, 40]
   k: Fn
   l: [Base]

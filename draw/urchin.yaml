@@ -36,31 +36,31 @@ layers:
   - $$mdi:keyboard-space$$
   - Sym
   Num:
-  - HOME
-  - $$mdi:arrow-left$$
-  - $$mdi:arrow-up-bold$$
-  - $$mdi:arrow-right$$
-  - PG UP
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - +
   - '7'
   - '8'
   - '9'
   - '-'
-  - END
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-right-bold$$
-  - PG DN
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - '*'
   - '4'
   - '5'
   - '6'
   - /
-  - $$mdi:apple-keyboard-command$$
-  - $$mdi:apple-keyboard-option$$
-  - $$mdi:apple-keyboard-shift$$
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:arrow-u-up-left$$
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - ','
   - '1'
   - '2'
@@ -76,21 +76,21 @@ layers:
   - '#'
   - $
   - '%'
+  - ''
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-right$$
+  - ''
   - '|'
-  - (
-  - )
-  - ''
-  - ''
   - '~'
   - \
   - /
   - '&'
   - '*'
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-right-bold$$
   - ':'
-  - '['
-  - ']'
-  - ''
-  - ''
   - ^
   - <
   - '>'
@@ -100,7 +100,7 @@ layers:
   - '{'
   - '}'
   - ''
-  - ''
+  - ;
   - _
   - '-'
   - {t: ▽, type: trans}
@@ -176,6 +176,33 @@ layers:
   - {type: held}
   - {t: ▽, type: trans}
 combos:
+- p: [4, 5]
+  k: $$mdi:code-parentheses$$
+  l: [Base]
+- p: [14, 15]
+  k: $$mdi:code-brackets$$
+  l: [Base]
+- p: [24, 25]
+  k: $$mdi:code-braces$$
+  l: [Base]
+- p: [4, 3]
+  k: (
+  l: [Base]
+- p: [5, 6]
+  k: )
+  l: [Base]
+- p: [14, 13]
+  k: '['
+  l: [Base]
+- p: [15, 16]
+  k: ']'
+  l: [Base]
+- p: [24, 23]
+  k: '{'
+  l: [Base]
+- p: [25, 26]
+  k: '}'
+  l: [Base]
 - p: [12, 13]
   k: $$escape$$
   l: [Base]
@@ -187,7 +214,7 @@ combos:
   l: [Base]
 - p: [16, 17]
   k: $$escape$$
-  l: [Base, Num]
+  l: [Base]
 - p: [17, 18]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
@@ -195,20 +222,8 @@ combos:
   k: {t: '$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
 - p: [7, 8]
-  k: $$mdi:backspace-reverse-outline$$
-  l: [Base, Num]
-- p: [5, 6]
   k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
-- p: [6, 7]
-  k: $$mdi:code-parentheses$$
-  l: [Sym]
-- p: [16, 17]
-  k: $$mdi:code-brackets$$
-  l: [Sym]
-- p: [26, 27]
-  k: $$mdi:code-braces$$
-  l: [Sym]
 - p: [30, 33]
   k: Fn
   l: [Base]
