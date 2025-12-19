@@ -311,7 +311,7 @@ flash board side:
 
     echo "Flashed {{board}} {{side}} 🚀"
 
-draw board="urchin":
+draw board="urchin" method="default":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
@@ -336,30 +336,19 @@ draw board="urchin":
         *) echo "Unknown board: {{board}}"; exit 1;;
     esac
 
-    keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" --virtual-layers Combos >"$YAML_FILE"
-    yq -Yi '.combos.[].l = ["Combos"]' "$YAML_FILE"
-    keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
+    case {{method}} in 
+        "default")
+            keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" >"$YAML_FILE"
+            keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
+        ;; "combine-combos")
+            keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" --virtual-layers Combos >"$YAML_FILE"
+            yq -Yi '.combos.[].l = ["Combos"]' "$YAML_FILE"
+            keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
+        ;;
+        *) echo "Unknown method: {{method}}"; exit 1;;
+    esac
     
     echo "✅ Drawn to $SVG_FILE"
-
-draw-debug board="urchin":
-    #!/usr/bin/env bash
-    set -euo pipefail
-    source .venv/bin/activate
-    
-    KEYMAP_FILE="config/{{board}}.keymap"
-    YAML_FILE="draw/{{board}}.yaml"
-    SVG_FILE="draw/{{board}}.svg"
-    
-    case {{board}} in
-        "urchin") LAYOUT_ARGS="-k ferris/sweep";;
-        "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
-        "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
-        *) echo "Unknown board: {{board}}"; exit 1;;
-    esac
-
-    keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" >"$YAML_FILE"
-    keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
 
 watch command='draw' board="urchin":
     #!/usr/bin/env bash
