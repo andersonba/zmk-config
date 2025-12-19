@@ -68,12 +68,12 @@ layers:
     - ;
     - ':'
     - ''
-    - $$mdi:apple-keyboard-command$$
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
     - '-'
     - _
-    - $$mdi:apple-keyboard-option$$
+    - {t: ▽, type: trans}
   Num:
     - '-'
     - '7'
@@ -105,12 +105,12 @@ layers:
     - PG UP
     - END
     - $$escape$$
-    - $$mdi:apple-keyboard-command$$
+    - {t: ▽, type: trans}
     - '='
     - '0'
     - {type: held}
     - {t: ▽, type: trans}
-    - $$mdi:apple-keyboard-option$$
+    - {t: ▽, type: trans}
   Fn:
     - $$mdi:skip-previous$$
     - $$mdi:skip-next$$
@@ -142,12 +142,12 @@ layers:
     - F2
     - F3
     - F10
-    - $$mdi:apple-keyboard-command$$
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
     - {type: held}
     - {t: ▽, type: trans}
-    - $$mdi:apple-keyboard-option$$
+    - {t: ▽, type: trans}
   Sys:
     - {h: '1', s: '$$mdi:bluetooth-connect$$'}
     - {h: '2', s: '$$mdi:bluetooth-connect$$'}
@@ -179,12 +179,12 @@ layers:
     - ''
     - ''
     - {t: '$$mdi:backup-restore$$', type: bootloader}
-    - $$mdi:apple-keyboard-command$$
+    - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
-    - $$mdi:apple-keyboard-option$$
+    - {t: ▽, type: trans}
   Combos: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
 combos:

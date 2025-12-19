@@ -68,6 +68,7 @@
 };
 
 #include "./macros.dtsi"
+#include "./extra.dtsi"
 
 // HRM {{{
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS, TAPPING_TERM, PRIOR_IDLE) \

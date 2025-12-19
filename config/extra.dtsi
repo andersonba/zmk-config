@@ -1,0 +1,37 @@
+// LH2 {{{
+#ifndef _LH2_Base
+#define _LH2_Base ___
+#endif
+#ifndef _LH2_Sym
+#define _LH2_Sym ___
+#endif
+#ifndef _LH2_Num
+#define _LH2_Num ___
+#endif
+#ifndef _LH2_Fn
+#define _LH2_Fn ___
+#endif
+#ifndef _LH2_Sys
+#define _LH2_Sys ___
+#endif
+#define _LH2(layer) _LH2_##layer
+// }}}
+
+// RH2 {{{
+#ifndef _RH2_Base
+#define _RH2_Base ___
+#endif
+#ifndef _RH2_Sym
+#define _RH2_Sym ___
+#endif
+#ifndef _RH2_Num
+#define _RH2_Num ___
+#endif
+#ifndef _RH2_Fn
+#define _RH2_Fn ___
+#endif
+#ifndef _RH2_Sys
+#define _RH2_Sys ___
+#endif
+#define _RH2(layer) _RH2_##layer
+// }}}
