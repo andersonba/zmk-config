@@ -32,10 +32,10 @@ layers:
   - {t: ., s: ':'}
   - {t: '?', s: '!'}
   - $$mdi:apple-keyboard-command$$
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - {t: '$$mdi:keyboard-tab$$', h: Num}
-  - {t: '$$mdi:keyboard-space$$', h: Sym}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+  - $$mdi:keyboard-space$$
+  - Sym
   - $$mdi:apple-keyboard-option$$
   Num:
   - HOME
@@ -69,8 +69,8 @@ layers:
   - '3'
   - .
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - '0'
   - '='
   - {t: ▽, type: trans}
@@ -108,8 +108,8 @@ layers:
   - {t: ▽, type: trans}
   - _
   - '-'
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   Fn:
   - ''
@@ -143,10 +143,10 @@ layers:
   - F3
   - F10
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
   - {type: held}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   Sys:
   - {h: '1', s: '$$mdi:bluetooth-connect$$'}
@@ -180,15 +180,15 @@ layers:
   - ''
   - {t: '$$mdi:backup-restore$$', type: bootloader}
   - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
+  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
 combos:
 - p: [12, 13]
   k: $$escape$$
-  l: [Base, Sym]
+  l: [Base]
 - p: [21, 22]
   k: $$mdi:content-copy$$
   l: [Base]
@@ -197,6 +197,9 @@ combos:
   l: [Base]
 - p: [16, 17]
   k: $$escape$$
+  l: [Base, Num]
+- p: [17, 18]
+  k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
 - p: [6, 7]
   k: {t: '$$mdi:backspace$$', type: backspace}
@@ -216,9 +219,9 @@ combos:
 - p: [26, 27]
   k: $$mdi:code-braces$$
   l: [Sym]
-- p: [32, 33]
+- p: [31, 34]
   k: Fn
   l: [Base]
-- p: [31, 34]
+- p: [32, 33]
   k: Sys
   l: [Base]

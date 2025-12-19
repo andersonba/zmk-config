@@ -130,12 +130,9 @@ SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 // Tap: qmark | shift + tap: excl.
 SIMPLE_MORPH(qmark_excl, SFT, &kp QMARK, &kp EXCL)
 
-// Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
-ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
-             tapping-term-ms = <TAPPING_TERM_MS>; quick-tap-ms = <QUICK_TAP_MS>;)
+// Tap: space | Shift + tap: dot -> space -> sticky shift.
 SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
  
-
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)
 
@@ -151,16 +148,16 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
 
 // Combos for layers
 ZMK_COMBO(fn, &mo FN,
-    LH0 RH0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(sys, &mo SYS,
     LH1 RH1, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sys, &mo SYS,
+    LH0 RH0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
-#define SMART_SPACE &lt_spc SYM 0
+#define SMART_SPACE &spc_morph
 #define TAB_LT &lt NUM TAB
 ZMK_BASE_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -170,7 +167,7 @@ ZMK_BASE_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B       ,   &kp N         &kp M         COMMA_SEMI    DOT_COLON     QMARK_EXCL  ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              MAGIC_SHIFT   TAB_LT     ,   SMART_SPACE   &kp RET
+                                              TAB_LT        MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 

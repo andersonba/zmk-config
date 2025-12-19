@@ -10,20 +10,22 @@
 // horizontal combos {{{
 /* left hand */
 ZMK_COMBO(esc,      &kp ESC,
-    LM2 LM1,        BASE SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    LM2 LM1,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(copy,     &tap_copy_cut 0 LG(C),
     LB3 LB2,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(paste,    &tap_paste LG(V) LG(V),
     LB2 LB1,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* right hand */
-ZMK_COMBO(esc,     &kp ESC,
+ZMK_COMBO(resc,     &kp ESC,
     RM1 RM2,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(bspc,    &kp BSPC,
+ZMK_COMBO(ret,      &kp RET,
+    RM2 RM3,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(bspc,     &kp BSPC,
     RT1 RT2,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(del,     &kp DEL,
+ZMK_COMBO(del,      &kp DEL,
     RT2 RT3,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(bspc_w,  &kp RA(BSPC),
+ZMK_COMBO(bspc_w,   &kp RA(BSPC),
     RT0 RT1,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 ZMK_COMBO(both_par, &both_par, RT1 RT2, SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)

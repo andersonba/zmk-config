@@ -38,10 +38,10 @@ layers:
   - {t: '?', s: '!'}
   - $$escape$$
   - $$mdi:apple-keyboard-command$$
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - {t: '$$mdi:keyboard-tab$$', h: Num}
-  - {t: '$$mdi:keyboard-space$$', h: Sym}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
+  - $$mdi:keyboard-space$$
+  - Sym
   - $$mdi:apple-keyboard-option$$
   Num:
   - $$mdi:keyboard-tab$$
@@ -81,8 +81,8 @@ layers:
   - .
   - $$escape$$
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - '0'
   - '='
   - {t: ▽, type: trans}
@@ -126,8 +126,8 @@ layers:
   - {t: ▽, type: trans}
   - _
   - '-'
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   Fn:
   - $$mdi:keyboard-tab$$
@@ -167,10 +167,10 @@ layers:
   - F10
   - $$escape$$
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
   - {type: held}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   Sys:
   - $$mdi:keyboard-tab$$
@@ -210,15 +210,15 @@ layers:
   - {t: '$$mdi:backup-restore$$', type: bootloader}
   - $$escape$$
   - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
+  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
 combos:
 - p: [15, 16]
   k: $$escape$$
-  l: [Base, Sym]
+  l: [Base]
 - p: [26, 27]
   k: $$mdi:content-copy$$
   l: [Base]
@@ -227,6 +227,9 @@ combos:
   l: [Base]
 - p: [19, 20]
   k: $$escape$$
+  l: [Base, Num]
+- p: [20, 21]
+  k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
 - p: [7, 8]
   k: {t: '$$mdi:backspace$$', type: backspace}
@@ -246,9 +249,9 @@ combos:
 - p: [31, 32]
   k: $$mdi:code-braces$$
   l: [Sym]
-- p: [38, 39]
+- p: [37, 40]
   k: Fn
   l: [Base]
-- p: [37, 40]
+- p: [38, 39]
   k: Sys
   l: [Base]
