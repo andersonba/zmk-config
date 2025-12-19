@@ -147,11 +147,6 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
   hold-trigger-key-positions = <0>;
 )
 
-// LGUI+Tab swapper, requires tri-state module.
-ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
-              ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
-
-
 #include "./combos.dtsi"
 
 // LAYERS {{{
@@ -178,11 +173,11 @@ ZMK_BASE_LAYER(Base,
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    WIN_CYCLE     GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp 7         &kp 8         &kp 9         &kp MINUS   ,
+    &kp HOME      GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp 7         &kp 8         &kp 9         &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp 4         &kp 5         &kp 6         &kp SLASH   ,
+    &kp END       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp 4         &kp 5         &kp 6         &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           &kp HOME      XXX           &kp END       &swapper    ,   &kp COMMA     &kp 1         &kp 2         &kp 3         &kp DOT     ,
+    &kp LGUI      &kp LALT      &kp LSHIFT    &kp LCTRL     WIN_CYCLE   ,   &kp COMMA     &kp 1         &kp 2         &kp 3         &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___         ,   &kp 0         &kp EQUAL
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -202,11 +197,11 @@ ZMK_BASE_LAYER(Sym,
 
 ZMK_BASE_LAYER(Fn,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp C_PREV    &kp C_NEXT    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PP    ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12     ,
+    XXX           XXX           &kp C_VOL_UP  &kp C_PP      XXX    ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12     ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX         ,   XXX           &kp F4        &kp F5        &kp F6        &kp F11     ,
+    XXX           &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    XXX         ,   XXX           &kp F4        &kp F5        &kp F6        &kp F11     ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX         ,   XXX           &kp F1        &kp F2        &kp F3        &kp F10     ,
+    XXX           XXX           XXX           XXX           &lock       ,   XXX           &kp F1        &kp F2        &kp F3        &kp F10     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___         ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -218,7 +213,7 @@ ZMK_BASE_LAYER(Sys,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &bootloader   &studio_unlock XXX          XXX           XXX         ,   XXX           XXX           XXX           &studio_unlock &bootloader,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sys_reset    XXX           XXX           XXX           &lock       ,   XXX           XXX           XXX           XXX            &sys_reset ,
+    &sys_reset    XXX           XXX           XXX           XXX         ,   XXX           XXX           XXX           XXX            &sys_reset ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___         ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

@@ -38,7 +38,7 @@ layers:
     - {t: '$$mdi:keyboard-return$$', type: enter}
     - $$mdi:apple-keyboard-option$$
   Num:
-    - $$mdi:arrow-u-up-left$$
+    - HOME
     - $$mdi:arrow-left$$
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right$$
@@ -48,7 +48,7 @@ layers:
     - '8'
     - '9'
     - '-'
-    - ''
+    - END
     - $$mdi:arrow-left-bold$$
     - $$mdi:arrow-down-bold$$
     - $$mdi:arrow-right-bold$$
@@ -58,11 +58,11 @@ layers:
     - '5'
     - '6'
     - /
-    - ''
-    - HOME
-    - ''
-    - END
-    - $$mdi:swap-horizontal$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:arrow-u-up-left$$
     - ','
     - '1'
     - '2'
@@ -112,20 +112,20 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   Fn:
-    - $$mdi:skip-previous$$
-    - $$mdi:skip-next$$
-    - $$mdi:volume-low$$
+    - ''
+    - ''
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
+    - ''
     - ''
     - F7
     - F8
     - F9
     - F12
     - ''
-    - ''
-    - ''
-    - ''
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
     - ''
     - ''
     - F4
@@ -136,7 +136,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
+    - $$mdi:lock$$
     - ''
     - F1
     - F2
@@ -173,7 +173,7 @@ layers:
     - ''
     - ''
     - ''
-    - $$mdi:lock$$
+    - ''
     - ''
     - ''
     - ''
