@@ -554,8 +554,8 @@ rect.held, rect.combo.held {
 <text x="511" y="158" class="combo tap">}</text>
 </g>
 <g class="combo combopos-9">
-<rect rx="6" ry="6" x="154" y="78" width="28" height="26" class="combo"/>
-<use href="#escape" xlink:href="#escape" x="159" y="82" height="18" width="18.0" class="combo tap glyph escape"/>
+<rect rx="6" ry="6" x="42" y="64" width="28" height="26" class="combo"/>
+<use href="#escape" xlink:href="#escape" x="47" y="68" height="18" width="18.0" class="combo tap glyph escape"/>
 </g>
 <g class="combo combopos-10">
 <rect rx="6" ry="6" x="98" y="144" width="28" height="26" class="combo"/>
@@ -566,12 +566,12 @@ rect.held, rect.combo.held {
 <use href="#mdi:content-paste" xlink:href="#mdi:content-paste" x="159" y="138" height="18" width="18.0" class="combo tap glyph mdi:content-paste"/>
 </g>
 <g class="combo combopos-12">
-<rect rx="6" ry="6" x="553" y="78" width="28" height="26" class="combo"/>
-<use href="#escape" xlink:href="#escape" x="558" y="82" height="18" width="18.0" class="combo tap glyph escape"/>
+<rect rx="6" ry="6" x="665" y="64" width="28" height="26" class="combo"/>
+<use href="#escape" xlink:href="#escape" x="670" y="68" height="18" width="18.0" class="combo tap glyph escape"/>
 </g>
 <g class="combo enter combopos-13">
-<rect rx="6" ry="6" x="609" y="88" width="28" height="26" class="combo enter"/>
-<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="614" y="92" height="18" width="18.0" class="combo enter tap glyph mdi:keyboard-return"/>
+<rect rx="6" ry="6" x="553" y="78" width="28" height="26" class="combo enter"/>
+<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="558" y="82" height="18" width="18.0" class="combo enter tap glyph mdi:keyboard-return"/>
 </g>
 <g class="combo backspace combopos-14">
 <rect rx="6" ry="6" x="553" y="22" width="28" height="26" class="combo backspace"/>
@@ -765,8 +765,8 @@ rect.held, rect.combo.held {
 <use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="-9" y="-13" height="18" width="18.0" class="key enter tap glyph mdi:keyboard-return"/>
 </g>
 <g class="combo enter combopos-0">
-<rect rx="6" ry="6" x="609" y="88" width="28" height="26" class="combo enter"/>
-<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="614" y="92" height="18" width="18.0" class="combo enter tap glyph mdi:keyboard-return"/>
+<rect rx="6" ry="6" x="553" y="78" width="28" height="26" class="combo enter"/>
+<use href="#mdi:keyboard-return" xlink:href="#mdi:keyboard-return" x="558" y="82" height="18" width="18.0" class="combo enter tap glyph mdi:keyboard-return"/>
 </g>
 <g class="combo backspace combopos-1">
 <rect rx="6" ry="6" x="553" y="22" width="28" height="26" class="combo backspace"/>

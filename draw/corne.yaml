@@ -243,7 +243,7 @@ combos:
 - p: [30, 31]
   k: '}'
   l: [Base]
-- p: [15, 16]
+- p: [1, 2]
   k: $$escape$$
   l: [Base]
 - p: [26, 27]
@@ -252,10 +252,10 @@ combos:
 - p: [27, 28]
   k: $$mdi:content-paste$$
   l: [Base]
-- p: [19, 20]
+- p: [9, 10]
   k: $$escape$$
   l: [Base]
-- p: [20, 21]
+- p: [19, 20]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
 - p: [7, 8]
