@@ -157,7 +157,7 @@ ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
-#define SPACE &lt_spc NUM 0
+#define SMART_SPACE &lt_spc NUM 0
 #define TAB_SYM &lt SYM TAB
 ZMK_BASE_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -167,7 +167,7 @@ ZMK_BASE_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B       ,   &kp N         &kp M         COMMA_SEMI    DOT_COLON     QMARK_EXCL  ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              MAGIC_SHIFT   TAB_SYM     ,   SPACE         &kp RET
+                                              MAGIC_SHIFT   TAB_SYM     ,   SMART_SPACE   &kp RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
