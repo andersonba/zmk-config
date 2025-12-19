@@ -1,0 +1,7 @@
+// Dot + Space + Shift
+ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHIFT>; 
+    wait-ms = <0>; tap-ms = <5>;)
+
+// Mac
+ZMK_MACRO(lock, bindings = <&kp LC(LG(Q))>;)
+ZMK_MACRO(cut, bindings = <&kp LG(X)>;)

@@ -161,7 +161,7 @@ parse_config:
     "&both_par": $$mdi:code-parentheses$$
     "&both_brk": $$mdi:code-brackets$$
     "&both_brc": $$mdi:code-braces$$
-    "&smart_shift":
+    "&magic_shift":
       tap: $$mdi:apple-keyboard-shift$$
       hold: $$mdi:gesture-tap-hold$$
 
@@ -176,16 +176,14 @@ parse_config:
     "ALFRED": $$alfred$$
 
     # Combos
-    "&kp LG(X)": $$mdi:content-cut$$
-    "&mt_copy": $$mdi:content-copy$$
-    "&ht_delayed_paste": $$mdi:content-paste$$
-    "&kp LG(V)": $$mdi:content-paste$$
+    "&tap_copy_cut": $$mdi:content-copy$$
+    "&tap_paste": $$mdi:content-paste$$
     "&kp LG(LBKT)": $$mdi:arrow-left$$
     "&kp LG(RBKT)": $$mdi:arrow-right$$
     "&num_word": $$mdi:numeric$$
 
     # Macros
-    "&mac_lock": $$mdi:lock$$
+    "&lock": $$mdi:lock$$
     "&dot_spc": ""
 
   # ZMK
@@ -229,7 +227,7 @@ parse_config:
       shifted: ""
     BSLH:
       tap: '\'
-      shifted: "|"
+      shifted: ""
     PIPE: "|"
     NON_US_BACKSLASH: \
     PIPE2: "|"
@@ -239,7 +237,7 @@ parse_config:
       shifted: ":"
     SEMI:
       tap: ";"
-      shifted: ":"
+      shifted: ""
     COLON: ":"
     SINGLE_QUOTE:
       tap: "'"
@@ -298,10 +296,12 @@ parse_config:
     LCTRL: $$mdi:apple-keyboard-control$$
     LALT: $$mdi:apple-keyboard-option$$
     LSHIFT: $$mdi:apple-keyboard-shift$$
+    LSHFT: $$mdi:apple-keyboard-shift$$
     LGUI: $$mdi:apple-keyboard-command$$
     RCTRL: $$mdi:apple-keyboard-control$$
     RALT: $$mdi:apple-keyboard-option$$
     RSHIFT: $$mdi:apple-keyboard-shift$$
+    RSHFT: $$mdi:apple-keyboard-shift$$
     RGUI: $$mdi:apple-keyboard-command$$
     PSCRN: $$mdi:printer-outline$$
     PAGE_UP:
