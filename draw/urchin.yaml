@@ -32,8 +32,8 @@ layers:
     - {t: ., s: ':'}
     - {t: '?', s: '!'}
     - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-    - {t: '$$mdi:keyboard-tab$$', h: Sym}
-    - {t: '$$mdi:keyboard-space$$', h: Num}
+    - {t: '$$mdi:keyboard-tab$$', h: Num}
+    - {t: '$$mdi:keyboard-space$$', h: Sym}
     - {t: '$$mdi:keyboard-return$$', type: enter}
   Sym:
     - '`'
@@ -66,45 +66,45 @@ layers:
     - ;
     - ':'
     - ''
-    - {t: ▽, type: trans}
-    - {type: held}
-    - '-'
     - _
-  Num:
     - '-'
+    - {type: held}
+    - {t: ▽, type: trans}
+  Num:
+    - $$mdi:arrow-u-up-left$$
+    - $$mdi:arrow-left$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right$$
+    - PG UP
+    - +
     - '7'
     - '8'
     - '9'
-    - +
-    - $$mdi:swap-horizontal$$
-    - $$mdi:arrow-left$$
-    - $$mdi:arrow-right$$
-    - $$mdi:arrow-u-up-left$$
-    - {t: '$$mdi:backspace$$', type: backspace}
-    - /
+    - '-'
+    - ''
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-right-bold$$
+    - PG DN
+    - '*'
     - '4'
     - '5'
     - '6'
-    - '*'
-    - $$mdi:arrow-left-bold$$
-    - $$mdi:arrow-down-bold$$
-    - $$mdi:arrow-up-bold$$
-    - $$mdi:arrow-right-bold$$
+    - /
     - ''
-    - .
+    - HOME
+    - ''
+    - END
+    - $$mdi:swap-horizontal$$
+    - ','
     - '1'
     - '2'
     - '3'
-    - ','
-    - HOME
-    - PG DN
-    - PG UP
-    - END
-    - $$escape$$
-    - '='
-    - '0'
-    - {type: held}
+    - .
     - {t: ▽, type: trans}
+    - {type: held}
+    - '0'
+    - '='
   Fn:
     - $$mdi:skip-previous$$
     - $$mdi:skip-next$$

@@ -16,6 +16,7 @@
 #define NUM 2
 #define FN 3
 #define SYS 4
+#define NUM_2 5
 
 // Timings
 #define QUICK_TAP_MS 150
@@ -159,8 +160,8 @@ ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
-#define SMART_SPACE &lt_spc NUM 0
-#define TAB_SYM &lt SYM TAB
+#define SMART_SPACE &lt_spc SYM 0
+#define TAB_LT &lt NUM TAB
 ZMK_BASE_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp Q         &kp W         &kp E         &kp R         &kp T       ,   &kp Y         &kp U         &kp I         &kp O         &kp P       ,
@@ -169,7 +170,7 @@ ZMK_BASE_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B       ,   &kp N         &kp M         COMMA_SEMI    DOT_COLON     QMARK_EXCL  ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              MAGIC_SHIFT   TAB_SYM     ,   SMART_SPACE   &kp RET
+                                              MAGIC_SHIFT   TAB_LT     ,   SMART_SPACE   &kp RET
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
@@ -179,9 +180,9 @@ ZMK_BASE_LAYER(Sym,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LBKT      &kp RBKT      &kp PIPE      XXX           XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CARET     &kp LT        &kp GT        &kp EQUAL      &kp PLUS    ,  &kp LBRC      &kp RBRC      &kp SEMI      &kp COLON     XXX         ,
+    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp LBRC      &kp RBRC      &kp SEMI      &kp COLON     XXX         ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___         ,   &kp MINUS     &kp UNDER
+                                              &kp UNDER     &kp MINUS   ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
@@ -190,13 +191,13 @@ ZMK_BASE_LAYER(Sym,
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp MINUS     &kp 7         &kp 8         &kp 9         &kp PLUS    ,   &swapper      GO_BACK       GO_FORWD      WIN_CYCLE     &kp BSPC    ,
+    WIN_CYCLE     GO_BACK       &kp UP        GO_FORWD      &kp PG_UP   ,   &kp PLUS      &kp 7         &kp 8         &kp 9         &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp SLASH     &kp 4         &kp 5         &kp 6         &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     XXX         ,
+    XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN   ,   &kp ASTERISK  &kp 4         &kp 5         &kp 6         &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp DOT       &kp 1         &kp 2         &kp 3         &kp COMMA   ,   &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp ESC     ,
+    XXX           &kp HOME      XXX           &kp END       &swapper    ,   &kp COMMA     &kp 1         &kp 2         &kp 3         &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              &kp EQUAL     &kp 0       ,   ___           ___
+                                              ___           ___         ,   &kp 0         &kp EQUAL
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
