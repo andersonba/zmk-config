@@ -41,9 +41,6 @@
 #define XXX &none
 #define ___ &trans
 
-#include "./macros.dtsi"
-#include "./combos.dtsi"
-
 &sk { // Sticky Key
   release-after-ms = <STICKY_RELEASE_MS>;
   quick-release;
@@ -69,6 +66,8 @@
 &mt { 
   MT_CORE
 };
+
+#include "./macros.dtsi"
 
 // HRM {{{
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS, TAPPING_TERM, PRIOR_IDLE) \
@@ -122,13 +121,13 @@ ZMK_ADAPTIVE_KEY(shift_repeat, bindings = <&sk LSHFT>;
 // }}}
 
 // Tap: comma | shift + tap: semicolon
-SIMPLE_MORPH(comma_semicolon, SHIFT, &kp COMMA, &kp SEMICOLON)
+SIMPLE_MORPH(comma_semicolon, SFT, &kp COMMA, &kp SEMICOLON)
 
 // Tap: dot | shift + tap: colon
-SIMPLE_MORPH(dot_colon, SHIFT, &kp DOT, &kp COLON)
+SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
 
 // Tap: qmark | shift + tap: excl.
-SIMPLE_MORPH(qmark_excl, SHIFT, &kp QMARK, &kp EXCL)
+SIMPLE_MORPH(qmark_excl, SFT, &kp QMARK, &kp EXCL)
 
 // Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
@@ -137,7 +136,7 @@ SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
  
 
 // Tap: copy | long-tap: cut (single execution, no repeat).
-ZMK_HOLD_TAP(tap_copy_cut, bindings = <&m_cut>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)
 
 // Paste with initial delay before repeat
 ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
@@ -151,6 +150,8 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
 ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
               ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;)
 
+
+#include "./combos.dtsi"
 
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
@@ -192,7 +193,7 @@ ZMK_BASE_LAYER(Num,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp SLASH     &kp 4         &kp 5         &kp 6         &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp DOT       &kp 1         &kp 2         &kp 3         &kp COMMA   ,   &kp HOME      &kp PG_DOWN   &kp PG_UP     &kp END       &kp ESC     ,
+    &kp DOT       &kp 1         &kp 2         &kp 3         &kp COMMA   ,   &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp ESC     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp EQUAL     &kp 0       ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

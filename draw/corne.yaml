@@ -118,7 +118,7 @@ layers:
     - '3'
     - ','
     - HOME
-    - PG DOWN
+    - PG DN
     - PG UP
     - END
     - $$escape$$
