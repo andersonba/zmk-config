@@ -15,7 +15,7 @@ ZMK_COMBO(both_brc, &both_brc, LB0 RB0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* left hand */
 ZMK_COMBO(esc,      &kp ESC,
-    LT4 LT3,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    LM2 LM1,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(copy,     &tap_copy_cut 0 LG(C),
     LB3 LB2,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(paste,    &tap_paste LG(V) LG(V),
@@ -23,9 +23,9 @@ ZMK_COMBO(paste,    &tap_paste LG(V) LG(V),
 
 /* right hand */
 ZMK_COMBO(resc,     &kp ESC,
-    RT3 RT4,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    RM1 RM2,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(ret,      &kp RET,
-    RM1 RM2,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    RM2 RM3,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(bspc,     &kp BSPC,
     RT1 RT2,        BASE NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(bspc_w,   &kp RA(BSPC),
@@ -35,4 +35,4 @@ ZMK_COMBO(bspc_w,   &kp RA(BSPC),
 // vertical combos {{{
 /* left hand */
 /* right hand */
-/// }}}
+/// }}};
