@@ -45,10 +45,10 @@ layers:
   - {t: '$$mdi:keyboard-return$$', type: enter}
   Num:
   - $$mdi:keyboard-tab$$
-  - ''
-  - ''
-  - ''
-  - ''
+  - $$mdi:arrow-u-up-left$$
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-right$$
   - ''
   - +
   - '7'
@@ -58,9 +58,9 @@ layers:
   - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:apple-keyboard-control$$
   - ''
-  - ''
-  - ''
-  - ''
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - ''
   - '*'
   - '4'
@@ -93,10 +93,10 @@ layers:
   - '#'
   - $
   - '%'
-  - ''
-  - $$mdi:arrow-left$$
-  - $$mdi:arrow-right$$
-  - ''
+  - '['
+  - (
+  - )
+  - ']'
   - '|'
   - {t: '$$mdi:backspace$$', type: backspace}
   - $$mdi:apple-keyboard-control$$
@@ -117,7 +117,7 @@ layers:
   - '>'
   - '='
   - +
-  - ;
+  - {t: ;, s: ':'}
   - '{'
   - '}'
   - ''
@@ -225,37 +225,25 @@ combos:
 - p: [29, 30]
   k: $$mdi:code-braces$$
   l: [Base]
-- p: [5, 4]
-  k: (
-  l: [Base]
-- p: [6, 7]
-  k: )
-  l: [Base]
-- p: [17, 16]
-  k: '['
-  l: [Base]
-- p: [18, 19]
-  k: ']'
-  l: [Base]
-- p: [29, 28]
-  k: '{'
-  l: [Base]
-- p: [30, 31]
-  k: '}'
-  l: [Base]
-- p: [1, 2]
+- p: [15, 16]
   k: $$escape$$
-  l: [Base]
+  l: [Base, Sym]
 - p: [26, 27]
   k: $$mdi:content-copy$$
   l: [Base]
 - p: [27, 28]
   k: $$mdi:content-paste$$
   l: [Base]
-- p: [9, 10]
-  k: $$escape$$
+- p: [25, 26]
+  k: {t: Z, s: '$$mdi:apple-keyboard-command$$'}
+  l: [Base]
+- p: [26, 28]
+  k: {t: X, s: '$$mdi:apple-keyboard-command$$'}
   l: [Base]
 - p: [19, 20]
+  k: $$escape$$
+  l: [Base, Num]
+- p: [20, 21]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
 - p: [7, 8]
