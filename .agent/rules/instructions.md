@@ -95,15 +95,9 @@ The repository uses a **modular architecture** to share keymap logic across diff
 
 ## Key Dependencies
 
-This repository uses **vanilla ZMK** (official zmkfirmware/zmk) with urob's module ecosystem:
+This repository uses **vanilla ZMK** (official zmkfirmware/zmk) with urob's module ecosystem.
 
-- `duckyb/urchin-zmk-module` - Urchin keyboard definition
-- `urob/zmk-helpers` - Convenience macros for ZMK configuration
-- `urob/zmk-adaptive-key` - Adaptive key behaviors (magic shift, context-aware keys)
-- `urob/zmk-auto-layer` - Auto-layer functionality (num-word, smart layers)
-- `urob/zmk-tri-state` - Tri-state behaviors (swapper, smart mouse)
-- `urob/zmk-unicode` - Unicode character support
-- `nice-view-gem` - Custom Nice!View display theme
+See `west.yml` for the complete list of modules and dependencies.
 
 ## Development Workflow
 
@@ -129,15 +123,13 @@ just build urchin && just build corne && just build crosses
 
 Current implementation includes:
 
-- **Home Row Mods**: "Timeless" configuration based on urob's layout (280/150/175ms timings)
-- **Smart Combos**: Horizontal combos (Esc, Enter, Cut/Copy/Paste, brackets)
-- **Vertical Combos**: urob-style vertical combos for symbols (@, #, $, %, +, -, =, etc.)
-- **Dual Layouts**: QWERTY and Graphite layouts (unique feature)
-- **Smart Numbers**: num_word functionality with auto-layer
-- **AI Integration**: Custom ChatGPT and Translate macros (unique feature)
-- **Both-hand Symbols**: Simultaneous combos for paired symbols ((), [], {})
-- **Swapper**: Alt+Tab functionality with tri-state
-- **Unicode Support**: Enabled for special characters
+- **Home Row Mods**: Configuration and timings defined in `config/base.dtsi`
+- **Smart Combos**: Defined in `config/combos.dtsi`
+- **Vertical Combos**: Defined in `config/combos.dtsi`
+- **Smart Numbers**: Defined in `config/base.dtsi` (uses urob/zmk-auto-layer module)
+- **Both-hand Symbols**: Defined in `config/combos.dtsi`
+- **Swapper**: Defined in `config/base.dtsi` and `config/macros.dtsi`
+- **Unicode Support**: Defined in `config/base.dtsi` and `config/macros.dtsi`
 - **ZMK Studio**: Enabled for real-time configuration
 
 ## Important Notes
