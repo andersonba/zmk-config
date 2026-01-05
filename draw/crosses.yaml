@@ -32,7 +32,7 @@ layers:
   - {t: ., s: ':'}
   - {t: '?', s: '!'}
   - $$mdi:apple-keyboard-command$$
-  - {t: '$$mdi:keyboard-tab$$', h: Num}
+  - Num
   - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - $$mdi:keyboard-space$$
   - Sym
@@ -48,7 +48,7 @@ layers:
   - '8'
   - '9'
   - '-'
-  - ''
+  - $$mdi:swap-horizontal$$
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
@@ -195,8 +195,11 @@ combos:
 - p: [24, 25]
   k: $$mdi:code-braces$$
   l: [Base]
-- p: [12, 13]
+- p: [1, 2]
   k: $$escape$$
+  l: [Base, Sym]
+- p: [13, 12]
+  k: $$mdi:keyboard-tab$$
   l: [Base, Sym]
 - p: [21, 22]
   k: $$mdi:content-copy$$
@@ -205,21 +208,23 @@ combos:
   k: $$mdi:content-paste$$
   l: [Base]
 - p: [20, 21]
-  k: {t: Z, s: '$$mdi:apple-keyboard-command$$'}
+  k: $$mdi:undo-variant$$
   l: [Base]
 - p: [21, 23]
   k: {t: X, s: '$$mdi:apple-keyboard-command$$'}
   l: [Base]
-- p: [16, 17]
+  a: bottom
+  o: 0.15
+- p: [7, 8]
   k: $$escape$$
   l: [Base, Num]
-- p: [17, 18]
+- p: [16, 17]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
   l: [Base, Num]
 - p: [6, 7]
   k: {t: '$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
-- p: [7, 8]
+- p: [5, 6]
   k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
   l: [Base, Num]
 - p: [31, 34]

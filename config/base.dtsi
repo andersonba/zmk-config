@@ -158,7 +158,6 @@ ZMK_COMBO(sys, &mo SYS,
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
 #define SMART_SPACE &spc_morph
-#define TAB_LT &lt NUM TAB
 ZMK_BASE_LAYER(Base,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp Q         &kp W         &kp E         &kp R         &kp T       ,   &kp Y         &kp U         &kp I         &kp O         &kp P       ,
@@ -167,18 +166,19 @@ ZMK_BASE_LAYER(Base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B       ,   &kp N         &kp M         COMMA_SEMI    DOT_COLON     QMARK_EXCL  ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              TAB_LT        MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
+                                              &mo NUM       MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
 #define WIN_CYCLE &kp LG(GRAVE)
+#define ALT_TAB &kp LG(TAB)
 #define GO_BACK &kp LG(LBKT)
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     WIN_CYCLE     GO_BACK       &kp UP        GO_FORWD      XXX         ,   &kp PLUS      &kp N7        &kp N8        &kp N9        &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           &kp LEFT      &kp DOWN      &kp RIGHT     XXX         ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
+    ALT_TAB       &kp LEFT      &kp DOWN      &kp RIGHT     XXX         ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           XXX           XXX           XXX           XXX         ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
