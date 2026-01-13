@@ -144,6 +144,14 @@ ZMK_HOLD_TAP(tap_paste, bindings = <&kp>, <&kp>;
   hold-trigger-key-positions = <0>;
 )
 
+// CMD+Tab swapper for macOS (tri-state behavior)
+// Allows holding CMD while repeatedly pressing TAB or arrow keys to navigate
+ZMK_TRI_STATE(swapper,
+  bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+  ignored-key-positions = <LT2 LM1 LM2 LM3>;  // Allow UP, LEFT, DOWN, RIGHT while swapping
+  timeout-ms = <1500>;
+)
+
 #include "./combos.dtsi"
 
 // Combos for layers
@@ -171,7 +179,7 @@ ZMK_BASE_LAYER(Base,
 )
 
 #define WIN_CYCLE &kp LG(GRAVE)
-#define ALT_TAB &kp LG(TAB)
+#define ALT_TAB &swapper
 #define GO_BACK &kp LG(LBKT)
 #define GO_FORWD &kp LG(RBKT)
 ZMK_BASE_LAYER(Num,
