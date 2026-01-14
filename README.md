@@ -23,6 +23,7 @@ This project uses a **modular architecture** to share keymap logic across differ
 - **Smart Combos**: Essential actions (Esc, Enter, Cut/Copy/Paste) without extra keys
 - **Adaptive Keys**: Context-aware key behaviors using [urob/zmk-adaptive-key](https://github.com/urob/zmk-adaptive-key)
 - **Auto-Sentence**: Automatic capitalization and period insertion
+- **Mouse Layer**: Pointing device support with tap-toggle/hold-momentary behavior (board-dependent)
 - **Shared Configuration**: DRY approach with `default.conf` for common settings
 
 ## Layout
