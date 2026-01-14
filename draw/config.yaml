@@ -400,9 +400,7 @@ parse_config:
       tap: "F"
       shifted: $$mdi:apple-keyboard-command$$
     LG(Z): $$mdi:undo-variant$$
-    LG(X):
-      tap: "X"
-      shifted: $$mdi:apple-keyboard-command$$
+    LG(X): $$mdi:content-cut$$
     LG(C):
       tap: "C"
       shifted: $$mdi:apple-keyboard-command$$
@@ -432,4 +430,4 @@ parse_config:
       shifted: $$mdi:apple-keyboard-command$$
 
   zmk_combos:
-    combo_cut: { align: bottom, o: 0.15 }
+    combo_cut: { align: bottom, o: 0.1 }

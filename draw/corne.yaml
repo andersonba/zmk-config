@@ -225,7 +225,7 @@ combos:
 - p: [29, 30]
   k: $$mdi:code-braces$$
   l: [Base]
-- p: [2, 3]
+- p: [14, 15]
   k: $$escape$$
   l: [Base, Sym]
 - p: [16, 15]
@@ -241,11 +241,11 @@ combos:
   k: $$mdi:undo-variant$$
   l: [Base]
 - p: [26, 28]
-  k: {t: X, s: '$$mdi:apple-keyboard-command$$'}
+  k: $$mdi:content-cut$$
   l: [Base]
   a: bottom
-  o: 0.15
-- p: [8, 9]
+  o: 0.1
+- p: [20, 21]
   k: $$escape$$
   l: [Base, Num]
 - p: [19, 20]
@@ -253,10 +253,10 @@ combos:
   l: [Base, Num]
 - p: [7, 8]
   k: {t: '$$mdi:backspace$$', type: backspace}
-  l: [Base, Num]
+  l: [Base, Num, Sym]
 - p: [6, 7]
   k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
-  l: [Base, Num]
+  l: [Base, Num, Sym]
 - p: [37, 40]
   k: Fn
   l: [Base]
