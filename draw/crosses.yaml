@@ -237,10 +237,10 @@ layers:
     - $$mdi:mouse-outline$$
     - $$mdi:mouse-left-click-outline$$
     - ''
-    - ''
-    - ''
-    - ''
-    - ''
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right-bold$$
     - ''
     - ''
     - ''

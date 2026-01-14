@@ -194,6 +194,10 @@ parse_config:
     "&mkp LCLK": $$mdi:mouse-left-click-outline$$
     "&mkp MCLK": $$mdi:mouse-outline$$
     "&mkp RCLK": $$mdi:mouse-right-click-outline$$
+    "&mmv MOVE_UP": $$mdi:arrow-up-bold$$
+    "&mmv MOVE_DOWN": $$mdi:arrow-down-bold$$
+    "&mmv MOVE_LEFT": $$mdi:arrow-left-bold$$
+    "&mmv MOVE_RIGHT": $$mdi:arrow-right-bold$$
 
   # ZMK
   zmk_keycode_map:
