@@ -223,20 +223,22 @@ build board="urchin" side="all":
     # Define shields and display adapters based on board
     case {{board}} in
         "urchin")
+            BOARD="nice_nano_v2"
             SHIELD_NAME="urchin"
             EXTRA_MODULES="nice_view_adapter nice_view_gem"
             ;;
         "corne")
+            BOARD="nice_nano_v2"
             SHIELD_NAME="corne"
             EXTRA_MODULES="nice_view_adapter nice_view"
             ;;
         "crosses")
+            BOARD="nice_nano"
             SHIELD_NAME="crosses"
             EXTRA_MODULES="" # Assuming no display for now
             ;;
     esac
 
-    BOARD="nice_nano_v2"
     SHIELD="${SHIELD_NAME}_{{side}} ${EXTRA_MODULES}"
 
     echo "🔨 Building {{board}} {{side}} (${BOARD} + ${SHIELD})..."
