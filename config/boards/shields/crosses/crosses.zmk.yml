@@ -1,0 +1,14 @@
+file_format: "1"
+id: crosses
+name: Crosses
+type: shield
+url: https://github.com/Good-Great-Grand-Wonderful/crosses
+requires: [pro_micro]
+features:
+  - keys
+  - pointer
+  - underglow
+  - studio
+siblings:
+  - crosses_left
+  - crosses_right

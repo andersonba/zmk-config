@@ -1,0 +1,78 @@
+/*
+ * Copyright (c) 2020 ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+ 
+#include "crosses.dtsi"
+
+&default_transform {
+    col-offset = <5>;
+}; 
+
+&kscan0 {
+	col-gpios
+		= <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		, <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		, <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		, <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		, <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		
+		;
+};
+
+// trackball bus
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 20)>,
+                <NRF_PSEL(SPIM_MISO, 0, 20)>;
+        };
+    };
+
+    spi0_sleep: spi0_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 20)>,
+                <NRF_PSEL(SPIM_MISO, 0, 20)>;
+            low-power-enable;
+        };
+    };
+};
+
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+&spi0 {
+    status = "okay";
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi0_default>;
+    pinctrl-1 = <&spi0_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+
+    trackball: trackball@0 {
+        status = "okay";
+        compatible = "pixart,pmw3610";
+        reg = <0>;
+        spi-max-frequency = <2000000>;
+        irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cpi = <600>;
+        swap-xy;
+        invert-x;
+        invert-y;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        force-awake;
+    };
+};
+
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+    };
+};
+
+

@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: crosses, layout_name: gggw_crosses_36_layout}
+layout: {zmk_keyboard: crosses}
 layers:
   Base:
   - Q

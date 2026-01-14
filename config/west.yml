@@ -8,8 +8,8 @@ manifest:
       url-base: https://github.com/urob
     - name: m165437
       url-base: https://github.com/M165437
-    - name: Good-Great-Grand-Wonderful
-      url-base: https://github.com/Good-Great-Grand-Wonderful
+    - name: badjeff
+      url-base: https://github.com/badjeff
 
   projects:
     - name: zmk
@@ -24,10 +24,9 @@ manifest:
     - name: urchin-zmk-module
       remote: duckyb
       revision: main
-    - name: gggw-zmk-keebs
-      remote: Good-Great-Grand-Wonderful
-      revision: main
-      import: config/west.yml
+    - name: zmk-pmw3610-driver
+      remote: badjeff
+      revision: zmk-0.3
 
     # ZMK modules
     - name: zmk-adaptive-key

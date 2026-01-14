@@ -13,5 +13,3 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <zmk-helpers/key-labels/36.h>
 #include "base.dtsi"
-
-/ { chosen { zmk,physical-layout = &gggw_crosses_36_layout; }; };

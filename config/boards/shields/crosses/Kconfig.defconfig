@@ -1,0 +1,17 @@
+if SHIELD_CROSSES_RIGHT
+
+config ZMK_KEYBOARD_NAME
+	default "Crosses"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+	default y
+
+endif
+
+if SHIELD_CROSSES_LEFT || SHIELD_CROSSES_RIGHT
+
+config ZMK_SPLIT
+	default y
+
+endif
+
