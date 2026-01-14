@@ -338,17 +338,23 @@ draw board="urchin" method="default":
         *) echo "Unknown board: {{board}}"; exit 1;;
     esac
 
-    case {{method}} in 
+    case {{method}} in
         "default")
             keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" >"$YAML_FILE"
-            keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
         ;; "combine-combos")
             keymap -c "draw/config.yaml" parse -z "$KEYMAP_FILE" --virtual-layers Combos >"$YAML_FILE"
             yq -Yi '.combos.[].l = ["Combos"]' "$YAML_FILE"
-            keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
         ;;
         *) echo "Unknown method: {{method}}"; exit 1;;
     esac
+
+    if [ "{{board}}" == "crosses" ]; then
+        # del(.layers.A, .layers.B, ...etc)
+        yq -y 'del(.layers.Scroll)' "$YAML_FILE" > "${YAML_FILE}.tmp"
+        mv "${YAML_FILE}.tmp" "$YAML_FILE"
+    fi
+
+    keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
     
     echo "✅ Drawn to $SVG_FILE"
 
