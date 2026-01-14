@@ -42,6 +42,10 @@
 };
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/zmk/input_transform.h>
+#include <input/processors/code_mapper.dtsi>
+#include <input/processors/transform.dtsi>
+#include <input/processors/scaler.dtsi>
 
 &spi0 {
     status = "okay";
@@ -72,6 +76,11 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+
+        scroll {
+            layers = <1>;
+            input-processors = <&zip_xy_scaler 1 40>, <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
 
