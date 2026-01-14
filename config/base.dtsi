@@ -19,6 +19,17 @@
 #define MOUSE 5
 #define SCROLL 6
 
+// Mouse layer behavior (tap: toggle | hold: momentary)
+#ifdef ENABLE_MOUSE_LAYER
+ZMK_HOLD_TAP(mo_tog_mouse,
+  bindings = <&mo>, <&tog>;
+  flavor = "balanced";
+  tapping-term-ms = <230>;
+  quick-tap-ms = <150>;
+)
+#define MO_TOG_MOUSE &mo_tog_mouse MOUSE MOUSE
+#endif
+
 // Timings
 #define QUICK_TAP_MS 150
 #define HRM_TAPPING_TERM 230

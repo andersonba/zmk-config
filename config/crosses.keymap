@@ -1,6 +1,6 @@
 #define ENABLE_MOUSE_LAYER
 
-#define _LH2_Base &mo MOUSE
+#define _LH2_Base MO_TOG_MOUSE
 #define _RH2_Base &kp RET
 #define _RH2_Num &kp RET
 

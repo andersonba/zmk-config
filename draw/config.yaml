@@ -175,6 +175,7 @@ parse_config:
     "TRANSLATE": $$mdi:translate$$
     "ALFRED": $$alfred$$
     "ALT_TAB": $$mdi:swap-horizontal$$
+    "MO_TOG_MOUSE": "Mouse"
 
     # Combos
     "&tap_copy_cut": $$mdi:content-copy$$
