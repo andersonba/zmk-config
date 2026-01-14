@@ -300,10 +300,12 @@ flash board side:
     echo "Keyboard found at: $KEYBOARD"
 
     # Copy firmware to keyboard
+    # Note: The microcontroller resets before the OS confirms the transfer,
+    # causing harmless errors that we can safely ignore.
     echo "❯ Copying firmware to NICENANO..."
     error_msg=$(cp "$FIRMWARE_FILE" "$KEYBOARD/" 2>&1) || {
-        if [[ $error_msg == *"fcopyfile failed: Input/output error"* ]]; then
-            # macOS errors out on cp to the NICENANO, but it's actually successful
+        if [[ $error_msg == *"fcopyfile failed"* ]] || [[ $error_msg == *"could not copy extended attributes"* ]]; then
+            # Expected behavior - microcontroller resets mid-transfer
             :
         else
             echo "Error: $error_msg"
@@ -311,7 +313,7 @@ flash board side:
         fi
     }
 
-    echo "Flashed {{board}} {{side}} 🚀"
+    echo "✅ Flashed {{board}} {{side}}"
 
 draw board="urchin" method="default":
     #!/usr/bin/env bash
