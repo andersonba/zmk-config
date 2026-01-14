@@ -16,6 +16,8 @@
 #define SYM 2
 #define FN 3
 #define SYS 4
+#define MOUSE 5
+#define SCROLL 6
 
 // Timings
 #define QUICK_TAP_MS 150

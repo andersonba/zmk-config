@@ -17,6 +17,9 @@
 #ifndef _LH2_Mouse
 #define _LH2_Mouse ___
 #endif
+#ifndef _LH2_Scroll
+#define _LH2_Scroll ___
+#endif
 
 #define _LH2(layer) _LH2_##layer
 // }}}
@@ -39,6 +42,9 @@
 #endif
 #ifndef _RH2_Mouse
 #define _RH2_Mouse ___
+#endif
+#ifndef _RH2_Scroll
+#define _RH2_Scroll ___
 #endif
 
 #define _RH2(layer) _RH2_##layer
