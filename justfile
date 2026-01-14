@@ -233,7 +233,7 @@ build board="urchin" side="all":
             EXTRA_MODULES="nice_view_adapter nice_view"
             ;;
         "crosses")
-            BOARD="nice_nano"
+            BOARD="nice_nano_v2"
             SHIELD_NAME="crosses"
             EXTRA_MODULES="" # Assuming no display for now
             ;;
