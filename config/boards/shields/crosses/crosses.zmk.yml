@@ -8,7 +8,6 @@ features:
   - keys
   - pointer
   - underglow
-  - studio
 siblings:
   - crosses_left
   - crosses_right
