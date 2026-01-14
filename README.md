@@ -1,6 +1,6 @@
 # Multi-Board ZMK Config
 
-| [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)           |
+| [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
 | -------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
 | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
 | **34 keys** (3x5+2)                               | **36 keys** (3x5+3)                                          | **42 keys** (3x6+3)                             |
@@ -28,7 +28,7 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 ## Layout
 
-| [🪸 Urchin](https://github.com/duckyb/urchin)      | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [⌨️ Corne](https://github.com/foostan/crkbd)    |
+| [🪸 Urchin](https://github.com/duckyb/urchin)      | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)    |
 | ------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
 | <img src="draw/urchin.svg" alt="Urchin layout" /> | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
 
