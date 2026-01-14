@@ -187,6 +187,13 @@ parse_config:
     "&lock": $$mdi:lock$$
     "&dot_spc": ""
 
+    # Mouse
+    "&mkp MB4": $$mdi:mouse-move-down$$
+    "&mkp MB5": $$mdi:mouse-move-up$$
+    "&mkp LCLK": $$mdi:mouse-left-click-outline$$
+    "&mkp MCLK": $$mdi:mouse-outline$$
+    "&mkp RCLK": $$mdi:mouse-right-click-outline$$
+
   # ZMK
   zmk_keycode_map:
     # Symbols

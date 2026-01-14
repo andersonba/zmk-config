@@ -14,6 +14,10 @@
 #ifndef _LH2_Sys
 #define _LH2_Sys ___
 #endif
+#ifndef _LH2_Mouse
+#define _LH2_Mouse ___
+#endif
+
 #define _LH2(layer) _LH2_##layer
 // }}}
 
@@ -33,5 +37,9 @@
 #ifndef _RH2_Sys
 #define _RH2_Sys ___
 #endif
+#ifndef _RH2_Mouse
+#define _RH2_Mouse ___
+#endif
+
 #define _RH2(layer) _RH2_##layer
 // }}}
