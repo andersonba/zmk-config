@@ -56,11 +56,11 @@ layers:
   - '5'
   - '6'
   - /
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - $$mdi:undo-variant$$
+  - $$mdi:content-cut$$
+  - $$mdi:content-copy$$
+  - $$mdi:content-paste$$
+  - $$mdi:redo-variant$$
   - ','
   - '1'
   - '2'
@@ -96,10 +96,10 @@ layers:
   - '>'
   - '='
   - +
-  - {t: ;, s: ':'}
+  - $$mdi:arrow-left$$
   - '{'
   - '}'
-  - ''
+  - $$mdi:arrow-right$$
   - ;
   - _
   - '-'
@@ -191,20 +191,6 @@ combos:
 - p: [13, 12]
   k: $$mdi:keyboard-tab$$
   l: [Base, Sym]
-- p: [21, 22]
-  k: $$mdi:content-copy$$
-  l: [Base]
-- p: [22, 23]
-  k: $$mdi:content-paste$$
-  l: [Base]
-- p: [20, 21]
-  k: $$mdi:undo-variant$$
-  l: [Base]
-- p: [21, 23]
-  k: $$mdi:content-cut$$
-  l: [Base]
-  a: bottom
-  o: 0.1
 - p: [17, 18]
   k: $$escape$$
   l: [Base, Num]

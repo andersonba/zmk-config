@@ -176,6 +176,9 @@ parse_config:
     "ALFRED": $$alfred$$
     "ALT_TAB": $$mdi:swap-horizontal$$
     "MO_TOG_MOUSE": "Mouse"
+    "N_UNDO": $$mdi:undo-variant$$
+    "N_CUT": $$mdi:content-cut$$
+    "N_REDO": $$mdi:redo-variant$$
 
     # Combos
     "&tap_copy_cut": $$mdi:content-copy$$
@@ -404,8 +407,12 @@ parse_config:
     LG(F):
       tap: "F"
       shifted: $$mdi:apple-keyboard-command$$
-    LG(Z): $$mdi:undo-variant$$
-    LG(X): $$mdi:content-cut$$
+    LG(X):
+      tap: "X"
+      shifted: $$mdi:apple-keyboard-command$$
+    LG(Z):
+      tap: "Z"
+      shifted: $$mdi:apple-keyboard-command$$
     LG(C):
       tap: "C"
       shifted: $$mdi:apple-keyboard-command$$

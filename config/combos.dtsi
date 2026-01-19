@@ -19,15 +19,6 @@ ZMK_COMBO(esc,      &kp ESC,
 ZMK_COMBO(tab,      &kp TAB,
     LM1 LM2,        BASE SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(copy,     &tap_copy_cut 0 LG(C),
-    LB3 LB2,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(paste,    &tap_paste LG(V) LG(V),
-    LB2 LB1,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-
-ZMK_COMBO(undo,     &kp LG(Z),
-    LB4 LB3,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(cut,      &kp LG(X),
-    LB3 LB1,        BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* right hand */
 #ifdef ENABLE_MOUSE_LAYER

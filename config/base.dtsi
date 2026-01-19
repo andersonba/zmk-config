@@ -195,25 +195,32 @@ ZMK_BASE_LAYER(Base,
 #define ALT_TAB &swapper
 #define GO_BACK &kp LG(LBKT)
 #define GO_FORWD &kp LG(RBKT)
+#define N_UNDO &kp LG(Z)
+#define N_CUT &kp LG(X)
+#define N_COPY &tap_copy_cut 0 LG(C)
+#define N_PASTE &tap_paste LG(V) LG(V)
+#define N_REDO &kp LS(LG(Z))
 ZMK_BASE_LAYER(Num,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     WIN_CYCLE     GO_BACK       &kp UP        GO_FORWD      XXX         ,   &kp PLUS      &kp N7        &kp N8        &kp N9        &kp MINUS   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     ALT_TAB       &kp LEFT      &kp DOWN      &kp RIGHT     XXX         ,   &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp SLASH   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX         ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
+    N_UNDO        N_CUT         N_COPY        N_PASTE       N_REDO      ,   &kp COMMA     &kp N1        &kp N2        &kp N3        &kp DOT     ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               ___           ___         ,   &kp N0        &kp EQUAL
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
+#define GO_HOME &kp LG(LBKT)
+#define GO_END &kp LG(RBKT)
 ZMK_BASE_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp LBKT      &kp LPAR      &kp RPAR      &kp RBKT      &kp PIPE    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp COLON   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   &kp SEMICOLON &kp LBRC      &kp RBRC      XXX           &kp SEMI    ,
+    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   GO_HOME       &kp LBRC      &kp RBRC      GO_END        &kp SEMI    ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp UNDER     &kp MINUS   ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

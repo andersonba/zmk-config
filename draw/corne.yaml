@@ -69,11 +69,11 @@ layers:
   - /
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - $$mdi:undo-variant$$
+  - $$mdi:content-cut$$
+  - $$mdi:content-copy$$
+  - $$mdi:content-paste$$
+  - $$mdi:redo-variant$$
   - ','
   - '1'
   - '2'
@@ -117,10 +117,10 @@ layers:
   - '>'
   - '='
   - +
-  - {t: ;, s: ':'}
+  - $$mdi:arrow-left$$
   - '{'
   - '}'
-  - ''
+  - $$mdi:arrow-right$$
   - ;
   - $$escape$$
   - {t: ▽, type: trans}
@@ -231,20 +231,6 @@ combos:
 - p: [16, 15]
   k: $$mdi:keyboard-tab$$
   l: [Base, Sym]
-- p: [26, 27]
-  k: $$mdi:content-copy$$
-  l: [Base]
-- p: [27, 28]
-  k: $$mdi:content-paste$$
-  l: [Base]
-- p: [25, 26]
-  k: $$mdi:undo-variant$$
-  l: [Base]
-- p: [26, 28]
-  k: $$mdi:content-cut$$
-  l: [Base]
-  a: bottom
-  o: 0.1
 - p: [20, 21]
   k: $$escape$$
   l: [Base, Num]
