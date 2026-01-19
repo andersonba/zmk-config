@@ -5,7 +5,7 @@
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
     ZMK_LAYER(name, \
         &kp TAB    LT  RT  &kp BSPC  \
-        &kp LCTRL  LM  RM  &kp SQT   \
+        &kp LCTRL  LM  RM  &kp RCTRL \
         &kp LSHFT  LB  RB  &kp ESC   \
        _LH2(name)  LH  RH  _RH2(name) \
     )

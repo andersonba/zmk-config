@@ -24,7 +24,7 @@ layers:
   - {t: K, h: '$$mdi:apple-keyboard-shift$$'}
   - {t: L, h: '$$mdi:apple-keyboard-option$$'}
   - {t: '''', h: '$$mdi:apple-keyboard-command$$', s: '"'}
-  - {t: '''', s: '"'}
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - Z
   - X
@@ -67,7 +67,7 @@ layers:
   - '5'
   - '6'
   - /
-  - {t: '''', s: '"'}
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - $$mdi:undo-variant$$
   - $$mdi:content-cut$$
@@ -110,7 +110,7 @@ layers:
   - $$mdi:arrow-up-bold$$
   - $$mdi:arrow-right-bold$$
   - ':'
-  - {t: '''', s: '"'}
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - ^
   - <
@@ -153,7 +153,7 @@ layers:
   - F5
   - F6
   - F11
-  - {t: '''', s: '"'}
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - ''
   - ''
@@ -196,7 +196,7 @@ layers:
   - ''
   - $$mdi:lock-open$$
   - $$mdi:progress-download$$
-  - {t: '''', s: '"'}
+  - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - {t: '$$mdi:backup-restore$$', type: bootloader}
   - ''
