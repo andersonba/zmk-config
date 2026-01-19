@@ -253,11 +253,16 @@ ZMK_BASE_LAYER(Sys,
 #ifdef ENABLE_MOUSE_LAYER
 #include <dt-bindings/zmk/pointing.h>
 
+#define M_MOUSE_UP &mmv MOVE_UP
+#define M_MOUSE_DOWN &mmv MOVE_DOWN
+#define M_MOUSE_LEFT &mmv MOVE_LEFT
+#define M_MOUSE_RIGHT &mmv MOVE_RIGHT
+
 ZMK_BASE_LAYER(Mouse,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           &mkp MB4      XXX           &mkp MB5      XXX         ,   XXX           XXX           XXX           XXX           XXX         ,
+    XXX           &mkp MB4      XXX           &mkp MB5      XXX         ,   XXX           XXX           M_MOUSE_UP    XXX           XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &mo SCROLL    &mkp RCLK     &mkp MCLK     &mkp LCLK     XXX         ,  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT XXX       ,
+    &mo SCROLL    &mkp RCLK     &mkp MCLK     &mkp LCLK     XXX         ,   XXX           M_MOUSE_LEFT  M_MOUSE_DOWN  M_MOUSE_RIGHT XXX         ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           XXX           XXX           XXX           XXX         ,   XXX           XXX           XXX           XXX           XXX         ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯

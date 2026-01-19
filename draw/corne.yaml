@@ -42,7 +42,7 @@ layers:
   - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - $$mdi:keyboard-space$$
   - Sym
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - $$mdi:apple-keyboard-command$$
   Num:
   - $$mdi:keyboard-tab$$
   - $$mdi:arrow-u-up-left$$
