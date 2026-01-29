@@ -14,11 +14,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3
+      revision: main
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: v0.3
+      revision: main
 
     # Shields
     - name: urchin-zmk-module
@@ -26,26 +26,26 @@ manifest:
       revision: main
     - name: zmk-pmw3610-driver
       remote: badjeff
-      revision: zmk-0.3
+      revision: zmk-0.4
 
     # ZMK modules
     - name: zmk-adaptive-key
       remote: urob
-      revision: v0.3
+      revision: main
     - name: zmk-auto-layer
       remote: urob
-      revision: v0.3
+      revision: main
     - name: zmk-tri-state
       remote: urob
-      revision: v0.3
+      revision: main
     - name: zmk-unicode
       remote: urob
-      revision: v0.3
+      revision: main
 
     # Custom Nice!View
     - name: nice-view-gem
       remote: m165437
-      revision: v0.3.0
+      revision: main
 
   self:
     path: config

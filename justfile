@@ -38,10 +38,10 @@ init:
         echo "📥 Cloning ZMK repository..."
         (
             cd zmk-workspace
-            git clone -b v0.3 https://github.com/zmkfirmware/zmk.git || {
+            git clone -b main https://github.com/zmkfirmware/zmk.git || {
                 echo "⚠️  Git clone failed, trying to recover..."
                 rm -rf zmk
-                git clone -b v0.3 https://github.com/zmkfirmware/zmk.git
+                git clone -b main https://github.com/zmkfirmware/zmk.git
             }
         )
     else
@@ -65,6 +65,8 @@ init:
     echo "📥 Updating West modules..."
     (
         cd zmk-workspace/zmk
+        # Ensure we are on main branch for existing repos
+        git fetch origin main && git checkout main || echo "⚠️  Could not checkout main, continuing..."
         west update || {
             echo "⚠️  West update failed, retrying..."
             sleep 2
@@ -77,11 +79,13 @@ init:
     if [ -f zmk-workspace/zmk/zephyr/scripts/requirements.txt ]; then
         echo "📦 Installing Zephyr Python requirements..."
         pip install -q -r zmk-workspace/zmk/zephyr/scripts/requirements.txt
+        # Install ZMK Studio dependencies
+        pip install protobuf grpcio-tools
     fi
 
     # Step 7: Zephyr SDK with retry and resume
     echo "🔧 Installing Zephyr SDK (this may take a while)..."
-    SDK_VERSION="0.16.8"
+    SDK_VERSION="0.17.0"
     SDK_DIR="zmk-workspace/zephyr-sdk-${SDK_VERSION}"
 
     if [ ! -d "$SDK_DIR" ]; then
@@ -223,17 +227,17 @@ build board="urchin" side="all":
     # Define shields and display adapters based on board
     case {{board}} in
         "urchin")
-            BOARD="nice_nano_v2"
+            BOARD="nice_nano"
             SHIELD_NAME="urchin"
             EXTRA_MODULES="nice_view_adapter nice_view_gem"
             ;;
         "corne")
-            BOARD="nice_nano_v2"
+            BOARD="nice_nano"
             SHIELD_NAME="corne"
             EXTRA_MODULES="nice_view_adapter nice_view"
             ;;
         "crosses")
-            BOARD="nice_nano_v2"
+            BOARD="nice_nano"
             SHIELD_NAME="crosses"
             EXTRA_MODULES="" # Assuming no display for now
             ;;
