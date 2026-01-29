@@ -1,17 +1,17 @@
 ---
 include:
   # Urchin builds
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: urchin_left nice_view_adapter nice_view_gem
     snippet: studio-rpc-usb-uart
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: urchin_right nice_view_adapter nice_view_gem
 
   # Corne builds
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_left nice_view_adapter nice_view
     snippet: studio-rpc-usb-uart
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_right nice_view_adapter nice_view
 
   # Crosses builds
@@ -21,6 +21,6 @@ include:
     shield: crosses_right
 
   # Settings reset
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
     cmake-args: -DCONFIG_ZMK_STUDIO=n
