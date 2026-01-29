@@ -1,5 +1,7 @@
 #define _LH2_Base &kp LGUI
 #define _RH2_Base &kp RGUI
+#define _LH2_Graph &kp LGUI
+#define _RH2_Graph &kp RGUI
 #define _RH2_Num &kp RET
 
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \

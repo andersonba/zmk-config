@@ -2,6 +2,8 @@
 
 #define _LH2_Base MO_TOG_MOUSE
 #define _RH2_Base MO_TOG_MOUSE
+#define _LH2_Graph MO_TOG_MOUSE
+#define _RH2_Graph MO_TOG_MOUSE
 #define _RH2_Num &kp RET
 
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \

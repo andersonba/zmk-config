@@ -12,13 +12,15 @@
 
 // Layers
 #define BASE 0
-#define NUM 1
-#define SYM 2
-#define FN 3
-#define SYS 4
-#define MOUSE 5
-#define SCROLL 6
-#define GRAPH 7
+#define GRAPH 1
+#define NUM 2
+#define SYM 3
+#define FN 4
+#define SYS 5
+#define MOUSE 6
+#define SCROLL 7
+
+#define BASES BASE GRAPH
 
 // Mouse layer behavior (tap: toggle | hold: momentary)
 #ifdef ENABLE_MOUSE_LAYER
@@ -170,9 +172,9 @@ ZMK_TRI_STATE(swapper,
 
 // Combos for layers
 ZMK_COMBO(fn, &mo FN,
-    LH1 RH1, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    LH1 RH1, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(sys, &mo SYS,
-    LH0 RH0, BASE, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+    LH0 RH0, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
@@ -187,6 +189,18 @@ ZMK_BASE_LAYER(Base,
     &hml LGUI A   &hml LALT S   &hml LSHFT D  &hml LCTRL F  &kp G       ,   &kp H         &hmr RCTRL J  &hmr RSHFT K  &hmr RALT L  &hmr RGUI SQT,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp V         &kp B       ,   &kp N         &kp M         COMMA_SEMI    DOT_COLON     QMARK_EXCL  ,
+//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              &mo NUM       MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
+//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+)
+
+ZMK_BASE_LAYER(Graph, // Alpha layout - Graphite
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &kp B         &kp L         &kp D         &kp W         &kp Z       ,   &kp SQT       &kp F         &kp O         &kp U         &kp J       ,
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &hml LGUI N   &hml LALT R   &hml LSHFT T  &hml LCTRL S  &kp G       ,   &kp Y         &hmr RCTRL H  &hmr RSHFT A  &hmr RALT E   &hmr RGUI I ,
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp Q         &kp X         &kp M         &kp C         &kp V       ,   &kp K         &kp P         DOT_COLON     COMMA_SEMI    &kp SLASH   ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &mo NUM       MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
@@ -251,6 +265,7 @@ ZMK_BASE_LAYER(Sys,
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
+
 #ifdef ENABLE_MOUSE_LAYER
 #include <dt-bindings/zmk/pointing.h>
 
@@ -284,15 +299,5 @@ ZMK_BASE_LAYER(Scroll,
 )
 #endif
 
-ZMK_BASE_LAYER(Graph, // Graphite layout (toggle from Sys layer)
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp B         &kp L         &kp D         &kp W         &kp Z       ,   &kp SQT       &kp F         &kp O         &kp U         &kp J       ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &hml LGUI N   &hml LALT R   &hml LSHFT T  &hml LCTRL S  &kp G       ,   &kp Y         &hmr RCTRL H  &hmr RSHFT A  &hmr RALT E   &hmr RGUI I ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp Q         &kp X         &kp M         &kp C         &kp V       ,   &kp K         &kp P         DOT_COLON     COMMA_SEMI    &kp SLASH   ,
-//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              &mo NUM       MAGIC_SHIFT ,   SMART_SPACE   &mo SYM      
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
-)
+
 // }}};

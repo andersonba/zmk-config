@@ -78,7 +78,7 @@
         device = <&trackball>;
 
         scroll {
-            layers = <6>; // Layer SCROLL
+            layers = <7>; // Layer SCROLL
             input-processors = <&zip_xy_scaler 1 40>, <&zip_xy_to_scroll_mapper>;
         };
     };
