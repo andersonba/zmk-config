@@ -202,89 +202,44 @@ _validate_args board side:
     esac
 
 # Build firmware: board (default: urchin) and side (left/right/all)
-build board="urchin" side="all":
+# Internal: Build firmware with West
+_west_build board shield flags="":
     #!/usr/bin/env bash
     set -euo pipefail
-
-    if [ "{{board}}" == "all" ]; then
-        just build urchin {{side}}
-        just build crosses {{side}}
-        just build corne {{side}}
-        exit 0
-    fi
-
-    if [ "{{side}}" == "all" ]; then
-        echo "🔨 Building {{board}} (both sides)..."
-        just build {{board}} left
-        just build {{board}} right
-        exit 0
-    fi
-
-    just _validate_args {{board}} {{side}}
-
     source .venv/bin/activate
 
-    # Define shields and display adapters based on board
-    case {{board}} in
-        "urchin")
-            BOARD="nice_nano"
-            SHIELD_NAME="urchin"
-            EXTRA_MODULES="nice_view_adapter nice_view_gem"
-            ;;
-        "corne")
-            BOARD="nice_nano"
-            SHIELD_NAME="corne"
-            EXTRA_MODULES="nice_view_adapter nice_view"
-            ;;
-        "crosses")
-            BOARD="nice_nano"
-            SHIELD_NAME="crosses"
-            EXTRA_MODULES="" # Assuming no display for now
-            ;;
-    esac
+    echo "🔨 Building {{board}} {{shield}}..."
 
-    SHIELD="${SHIELD_NAME}_{{side}} ${EXTRA_MODULES}"
-
-    echo "🔨 Building {{board}} {{side}} (${BOARD} + ${SHIELD})..."
-
-    # Build from within the ZMK directory
     (
         cd zmk-workspace/zmk
-
+        
         # Check if we're building a different target than last time
-        if [ -f build/.last_shield ] && [ "$(cat build/.last_shield)" != "${SHIELD}" ]; then
+        if [ -f build/.last_shield ] && [ "$(cat build/.last_shield)" != "{{shield}}" ]; then
             echo "🧹 Shield changed, cleaning build directory..."
             rm -rf build
         fi
 
         PROJECT_ROOT=$(cd ../.. && pwd)
-        west build -b ${BOARD} app -- \
-            -DSHIELD="${SHIELD}" \
-            -DZMK_CONFIG="${PROJECT_ROOT}/config"
+        west build -b {{board}} app -- \
+            -DSHIELD="{{shield}}" \
+            -DZMK_CONFIG="${PROJECT_ROOT}/config" \
+            {{flags}}
 
         # Save the current shield for next time
-        echo "${SHIELD}" > build/.last_shield
+        echo "{{shield}}" > build/.last_shield
     )
 
     mkdir -p firmware
-    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/{{board}}_{{side}}.uf2
-
-    echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
-
-# Flash firmware (requires keyboard in bootloader mode)
-flash board side:
+    
+# Internal: Flash UF2 file to NICENANO
+_flash_uf2 file_path:
     #!/usr/bin/env bash
     set -euo pipefail
 
-    just _validate_args {{board}} {{side}}
-
-    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
-    if [ ! -f "$FIRMWARE_FILE" ]; then
-        echo "No firmware found at $FIRMWARE_FILE. Building first..."
-        just build {{board}} {{side}}
+    if [ ! -f "{{file_path}}" ]; then
+        echo "❌ Firmware file not found: {{file_path}}"
+        exit 1
     fi
-
-    echo "❯ Flashing {{board}} {{side}}..."
 
     # Function to find NICENANO mount point
     find_keyboard() {
@@ -303,11 +258,8 @@ flash board side:
     KEYBOARD=$(find_keyboard)
     echo "Keyboard found at: $KEYBOARD"
 
-    # Copy firmware to keyboard
-    # Note: The microcontroller resets before the OS confirms the transfer,
-    # causing harmless errors that we can safely ignore.
     echo "❯ Copying firmware to NICENANO..."
-    error_msg=$(cp "$FIRMWARE_FILE" "$KEYBOARD/" 2>&1) || {
+    error_msg=$(cp "{{file_path}}" "$KEYBOARD/" 2>&1) || {
         if [[ $error_msg == *"fcopyfile failed"* ]] || [[ $error_msg == *"could not copy extended attributes"* ]]; then
             # Expected behavior - microcontroller resets mid-transfer
             :
@@ -317,6 +269,80 @@ flash board side:
         fi
     }
 
+# Build firmware: board (default: urchin) and side (left/right/all)
+build board="urchin" side="all":
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [ "{{board}}" == "all" ]; then
+        just build urchin {{side}}
+        just build crosses {{side}}
+        just build corne {{side}}
+        just build-reset
+        exit 0
+    fi
+
+    if [ "{{side}}" == "all" ]; then
+        echo "🔨 Building {{board}} (both sides)..."
+        just build {{board}} left
+        just build {{board}} right
+        exit 0
+    fi
+
+    just _validate_args {{board}} {{side}}
+
+    # Define shields based on board
+    case {{board}} in
+        "urchin")
+            BOARD_TARGET="nice_nano"
+            SHIELD="urchin_{{side}} nice_view_adapter nice_view_gem"
+            ;;
+        "corne")
+            BOARD_TARGET="nice_nano"
+            SHIELD="corne_{{side}} nice_view_adapter nice_view"
+            ;;
+        "crosses")
+            BOARD_TARGET="nice_nano"
+            SHIELD="crosses_{{side}}"
+            ;;
+    esac
+
+    just _west_build "$BOARD_TARGET" "$SHIELD"
+    
+    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/{{board}}_{{side}}.uf2
+    echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
+
+# Build settings reset firmware
+build-reset:
+    just _west_build "nice_nano" "settings_reset" "-DCONFIG_ZMK_STUDIO=n"
+    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/settings_reset.uf2
+    echo "✅ Firmware built: firmware/settings_reset.uf2"
+
+# Flash settings reset firmware
+flash-reset:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    FIRMWARE_FILE="firmware/settings_reset.uf2"
+    if [ ! -f "$FIRMWARE_FILE" ]; then
+        echo "No firmware found at $FIRMWARE_FILE. Building first..."
+        just build-reset
+    fi
+    echo "❯ Flashing settings_reset..."
+    just _flash_uf2 "$FIRMWARE_FILE"
+    echo "✅ Flashed settings_reset"
+
+# Flash firmware (requires keyboard in bootloader mode)
+flash board side:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    just _validate_args {{board}} {{side}}
+    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
+    if [ ! -f "$FIRMWARE_FILE" ]; then
+        echo "No firmware found at $FIRMWARE_FILE. Building first..."
+        just build {{board}} {{side}}
+    fi
+    echo "❯ Flashing {{board}} {{side}}..."
+    just _flash_uf2 "$FIRMWARE_FILE"
     echo "✅ Flashed {{board}} {{side}}"
 
 draw board="urchin" method="default":
