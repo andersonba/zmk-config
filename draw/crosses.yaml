@@ -182,7 +182,9 @@ layers:
     - h: '4'
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
-    - ''
+    - t: Graphite
+      s: $$mdi:keyboard-variant$$
+      type: graphite_toggle
     - ''
     - ''
     - ''

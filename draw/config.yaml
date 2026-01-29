@@ -78,6 +78,15 @@ draw_config:
       translate: 13px -23px;
     }
 
+    .graphite_toggle.tap {
+      font-size: 10px;
+      translate: 0px -6px;
+    }
+    .graphite_toggle.shifted {
+      translate: 0px 20px;
+      font-size: 14px;
+    }
+
     /* Variant for tap-dances */
     .tap_dance.tap {
       translate: -7px 0px;
@@ -155,6 +164,12 @@ parse_config:
 
     # Studio
     "&studio_unlock": $$mdi:lock-open$$
+
+    # Layer Toggle
+    "&tog GRAPH":
+      type: graphite_toggle
+      tap: Graphite
+      shifted: $$mdi:keyboard-variant$$
 
     # Behaviors
     "&swapper": $$mdi:swap-horizontal$$

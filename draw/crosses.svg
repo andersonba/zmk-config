@@ -82,6 +82,9 @@
 <svg id="mdi:keyboard-tab">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-tab" viewBox="0 0 24 24"><path d="M20,18H22V6H20M11.59,7.41L15.17,11H1V13H15.17L11.59,16.58L13,18L19,12L13,6L11.59,7.41Z" /></svg>
 </svg>
+<svg id="mdi:keyboard-variant">
+<svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-variant" viewBox="0 0 24 24"><path d="M6,16H18V18H6V16M6,13V15H2V13H6M7,15V13H10V15H7M11,15V13H13V15H11M14,15V13H17V15H14M18,15V13H22V15H18M2,10H5V12H2V10M19,12V10H22V12H19M18,12H16V10H18V12M8,12H6V10H8V12M12,12H9V10H12V12M15,12H13V10H15V12M2,9V7H4V9H2M5,9V7H7V9H5M8,9V7H10V9H8M11,9V7H13V9H11M14,9V7H16V9H14M17,9V7H22V9H17Z" /></svg>
+</svg>
 <svg id="mdi:lock">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-lock" viewBox="0 0 24 24"><path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" /></svg>
 </svg>
@@ -303,6 +306,15 @@ rect.held, rect.combo.held {
 
 .toggle.hold {
   translate: 13px -23px;
+}
+
+.graphite_toggle.tap {
+  font-size: 10px;
+  translate: 0px -6px;
+}
+.graphite_toggle.shifted {
+  translate: 0px 20px;
+  font-size: 14px;
 }
 
 /* Variant for tap-dances */
@@ -1201,9 +1213,11 @@ rect.held, rect.combo.held {
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
 <use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="-9" y="-13" height="18" width="18.0" class="key tap glyph mdi:bluetooth-off"/>
 </g>
-<g transform="translate(483, 49)" class="key keypos-5">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
-<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+<g transform="translate(483, 49)" class="key graphite_toggle keypos-5">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key graphite_toggle side"/>
+<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key graphite_toggle"/>
+<text x="0" y="-4" class="key graphite_toggle tap"><tspan style="font-size: 75%">Graphite</tspan></text>
+<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key graphite_toggle shifted glyph mdi:keyboard-variant"/>
 </g>
 <g transform="translate(539, 42)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>

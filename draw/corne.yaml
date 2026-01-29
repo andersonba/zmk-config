@@ -1,251 +1,339 @@
-layout: {zmk_keyboard: corne}
+layout:
+  zmk_keyboard: corne
 layers:
   Base:
-  - $$mdi:keyboard-tab$$
-  - Q
-  - W
-  - E
-  - R
-  - T
-  - Y
-  - U
-  - I
-  - O
-  - P
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - $$mdi:apple-keyboard-control$$
-  - {t: A, h: '$$mdi:apple-keyboard-command$$'}
-  - {t: S, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: D, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: F, h: '$$mdi:apple-keyboard-control$$'}
-  - G
-  - H
-  - {t: J, h: '$$mdi:apple-keyboard-control$$'}
-  - {t: K, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: L, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '''', h: '$$mdi:apple-keyboard-command$$', s: '"'}
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
-  - Z
-  - X
-  - C
-  - V
-  - B
-  - N
-  - M
-  - {t: ',', s: ;}
-  - {t: ., s: ':'}
-  - {t: '?', s: '!'}
-  - $$escape$$
-  - $$mdi:apple-keyboard-command$$
-  - Num
-  - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
-  - $$mdi:keyboard-space$$
-  - Sym
-  - $$mdi:apple-keyboard-command$$
+    - $$mdi:keyboard-tab$$
+    - Q
+    - W
+    - E
+    - R
+    - T
+    - Y
+    - U
+    - I
+    - O
+    - P
+    - t: $$mdi:backspace$$
+      type: backspace
+    - $$mdi:apple-keyboard-control$$
+    - t: A
+      h: $$mdi:apple-keyboard-command$$
+    - t: S
+      h: $$mdi:apple-keyboard-option$$
+    - t: D
+      h: $$mdi:apple-keyboard-shift$$
+    - t: F
+      h: $$mdi:apple-keyboard-control$$
+    - G
+    - H
+    - t: J
+      h: $$mdi:apple-keyboard-control$$
+    - t: K
+      h: $$mdi:apple-keyboard-shift$$
+    - t: L
+      h: $$mdi:apple-keyboard-option$$
+    - t: ''''
+      h: $$mdi:apple-keyboard-command$$
+      s: '"'
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - N
+    - M
+    - t: ','
+      s: ;
+    - t: .
+      s: ':'
+    - t: '?'
+      s: '!'
+    - $$escape$$
+    - $$mdi:apple-keyboard-command$$
+    - Num
+    - t: $$mdi:apple-keyboard-shift$$
+      h: $$mdi:gesture-tap-hold$$
+    - $$mdi:keyboard-space$$
+    - Sym
+    - $$mdi:apple-keyboard-command$$
   Num:
-  - $$mdi:keyboard-tab$$
-  - $$mdi:arrow-u-up-left$$
-  - $$mdi:arrow-left$$
-  - $$mdi:arrow-up-bold$$
-  - $$mdi:arrow-right$$
-  - ''
-  - +
-  - '7'
-  - '8'
-  - '9'
-  - '-'
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:swap-horizontal$$
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-right-bold$$
-  - ''
-  - '*'
-  - '4'
-  - '5'
-  - '6'
-  - /
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
-  - $$mdi:undo-variant$$
-  - $$mdi:content-cut$$
-  - $$mdi:content-copy$$
-  - $$mdi:content-paste$$
-  - $$mdi:redo-variant$$
-  - ','
-  - '1'
-  - '2'
-  - '3'
-  - .
-  - $$escape$$
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - '0'
-  - '='
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+    - $$mdi:keyboard-tab$$
+    - $$mdi:arrow-u-up-left$$
+    - $$mdi:arrow-left$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right$$
+    - ''
+    - +
+    - '7'
+    - '8'
+    - '9'
+    - '-'
+    - t: $$mdi:backspace$$
+      type: backspace
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:swap-horizontal$$
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-right-bold$$
+    - ''
+    - '*'
+    - '4'
+    - '5'
+    - '6'
+    - /
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:undo-variant$$
+    - $$mdi:content-cut$$
+    - $$mdi:content-copy$$
+    - $$mdi:content-paste$$
+    - $$mdi:redo-variant$$
+    - ','
+    - '1'
+    - '2'
+    - '3'
+    - .
+    - $$escape$$
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
+    - '0'
+    - '='
+    - t: $$mdi:keyboard-return$$
+      type: enter
   Sym:
-  - $$mdi:keyboard-tab$$
-  - '`'
-  - '@'
-  - '#'
-  - $
-  - '%'
-  - '['
-  - (
-  - )
-  - ']'
-  - '|'
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - $$mdi:apple-keyboard-control$$
-  - '~'
-  - \
-  - /
-  - '&'
-  - '*'
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-up-bold$$
-  - $$mdi:arrow-right-bold$$
-  - ':'
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
-  - ^
-  - <
-  - '>'
-  - '='
-  - +
-  - $$mdi:arrow-left$$
-  - '{'
-  - '}'
-  - $$mdi:arrow-right$$
-  - ;
-  - $$escape$$
-  - {t: ▽, type: trans}
-  - _
-  - '-'
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
+    - $$mdi:keyboard-tab$$
+    - '`'
+    - '@'
+    - '#'
+    - $
+    - '%'
+    - '['
+    - (
+    - )
+    - ']'
+    - '|'
+    - t: $$mdi:backspace$$
+      type: backspace
+    - $$mdi:apple-keyboard-control$$
+    - '~'
+    - \
+    - /
+    - '&'
+    - '*'
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right-bold$$
+    - ':'
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - ^
+    - <
+    - '>'
+    - '='
+    - +
+    - $$mdi:arrow-left$$
+    - '{'
+    - '}'
+    - $$mdi:arrow-right$$
+    - ;
+    - $$escape$$
+    - t: ▽
+      type: trans
+    - _
+    - '-'
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
   Fn:
-  - $$mdi:keyboard-tab$$
-  - ''
-  - ''
-  - $$mdi:volume-high$$
-  - $$mdi:play-pause$$
-  - ''
-  - ''
-  - F7
-  - F8
-  - F9
-  - F12
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - $$mdi:apple-keyboard-control$$
-  - ''
-  - $$mdi:skip-previous$$
-  - $$mdi:volume-low$$
-  - $$mdi:skip-next$$
-  - ''
-  - ''
-  - F4
-  - F5
-  - F6
-  - F11
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - $$mdi:lock$$
-  - ''
-  - F1
-  - F2
-  - F3
-  - F10
-  - $$escape$$
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
+    - $$mdi:keyboard-tab$$
+    - ''
+    - ''
+    - $$mdi:volume-high$$
+    - $$mdi:play-pause$$
+    - ''
+    - ''
+    - F7
+    - F8
+    - F9
+    - F12
+    - t: $$mdi:backspace$$
+      type: backspace
+    - $$mdi:apple-keyboard-control$$
+    - ''
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
+    - ''
+    - ''
+    - F4
+    - F5
+    - F6
+    - F11
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:lock$$
+    - ''
+    - F1
+    - F2
+    - F3
+    - F10
+    - $$escape$$
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
   Sys:
-  - $$mdi:keyboard-tab$$
-  - {h: '1', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '2', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '3', s: '$$mdi:bluetooth-connect$$'}
-  - {h: '4', s: '$$mdi:bluetooth-connect$$'}
-  - $$mdi:bluetooth-off$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:progress-download$$
-  - $$mdi:lock-open$$
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - $$mdi:lock-open$$
-  - $$mdi:progress-download$$
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
-  - {t: '$$mdi:backup-restore$$', type: bootloader}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: '$$mdi:backup-restore$$', type: bootloader}
-  - $$escape$$
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+    - $$mdi:keyboard-tab$$
+    - h: '1'
+      s: $$mdi:bluetooth-connect$$
+    - h: '2'
+      s: $$mdi:bluetooth-connect$$
+    - h: '3'
+      s: $$mdi:bluetooth-connect$$
+    - h: '4'
+      s: $$mdi:bluetooth-connect$$
+    - $$mdi:bluetooth-off$$
+    - t: Graphite
+      s: $$mdi:keyboard-variant$$
+      type: graphite_toggle
+    - ''
+    - ''
+    - ''
+    - ''
+    - t: $$mdi:backspace$$
+      type: backspace
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:progress-download$$
+    - $$mdi:lock-open$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:lock-open$$
+    - $$mdi:progress-download$$
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - t: $$mdi:backup-restore$$
+      type: bootloader
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - t: $$mdi:backup-restore$$
+      type: bootloader
+    - $$escape$$
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
 combos:
-- p: [5, 6]
-  k: $$mdi:code-parentheses$$
-  l: [Base]
-- p: [17, 18]
-  k: $$mdi:code-brackets$$
-  l: [Base]
-- p: [29, 30]
-  k: $$mdi:code-braces$$
-  l: [Base]
-- p: [14, 15]
-  k: $$escape$$
-  l: [Base, Sym]
-- p: [16, 15]
-  k: $$mdi:keyboard-tab$$
-  l: [Base, Sym]
-- p: [20, 21]
-  k: $$escape$$
-  l: [Base, Num]
-- p: [19, 20]
-  k: {t: '$$mdi:keyboard-return$$', type: enter}
-  l: [Base, Num]
-- p: [7, 8]
-  k: {t: '$$mdi:backspace$$', type: backspace}
-  l: [Base, Num, Sym]
-- p: [6, 7]
-  k: {t: 'AltGr+$$mdi:backspace$$', type: backspace}
-  l: [Base, Num, Sym]
-- p: [37, 40]
-  k: Fn
-  l: [Base]
-- p: [38, 39]
-  k: Sys
-  l: [Base]
+  - p:
+      - 5
+      - 6
+    k: $$mdi:code-parentheses$$
+    l:
+      - Base
+  - p:
+      - 17
+      - 18
+    k: $$mdi:code-brackets$$
+    l:
+      - Base
+  - p:
+      - 29
+      - 30
+    k: $$mdi:code-braces$$
+    l:
+      - Base
+  - p:
+      - 14
+      - 15
+    k: $$escape$$
+    l:
+      - Base
+      - Sym
+  - p:
+      - 16
+      - 15
+    k: $$mdi:keyboard-tab$$
+    l:
+      - Base
+      - Sym
+  - p:
+      - 20
+      - 21
+    k: $$escape$$
+    l:
+      - Base
+      - Num
+  - p:
+      - 19
+      - 20
+    k:
+      t: $$mdi:keyboard-return$$
+      type: enter
+    l:
+      - Base
+      - Num
+  - p:
+      - 7
+      - 8
+    k:
+      t: $$mdi:backspace$$
+      type: backspace
+    l:
+      - Base
+      - Num
+      - Sym
+  - p:
+      - 6
+      - 7
+    k:
+      t: AltGr+$$mdi:backspace$$
+      type: backspace
+    l:
+      - Base
+      - Num
+      - Sym
+  - p:
+      - 37
+      - 40
+    k: Fn
+    l:
+      - Base
+  - p:
+      - 38
+      - 39
+    k: Sys
+    l:
+      - Base
