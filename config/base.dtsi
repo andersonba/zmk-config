@@ -22,17 +22,6 @@
 
 #define BASES BASE GRAPH
 
-// Mouse layer behavior (tap: toggle | hold: momentary)
-#ifdef ENABLE_MOUSE_LAYER
-ZMK_HOLD_TAP(mo_tog_mouse,
-  bindings = <&mo>, <&tog>;
-  flavor = "balanced";
-  tapping-term-ms = <230>;
-  quick-tap-ms = <150>;
-)
-#define MO_TOG_MOUSE &mo_tog_mouse MOUSE MOUSE
-#endif
-
 // Timings
 #define QUICK_TAP_MS 150
 #define HRM_TAPPING_TERM 230
@@ -45,6 +34,15 @@ ZMK_HOLD_TAP(mo_tog_mouse,
 #define COMBO_TERM_SLOW 50
 #define COMBO_IDLE_FAST 100
 #define COMBO_IDLE_SLOW 50
+
+// Mouse layer behavior (hold: momentary | double-tap: toggle)
+#ifdef ENABLE_MOUSE_LAYER
+ZMK_TAP_DANCE(td_mouse,
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  bindings = <&mo MOUSE>, <&tog MOUSE>;
+)
+#define TD_MOUSE &td_mouse
+#endif
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4

@@ -190,7 +190,6 @@ parse_config:
     "TRANSLATE": $$mdi:translate$$
     "ALFRED": $$alfred$$
     "ALT_TAB": $$mdi:swap-horizontal$$
-    "MO_TOG_MOUSE": "Mouse"
     "N_UNDO": $$mdi:undo-variant$$
     "N_CUT": $$mdi:content-cut$$
     "N_REDO": $$mdi:redo-variant$$
@@ -207,6 +206,7 @@ parse_config:
     "&dot_spc": ""
 
     # Mouse
+    "&td_mouse": "Mouse"
     "&mkp MB4": $$mdi:mouse-move-down$$
     "&mkp MB5": $$mdi:mouse-move-up$$
     "&mkp LCLK": $$mdi:mouse-left-click-outline$$

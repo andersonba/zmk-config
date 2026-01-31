@@ -50,7 +50,8 @@ layers:
       h: $$mdi:gesture-tap-hold$$
     - $$mdi:keyboard-space$$
     - Sym
-    - Mouse
+    - t: ▽
+      type: trans
   Num:
     - $$mdi:arrow-u-up-left$$
     - $$mdi:arrow-left$$

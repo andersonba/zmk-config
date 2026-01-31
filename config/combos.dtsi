@@ -39,4 +39,4 @@ ZMK_COMBO(bspc_w,   &kp RA(BSPC),
 // vertical combos {{{
 /* left hand */
 /* right hand */
-/// }}};
+/// }}}
