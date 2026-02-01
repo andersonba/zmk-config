@@ -191,14 +191,14 @@ layers:
     - ''
     - ''
     - $$mdi:progress-download$$
-    - $$mdi:lock-open$$
     - ''
     - ''
     - ''
     - ''
     - ''
     - ''
-    - $$mdi:lock-open$$
+    - ''
+    - ''
     - $$mdi:progress-download$$
     - t: $$mdi:backup-restore$$
       type: bootloader

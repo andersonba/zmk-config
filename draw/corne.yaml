@@ -222,14 +222,14 @@ layers:
       type: backspace
     - $$mdi:apple-keyboard-control$$
     - $$mdi:progress-download$$
-    - $$mdi:lock-open$$
     - ''
     - ''
     - ''
     - ''
     - ''
     - ''
-    - $$mdi:lock-open$$
+    - ''
+    - ''
     - $$mdi:progress-download$$
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$

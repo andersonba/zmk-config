@@ -79,8 +79,6 @@ init:
     if [ -f zmk-workspace/zmk/zephyr/scripts/requirements.txt ]; then
         echo "📦 Installing Zephyr Python requirements..."
         pip install -q -r zmk-workspace/zmk/zephyr/scripts/requirements.txt
-        # Install ZMK Studio dependencies
-        pip install protobuf grpcio-tools
     fi
 
     # Step 7: Zephyr SDK with retry and resume
@@ -314,7 +312,7 @@ build board="urchin" side="all":
 
 # Build settings reset firmware
 build-reset:
-    just _west_build "nice_nano" "settings_reset" "-DCONFIG_ZMK_STUDIO=n"
+    just _west_build "nice_nano" "settings_reset"
     cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/settings_reset.uf2
     echo "✅ Firmware built: firmware/settings_reset.uf2"
 
