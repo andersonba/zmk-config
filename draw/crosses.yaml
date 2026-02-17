@@ -112,17 +112,17 @@ layers:
     - $$mdi:arrow-down-bold$$
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right-bold$$
-    - ':'
+    - $$mdi:apple-keyboard-option$$
     - ^
     - <
     - '>'
     - '='
     - +
-    - $$mdi:arrow-left$$
+    - $$mdi:arrow-collapse-left$$
     - '{'
     - '}'
-    - $$mdi:arrow-right$$
-    - ;
+    - $$mdi:arrow-collapse-right$$
+    - $$mdi:apple-keyboard-shift$$
     - t: ▽
       type: trans
     - _

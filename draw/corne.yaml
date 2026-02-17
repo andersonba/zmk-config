@@ -129,7 +129,7 @@ layers:
     - $$mdi:arrow-down-bold$$
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right-bold$$
-    - ':'
+    - $$mdi:apple-keyboard-option$$
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$
     - ^
@@ -137,11 +137,11 @@ layers:
     - '>'
     - '='
     - +
-    - $$mdi:arrow-left$$
+    - $$mdi:arrow-collapse-left$$
     - '{'
     - '}'
-    - $$mdi:arrow-right$$
-    - ;
+    - $$mdi:arrow-collapse-right$$
+    - $$mdi:apple-keyboard-shift$$
     - $$escape$$
     - t: ▽
       type: trans
