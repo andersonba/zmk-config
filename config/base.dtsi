@@ -225,15 +225,15 @@ ZMK_BASE_LAYER(Num,
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
-#define GO_HOME &kp LG(LBKT)
-#define GO_END &kp LG(RBKT)
+#define GO_HOME &kp LG(LEFT)
+#define GO_END &kp LG(RIGHT)
 ZMK_BASE_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp LBKT      &kp LPAR      &kp RPAR      &kp RBKT      &kp PIPE    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp COLON   ,
+    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp LALT    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   GO_HOME       &kp LBRC      &kp RBRC      GO_END        &kp SEMI    ,
+    &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   GO_HOME       &kp LBRC      &kp RBRC      GO_END        &kp LSHFT   ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                               &kp UNDER     &kp MINUS   ,   ___           ___
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯

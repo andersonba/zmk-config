@@ -105,17 +105,17 @@ layers:
     - $$mdi:arrow-down-bold$$
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right-bold$$
-    - ':'
+    - $$mdi:apple-keyboard-option$$
     - ^
     - <
     - '>'
     - '='
     - +
-    - $$mdi:arrow-left$$
+    - Gui+$$mdi:arrow-left-bold$$
     - '{'
     - '}'
-    - $$mdi:arrow-right$$
-    - ;
+    - Gui+$$mdi:arrow-right-bold$$
+    - $$mdi:apple-keyboard-shift$$
     - _
     - '-'
     - t: ▽
