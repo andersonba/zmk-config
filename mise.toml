@@ -5,6 +5,9 @@ just = "latest"
 # cmake - use system version (brew install cmake)
 # dtc - use system version (brew install dtc)
 
+[settings]
+env_shell_expand = true
+
 [env]
 # ZMK workspace directory (created on init, gitignored)
 _.path = ["${PWD}/.venv/bin", "${PWD}/firmware"]
