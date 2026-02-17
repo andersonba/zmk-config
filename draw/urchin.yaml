@@ -111,10 +111,10 @@ layers:
     - '>'
     - '='
     - +
-    - Gui+$$mdi:arrow-left-bold$$
+    - $$mdi:arrow-collapse-left$$
     - '{'
     - '}'
-    - Gui+$$mdi:arrow-right-bold$$
+    - $$mdi:arrow-collapse-right$$
     - $$mdi:apple-keyboard-shift$$
     - _
     - '-'

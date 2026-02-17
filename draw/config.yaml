@@ -199,6 +199,8 @@ parse_config:
     "&tap_paste": $$mdi:content-paste$$
     "&kp LG(LBKT)": $$mdi:arrow-left$$
     "&kp LG(RBKT)": $$mdi:arrow-right$$
+    "&kp LG(LEFT)": $$mdi:arrow-collapse-left$$
+    "&kp LG(RIGHT)": $$mdi:arrow-collapse-right$$
     "&num_word": $$mdi:numeric$$
 
     # Macros
