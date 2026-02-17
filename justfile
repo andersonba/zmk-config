@@ -172,6 +172,7 @@ update:
     set -euo pipefail
     source .venv/bin/activate
     cd zmk-workspace/zmk
+    git pull --ff-only
     west update
     west zephyr-export
 
@@ -292,15 +293,15 @@ build board="urchin" side="all":
     # Define shields based on board
     case {{board}} in
         "urchin")
-            BOARD_TARGET="nice_nano"
+            BOARD_TARGET="nice_nano//zmk"
             SHIELD="urchin_{{side}} nice_view_adapter nice_view_gem"
             ;;
         "corne")
-            BOARD_TARGET="nice_nano"
+            BOARD_TARGET="nice_nano//zmk"
             SHIELD="corne_{{side}} nice_view_adapter nice_view"
             ;;
         "crosses")
-            BOARD_TARGET="nice_nano"
+            BOARD_TARGET="nice_nano//zmk"
             SHIELD="crosses_{{side}}"
             ;;
     esac
@@ -312,7 +313,7 @@ build board="urchin" side="all":
 
 # Build settings reset firmware
 build-reset:
-    just _west_build "nice_nano" "settings_reset"
+    just _west_build "nice_nano//zmk" "settings_reset"
     cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/settings_reset.uf2
     echo "✅ Firmware built: firmware/settings_reset.uf2"
 

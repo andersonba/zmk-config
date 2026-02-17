@@ -1,23 +1,23 @@
 ---
 include:
   # Urchin builds
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: urchin_left nice_view_adapter nice_view_gem
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: urchin_right nice_view_adapter nice_view_gem
 
   # Corne builds
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: corne_left nice_view_adapter nice_view
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: corne_right nice_view_adapter nice_view
 
   # Crosses builds
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: crosses_left
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: crosses_right
 
   # Settings reset
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: settings_reset
