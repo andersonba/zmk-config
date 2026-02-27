@@ -96,10 +96,14 @@ layers:
     - )
     - ']'
     - '|'
-    - '~'
-    - \
-    - /
-    - '&'
+    - t: '~'
+      h: $$mdi:apple-keyboard-command$$
+    - t: \
+      h: $$mdi:apple-keyboard-option$$
+    - t: /
+      h: $$mdi:apple-keyboard-shift$$
+    - t: '&'
+      h: $$mdi:apple-keyboard-control$$
     - '*'
     - $$mdi:arrow-left-bold$$
     - $$mdi:arrow-down-bold$$

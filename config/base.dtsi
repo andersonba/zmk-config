@@ -231,7 +231,7 @@ ZMK_BASE_LAYER(Sym,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp GRAVE     &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT ,   &kp LBKT      &kp LPAR      &kp RPAR      &kp RBKT      &kp PIPE    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TILDE     &kp BSLH      &kp SLASH     &kp AMPS      &kp ASTERISK,   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp LALT    ,
+    &hml LGUI TILDE &hml LALT BSLH &hml LSHFT SLASH &hml LCTRL AMPS &kp ASTERISK, &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp LALT    ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp CARET     &kp LT        &kp GT        &kp EQUAL     &kp PLUS    ,   GO_HOME       &kp LBRC      &kp RBRC      GO_END        &kp LSHFT   ,
 //╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
