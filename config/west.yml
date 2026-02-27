@@ -11,9 +11,6 @@ manifest:
 
     - name: efogdev
       url-base: https://github.com/efogdev
-    # TODO: remove once https://github.com/M165437/nice-view-gem/pull/22 is merged
-    - name: solotitan
-      url-base: https://github.com/solotitan
 
   projects:
     - name: zmk
@@ -47,10 +44,9 @@ manifest:
       revision: main
 
     # Custom Nice!View
-    # TODO: revert to m165437/main once https://github.com/M165437/nice-view-gem/pull/22 is merged
     - name: nice-view-gem
-      remote: solotitan
-      revision: ca8b2528d905cf668ebe3ee183d658b437a74025
+      remote: m165437
+      revision: main
 
   self:
     path: config
