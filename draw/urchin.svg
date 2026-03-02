@@ -296,11 +296,11 @@ rect.held, rect.combo.held {
   translate: 13px -23px;
 }
 
-.graphite_toggle.tap {
+.alpha_toggle.tap {
   font-size: 10px;
   translate: 0px -6px;
 }
-.graphite_toggle.shifted {
+.alpha_toggle.shifted {
   translate: 0px 20px;
   font-size: 14px;
 }
@@ -1163,11 +1163,11 @@ rect.held, rect.combo.held {
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
 <use href="#mdi:bluetooth-off" xlink:href="#mdi:bluetooth-off" x="-9" y="-13" height="18" width="18.0" class="key tap glyph mdi:bluetooth-off"/>
 </g>
-<g transform="translate(420, 52)" class="key graphite_toggle keypos-5">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key graphite_toggle side"/>
-<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key graphite_toggle"/>
-<text x="0" y="-4" class="key graphite_toggle tap"><tspan style="font-size: 75%">Graphite</tspan></text>
-<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key graphite_toggle shifted glyph mdi:keyboard-variant"/>
+<g transform="translate(420, 52)" class="key alpha_toggle keypos-5">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key alpha_toggle side"/>
+<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key alpha_toggle"/>
+<text x="0" y="-4" class="key alpha_toggle tap"><tspan style="font-size: 86%">Gallium</tspan></text>
+<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key alpha_toggle shifted glyph mdi:keyboard-variant"/>
 </g>
 <g transform="translate(476, 44)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>

@@ -385,9 +385,9 @@ draw board="urchin" method="default":
         mv "${YAML_FILE}.tmp" "$YAML_FILE"
     fi
 
-    # Hide Graph layer from all boards (learning layout, not needed in docs)
-    # First remove Graph from combo layer references, then delete the layer
-    yq -y '(.combos[].l) |= map(select(. != "Graph")) | del(.layers.Graph)' "$YAML_FILE" > "${YAML_FILE}.tmp"
+    # Hide Alpha layer from all boards (learning layout, not needed in docs)
+    # First remove Alpha from combo layer references, then delete the layer
+    yq -y '(.combos[].l) |= map(select(. != "Alpha")) | del(.layers.Alpha)' "$YAML_FILE" > "${YAML_FILE}.tmp"
     mv "${YAML_FILE}.tmp" "$YAML_FILE"
 
     keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"

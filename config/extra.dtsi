@@ -20,8 +20,8 @@
 #ifndef _LH2_Scroll
 #define _LH2_Scroll ___
 #endif
-#ifndef _LH2_Graph
-#define _LH2_Graph ___
+#ifndef _LH2_Alpha
+#define _LH2_Alpha ___
 #endif
 
 #define _LH2(layer) _LH2_##layer
@@ -49,8 +49,8 @@
 #ifndef _RH2_Scroll
 #define _RH2_Scroll ___
 #endif
-#ifndef _RH2_Graph
-#define _RH2_Graph ___
+#ifndef _RH2_Alpha
+#define _RH2_Alpha ___
 #endif
 
 #define _RH2(layer) _RH2_##layer

@@ -78,11 +78,11 @@ draw_config:
       translate: 13px -23px;
     }
 
-    .graphite_toggle.tap {
+    .alpha_toggle.tap {
       font-size: 10px;
       translate: 0px -6px;
     }
-    .graphite_toggle.shifted {
+    .alpha_toggle.shifted {
       translate: 0px 20px;
       font-size: 14px;
     }
@@ -166,9 +166,9 @@ parse_config:
     "&studio_unlock": $$mdi:lock-open$$
 
     # Layer Toggle
-    "&tog GRAPH":
-      type: graphite_toggle
-      tap: Graphite
+    "&tog ALPHA":
+      type: alpha_toggle
+      tap: Gallium
       shifted: $$mdi:keyboard-variant$$
 
     # Behaviors
