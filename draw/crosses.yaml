@@ -116,7 +116,7 @@ layers:
     - $$mdi:arrow-down-bold$$
     - $$mdi:arrow-up-bold$$
     - $$mdi:arrow-right-bold$$
-    - $$mdi:apple-keyboard-option$$
+    - ''
     - ^
     - <
     - '>'
@@ -126,7 +126,7 @@ layers:
     - '{'
     - '}'
     - $$mdi:arrow-collapse-right$$
-    - $$mdi:apple-keyboard-shift$$
+    - ''
     - t: ▽
       type: trans
     - _
@@ -352,5 +352,11 @@ combos:
       - 32
       - 33
     k: Sys
+    l:
+      - Base
+  - p:
+      - 12
+      - 17
+    k: $$mdi:apple-keyboard-caps$$
     l:
       - Base
