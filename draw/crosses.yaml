@@ -234,7 +234,7 @@ layers:
     - ''
     - ''
     - ''
-    - $$mdi:arrow-up-bold$$
+    - ''
     - ''
     - ''
     - Scroll
@@ -243,10 +243,10 @@ layers:
     - $$mdi:mouse-left-click-outline$$
     - ''
     - ''
-    - $$mdi:arrow-left-bold$$
-    - $$mdi:arrow-down-bold$$
-    - $$mdi:arrow-right-bold$$
-    - ''
+    - $$mdi:apple-keyboard-control$$
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-option$$
+    - $$mdi:apple-keyboard-command$$
     - ''
     - ''
     - ''
