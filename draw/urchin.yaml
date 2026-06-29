@@ -115,10 +115,10 @@ layers:
     - '>'
     - '='
     - +
-    - $$mdi:arrow-collapse-left$$
     - '{'
-    - '}'
+    - $$mdi:arrow-collapse-left$$
     - $$mdi:arrow-collapse-right$$
+    - '}'
     - ''
     - _
     - '-'
@@ -150,7 +150,7 @@ layers:
     - ''
     - ''
     - ''
-    - $$mdi:lock$$
+    - ''
     - ''
     - F1
     - F2
@@ -194,7 +194,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
+    - $$mdi:lock$$
     - ''
     - ''
     - ''
