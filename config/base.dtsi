@@ -16,9 +16,8 @@
 #define NUM 2
 #define SYM 3
 #define FN 4
-#define SYS 5
-#define MOUSE 6
-#define SCROLL 7
+#define MOUSE 5
+#define SCROLL 6
 
 #define BASES BASE ALPHA
 
@@ -166,13 +165,42 @@ ZMK_TRI_STATE(swapper,
   timeout-ms = <1500>;
 )
 
+// SYS-on-hold behaviors {{{
+// The former Sys layer now shares the Fn layer. To avoid mistypes, every
+// former Sys action fires ONLY on hold (tap = &none, i.e. inert).
+#define HOLD_ONLY(NAME, ACTION) \
+  ZMK_HOLD_TAP(NAME, bindings = <ACTION>, <&none>; \
+    flavor = "hold-preferred"; \
+    tapping-term-ms = <200>; \
+    quick-tap-ms = <0>;)
+
+// &bt expects two params, which hold-taps can't forward — wrap it in macros.
+ZMK_MACRO(bt_clr, bindings = <&bt BT_CLR>;)
+/ {
+  macros {
+    bt_sel_n: bt_sel_n {  // 1 param: bluetooth profile index
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&macro_param_1to1>, <&bt BT_SEL MACRO_PLACEHOLDER>;
+      wait-ms = <0>;
+      tap-ms = <0>;
+    };
+  };
+};
+
+HOLD_ONLY(hs_boot,  &bootloader)  // &hs_boot 0 0
+HOLD_ONLY(hs_reset, &sys_reset)   // &hs_reset 0 0
+HOLD_ONLY(hs_lock,  &lock)        // &hs_lock 0 0
+HOLD_ONLY(hs_alpha, &tog)         // &hs_alpha ALPHA 0
+HOLD_ONLY(hs_bt,    &bt_sel_n)    // &hs_bt <profile> 0
+HOLD_ONLY(hs_btclr, &bt_clr)      // &hs_btclr 0 0
+// }}}
+
 #include "./combos.dtsi"
 
 // Combos for layers
 ZMK_COMBO(fn, &mo FN,
     LH1 RH1, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(sys, &mo SYS,
-    LH0 RH0, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(caps, &kp CAPS,
     LM2 RM2, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
@@ -241,28 +269,17 @@ ZMK_BASE_LAYER(Sym,
 //                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
 )
 
+// Combined Fn + Sys layer. Media/F-keys = tap; system actions = hold-only.
 ZMK_BASE_LAYER(Fn,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           &kp C_VOL_UP  &kp C_PP      XXX         ,   XXX           &kp F7        &kp F8        &kp F9        &kp F12     ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    XXX         ,   XXX           &kp F4        &kp F5        &kp F6        &kp F11     ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX         ,   XXX           &kp F1        &kp F2        &kp F3        &kp F10     ,
-//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___         ,   ___           ___
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
-)
-
-ZMK_BASE_LAYER(Sys,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  ,   &tog ALPHA    XXX           XXX           XXX           XXX         ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &bootloader   XXX           XXX           XXX           XXX         ,   XXX           XXX           XXX           XXX           &bootloader,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &sys_reset    XXX           XXX           XXX           &lock       ,   XXX           XXX           XXX           XXX           &sys_reset  ,
-//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                              ___           ___         ,   ___           ___
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &hs_bt 0 0    &hs_bt 1 0    &hs_bt 2 0    &hs_bt 3 0    &hs_btclr 0 0,  &hs_alpha ALPHA 0   &kp F7        &kp F8        &kp F9        &kp F12     ,
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    XXX           &kp C_PREV    &kp C_PP      &kp C_NEXT    &hs_boot 0 0 ,  &hs_boot 0 0        &kp F4        &kp F5        &kp F6        &kp F11     ,
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &hs_lock 0 0  &kp C_VOL_DN  XXX           &kp C_VOL_UP  &hs_reset 0 0,  &hs_reset 0 0       &kp F1        &kp F2        &kp F3        &kp F10     ,
+//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              ___           ___         ,   ___                 ___
+//                                          ╰─────────────┴─────────────╯ ╰──────────────────┴─────────────╯
 )
 
 

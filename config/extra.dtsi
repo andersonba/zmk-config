@@ -11,9 +11,6 @@
 #ifndef _LH2_Fn
 #define _LH2_Fn ___
 #endif
-#ifndef _LH2_Sys
-#define _LH2_Sys ___
-#endif
 #ifndef _LH2_Mouse
 #define _LH2_Mouse ___
 #endif
@@ -39,9 +36,6 @@
 #endif
 #ifndef _RH2_Fn
 #define _RH2_Fn ___
-#endif
-#ifndef _RH2_Sys
-#define _RH2_Sys ___
 #endif
 #ifndef _RH2_Mouse
 #define _RH2_Mouse ___
