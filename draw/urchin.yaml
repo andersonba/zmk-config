@@ -126,12 +126,23 @@ layers:
       type: trans
     - type: held
   Fn:
-    - h: '&bt_sel_n'
-    - h: '&bt_sel_n 1'
-    - h: '&bt_sel_n 2'
-    - h: '&bt_sel_n 3'
-    - h: '&bt_clr'
-    - h: Gallium
+    - t: $$mdi:bluetooth-connect$$
+      h: '1'
+      type: held
+    - t: $$mdi:bluetooth-connect$$
+      h: '2'
+      type: held
+    - t: $$mdi:bluetooth-connect$$
+      h: '3'
+      type: held
+    - t: $$mdi:bluetooth-connect$$
+      h: '4'
+      type: held
+    - t: $$mdi:bluetooth-off$$
+      type: held
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: held
     - F7
     - F8
     - F9
@@ -140,18 +151,23 @@ layers:
     - $$mdi:skip-previous$$
     - $$mdi:play-pause$$
     - $$mdi:skip-next$$
-    - h: $$mdi:progress-download$$
-    - h: $$mdi:progress-download$$
+    - t: $$mdi:progress-download$$
+      type: held
+    - t: $$mdi:progress-download$$
+      type: held
     - F4
     - F5
     - F6
     - F11
-    - h: $$mdi:lock$$
+    - t: $$mdi:lock$$
+      type: held
     - $$mdi:volume-low$$
     - ''
     - $$mdi:volume-high$$
-    - h: $$mdi:backup-restore$$
-    - h: $$mdi:backup-restore$$
+    - t: $$mdi:backup-restore$$
+      type: held
+    - t: $$mdi:backup-restore$$
+      type: held
     - F1
     - F2
     - F3
