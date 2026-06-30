@@ -176,10 +176,12 @@ layers:
     - t: $$mdi:backspace$$
       type: backspace
     - $$mdi:apple-keyboard-control$$
-    - ''
-    - $$mdi:skip-previous$$
-    - $$mdi:play-pause$$
-    - $$mdi:skip-next$$
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-option$$
+    - t: $$mdi:volume-high$$
+      h: $$mdi:apple-keyboard-shift$$
+    - t: $$mdi:play-pause$$
+      h: $$mdi:apple-keyboard-control$$
     - $$mdi:progress-download$$
     - $$mdi:progress-download$$
     - F4
@@ -189,9 +191,9 @@ layers:
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$
     - $$mdi:lock$$
+    - $$mdi:skip-previous$$
     - $$mdi:volume-low$$
-    - ''
-    - $$mdi:volume-high$$
+    - $$mdi:skip-next$$
     - $$mdi:backup-restore$$
     - $$mdi:backup-restore$$
     - F1
