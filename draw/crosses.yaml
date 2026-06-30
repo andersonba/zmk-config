@@ -137,32 +137,39 @@ layers:
     - t: ▽
       type: trans
   Fn:
-    - ''
-    - ''
-    - $$mdi:volume-high$$
-    - $$mdi:play-pause$$
-    - ''
-    - ''
+    - t: $$mdi:bluetooth-connect$$
+      h: '1'
+    - t: $$mdi:bluetooth-connect$$
+      h: '2'
+    - t: $$mdi:bluetooth-connect$$
+      h: '3'
+    - t: $$mdi:bluetooth-connect$$
+      h: '4'
+    - $$mdi:bluetooth-off$$
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
     - F7
     - F8
     - F9
     - F12
-    - ''
-    - $$mdi:skip-previous$$
-    - $$mdi:volume-low$$
-    - $$mdi:skip-next$$
-    - ''
-    - ''
+    - $$mdi:apple-keyboard-command$$
+    - $$mdi:apple-keyboard-option$$
+    - t: $$mdi:volume-high$$
+      h: $$mdi:apple-keyboard-shift$$
+    - t: $$mdi:play-pause$$
+      h: $$mdi:apple-keyboard-control$$
+    - $$mdi:progress-download$$
+    - $$mdi:progress-download$$
     - F4
     - F5
     - F6
     - F11
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
+    - $$mdi:lock$$
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
+    - $$mdi:backup-restore$$
+    - $$mdi:backup-restore$$
     - F1
     - F2
     - F3
@@ -175,55 +182,6 @@ layers:
     - t: ▽
       type: trans
     - type: held
-    - t: ▽
-      type: trans
-  Sys:
-    - h: '1'
-      s: $$mdi:bluetooth-connect$$
-    - h: '2'
-      s: $$mdi:bluetooth-connect$$
-    - h: '3'
-      s: $$mdi:bluetooth-connect$$
-    - h: '4'
-      s: $$mdi:bluetooth-connect$$
-    - $$mdi:bluetooth-off$$
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
-    - ''
-    - ''
-    - ''
-    - ''
-    - $$mdi:progress-download$$
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - $$mdi:progress-download$$
-    - t: $$mdi:backup-restore$$
-      type: bootloader
-    - ''
-    - ''
-    - ''
-    - $$mdi:lock$$
-    - ''
-    - ''
-    - ''
-    - ''
-    - t: $$mdi:backup-restore$$
-      type: bootloader
-    - t: ▽
-      type: trans
-    - t: ▽
-      type: trans
-    - type: held
-    - type: held
-    - t: ▽
-      type: trans
     - t: ▽
       type: trans
   Mouse:
@@ -346,12 +304,6 @@ combos:
       - 31
       - 34
     k: Fn
-    l:
-      - Base
-  - p:
-      - 32
-      - 33
-    k: Sys
     l:
       - Base
   - p:

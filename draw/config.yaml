@@ -133,6 +133,29 @@ parse_config:
     # Modifiers
     "&caps_word": $$mdi:alpha-w-box$$
 
+    # Hold-only system actions (merged Fn layer). These &hs_* wrappers fire on
+    # hold only; map the full source binding (overriding the hold-tap unwrap) so
+    # they render as clean keys with the proper icon, like the former Sys layer.
+    "&hs_bt 0 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 1
+    "&hs_bt 1 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 2
+    "&hs_bt 2 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 3
+    "&hs_bt 3 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 4
+    "&hs_btclr 0 0": $$mdi:bluetooth-off$$
+    "&hs_boot 0 0": $$mdi:progress-download$$
+    "&hs_reset 0 0": $$mdi:backup-restore$$
+    "&hs_lock 0 0": $$mdi:lock$$
+    "&hs_alpha ALPHA 0":
+      tap: Gallium
+      shifted: $$mdi:keyboard-variant$$
+
     # Bluetooth
     "&bt BT_SEL 0":
       shifted: $$mdi:bluetooth-connect$$
