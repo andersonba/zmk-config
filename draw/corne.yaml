@@ -160,21 +160,15 @@ layers:
     - $$mdi:keyboard-tab$$
     - t: $$mdi:bluetooth-connect$$
       h: '1'
-      type: held
     - t: $$mdi:bluetooth-connect$$
       h: '2'
-      type: held
     - t: $$mdi:bluetooth-connect$$
       h: '3'
-      type: held
     - t: $$mdi:bluetooth-connect$$
       h: '4'
-      type: held
-    - t: $$mdi:bluetooth-off$$
-      type: held
+    - $$mdi:bluetooth-off$$
     - t: Gallium
       s: $$mdi:keyboard-variant$$
-      type: held
     - F7
     - F8
     - F9
@@ -186,25 +180,20 @@ layers:
     - $$mdi:skip-previous$$
     - $$mdi:play-pause$$
     - $$mdi:skip-next$$
-    - t: $$mdi:progress-download$$
-      type: held
-    - t: $$mdi:progress-download$$
-      type: held
+    - $$mdi:progress-download$$
+    - $$mdi:progress-download$$
     - F4
     - F5
     - F6
     - F11
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$
-    - t: $$mdi:lock$$
-      type: held
+    - $$mdi:lock$$
     - $$mdi:volume-low$$
     - ''
     - $$mdi:volume-high$$
-    - t: $$mdi:backup-restore$$
-      type: held
-    - t: $$mdi:backup-restore$$
-      type: held
+    - $$mdi:backup-restore$$
+    - $$mdi:backup-restore$$
     - F1
     - F2
     - F3
