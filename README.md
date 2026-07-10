@@ -1,9 +1,12 @@
 # Multi-Board ZMK Config
 
-| [🪸 Urchin](https://github.com/duckyb/urchin)             | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
-| -------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
-| <img src="resources/urchin.jpg" alt="Urchin keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
-| **34 keys** (3x5+2)                               | **36 keys** (3x5+3)                                          | **42 keys** (3x6+3)                             |
+| [🌿 Raii](https://github.com/unspecworks/raii-wireless)                                               | [🪸 Urchin](https://github.com/duckyb/urchin)             |
+| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| <img src="resources/raii.jpg" alt="Raii keyboard" /> | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> |
+| **34 keys** (3x5+2)                                                                                   | **34 keys** (3x5+2)                                      |
+| [🪶 Corne](https://github.com/foostan/crkbd)           | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) |
+| <img src="resources/corne.jpg" alt="Corne keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          |
+| **42 keys** (3x6+3)                                    | **36 keys** (3x5+3)                                                 |
 
 My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
@@ -13,7 +16,7 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 - **`config/base.dtsi`**: Core keymap logic (layers, combos, behaviors) for 34 logical keys
 - **Board-specific keymaps**: Map the 34 logical keys to each keyboard's physical layout
-  - `urchin.keymap`: 34 keys (direct mapping)
+  - `cradio.keymap` / `urchin.keymap`: 34 keys (direct mapping)
   - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
   - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
 
@@ -27,9 +30,9 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 ## Layout
 
-| [🪸 Urchin](https://github.com/duckyb/urchin)      | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)    |
-| ------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
-| <img src="draw/urchin.svg" alt="Urchin layout" /> | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
+| [🌿 Raii](https://github.com/unspecworks/raii-wireless) / [🪸 Urchin](https://github.com/duckyb/urchin) | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)    |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| <img src="draw/raii.svg" alt="Raii / Urchin layout" />                                                  | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
 
 ## Setup
 
@@ -48,20 +51,20 @@ All commands support multiple boards. Run with `mise exec -- just <command>` or 
 ### Build Firmware
 
 ```bash
-just build [board] [side]    # board: urchin (default), corne, crosses
+just build [board] [side]    # board: raii (default), urchin, corne, crosses
                              # side: left, right, all (default)
 ```
 
 Examples:
 
-- `just build` → Build Urchin (both sides)
+- `just build` → Build Raii (both sides)
 - `just build corne left` → Build Corne left side
 - `just build crosses all` → Build Crosses (both sides)
 
 ### Flash Firmware
 
 ```bash
-just flash [board] [side]    # board: urchin, corne, crosses
+just flash [board] [side]    # board: raii, urchin, corne, crosses
                              # side: left, right
 ```
 
@@ -72,12 +75,12 @@ Examples:
 ### Generate Keymap Visualization
 
 ```bash
-just draw [board]             # board: urchin, corne, crosses
+just draw [board]             # board: raii, urchin, corne, crosses
 ```
 
 Examples:
 
-- `just draw` → Generate `draw/urchin.svg`
+- `just draw` → Generate `draw/raii.svg` (Raii / Urchin layout)
 - `just draw corne` → Generate `draw/corne.svg`
 - `just draw all` → Generate all boards
 
@@ -94,6 +97,7 @@ Examples:
 
 - [urob/zmk-config](https://github.com/urob/zmk-config) — Home-row mods and ZMK helpers
 - [caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer) — Keymap visualization
+- [unspecworks/raii-wireless](https://github.com/unspecworks/raii-wireless) — Raii keyboard design
 - [duckyb/urchin](https://github.com/duckyb/urchin) — Urchin keyboard design
 - [Good-Great-Grand-Wonderful/crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) — Crosses keyboard design
 - [foostan/crkbd](https://github.com/foostan/crkbd) — Corne keyboard design

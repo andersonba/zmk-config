@@ -4,7 +4,8 @@
 
 | Board | Keys | Layout | Notes |
 |-------|------|--------|-------|
-| Urchin | 34 | Direct mapping | Primary board, Nice!Nano v2 + Nice!View |
+| Raii | 34 | Direct mapping | Primary board, Sweep BLING LP variant, Nice!Nano v2 |
+| Urchin | 34 | Direct mapping | Nice!Nano v2 + Nice!View |
 | Corne | 42 | 34 logical + 8 edge | 3x6+3 layout |
 | Crosses | 36 | 34 logical + 2 thumb | 3x5+3 layout |
 
@@ -75,6 +76,7 @@ Layer suffixes: `Base`, `Sym`, `Num`, `Fn`, `Sys`, `Mouse`, `Scroll`
 - `config/macros.dtsi` - Macro definitions
 
 ### Board-Specific Files
+- `config/cradio.keymap` - Direct 34-key mapping (Raii)
 - `config/urchin.keymap` - Direct 34-key mapping
 - `config/corne.keymap` - 34 logical + 8 edge keys
 - `config/crosses.keymap` - 34 logical + 2 thumb keys

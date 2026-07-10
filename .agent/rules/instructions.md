@@ -4,12 +4,12 @@ trigger: always_on
 
 # ZMK Config
 
-Multi-board ZMK keyboard firmware configuration (Urchin, Corne, Crosses) with unified 34-key logical layout.
+Multi-board ZMK keyboard firmware configuration (Raii, Urchin, Corne, Crosses) with unified 34-key logical layout.
 
 ## Quick Reference
 
 ```bash
-just build [board] [side]   # Build firmware (default: urchin all)
+just build [board] [side]   # Build firmware (default: raii all)
 just flash [board] [side]   # Flash to keyboard in bootloader mode
 just draw [board]           # Generate keymap visualization
 ```

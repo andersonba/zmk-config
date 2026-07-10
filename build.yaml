@@ -1,5 +1,11 @@
 ---
 include:
+  # Raii builds
+  - board: nice_nano//zmk
+    shield: cradio_left
+  - board: nice_nano//zmk
+    shield: cradio_right
+
   # Urchin builds
   - board: nice_nano//zmk
     shield: urchin_left nice_view_adapter nice_view_gem
