@@ -372,7 +372,8 @@ draw board="raii" method="default":
     echo "🎨 Drawing keymap for {{board}}..."
 
     case {{board}} in
-        "raii"|"urchin") LAYOUT_ARGS="-k ferris/sweep";;
+        "raii") LAYOUT_ARGS="-j draw/raii_info.json";;
+        "urchin") LAYOUT_ARGS="-k ferris/sweep";;
         "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
         "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
         *) echo "Unknown board: {{board}}"; exit 1;;
