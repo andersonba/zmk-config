@@ -18,7 +18,7 @@ This initializes the Python venv, installs West, downloads ZMK/modules, and inst
 ### Build & Flash
 
 ```bash
-just build [board] [side]   # board: urchin|corne|crosses (default: urchin)
+just build [board] [side]   # board: raii|urchin|corne|crosses (default: raii)
                             # side: left|right|all (default: all)
 
 just flash [board] [side]   # side default: left
@@ -26,7 +26,7 @@ just flash [board] [side]   # side default: left
 
 Examples:
 ```bash
-just build                  # Build Urchin both sides
+just build                  # Build Raii both sides
 just build corne left       # Build Corne left side only
 just flash corne right      # Flash Corne right side
 ```
@@ -59,7 +59,7 @@ just check                  # Check environment setup
 When changing `base.dtsi`, test all boards:
 
 ```bash
-just build urchin && just build corne && just build crosses
+just build raii && just build urchin && just build corne && just build crosses
 ```
 
 ## Flashing Notes

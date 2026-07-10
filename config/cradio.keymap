@@ -1,0 +1,10 @@
+#define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
+    ZMK_LAYER(name, \
+        LT RT \
+        LM RM \
+        LB RB \
+        LH RH \
+    )
+
+#include <zmk-helpers/key-labels/34.h>
+#include "base.dtsi"
