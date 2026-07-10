@@ -181,11 +181,11 @@ _validate_args board side:
     set -euo pipefail
 
     case {{board}} in
-        "urchin"|"corne"|"crosses")
+        "raii"|"urchin"|"corne"|"crosses")
             ;;
         *)
             echo "❌ Unknown board: {{board}}"
-            echo "   Valid boards: urchin, corne, crosses"
+            echo "   Valid boards: raii, urchin, corne, crosses"
             exit 1
             ;;
     esac
@@ -200,7 +200,7 @@ _validate_args board side:
             ;;
     esac
 
-# Build firmware: board (default: urchin) and side (left/right/all)
+# Build firmware: board (default: raii) and side (left/right/all)
 # Internal: Build firmware with West
 _west_build board shield flags="":
     #!/usr/bin/env bash
@@ -268,15 +268,16 @@ _flash_uf2 file_path:
         fi
     }
 
-# Build firmware: board (default: urchin) and side (left/right/all)
-build board="urchin" side="all":
+# Build firmware: board (default: raii) and side (left/right/all)
+build board="raii" side="all":
     #!/usr/bin/env bash
     set -euo pipefail
 
     if [ "{{board}}" == "all" ]; then
+        just build raii {{side}}
         just build urchin {{side}}
-        just build crosses {{side}}
         just build corne {{side}}
+        just build crosses {{side}}
         just build-reset
         exit 0
     fi
@@ -292,6 +293,10 @@ build board="urchin" side="all":
 
     # Define shields based on board
     case {{board}} in
+        "raii")
+            BOARD_TARGET="nice_nano//zmk"
+            SHIELD="cradio_{{side}}"
+            ;;
         "urchin")
             BOARD_TARGET="nice_nano//zmk"
             SHIELD="urchin_{{side}} nice_view_adapter nice_view_gem"
@@ -344,25 +349,30 @@ flash board side:
     just _flash_uf2 "$FIRMWARE_FILE"
     echo "✅ Flashed {{board}} {{side}}"
 
-draw board="urchin" method="default":
+draw board="raii" method="default":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
 
     if [ "{{board}}" == "all" ]; then
+        just draw raii
         just draw urchin
         just draw crosses
         just draw corne
         exit 0
     fi
-    
-    KEYMAP_FILE="config/{{board}}.keymap"
+
+    case {{board}} in
+        "raii") KEYMAP_FILE="config/cradio.keymap";;
+        *) KEYMAP_FILE="config/{{board}}.keymap";;
+    esac
     YAML_FILE="draw/{{board}}.yaml"
     SVG_FILE="draw/{{board}}.svg"
 
     echo "🎨 Drawing keymap for {{board}}..."
 
     case {{board}} in
+        "raii") LAYOUT_ARGS="-j draw/raii_info.json";;
         "urchin") LAYOUT_ARGS="-k ferris/sweep";;
         "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
         "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
@@ -394,14 +404,14 @@ draw board="urchin" method="default":
     
     echo "✅ Drawn to $SVG_FILE"
 
-watch command='draw' board="urchin":
+watch command='draw' board="raii":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
     just {{command}} {{board}}
     watchmedo shell-command -R -w -v -c 'just {{command}} {{board}} && echo "¤ Updated"' config/ draw/config.yaml
 
-watch-browser command='draw' board="urchin":
+watch-browser command='draw' board="raii":
     open "resources/watch-draw.html"
     just watch {{command}} {{board}}
 
