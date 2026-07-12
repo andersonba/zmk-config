@@ -4,9 +4,9 @@
 | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | <img src="resources/raii.jpg" alt="Raii keyboard" /> | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> |
 | **34 keys** (3x5+2)                                                                                   | **34 keys** (3x5+2)                                      |
-| [🪶 Corne](https://github.com/foostan/crkbd)           | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) |
-| <img src="resources/corne.jpg" alt="Corne keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          |
-| **42 keys** (3x6+3)                                    | **36 keys** (3x5+3)                                                 |
+| [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
+| <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
+| **36 keys** (3x5+3)                                                 | **42 keys** (3x6+3)                                    |
 
 My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
@@ -17,8 +17,8 @@ This project uses a **modular architecture** to share keymap logic across differ
 - **`config/base.dtsi`**: Core keymap logic (layers, combos, behaviors) for 34 logical keys
 - **Board-specific keymaps**: Map the 34 logical keys to each keyboard's physical layout
   - `cradio.keymap` / `urchin.keymap`: 34 keys (direct mapping)
-  - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
   - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
+  - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
 
 ## Features
 
