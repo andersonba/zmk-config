@@ -22,9 +22,14 @@ init:
     echo "📦 Installing/updating Python packages..."
     pip install --upgrade pip --quiet
 
+    # Only install what's missing — use `just update` to upgrade
     for package in west keymap-drawer yq watchdog; do
-        echo "  Installing/upgrading $package..."
-        pip install --upgrade $package --quiet
+        if pip show $package &>/dev/null; then
+            echo "  ✓ $package already installed"
+        else
+            echo "  Installing $package..."
+            pip install $package
+        fi
     done
 
     # Step 3: ZMK workspace
@@ -162,15 +167,26 @@ init:
 
     echo "✨ Setup complete! Run 'just build' to build firmware"
 
-# Update ZMK and dependencies
+# Update ZMK and dependencies (Python packages + ZMK/modules)
 update:
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
+
+    echo "📦 Upgrading Python packages..."
+    pip install --upgrade pip --quiet
+    for package in west keymap-drawer yq watchdog; do
+        echo "  Upgrading $package..."
+        pip install --upgrade $package --quiet
+    done
+
+    echo "📥 Updating ZMK and modules..."
     cd zmk-workspace/zmk
     git pull --ff-only
     west update
     west zephyr-export
+
+    echo "✅ Everything up to date"
 
 _validate_args board side:
     #!/usr/bin/env bash
