@@ -23,12 +23,8 @@ init:
     pip install --upgrade pip --quiet
 
     for package in west keymap-drawer yq watchdog; do
-        if pip show $package &>/dev/null; then
-            echo "  ✓ $package already installed"
-        else
-            echo "  Installing $package..."
-            pip install $package
-        fi
+        echo "  Installing/upgrading $package..."
+        pip install --upgrade $package --quiet
     done
 
     # Step 3: ZMK workspace
