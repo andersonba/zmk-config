@@ -181,7 +181,9 @@ combos:
   - p:
       - 13
       - 14
-    k: AltGr+BACK
+    k:
+      t: AltGr+$$mdi:backspace$$
+      type: backspace
     l:
       - Alpha1
       - Alpha2

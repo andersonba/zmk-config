@@ -90,7 +90,7 @@ ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS,     COMBO_TERM_SLOW)
-ZMK_COMBO(r_bkp_word, &kp RA(K_BACK), RB1 RB2, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALL_LAYERS, COMBO_TERM_SLOW)
 
 // LAYERS {{{
