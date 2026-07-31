@@ -85,32 +85,31 @@ layers:
     - t: ▽
       type: trans
   Sym:
-    - t: '"'
-      h: ''''
-    - $
-    - '%'
-    - ^
-    - (
-    - '-'
-    - )
-    - t: '|'
-      h: '|'
     - t: '~'
-      h: '`'
-    - '!'
-    - '@'
-    - '#'
-    - t: '{'
-      h: '['
+      h: $$mdi:apple-keyboard-command$$
+    - t: \
+      h: $$mdi:apple-keyboard-option$$
+    - t: /
+      h: $$mdi:apple-keyboard-shift$$
+    - t: '&'
+      h: $$mdi:apple-keyboard-control$$
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right-bold$$
+    - '`'
+    - <
+    - '>'
     - '*'
-    - t: '}'
-      h: ']'
-    - '&'
+    - t: '['
+      h: '{'
+    - (
+    - )
+    - t: ']'
+      h: '}'
     - _
-    - t: '='
-      h: +
-    - t: ▽
-      type: trans
+    - '-'
+    - '='
     - type: held
   Nav:
     - $$mdi:volume-off$$
@@ -208,3 +207,24 @@ combos:
     k: Nav
     l:
       - Alpha1
+  - p:
+      - 4
+      - 12
+    k: $$mdi:code-parentheses$$
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 5
+      - 13
+    k: $$mdi:code-brackets$$
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 6
+      - 14
+    k: $$mdi:code-braces$$
+    l:
+      - Alpha1
+      - Alpha2

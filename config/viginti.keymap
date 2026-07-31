@@ -10,6 +10,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <zmk-helpers/helper.h>
 
+#include "./macros.dtsi"
+
 // Layers
 #define ALPHA1 0
 #define ALPHA2 1
@@ -94,6 +96,13 @@ ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS NUM SYM, COMBO_TERM_FAST, 
 ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, ALPHAS,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALPHA1,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
+/* symbols: both chars + cursor inside (vertical combos, right hand)
+ * — the 34-key boards use the inner columns for these; here the free
+ *   vertical pairs (home+bottom, same finger) take that role */
+ZMK_COMBO(both_par, &both_par, RM0 RB0, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brk, &both_brk, RM1 RB1, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brc, &both_brc, RM2 RB2, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
 // LAYERS {{{
 ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
@@ -125,13 +134,17 @@ ZMK_VIGINTI_LAYER(Num,
 //              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
+// Mirrors the base.dtsi Sym structure: held mods on the left symbols,
+// arrows on the right home row, bracket pairs on the right bottom row.
+// @ # $ % ^ ! stay reachable as shifted digits on the Num layer;
+// shift also covers ~ (`), | (\) and + (=) natively.
 ZMK_VIGINTI_LAYER(Sym,
 //╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
-  &hm_fast SQT DQT &kp DOLLAR     &kp PERCENT      &kp CARET       , &kp LPAR         &kp MINUS        &kp RPAR   &hm_fast PIPE NON_US_BSLH,
+  &hm_mid LGUI TILDE &hm_mid LALT BSLH &hm_mid LSHFT SLASH &hm_mid LCTRL AMPS, &kp LEFT  &kp DOWN         &kp UP         &kp RIGHT     ,
 //├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
-  &hm_fast GRAVE TILDE &kp EXCL   &kp AT           &kp HASH        , &hm_fast LBKT LBRC &kp ASTRK  &hm_fast RBKT RBRC &kp AMPS      ,
+   &kp GRAVE      &kp LT          &kp GT           &kp ASTRK       , &hm_fast LBRC LBKT &kp LPAR        &kp RPAR   &hm_fast RBRC RBKT,
 //╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
-                  &kp UNDERSCORE  &hm_fast PLUS EQUAL, ___           ___
+                  &kp UNDERSCORE  &kp MINUS       , &kp EQUAL        ___
 //              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
