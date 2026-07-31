@@ -18,7 +18,6 @@
 #define NAV 4
 
 #define ALPHAS ALPHA1 ALPHA2
-#define ALL_LAYERS ALPHA1 ALPHA2 NUM SYM NAV
 
 // Timings
 #define QUICK_TAP_MS 140
@@ -91,7 +90,7 @@ ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS,     COMBO_TERM_SLOW)
 ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS,     COMBO_TERM_SLOW)
-ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALL_LAYERS, COMBO_TERM_SLOW)
+ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALPHAS,     COMBO_TERM_SLOW)
 
 // LAYERS {{{
 ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)

@@ -679,13 +679,6 @@ rect.held, rect.combo.held {
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key trans"/>
 <text x="0" y="-4" class="key trans tap">▽</text>
 </g>
-<g class="combo combopos-0">
-<path d="M364,155 l-117,0" class="combo"/>
-<path d="M364,155 l117,0" class="combo"/>
-<rect rx="6" ry="6" x="350" y="142" width="28" height="26" class="combo"/>
-<a href="#Nav">
-<text x="364" y="155" class="combo tap layer-activator">Nav</text>
-</a></g>
 </g>
 </g>
 <g transform="translate(40, 820)" class="layer-Sym">
@@ -796,13 +789,6 @@ rect.held, rect.combo.held {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key held"/>
 </g>
-<g class="combo combopos-0">
-<path d="M364,155 l-117,0" class="combo"/>
-<path d="M364,155 l117,0" class="combo"/>
-<rect rx="6" ry="6" x="350" y="142" width="28" height="26" class="combo"/>
-<a href="#Nav">
-<text x="364" y="155" class="combo tap layer-activator">Nav</text>
-</a></g>
 </g>
 </g>
 <g transform="translate(40, 1093)" class="layer-Nav">
@@ -909,13 +895,6 @@ rect.held, rect.combo.held {
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key held"/>
 <use href="#mdi:play-pause" xlink:href="#mdi:play-pause" x="-9" y="-13" height="18" width="18.0" class="key held tap glyph mdi:play-pause"/>
 </g>
-<g class="combo combopos-0">
-<path d="M364,155 l-117,0" class="combo"/>
-<path d="M364,155 l117,0" class="combo"/>
-<rect rx="6" ry="6" x="350" y="142" width="28" height="26" class="combo"/>
-<a href="#Nav">
-<text x="364" y="155" class="combo tap layer-activator">Nav</text>
-</a></g>
 </g>
 </g>
 </svg>
