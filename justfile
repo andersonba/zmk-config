@@ -1,4 +1,4 @@
-boards := "raii urchin corne crosses"
+boards := "raii urchin corne crosses viginti"
 board_pattern := "^(" + replace(boards, " ", "|") + ")$"
 
 board_file := justfile_directory() / ".default-board"
@@ -356,6 +356,10 @@ build board=default_board side="all":
             BOARD_TARGET="nice_nano//zmk"
             SHIELD="crosses_{{side}}"
             ;;
+        "viginti")
+            BOARD_TARGET="nice_nano//zmk"
+            SHIELD="viginti_{{side}}"
+            ;;
     esac
 
     just _west_build "$BOARD_TARGET" "$SHIELD"
@@ -420,6 +424,7 @@ draw board=default_board method="default":
         "urchin") LAYOUT_ARGS="-k ferris/sweep";;
         "corne") LAYOUT_ARGS="-k crkbd/rev4_1/standard";;
         "crosses") LAYOUT_ARGS="-j draw/crosses_info.json";;
+        "viginti") LAYOUT_ARGS="-j draw/viginti_info.json";;
         *) echo "Unknown board: {{board}}"; exit 1;;
     esac
 

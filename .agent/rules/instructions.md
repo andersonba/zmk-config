@@ -4,7 +4,7 @@ trigger: always_on
 
 # ZMK Config
 
-Multi-board ZMK keyboard firmware configuration (Raii, Urchin, Corne, Crosses) with unified 34-key logical layout.
+Multi-board ZMK keyboard firmware configuration (Raii, Urchin, Corne, Crosses, Viginti) with unified 34-key logical layout (exception: Viginti is 20-key and has its own self-contained keymap).
 
 ## Quick Reference
 

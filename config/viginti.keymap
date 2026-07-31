@@ -1,0 +1,146 @@
+// Viginti — 20-key split (2x4+2 per side).
+//
+// Too small for the shared 34-key logic in base.dtsi, so this board keeps its
+// own layers: the Gallium alphas are split across Alpha1 (home) and Alpha2
+// (momentary shift layer on the right inner thumb).
+// TODO: align Num/Sym/Nav with the base.dtsi layers.
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <zmk-helpers/helper.h>
+
+// Layers
+#define ALPHA1 0
+#define ALPHA2 1
+#define NUM 2
+#define SYM 3
+#define NAV 4
+
+#define ALPHAS ALPHA1 ALPHA2
+#define ALL_LAYERS ALPHA1 ALPHA2 NUM SYM NAV
+
+// Timings
+#define QUICK_TAP_MS 140
+#define HRM_TAPPING_TERM 160
+#define HRM_FAST_TAPPING_TERM 150
+#define COMBO_TERM_SLOW 50
+
+/*                KEY POSITIONS
+ * ╭─────────────────╮ ╭─────────────────╮
+ * │ LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 │  <- home row
+ * │ LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 │
+ * ╰───────╮ LH1 LH0 │ │ RH0 RH1 ╭───────╯
+ *         ╰─────────╯ ╰─────────╯
+ */
+#define LM3  0
+#define LM2  1
+#define LM1  2
+#define LM0  3
+#define RM0  4
+#define RM1  5
+#define RM2  6
+#define RM3  7
+#define LB3  8
+#define LB2  9
+#define LB1 10
+#define LB0 11
+#define RB0 12
+#define RB1 13
+#define RB2 14
+#define RB3 15
+#define LH1 16
+#define LH0 17
+#define RH0 18
+#define RH1 19
+
+#define XXX &none
+#define ___ &trans
+
+#define ZMK_VIGINTI_LAYER(name, LM, RM, LB, RB, LH, RH) \
+ZMK_LAYER(name, \
+  LM RM \
+  LB RB \
+  LH RH \
+)
+
+&lt { // Layer Tap
+  tapping-term-ms = <HRM_TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+};
+
+// HRMs (no positional hold-trigger: home row is the top row here)
+ZMK_HOLD_TAP(hm_mid,
+  bindings = <&kp>, <&kp>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <HRM_TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+
+ZMK_HOLD_TAP(hm_fast,
+  bindings = <&kp>, <&kp>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <HRM_FAST_TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+
+// Combos
+ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(r_bkp_word, &kp RA(K_BACK), RB1 RB2, ALPHAS,     COMBO_TERM_SLOW)
+ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALL_LAYERS, COMBO_TERM_SLOW)
+
+// LAYERS {{{
+ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
+//╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
+   &hm_mid LCMD N &hm_fast LALT R &hm_fast LSHFT T &hm_fast LCTRL S, &hm_fast RCTRL H &hm_fast RSHFT A &hm_mid RALT E &hm_mid RCMD I,
+//├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
+   &kp X          &kp Q           &kp M            &kp W           , &kp F            &kp SQT          &kp SEMI       &kp DOT       ,
+//╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
+                  &mo NUM         &kp LSHFT       , &mo ALPHA2       &lt SYM SPACE
+//              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
+//╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
+   &kp B          &kp L           &kp D            &kp C           , &kp Y            &kp O            &kp U          &kp COMMA     ,
+//├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
+   &kp V          &kp G           &kp Z            &kp LSHFT       , &kp RSHFT        &kp K            &kp P          &kp J         ,
+//╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
+                  ___             ___             , ___              ___
+//              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Num,
+//╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
+   &kp F8         &kp N7          &kp N8           &kp N9          , &kp N4           &kp N5           &kp N6      &hm_fast F12 F10 ,
+//├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
+   &kp F7         &hm_fast F4 F1  &hm_fast F5 F2   &hm_fast F6 F3  , &kp N1           &kp N2           &kp N3      &hm_fast F11 F9  ,
+//╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
+                  ___             ___             , &kp N0           ___
+//              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Sym,
+//╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
+  &hm_fast SQT DQT &kp DOLLAR     &kp PERCENT      &kp CARET       , &kp LPAR         &kp MINUS        &kp RPAR   &hm_fast PIPE NON_US_BSLH,
+//├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
+  &hm_fast GRAVE TILDE &kp EXCL   &kp AT           &kp HASH        , &hm_fast LBKT LBRC &kp ASTRK  &hm_fast RBKT RBRC &kp AMPS      ,
+//╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
+                  &kp UNDERSCORE  &hm_fast PLUS EQUAL, ___           ___
+//              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Nav,
+//╭──────────────┬───────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬──────────────┬──────────────╮
+   &kp C_MUTE     &kp C_PREV      &kp C_VOL_UP     &kp C_NEXT      , &kp LEFT         &kp UP           &kp DOWN       &kp RIGHT     ,
+//├──────────────┼───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┼──────────────┤
+   &bootloader    &kp HOME        &kp C_VOL_DN     &bt BT_SEL 0    , &bt BT_SEL 1     &kp CAPSLOCK     &kp END        &bootloader   ,
+//╰────────────╮ ├───────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼──────────────┴──────────────╯
+                  ___             ___             , ___              &kp C_PP
+//              ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
+)
+// }}}

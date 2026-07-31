@@ -8,6 +8,7 @@
 | Urchin | 34 | Direct mapping | Nice!Nano v2 + Nice!View |
 | Corne | 42 | 34 logical + 8 edge | 3x6+3 layout |
 | Crosses | 36 | 34 logical + 2 thumb | 3x5+3 layout |
+| Viginti | 20 | Own layers (2x4+2) | Custom split, does **not** use `base.dtsi` |
 
 ## Modular Design
 
@@ -18,6 +19,15 @@ config/base.dtsi          # Core 34-key logic (layers, combos, behaviors)
     ↓ included by
 config/[board].keymap     # Physical layout mapping
 ```
+
+### Exception: Viginti (20 keys)
+
+The Viginti has fewer keys than the 34-key logical layout, so it cannot include
+`base.dtsi`. Its keymap (`config/viginti.keymap`) is self-contained: the Gallium
+alphas are split across two layers (Alpha1 = home/bottom rows, Alpha2 = top row
+via a momentary layer shift), plus its own Num/Sym/Nav layers. It still shares
+`config/default.conf` and follows the zmk-helpers coding standards. Aligning its
+Num/Sym/Nav layers with `base.dtsi` is planned.
 
 ## Extra Keys System
 
@@ -80,6 +90,7 @@ Layer suffixes: `Base`, `Sym`, `Num`, `Fn`, `Sys`, `Mouse`, `Scroll`
 - `config/urchin.keymap` - Direct 34-key mapping
 - `config/corne.keymap` - 34 logical + 8 edge keys
 - `config/crosses.keymap` - 34 logical + 2 thumb keys
+- `config/viginti.keymap` - Self-contained 20-key keymap (no `base.dtsi`)
 - `config/[board].conf` - Board-specific settings
 
 ## Conditional Features

@@ -1,0 +1,11 @@
+file_format: "1"
+id: viginti
+name: Viginti
+type: shield
+url: https://github.com/280Zo/charybdis-wireless-mini-zmk-firmware
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - viginti_left
+  - viginti_right

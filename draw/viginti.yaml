@@ -1,0 +1,197 @@
+layout:
+  zmk_keyboard: viginti
+layers:
+  Alpha1:
+    - t: N
+      h: LCMD
+    - t: R
+      h: $$mdi:apple-keyboard-option$$
+    - t: T
+      h: $$mdi:apple-keyboard-shift$$
+    - t: S
+      h: $$mdi:apple-keyboard-control$$
+    - t: H
+      h: $$mdi:apple-keyboard-control$$
+    - t: A
+      h: $$mdi:apple-keyboard-shift$$
+    - t: E
+      h: $$mdi:apple-keyboard-option$$
+    - t: I
+      h: RCMD
+    - X
+    - Q
+    - M
+    - W
+    - F
+    - t: ''''
+      s: '"'
+    - ;
+    - .
+    - Num
+    - $$mdi:apple-keyboard-shift$$
+    - Alpha2
+    - t: $$mdi:keyboard-space$$
+      h: Sym
+  Alpha2:
+    - B
+    - L
+    - D
+    - C
+    - Y
+    - O
+    - U
+    - ','
+    - V
+    - G
+    - Z
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-shift$$
+    - K
+    - P
+    - J
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
+  Num:
+    - F8
+    - '7'
+    - '8'
+    - '9'
+    - '4'
+    - '5'
+    - '6'
+    - t: F10
+      h: F12
+    - F7
+    - t: F1
+      h: F4
+    - t: F2
+      h: F5
+    - t: F3
+      h: F6
+    - '1'
+    - '2'
+    - '3'
+    - t: F9
+      h: F11
+    - type: held
+    - t: ▽
+      type: trans
+    - '0'
+    - t: ▽
+      type: trans
+  Sym:
+    - t: '"'
+      h: ''''
+    - $
+    - '%'
+    - ^
+    - (
+    - '-'
+    - )
+    - t: '|'
+      h: '|'
+    - t: '~'
+      h: '`'
+    - '!'
+    - '@'
+    - '#'
+    - t: '{'
+      h: '['
+    - '*'
+    - t: '}'
+      h: ']'
+    - '&'
+    - _
+    - t: '='
+      h: +
+    - t: ▽
+      type: trans
+    - type: held
+  Nav:
+    - $$mdi:volume-off$$
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-high$$
+    - $$mdi:skip-next$$
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-right-bold$$
+    - $$mdi:progress-download$$
+    - HOME
+    - $$mdi:volume-low$$
+    - h: '1'
+      s: $$mdi:bluetooth-connect$$
+    - h: '2'
+      s: $$mdi:bluetooth-connect$$
+    - $$mdi:apple-keyboard-caps$$
+    - END
+    - $$mdi:progress-download$$
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - t: $$mdi:play-pause$$
+      type: held
+combos:
+  - p:
+      - 2
+      - 1
+    k: $$escape$$
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 3
+      - 2
+    k: $$mdi:keyboard-tab$$
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 4
+      - 5
+    k:
+      t: $$mdi:keyboard-return$$
+      type: enter
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 5
+      - 6
+    k: $$escape$$
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 12
+      - 13
+    k:
+      t: $$mdi:backspace$$
+      type: backspace
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 13
+      - 14
+    k: AltGr+BACK
+    l:
+      - Alpha1
+      - Alpha2
+  - p:
+      - 16
+      - 19
+    k: Nav
+    l:
+      - Alpha1
+      - Alpha2
+      - Num
+      - Sym
+      - Nav

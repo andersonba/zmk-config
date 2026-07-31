@@ -24,6 +24,12 @@ include:
   - board: nice_nano//zmk
     shield: crosses_right
 
+  # Viginti builds
+  - board: nice_nano//zmk
+    shield: viginti_left
+  - board: nice_nano//zmk
+    shield: viginti_right
+
   # Settings reset
   - board: nice_nano//zmk
     shield: settings_reset

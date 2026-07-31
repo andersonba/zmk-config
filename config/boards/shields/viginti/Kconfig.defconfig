@@ -1,0 +1,13 @@
+if SHIELD_VIGINTI_LEFT
+
+config ZMK_KEYBOARD_NAME
+	default "Viginti"
+
+endif
+
+if SHIELD_VIGINTI_LEFT || SHIELD_VIGINTI_RIGHT
+
+config ZMK_SPLIT
+	default y
+
+endif

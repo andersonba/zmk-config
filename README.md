@@ -19,6 +19,7 @@ This project uses a **modular architecture** to share keymap logic across differ
   - `cradio.keymap` / `urchin.keymap`: 34 keys (direct mapping)
   - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
   - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
+  - `viginti.keymap`: 20 keys (self-contained keymap — too small for the 34-key base)
 
 ## Features
 
@@ -64,7 +65,7 @@ just use           # show the current default
 ### Build Firmware
 
 ```bash
-just build [board] [side]    # board: raii, urchin, corne, crosses (default: see `just use`)
+just build [board] [side]    # board: raii, urchin, corne, crosses, viginti (default: see `just use`)
                              # side: left, right, all (default)
 ```
 
@@ -77,7 +78,7 @@ Examples:
 ### Flash Firmware
 
 ```bash
-just flash [board] [side]    # board: raii, urchin, corne, crosses
+just flash [board] [side]    # board: raii, urchin, corne, crosses, viginti
                              # side: left, right
 ```
 
@@ -88,7 +89,7 @@ Examples:
 ### Generate Keymap Visualization
 
 ```bash
-just draw [board]             # board: raii, urchin, corne, crosses
+just draw [board]             # board: raii, urchin, corne, crosses, viginti
 ```
 
 Examples:
