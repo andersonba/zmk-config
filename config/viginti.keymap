@@ -20,7 +20,8 @@
 #define ALPHA2 3
 #define NUM 4
 #define SYM 5
-#define NAV 6
+#define FN 6
+#define SYS 7
 
 #define ALPHAS BASE1 BASE2 ALPHA1 ALPHA2
 #define ALPHA_HOMES BASE1 ALPHA1
@@ -98,7 +99,8 @@ ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS NUM,     COMBO_TERM_FAST, 
 ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, ALPHAS,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(fn,         &mo FN,         LH1 RH1, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sys,        &mo SYS,        LH0 RH0, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* symbols: both chars + cursor inside (vertical combos, right hand)
  * — the 34-key boards use the inner columns for these; here the free
@@ -154,9 +156,9 @@ ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 
 ZMK_VIGINTI_LAYER(Num,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &kp F8              &kp N7              &kp N8              &kp N9            ,   &kp N4              &kp N5              &kp N6              &hm_fast F12 F10  ,
+    XXX                 &kp N7              &kp N8              &kp N9            ,   &kp N4              &kp N5              &kp N6              XXX               ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
-    &kp F7              &hm_fast F4 F1      &hm_fast F5 F2      &hm_fast F6 F3    ,   &kp N1              &kp N2              &kp N3              &hm_fast F11 F9   ,
+    XXX                 XXX                 XXX                 XXX               ,   &kp N1              &kp N2              &kp N3              XXX               ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
                                             ___                 ___               ,   &kp N0              ___
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
@@ -176,11 +178,24 @@ ZMK_VIGINTI_LAYER(Sym,
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
-ZMK_VIGINTI_LAYER(Nav,
+// Mirrors the base.dtsi Fn layer: media on the left, F-keys on the right
+// climbing bottom to top. The third row does not exist here, so F7-F9 and F12
+// ride as the hold of the row above their tap.
+ZMK_VIGINTI_LAYER(Fn,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &tog ALPHA1         &kp C_MUTE          &kp C_VOL_UP        &kp C_PP          ,   &bt BT_SEL 0        &bt BT_SEL 1        &bt BT_SEL 2        &bt BT_CLR        ,
+    XXX                 &kp C_MUTE          &kp C_VOL_UP        &kp C_PP          ,   &hm_fast F7 F4      &hm_fast F8 F5      &hm_fast F9 F6      &hm_fast F12 F11  ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
-    &bootloader         &kp C_PREV          &kp C_VOL_DN        &kp C_NEXT        ,   &lock               XXX                 XXX                 &bootloader       ,
+    XXX                 &kp C_PREV          &kp C_VOL_DN        &kp C_NEXT        ,   &kp F1              &kp F2              &kp F3              &kp F10           ,
+//╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
+                                            ___                 ___               ,   ___                 ___
+//                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Sys,
+//╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
+    &tog ALPHA1         XXX                 XXX                 XXX               ,   &bt BT_SEL 0        &bt BT_SEL 1        &bt BT_SEL 2        &bt BT_CLR        ,
+//├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
+    &bootloader         XXX                 XXX                 XXX               ,   &lock               XXX                 XXX                 &bootloader       ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
                                             ___                 ___               ,   ___                 ___
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯

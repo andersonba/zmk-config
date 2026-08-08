@@ -68,27 +68,22 @@ layers:
     - t: ▽
       type: trans
   Num:
-    - F8
+    - ''
     - '7'
     - '8'
     - '9'
     - '4'
     - '5'
     - '6'
-    - t: F10
-      h: F12
-    - F7
-    - t: F1
-      h: F4
-    - t: F2
-      h: F5
-    - t: F3
-      h: F6
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - '1'
     - '2'
     - '3'
-    - t: F9
-      h: F11
+    - ''
     - type: held
     - t: ▽
       type: trans
@@ -122,13 +117,40 @@ layers:
     - '-'
     - '='
     - type: held
-  Nav:
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
+  Fn:
+    - ''
     - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
+    - t: F4
+      h: F7
+    - t: F5
+      h: F8
+    - t: F6
+      h: F9
+    - t: F11
+      h: F12
+    - ''
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
+    - F1
+    - F2
+    - F3
+    - F10
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+  Sys:
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: alpha_toggle
+    - ''
+    - ''
+    - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
@@ -137,19 +159,19 @@ layers:
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
     - $$mdi:progress-download$$
-    - $$mdi:skip-previous$$
-    - $$mdi:volume-low$$
-    - $$mdi:skip-next$$
+    - ''
+    - ''
+    - ''
     - $$mdi:lock$$
     - ''
     - ''
     - $$mdi:progress-download$$
-    - type: held
-    - t: ▽
-      type: trans
     - t: ▽
       type: trans
     - type: held
+    - type: held
+    - t: ▽
+      type: trans
 combos:
   - p:
       - 2
@@ -217,7 +239,13 @@ combos:
   - p:
       - 16
       - 19
-    k: Nav
+    k: Fn
+    l:
+      - Base1
+  - p:
+      - 17
+      - 18
+    k: Sys
     l:
       - Base1
   - p:
