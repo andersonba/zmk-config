@@ -163,6 +163,13 @@ layers:
       type: trans
     - type: held
   Sys:
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: alpha_toggle
+    - ''
+    - ''
+    - ''
+    - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
@@ -172,14 +179,8 @@ layers:
     - h: '4'
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
     - ''
     - ''
-    - ''
-    - ''
-    - $$mdi:progress-download$$
     - ''
     - ''
     - ''
@@ -189,8 +190,7 @@ layers:
     - ''
     - ''
     - $$mdi:progress-download$$
-    - t: $$mdi:backup-restore$$
-      type: bootloader
+    - ''
     - ''
     - ''
     - ''
@@ -198,9 +198,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
-    - t: $$mdi:backup-restore$$
-      type: bootloader
+    - $$mdi:progress-download$$
     - t: ▽
       type: trans
     - type: held
