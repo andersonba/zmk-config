@@ -164,9 +164,17 @@ def render(block: Block, width: int) -> list[str]:
     n_right = len(block.rows[1])
     n_thumb = len(thumb_rows[0])
 
-    def cells_of(row: list[str], last: bool) -> str:
-        text = " ".join(c.ljust(width) for c in row)
-        return text.rstrip() if last else text + ","
+    def half_text(row: list[str], last: bool) -> str:
+        # The trailing comma takes the final pad column, so it sits exactly
+        # under the half's closing border vertical (original grid style).
+        cells = [c.ljust(width) for c in row[:-1]]
+        cells.append(row[-1] if last else row[-1].ljust(width - 1) + ",")
+        text = " ".join(cells)
+        return text.rstrip() if last else text
+
+    def row_line(indent: int, lrow: list[str], rrow: list[str], last: bool) -> str:
+        return (" " * indent + half_text(lrow, last=False)
+                + " " * HALF_GAP + half_text(rrow, last=last))
 
     out = [f"{block.macro}({block.name},"
            + (f" {block.header_comment}" if block.header_comment else "")]
@@ -174,23 +182,18 @@ def render(block: Block, width: int) -> list[str]:
 
     pairs = [main_rows[i : i + 2] for i in range(0, len(main_rows), 2)]
     for k, (lrow, rrow) in enumerate(pairs):
-        left = " ".join(c.ljust(width) for c in lrow)
-        line = " " * INDENT + left + "," + " " * HALF_GAP + cells_of(rrow, last=False)
-        out.append(line)
+        out.append(row_line(INDENT, lrow, rrow, last=False))
         if k < len(pairs) - 1:
             out.append(border(width, [n_left, n_right], "mid"))
 
     out.append(border(width, [n_left, n_right], "pre_thumb", n_thumb))
 
     thumb_indent = INDENT + (n_left - n_thumb) * (width + 1)
-    lrow, rrow = thumb_rows
-    left = " ".join(c.ljust(width) for c in lrow)
-    out.append(" " * thumb_indent + left + "," + " " * HALF_GAP
-               + cells_of(rrow, last=True))
+    out.append(row_line(thumb_indent, thumb_rows[0], thumb_rows[1], last=True))
 
     seg = "─" * width
     underline = "╰" + seg + ("┴" + seg) * (n_thumb - 1) + "╯"
-    out.append("//" + " " * (thumb_indent - 2) + underline + " " + underline)
+    out.append("//" + " " * (thumb_indent - 4) + underline + " " + underline)
     out.append(")")
     return out
 
