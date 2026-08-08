@@ -159,7 +159,7 @@ layers:
   Fn:
     - $$mdi:keyboard-tab$$
     - ''
-    - ''
+    - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
     - ''
@@ -206,6 +206,13 @@ layers:
       type: trans
   Sys:
     - $$mdi:keyboard-tab$$
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: alpha_toggle
+    - ''
+    - ''
+    - ''
+    - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
@@ -215,17 +222,9 @@ layers:
     - h: '4'
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
-    - ''
-    - ''
-    - ''
-    - ''
     - t: $$mdi:backspace$$
       type: backspace
     - $$mdi:apple-keyboard-control$$
-    - $$mdi:progress-download$$
     - ''
     - ''
     - ''
@@ -234,11 +233,12 @@ layers:
     - ''
     - ''
     - ''
-    - $$mdi:progress-download$$
+    - ''
+    - ''
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$
-    - t: $$mdi:backup-restore$$
-      type: bootloader
+    - $$mdi:progress-download$$
+    - ''
     - ''
     - ''
     - ''
@@ -246,9 +246,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
-    - t: $$mdi:backup-restore$$
-      type: bootloader
+    - $$mdi:progress-download$$
     - $$escape$$
     - t: ▽
       type: trans
