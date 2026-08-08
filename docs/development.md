@@ -35,6 +35,7 @@ just flash corne right      # Flash Corne right side
 
 ```bash
 just draw [board]           # Generate keymap visualization
+just fmt [files]            # Align keymap layer grids (default: base.dtsi + keymaps)
 just clean                  # Clean build artifacts
 just clean-all              # Clean everything (workspace + venv)
 just update                 # Update ZMK and dependencies
