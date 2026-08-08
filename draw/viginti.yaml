@@ -36,14 +36,22 @@ layers:
     - t: $$mdi:keyboard-space$$
       h: Sym
   Base2:
-    - Q
-    - W
-    - E
-    - R
-    - U
-    - I
-    - O
-    - P
+    - t: Q
+      h: LCMD
+    - t: W
+      h: $$mdi:apple-keyboard-option$$
+    - t: E
+      h: $$mdi:apple-keyboard-shift$$
+    - t: R
+      h: $$mdi:apple-keyboard-control$$
+    - t: U
+      h: $$mdi:apple-keyboard-control$$
+    - t: I
+      h: $$mdi:apple-keyboard-shift$$
+    - t: O
+      h: $$mdi:apple-keyboard-option$$
+    - t: P
+      h: RCMD
     - T
     - G
     - B
