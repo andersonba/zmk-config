@@ -36,6 +36,8 @@ just flash corne right      # Flash Corne right side
 ```bash
 just draw [board]           # Generate keymap visualization
 just fmt [files]            # Align keymap layer grids (default: base.dtsi + keymaps)
+                            # Also runs on commit via .githooks/pre-commit
+                            # (enabled by `just init` → core.hooksPath)
 just clean                  # Clean build artifacts
 just clean-all              # Clean everything (workspace + venv)
 just update                 # Update ZMK and dependencies

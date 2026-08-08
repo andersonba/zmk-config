@@ -8,6 +8,9 @@ init:
 
     echo "🚀 Initializing ZMK workspace..."
 
+    # Step 0: Versioned git hooks (auto-format keymaps on commit)
+    git config core.hooksPath .githooks
+
     # Step 1: Python environment
     if [ ! -d .venv ]; then
         echo "📦 Creating Python virtual environment..."
