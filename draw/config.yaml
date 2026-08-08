@@ -166,10 +166,12 @@ parse_config:
     "&studio_unlock": $$mdi:lock-open$$
 
     # Layer Toggle
-    "&tog ALPHA":
+    "&tog ALPHA": &alpha_toggle
       type: alpha_toggle
       tap: Gallium
       shifted: $$mdi:keyboard-variant$$
+    # Viginti splits Gallium across ALPHA1/ALPHA2; the toggle drives ALPHA1.
+    "&tog ALPHA1": *alpha_toggle
 
     # Behaviors
     "&swapper": $$mdi:swap-horizontal$$

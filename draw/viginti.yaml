@@ -115,8 +115,9 @@ layers:
     - '='
     - type: held
   Nav:
-    - t: Alpha1
-      h: toggle
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: alpha_toggle
     - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
