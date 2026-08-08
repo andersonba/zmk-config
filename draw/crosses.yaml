@@ -138,7 +138,7 @@ layers:
       type: trans
   Fn:
     - ''
-    - ''
+    - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
     - ''

@@ -159,7 +159,7 @@ layers:
   Fn:
     - $$mdi:keyboard-tab$$
     - ''
-    - ''
+    - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
     - ''

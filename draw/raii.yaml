@@ -127,7 +127,7 @@ layers:
     - type: held
   Fn:
     - ''
-    - ''
+    - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
     - ''
