@@ -8,6 +8,9 @@ init:
 
     echo "🚀 Initializing ZMK workspace..."
 
+    # Step 0: Versioned git hooks (auto-format keymaps on commit)
+    git config core.hooksPath .githooks
+
     # Step 1: Python environment
     if [ ! -d .venv ]; then
         echo "📦 Creating Python virtual environment..."
@@ -415,6 +418,10 @@ draw board="raii" method="default":
     keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
     
     echo "✅ Drawn to $SVG_FILE"
+
+# Align keymap layer grids (ZMK_*LAYER blocks); pass --check to verify only
+fmt *files="config/base.dtsi config/*.keymap":
+    python3 scripts/format_keymap.py {{files}}
 
 watch command='draw' board="raii":
     #!/usr/bin/env bash

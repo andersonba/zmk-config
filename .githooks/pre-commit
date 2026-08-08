@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Auto-format keymap layer grids on commit (scripts/format_keymap.py).
+# The formatter refuses to write anything that is not token-identical to the
+# input, so a formatting bug fails the commit instead of corrupting a keymap.
+set -euo pipefail
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(dtsi|keymap)$' || true)
+[ -z "$files" ] && exit 0
+
+while IFS= read -r f; do
+    # A partially staged file is skipped: formatting the working tree would
+    # drag unstaged hunks into the commit.
+    if ! git diff --quiet -- "$f"; then
+        echo "pre-commit: $f has unstaged changes, skipping format" >&2
+        continue
+    fi
+    python3 scripts/format_keymap.py "$f"
+    git add "$f"
+done <<< "$files"
