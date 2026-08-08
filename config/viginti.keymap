@@ -1,8 +1,9 @@
 // Viginti — 20-key split (2x4+2 per side).
 //
 // Too small for the shared 34-key logic in base.dtsi, so this board keeps its
-// own layers: the Gallium alphas are split across Alpha1 (home) and Alpha2
-// (momentary shift layer on the right inner thumb).
+// own layers: each alpha layout is split across a home layer and a shift layer
+// (momentary, on the right inner thumb). QWERTY is the default and Gallium is
+// toggled on from Nav, same as the other boards.
 // TODO: align Num/Sym/Nav with the base.dtsi layers.
 
 #include <behaviors.dtsi>
@@ -13,13 +14,16 @@
 #include "./macros.dtsi"
 
 // Layers
-#define ALPHA1 0
-#define ALPHA2 1
-#define NUM 2
-#define SYM 3
-#define NAV 4
+#define BASE1 0
+#define BASE2 1
+#define ALPHA1 2
+#define ALPHA2 3
+#define NUM 4
+#define SYM 5
+#define NAV 6
 
-#define ALPHAS ALPHA1 ALPHA2
+#define ALPHAS BASE1 BASE2 ALPHA1 ALPHA2
+#define ALPHA_HOMES BASE1 ALPHA1
 
 // Timings
 #define QUICK_TAP_MS 140
@@ -94,7 +98,7 @@ ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS NUM,     COMBO_TERM_FAST, 
 ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, ALPHAS,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALPHA1,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(l_nav,      &mo NAV,        LH1 RH1, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* symbols: both chars + cursor inside (vertical combos, right hand)
  * — the 34-key boards use the inner columns for these; here the free
@@ -104,11 +108,35 @@ ZMK_COMBO(both_brk, &both_brk, RM1 RB1, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST
 ZMK_COMBO(both_brc, &both_brc, RM2 RB2, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // LAYERS {{{
+#define QMARK_EXCL &qmark_excl
+#define DOT_COLON &dot_colon
+#define COMMA_SEMI &comma_semicolon
+
+ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
+//╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
+    &hm_mid LCMD A      &hm_fast LALT S     &hm_fast LSHFT D    &hm_fast LCTRL F  ,   &hm_fast RCTRL J    &hm_fast RSHFT K    &hm_mid RALT L      &hm_mid RCMD SQT  ,
+//├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
+    &kp Z               &kp X               &kp C               &kp V             ,   &kp M               COMMA_SEMI          DOT_COLON           QMARK_EXCL        ,
+//╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
+                                            &mo NUM             &kp LSHFT         ,   &mo BASE2           &lt SYM SPACE
+//                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
+)
+
+ZMK_VIGINTI_LAYER(Base2, // QWERTY (top row + inner column via layer shift)
+//╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
+    &kp Q               &kp W               &kp E               &kp R             ,   &kp U               &kp I               &kp O               &kp P             ,
+//├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
+    &kp T               &kp G               &kp B               &kp LSHFT         ,   &kp RSHFT           &kp N               &kp H               &kp Y             ,
+//╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
+                                            ___                 ___               ,   ___                 ___
+//                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
+)
+
 ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
     &hm_mid LCMD N      &hm_fast LALT R     &hm_fast LSHFT T    &hm_fast LCTRL S  ,   &hm_fast RCTRL H    &hm_fast RSHFT A    &hm_mid RALT E      &hm_mid RCMD I    ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
-    &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            &kp DOT           ,
+    &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            DOT_COLON         ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
                                             &mo NUM             &kp LSHFT         ,   &mo ALPHA2          &lt SYM SPACE
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
@@ -116,7 +144,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 
 ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &kp B               &kp L               &kp D               &kp C             ,   &kp Y               &kp O               &kp U               &kp COMMA         ,
+    &kp B               &kp L               &kp D               &kp C             ,   &kp Y               &kp O               &kp U               COMMA_SEMI        ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp V               &kp G               &kp Z               &kp LSHFT         ,   &kp RSHFT           &kp K               &kp P               &kp J             ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
@@ -150,11 +178,11 @@ ZMK_VIGINTI_LAYER(Sym,
 
 ZMK_VIGINTI_LAYER(Nav,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &kp C_MUTE          &kp C_PREV          &kp C_VOL_UP        &kp C_NEXT        ,   &kp LEFT            &kp UP              &kp DOWN            &kp RIGHT         ,
+    &tog ALPHA1         &kp C_MUTE          &kp C_VOL_UP        &kp C_PP          ,   &bt BT_SEL 0        &bt BT_SEL 1        &bt BT_SEL 2        &bt BT_CLR        ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
-    &bootloader         &kp HOME            &kp C_VOL_DN        &bt BT_SEL 0      ,   &bt BT_SEL 1        &kp CAPSLOCK        &kp END             &bootloader       ,
+    &bootloader         &kp C_PREV          &kp C_VOL_DN        &kp C_NEXT        ,   &lock               XXX                 XXX                 &bootloader       ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            ___                 ___               ,   ___                 &kp C_PP
+                                            ___                 ___               ,   ___                 ___
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 // }}}

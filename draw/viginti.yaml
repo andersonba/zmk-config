@@ -1,6 +1,64 @@
 layout:
   zmk_keyboard: viginti
 layers:
+  Base1:
+    - t: A
+      h: LCMD
+    - t: S
+      h: $$mdi:apple-keyboard-option$$
+    - t: D
+      h: $$mdi:apple-keyboard-shift$$
+    - t: F
+      h: $$mdi:apple-keyboard-control$$
+    - t: J
+      h: $$mdi:apple-keyboard-control$$
+    - t: K
+      h: $$mdi:apple-keyboard-shift$$
+    - t: L
+      h: $$mdi:apple-keyboard-option$$
+    - t: ''''
+      h: RCMD
+      s: '"'
+    - Z
+    - X
+    - C
+    - V
+    - M
+    - t: ','
+      s: ;
+    - t: .
+      s: ':'
+    - t: '?'
+      s: '!'
+    - Num
+    - $$mdi:apple-keyboard-shift$$
+    - Base2
+    - t: $$mdi:keyboard-space$$
+      h: Sym
+  Base2:
+    - Q
+    - W
+    - E
+    - R
+    - U
+    - I
+    - O
+    - P
+    - T
+    - G
+    - B
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-shift$$
+    - N
+    - H
+    - Y
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
   Alpha1:
     - t: N
       h: LCMD
@@ -26,7 +84,8 @@ layers:
     - t: ''''
       s: '"'
     - ;
-    - .
+    - t: .
+      s: ':'
     - Num
     - $$mdi:apple-keyboard-shift$$
     - Alpha2
@@ -40,7 +99,8 @@ layers:
     - Y
     - O
     - U
-    - ','
+    - t: ','
+      s: ;
     - V
     - G
     - Z
@@ -112,37 +172,40 @@ layers:
     - '='
     - type: held
   Nav:
+    - t: Alpha1
+      h: toggle
     - $$mdi:volume-off$$
-    - $$mdi:skip-previous$$
     - $$mdi:volume-high$$
-    - $$mdi:skip-next$$
-    - $$mdi:arrow-left-bold$$
-    - $$mdi:arrow-up-bold$$
-    - $$mdi:arrow-down-bold$$
-    - $$mdi:arrow-right-bold$$
-    - $$mdi:progress-download$$
-    - HOME
-    - $$mdi:volume-low$$
+    - $$mdi:play-pause$$
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
       s: $$mdi:bluetooth-connect$$
-    - $$mdi:apple-keyboard-caps$$
-    - END
+    - h: '3'
+      s: $$mdi:bluetooth-connect$$
+    - $$mdi:bluetooth-off$$
+    - $$mdi:progress-download$$
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
+    - $$mdi:lock$$
+    - ''
+    - ''
     - $$mdi:progress-download$$
     - type: held
     - t: ▽
       type: trans
     - t: ▽
       type: trans
-    - t: $$mdi:play-pause$$
-      type: held
+    - type: held
 combos:
   - p:
       - 2
       - 1
     k: $$escape$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Sym
@@ -151,6 +214,8 @@ combos:
       - 2
     k: $$mdi:keyboard-tab$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Sym
@@ -161,6 +226,8 @@ combos:
       t: $$mdi:keyboard-return$$
       type: enter
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Num
@@ -169,6 +236,8 @@ combos:
       - 6
     k: $$escape$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Num
@@ -179,6 +248,8 @@ combos:
       t: $$mdi:backspace$$
       type: backspace
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Num
@@ -190,6 +261,8 @@ combos:
       t: AltGr+$$mdi:backspace$$
       type: backspace
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
       - Num
@@ -199,6 +272,8 @@ combos:
       - 5
     k: $$mdi:apple-keyboard-caps$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
   - p:
@@ -206,12 +281,15 @@ combos:
       - 19
     k: Nav
     l:
+      - Base1
       - Alpha1
   - p:
       - 4
       - 12
     k: $$mdi:code-parentheses$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
   - p:
@@ -219,6 +297,8 @@ combos:
       - 13
     k: $$mdi:code-brackets$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
   - p:
@@ -226,5 +306,7 @@ combos:
       - 14
     k: $$mdi:code-braces$$
     l:
+      - Base1
+      - Base2
       - Alpha1
       - Alpha2
