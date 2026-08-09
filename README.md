@@ -35,6 +35,10 @@ This project uses a **modular architecture** to share keymap logic across differ
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
 | <img src="draw/raii.svg" alt="Raii / Urchin layout" />                                                  | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
 
+| 🔟 Viginti                                        |
+| ------------------------------------------------- |
+| <img src="draw/viginti.svg" alt="Viginti layout" /> |
+
 ## Setup
 
 This project uses [mise](https://mise.jdx.dev/) for tool management and [just](https://github.com/casey/just) for commands.
@@ -132,3 +136,4 @@ output files.
 - [duckyb/urchin](https://github.com/duckyb/urchin) — Urchin keyboard design
 - [Good-Great-Grand-Wonderful/crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) — Crosses keyboard design
 - [foostan/crkbd](https://github.com/foostan/crkbd) — Corne keyboard design
+- [Verdi127/Viginti](https://github.com/Verdi127/Viginti) — Viginti keyboard design

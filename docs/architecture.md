@@ -23,11 +23,21 @@ config/[board].keymap     # Physical layout mapping
 ### Exception: Viginti (20 keys)
 
 The Viginti has fewer keys than the 34-key logical layout, so it cannot include
-`base.dtsi`. Its keymap (`config/viginti.keymap`) is self-contained: the Gallium
-alphas are split across two layers (Alpha1 = home/bottom rows, Alpha2 = top row
-via a momentary layer shift), plus its own Num/Sym/Nav layers. It still shares
-`config/default.conf` and follows the zmk-helpers coding standards. Aligning its
-Num/Sym/Nav layers with `base.dtsi` is planned.
+`base.dtsi`. Its keymap (`config/viginti.keymap`) is self-contained.
+
+Each alpha layout is split across two layers: the home and bottom rows of the
+four outer columns, plus a shift layer holding the top row and the dropped
+index-inner column, momentary on the left inner thumb. QWERTY sits on
+`BASE1`/`BASE2` and Gallium on `ALPHA1`/`ALPHA2`, toggled from Sys — the same
+role split `base.dtsi` uses, so swapping either layout is a content change
+rather than a rename.
+
+`Num`, `Sym`, `Fn` and `Sys` mirror the `base.dtsi` layers, with `Fn` and `Sys`
+on the same thumb pairs. Symbols that do not fit the Sym layer (`@ # $ % ^`)
+live on Num, on the fingers `base.dtsi` assigns them.
+
+It shares `config/default.conf` and the behaviors in `config/macros.dtsi`, and
+follows the zmk-helpers coding standards.
 
 ## Extra Keys System
 
