@@ -3,8 +3,7 @@
 // Too small for the shared 34-key logic in base.dtsi, so this board keeps its
 // own layers: each alpha layout is split across a home layer and a shift layer
 // (momentary, on the right inner thumb). QWERTY is the default and Gallium is
-// toggled on from Nav, same as the other boards.
-// TODO: align Num/Sym/Nav with the base.dtsi layers.
+// toggled on from Sys, same as the other boards.
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -12,17 +11,17 @@
 #include <zmk-helpers/helper.h>
 
 // Layers
-#define BASE1 0
-#define BASE2 1
-#define ALPHA1 2
-#define ALPHA2 3
+#define BASE1 0   // QWERTY
+#define BASE2 1   // QWERTY, top row + inner column
+#define ALPHA1 2  // Gallium v1
+#define ALPHA2 3  // Gallium v1, top row + inner column
 #define NUM 4
 #define SYM 5
 #define FN 6
 #define SYS 7
 
-#define ALPHAS BASE1 BASE2 ALPHA1 ALPHA2
-#define ALPHA_HOMES BASE1 ALPHA1
+#define LAYOUTS BASE1 BASE2 ALPHA1 ALPHA2
+#define LAYOUT_HOMES BASE1 ALPHA1
 
 // Timings
 #define QUICK_TAP_MS 140
@@ -32,7 +31,7 @@
 #define COMBO_TERM_FAST 35
 #define COMBO_IDLE_FAST 100
 
-// After the timings: macros.dtsi builds behaviors that read them.
+// After the timings — macros.dtsi reads them.
 #include "./macros.dtsi"
 
 #define MAGIC_SHIFT &magic_shift LSHFT 0
@@ -85,8 +84,7 @@ ZMK_LAYER(name, \
   quick-release;
 };
 
-// Layer tap whose tap is the smart space, matching &lt above. The tap binding
-// takes no parameter, so the invocation passes a dummy 0.
+// &spc_morph takes no parameter, hence the dummy 0 at the call site.
 ZMK_HOLD_TAP(lt_spc,
   bindings = <&mo>, <&spc_morph>;
   flavor = "tap-preferred";
@@ -111,22 +109,22 @@ ZMK_HOLD_TAP(hm_fast,
 )
 
 // Combos (same finger pairs and layer reach as combos.dtsi on the 34-key boards)
-ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, ALPHAS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, ALPHAS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, ALPHAS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, ALPHAS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, ALPHAS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, ALPHAS,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(fn,         &mo FN,         LH1 RH1, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(sys,        &mo SYS,        LH0 RH0, ALPHA_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, LAYOUTS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, LAYOUTS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, LAYOUTS,         COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(fn,         &mo FN,         LH1 RH1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sys,        &mo SYS,        LH0 RH0, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* symbols: both chars + cursor inside (vertical combos, right hand)
  * — the 34-key boards use the inner columns for these; here the free
  *   vertical pairs (home+bottom, same finger) take that role */
-ZMK_COMBO(both_par, &both_par, RM0 RB0, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(both_brk, &both_brk, RM1 RB1, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(both_brc, &both_brc, RM2 RB2, ALPHAS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_par, &both_par, RM0 RB0, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brk, &both_brk, RM1 RB1, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(both_brc, &both_brc, RM2 RB2, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 // LAYERS {{{
 #define QMARK_EXCL &qmark_excl
@@ -185,9 +183,7 @@ ZMK_VIGINTI_LAYER(Num,
 
 // Mirrors the base.dtsi Sym structure: held mods on the left symbols,
 // arrows on the right home row, bracket pairs on the right bottom row.
-// @ # $ % ^ do not fit here and live on the Num layer instead, on the fingers
-// base.dtsi gives them. Shift covers | (\) and + (=) natively, and ! is the
-// shifted half of ? on the alpha layers.
+// @ # $ % ^ do not fit; they live on Num, on the fingers base.dtsi gives them.
 ZMK_VIGINTI_LAYER(Sym,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
     &hm_mid LGUI TILDE  &hm_mid LALT BSLH   &hm_mid LSHFT SLASH &hm_mid LCTRL AMPS,   &kp LEFT            &kp DOWN            &kp UP              &kp RIGHT         ,
@@ -198,9 +194,8 @@ ZMK_VIGINTI_LAYER(Sym,
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
-// Mirrors the base.dtsi Fn layer: media on the left, F-keys on the right
-// climbing bottom to top. The third row does not exist here, so F7-F9 and F12
-// ride as the hold of the row above their tap.
+// Mirrors base.dtsi: media left, F-keys right climbing bottom to top.
+// No third row here, so F7-F9 and F12 ride as the hold of the row above.
 ZMK_VIGINTI_LAYER(Fn,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
     XXX                 &kp C_MUTE          &kp C_VOL_UP        &kp C_PP          ,   &hm_fast F7 F4      &hm_fast F8 F5      &hm_fast F9 F6      &hm_fast F12 F11  ,
