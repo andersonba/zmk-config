@@ -424,16 +424,19 @@ draw board="raii" method="default":
 fmt *files="config/base.dtsi config/*.keymap":
     python3 scripts/format_keymap.py {{files}}
 
-watch command='draw' board="raii":
+# Re-run a command on every change; takes one or more boards, or `all`
+watch command='draw' *boards="raii":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
-    just {{command}} {{board}}
-    watchmedo shell-command -R -w -v -c 'just {{command}} {{board}} && echo "¤ Updated"' config/ draw/config.yaml
 
-watch-browser command='draw' board="raii":
+    run="for b in {{boards}}; do just {{command}} \$b || exit 1; done"
+    eval "$run"
+    watchmedo shell-command -R -w -v -c "$run && echo '¤ Updated'" config/ draw/config.yaml
+
+watch-browser command='draw' *boards="raii":
     open "resources/watch-draw.html"
-    just watch {{command}} {{board}}
+    just watch {{command}} {{boards}}
 
 # Clean build artifacts
 clean:

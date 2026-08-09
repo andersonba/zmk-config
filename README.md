@@ -84,6 +84,23 @@ Examples:
 - `just draw corne` → Generate `draw/corne.svg`
 - `just draw all` → Generate all boards
 
+### Watch for Changes
+
+```bash
+just watch [command] [board...]   # command: draw (default)
+                                  # board: one or more, or all
+```
+
+Examples:
+
+- `just watch` → Redraw Raii on every change
+- `just watch draw raii corne` → Redraw both
+- `just watch draw all` → Redraw every board
+
+Use one invocation for several boards rather than one per terminal — the
+commands then run in sequence instead of racing each other over the same
+output files.
+
 ### Other Commands
 
 | Command          | Description                         |
