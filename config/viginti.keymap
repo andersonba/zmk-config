@@ -28,6 +28,7 @@
 
 // Timings
 #define QUICK_TAP_MS 140
+#define STICKY_RELEASE_MS 900
 #define HRM_TAPPING_TERM 160
 #define HRM_FAST_TAPPING_TERM 150
 #define COMBO_TERM_FAST 35
@@ -76,6 +77,21 @@ ZMK_LAYER(name, \
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 
+&sk { // Sticky Key
+  release-after-ms = <STICKY_RELEASE_MS>;
+  quick-release;
+};
+
+// Layer tap whose tap is the smart space, matching &lt above. The tap binding
+// takes no parameter, so the invocation passes a dummy 0.
+ZMK_HOLD_TAP(lt_spc,
+  bindings = <&mo>, <&spc_morph>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <HRM_TAPPING_TERM>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+#define SMART_SPACE &lt_spc SYM 0
+
 // HRMs (no positional hold-trigger: home row is the top row here)
 ZMK_HOLD_TAP(hm_mid,
   bindings = <&kp>, <&kp>;
@@ -120,7 +136,7 @@ ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp Z               &kp X               &kp C               &kp V             ,   &kp M               COMMA_SEMI          DOT_COLON           QMARK_EXCL        ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             &kp LSHFT         ,   &mo BASE2           &lt SYM SPACE
+                                            &mo NUM             &kp LSHFT         ,   &mo BASE2           SMART_SPACE
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
@@ -140,7 +156,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            DOT_COLON         ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             &kp LSHFT         ,   &mo ALPHA2          &lt SYM SPACE
+                                            &mo NUM             &kp LSHFT         ,   &mo ALPHA2          SMART_SPACE
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
