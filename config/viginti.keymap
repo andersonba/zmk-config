@@ -124,7 +124,7 @@ ZMK_COMBO(both_brc, &both_brc, RM2 RB2, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAS
 
 ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &hm_mid LCMD A      &hm_fast LALT S     &hm_fast LSHFT D    &hm_fast LCTRL F  ,   &hm_fast RCTRL J    &hm_fast RSHFT K    &hm_mid RALT L      &hm_mid RCMD SQT  ,
+    &hm_mid LGUI A      &hm_fast LALT S     &hm_fast LSHFT D    &hm_fast LCTRL F  ,   &hm_fast RCTRL J    &hm_fast RSHFT K    &hm_mid RALT L      &hm_mid RGUI SQT  ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp Z               &kp X               &kp C               &kp V             ,   &kp M               COMMA_SEMI          DOT_COLON           QMARK_EXCL        ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
@@ -134,7 +134,7 @@ ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 
 ZMK_VIGINTI_LAYER(Base2, // QWERTY (top row + inner column via layer shift)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &hm_mid LCMD Q      &hm_fast LALT W     &hm_fast LSHFT E    &hm_fast LCTRL R  ,   &hm_fast RCTRL U    &hm_fast RSHFT I    &hm_mid RALT O      &hm_mid RCMD P    ,
+    &hm_mid LGUI Q      &hm_fast LALT W     &hm_fast LSHFT E    &hm_fast LCTRL R  ,   &hm_fast RCTRL U    &hm_fast RSHFT I    &hm_mid RALT O      &hm_mid RGUI P    ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp T               &kp G               &kp B               &kp LSHFT         ,   &kp RSHFT           &kp N               &kp H               &kp Y             ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
@@ -144,7 +144,7 @@ ZMK_VIGINTI_LAYER(Base2, // QWERTY (top row + inner column via layer shift)
 
 ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &hm_mid LCMD N      &hm_fast LALT R     &hm_fast LSHFT T    &hm_fast LCTRL S  ,   &hm_fast RCTRL H    &hm_fast RSHFT A    &hm_mid RALT E      &hm_mid RCMD I    ,
+    &hm_mid LGUI N      &hm_fast LALT R     &hm_fast LSHFT T    &hm_fast LCTRL S  ,   &hm_fast RCTRL H    &hm_fast RSHFT A    &hm_mid RALT E      &hm_mid RGUI I    ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            DOT_COLON         ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
@@ -154,7 +154,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 
 ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    &hm_mid LCMD B      &hm_fast LALT L     &hm_fast LSHFT D    &hm_fast LCTRL C  ,   &hm_fast RCTRL Y    &hm_fast RSHFT O    &hm_mid RALT U      COMMA_SEMI        ,
+    &hm_mid LGUI B      &hm_fast LALT L     &hm_fast LSHFT D    &hm_fast LCTRL C  ,   &hm_fast RCTRL Y    &hm_fast RSHFT O    &hm_mid RALT U      COMMA_SEMI        ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp V               &kp G               &kp Z               &kp LSHFT         ,   &kp RSHFT           &kp K               &kp P               &kp J             ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯

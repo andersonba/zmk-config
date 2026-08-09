@@ -3,7 +3,7 @@ layout:
 layers:
   Base1:
     - t: A
-      h: LCMD
+      h: $$mdi:apple-keyboard-command$$
     - t: S
       h: $$mdi:apple-keyboard-option$$
     - t: D
@@ -17,7 +17,7 @@ layers:
     - t: L
       h: $$mdi:apple-keyboard-option$$
     - t: ''''
-      h: RCMD
+      h: $$mdi:apple-keyboard-command$$
       s: '"'
     - Z
     - X
@@ -36,7 +36,7 @@ layers:
     - Sym
   Base2:
     - t: Q
-      h: LCMD
+      h: $$mdi:apple-keyboard-command$$
     - t: W
       h: $$mdi:apple-keyboard-option$$
     - t: E
@@ -50,7 +50,7 @@ layers:
     - t: O
       h: $$mdi:apple-keyboard-option$$
     - t: P
-      h: RCMD
+      h: $$mdi:apple-keyboard-command$$
     - T
     - G
     - B
