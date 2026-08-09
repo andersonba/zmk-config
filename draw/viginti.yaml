@@ -31,11 +31,9 @@ layers:
     - t: '?'
       s: '!'
     - Num
-    - t: $$mdi:apple-keyboard-shift$$
-      h: $$mdi:gesture-tap-hold$$
     - Base2
-    - t: $$mdi:keyboard-space$$
-      h: Sym
+    - $$mdi:keyboard-space$$
+    - Sym
   Base2:
     - t: Q
       h: LCMD
@@ -63,9 +61,9 @@ layers:
     - Y
     - t: ▽
       type: trans
+    - type: held
     - t: ▽
       type: trans
-    - type: held
     - t: ▽
       type: trans
   Num:

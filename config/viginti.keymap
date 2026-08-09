@@ -2,7 +2,7 @@
 //
 // Too small for the shared 34-key logic in base.dtsi, so this board keeps its
 // own layers: each alpha layout is split across a home layer and a shift layer
-// (momentary, on the right inner thumb). QWERTY is the default and Gallium is
+// (momentary, on the left inner thumb). QWERTY is the default and Gallium is
 // toggled on from Sys, same as the other boards.
 
 #include <behaviors.dtsi>
@@ -33,8 +33,6 @@
 
 // After the timings — macros.dtsi reads them.
 #include "./macros.dtsi"
-
-#define MAGIC_SHIFT &magic_shift LSHFT 0
 
 /*                KEY POSITIONS
  * ╭─────────────────╮ ╭─────────────────╮
@@ -84,14 +82,7 @@ ZMK_LAYER(name, \
   quick-release;
 };
 
-// &spc_morph takes no parameter, hence the dummy 0 at the call site.
-ZMK_HOLD_TAP(lt_spc,
-  bindings = <&mo>, <&spc_morph>;
-  flavor = "tap-preferred";
-  tapping-term-ms = <HRM_TAPPING_TERM>;
-  quick-tap-ms = <QUICK_TAP_MS>;
-)
-#define SMART_SPACE &lt_spc SYM 0
+#define SMART_SPACE &spc_morph
 
 // HRMs (no positional hold-trigger: home row is the top row here)
 ZMK_HOLD_TAP(hm_mid,
@@ -137,7 +128,7 @@ ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp Z               &kp X               &kp C               &kp V             ,   &kp M               COMMA_SEMI          DOT_COLON           QMARK_EXCL        ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             MAGIC_SHIFT       ,   &mo BASE2           SMART_SPACE
+                                            &mo NUM             &mo BASE2         ,   SMART_SPACE         &mo SYM
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
@@ -157,7 +148,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            DOT_COLON         ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             MAGIC_SHIFT       ,   &mo ALPHA2          SMART_SPACE
+                                            &mo NUM             &mo ALPHA2        ,   SMART_SPACE         &mo SYM
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
