@@ -3,15 +3,7 @@ name: Build ZMK firmware
 on:
   push:
     branches: [main]
-    paths:
-      - 'config/**'
-      - 'build.yaml'
-      - '.github/workflows/build.yml'
   pull_request:
-    paths:
-      - 'config/**'
-      - 'build.yaml'
-      - '.github/workflows/build.yml'
   workflow_dispatch:
 
 concurrency:
@@ -19,6 +11,73 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    name: Detect firmware changes
+    runs-on: ubuntu-latest
+    outputs:
+      firmware: ${{ steps.filter.outputs.firmware }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: filter
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          pattern='^(config/|build\.yaml$|\.github/workflows/build\.yml$)'
+
+          case "$EVENT" in
+            pull_request)
+              files=$(git diff --name-only "origin/${BASE_REF}...HEAD")
+              ;;
+            push)
+              if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+                # Ref created or history rewritten: no range to trust, so build.
+                echo "firmware=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              files=$(git diff --name-only "${BEFORE}..${SHA}")
+              ;;
+            *)
+              echo "firmware=true" >> "$GITHUB_OUTPUT"
+              exit 0
+              ;;
+          esac
+
+          echo "Changed files:"
+          printf '%s\n' "$files" | sed 's/^/  /'
+
+          if printf '%s\n' "$files" | grep -qE "$pattern"; then
+            echo "firmware=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "firmware=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
-    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    needs: changes
+    if: needs.changes.outputs.firmware == 'true'
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+
+  # The one check worth requiring: a name this repo owns, that always reports.
+  gate:
+    name: Firmware
+    needs: [changes, build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          CHANGES: ${{ needs.changes.result }}
+          FIRMWARE: ${{ needs.changes.outputs.firmware }}
+          BUILD: ${{ needs.build.result }}
+        run: |
+          set -euo pipefail
+          case "$CHANGES:$FIRMWARE:$BUILD" in
+            success:false:skipped) echo "⏭️  no firmware changes — nothing to build" ;;
+            success:true:success)  echo "✅ firmware built" ;;
+            *) echo "❌ changes=$CHANGES firmware=$FIRMWARE build=$BUILD"; exit 1 ;;
+          esac
