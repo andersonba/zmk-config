@@ -12,3 +12,6 @@
 # Python virtual environment
 /.venv
 __pycache__
+
+# Local board default (just use <board>)
+/.default-board

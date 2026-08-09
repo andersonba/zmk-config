@@ -1,5 +1,37 @@
+boards := "raii urchin corne crosses"
+board_pattern := "^(" + replace(boards, " ", "|") + ")$"
+
+board_file := justfile_directory() / ".default-board"
+saved_board := if path_exists(board_file) == "true" { trim(read(board_file)) } else { "" }
+default_board := if saved_board =~ board_pattern { saved_board } else { "raii" }
+
 default:
+    @echo "▸ default board: {{default_board}}   (change with 'just use <board>')"
     @just --list
+
+# Show the default board, or set it for this machine
+use board="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    b={{quote(board)}}
+
+    if [ -z "$b" ]; then
+        echo "▸ default board: {{default_board}}"
+        exit 0
+    fi
+
+    case " {{boards}} " in
+        *" $b "*)
+            ;;
+        *)
+            echo "❌ Unknown board: $b"
+            echo "   Valid boards: {{boards}}"
+            exit 1
+            ;;
+    esac
+
+    printf '%s\n' "$b" > {{quote(board_file)}}
+    echo "▸ default board: $b"
 
 # Initialize ZMK workspace (run this first!)
 init:
@@ -195,27 +227,30 @@ _validate_args board side:
     #!/usr/bin/env bash
     set -euo pipefail
 
-    case {{board}} in
-        "raii"|"urchin"|"corne"|"crosses")
+    b={{quote(board)}}
+    s={{quote(side)}}
+
+    case " {{boards}} " in
+        *" $b "*)
             ;;
         *)
-            echo "❌ Unknown board: {{board}}"
-            echo "   Valid boards: raii, urchin, corne, crosses"
+            echo "❌ Unknown board: $b"
+            echo "   Valid boards: {{boards}}"
             exit 1
             ;;
     esac
 
-    case {{side}} in
+    case "$s" in
         "left"|"right")
             ;;
         *)
-            echo "❌ Invalid side: {{side}}"
+            echo "❌ Invalid side: $s"
             echo "   Valid sides: left, right"
             exit 1
             ;;
     esac
 
-# Build firmware: board (default: raii) and side (left/right/all)
+# Build firmware: board (defaults to `just use`) and side (left/right/all)
 # Internal: Build firmware with West
 _west_build board shield flags="":
     #!/usr/bin/env bash
@@ -283,16 +318,13 @@ _flash_uf2 file_path:
         fi
     }
 
-# Build firmware: board (default: raii) and side (left/right/all)
-build board="raii" side="all":
+# Build firmware: board (defaults to `just use`) and side (left/right/all)
+build board=default_board side="all":
     #!/usr/bin/env bash
     set -euo pipefail
 
     if [ "{{board}}" == "all" ]; then
-        just build raii {{side}}
-        just build urchin {{side}}
-        just build corne {{side}}
-        just build crosses {{side}}
+        for b in {{boards}}; do just build "$b" {{side}}; done
         just build-reset
         exit 0
     fi
@@ -364,16 +396,13 @@ flash board side:
     just _flash_uf2 "$FIRMWARE_FILE"
     echo "✅ Flashed {{board}} {{side}}"
 
-draw board="raii" method="default":
+draw board=default_board method="default":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
 
     if [ "{{board}}" == "all" ]; then
-        just draw raii
-        just draw urchin
-        just draw crosses
-        just draw corne
+        for b in {{boards}}; do just draw "$b"; done
         exit 0
     fi
 
@@ -425,7 +454,7 @@ fmt *files="config/base.dtsi config/*.keymap":
     python3 scripts/format_keymap.py {{files}}
 
 # Re-run a command on every change; takes one or more boards, or `all`
-watch command='draw' *boards="raii":
+watch command='draw' *boards=default_board:
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
@@ -434,7 +463,7 @@ watch command='draw' *boards="raii":
     eval "$run"
     watchmedo shell-command -R -w -v -c "$run && echo '¤ Updated'" config/ draw/config.yaml
 
-watch-browser command='draw' *boards="raii":
+watch-browser command='draw' *boards=default_board:
     open "resources/watch-draw.html"
     just watch {{command}} {{boards}}
 
