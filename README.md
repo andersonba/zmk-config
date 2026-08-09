@@ -48,16 +48,29 @@ This project uses [mise](https://mise.jdx.dev/) for tool management and [just](h
 
 All commands support multiple boards. Run with `mise exec -- just <command>` or `just <command>` if mise is activated.
 
+### Default Board
+
+Commands that take a board fall back to `raii`. To change that for this
+machine only:
+
+```bash
+just use corne     # writes corne to .default-board (gitignored)
+just use           # show the current default
+```
+
+`just` with no arguments prints the current default above the recipe list.
+`flash` is excluded and always requires an explicit board.
+
 ### Build Firmware
 
 ```bash
-just build [board] [side]    # board: raii (default), urchin, corne, crosses
+just build [board] [side]    # board: raii, urchin, corne, crosses (default: see `just use`)
                              # side: left, right, all (default)
 ```
 
 Examples:
 
-- `just build` → Build Raii (both sides)
+- `just build` → Build the default board (both sides)
 - `just build corne left` → Build Corne left side
 - `just build crosses all` → Build Crosses (both sides)
 
@@ -80,7 +93,7 @@ just draw [board]             # board: raii, urchin, corne, crosses
 
 Examples:
 
-- `just draw` → Generate `draw/raii.svg` (Raii / Urchin layout)
+- `just draw` → Generate the default board
 - `just draw corne` → Generate `draw/corne.svg`
 - `just draw all` → Generate all boards
 
@@ -93,7 +106,7 @@ just watch [command] [board...]   # command: draw (default)
 
 Examples:
 
-- `just watch` → Redraw Raii on every change
+- `just watch` → Redraw the default board on every change
 - `just watch draw raii corne` → Redraw both
 - `just watch draw all` → Redraw every board
 
