@@ -31,7 +31,8 @@ layers:
     - t: '?'
       s: '!'
     - Num
-    - $$mdi:apple-keyboard-shift$$
+    - t: $$mdi:apple-keyboard-shift$$
+      h: $$mdi:gesture-tap-hold$$
     - Base2
     - t: $$mdi:keyboard-space$$
       h: Sym

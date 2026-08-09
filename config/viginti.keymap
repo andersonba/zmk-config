@@ -11,8 +11,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <zmk-helpers/helper.h>
 
-#include "./macros.dtsi"
-
 // Layers
 #define BASE1 0
 #define BASE2 1
@@ -33,6 +31,11 @@
 #define HRM_FAST_TAPPING_TERM 150
 #define COMBO_TERM_FAST 35
 #define COMBO_IDLE_FAST 100
+
+// After the timings: macros.dtsi builds behaviors that read them.
+#include "./macros.dtsi"
+
+#define MAGIC_SHIFT &magic_shift LSHFT 0
 
 /*                KEY POSITIONS
  * ╭─────────────────╮ ╭─────────────────╮
@@ -136,7 +139,7 @@ ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp Z               &kp X               &kp C               &kp V             ,   &kp M               COMMA_SEMI          DOT_COLON           QMARK_EXCL        ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             &kp LSHFT         ,   &mo BASE2           SMART_SPACE
+                                            &mo NUM             MAGIC_SHIFT       ,   &mo BASE2           SMART_SPACE
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
@@ -156,7 +159,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
     &kp X               &kp Q               &kp M               &kp W             ,   &kp F               &kp SQT             &kp SEMI            DOT_COLON         ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
-                                            &mo NUM             &kp LSHFT         ,   &mo ALPHA2          SMART_SPACE
+                                            &mo NUM             MAGIC_SHIFT       ,   &mo ALPHA2          SMART_SPACE
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
 )
 
