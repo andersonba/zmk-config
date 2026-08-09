@@ -175,9 +175,9 @@ ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 
 ZMK_VIGINTI_LAYER(Num,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
-    XXX                 &kp N7              &kp N8              &kp N9            ,   &kp N4              &kp N5              &kp N6              XXX               ,
+    &kp PERCENT         &kp N7              &kp N8              &kp N9            ,   &kp N4              &kp N5              &kp N6              XXX               ,
 //├───────────────────┼───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┼───────────────────┼───────────────────┤
-    XXX                 XXX                 XXX                 XXX               ,   &kp N1              &kp N2              &kp N3              XXX               ,
+    &kp CARET           &kp AT              &kp HASH            &kp DOLLAR        ,   &kp N1              &kp N2              &kp N3              XXX               ,
 //╰───────────────────┴───────────────────┼───────────────────┼───────────────────┤ ├───────────────────┼───────────────────┴───────────────────┴───────────────────╯
                                             ___                 ___               ,   &kp N0              ___
 //                                        ╰───────────────────┴───────────────────╯ ╰───────────────────┴───────────────────╯
@@ -185,8 +185,9 @@ ZMK_VIGINTI_LAYER(Num,
 
 // Mirrors the base.dtsi Sym structure: held mods on the left symbols,
 // arrows on the right home row, bracket pairs on the right bottom row.
-// @ # $ % ^ ! stay reachable as shifted digits on the Num layer;
-// shift also covers ~ (`), | (\) and + (=) natively.
+// @ # $ % ^ do not fit here and live on the Num layer instead, on the fingers
+// base.dtsi gives them. Shift covers | (\) and + (=) natively, and ! is the
+// shifted half of ? on the alpha layers.
 ZMK_VIGINTI_LAYER(Sym,
 //╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮ ╭───────────────────┬───────────────────┬───────────────────┬───────────────────╮
     &hm_mid LGUI TILDE  &hm_mid LALT BSLH   &hm_mid LSHFT SLASH &hm_mid LCTRL AMPS,   &kp LEFT            &kp DOWN            &kp UP              &kp RIGHT         ,
