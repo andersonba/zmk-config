@@ -66,10 +66,6 @@ ZMK_TAP_DANCE(td_mouse,
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 
-&caps_word {
-  /delete-property/ ignore-modifiers;
-};
-
 // Trigger tap-action on all interrupts.
 #define MT_CORE \
   flavor = "tap-preferred"; \
@@ -105,10 +101,6 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Righ
 // }}}
 
 // HELPERS {{{
-#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
-  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
-                bindings = <BINDING1>, <BINDING2>;)
-
 #ifndef ZMK_BASE_LAYER
 #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH) \
 ZMK_LAYER(name, \
@@ -120,33 +112,6 @@ ZMK_LAYER(name, \
 #endif
 /// }}}
 
-// magic shift {{{
-ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
-  flavor = "balanced"; tapping-term-ms = <200>;
-  quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
-  mods = <(MOD_LSFT)>;)
-ZMK_ADAPTIVE_KEY(shift_repeat, bindings = <&sk LSHFT>;
-  repeat {
-    trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-    bindings = <&key_repeat>;
-    max-prior-idle-ms = <1200>;
-    strict-modifiers;
-  };)
-// }}}
-
-// Tap: comma | shift + tap: semicolon
-SIMPLE_MORPH(comma_semicolon, SFT, &kp COMMA, &kp SEMICOLON)
-
-// Tap: dot | shift + tap: colon
-SIMPLE_MORPH(dot_colon, SFT, &kp DOT, &kp COLON)
-
-// Tap: qmark | shift + tap: excl.
-SIMPLE_MORPH(qmark_excl, SFT, &kp QMARK, &kp EXCL)
-
-// Tap: space | Shift + tap: dot -> space -> sticky shift.
-SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
- 
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)
 

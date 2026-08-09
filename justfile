@@ -410,9 +410,10 @@ draw board="raii" method="default":
         mv "${YAML_FILE}.tmp" "$YAML_FILE"
     fi
 
-    # Hide Alpha layer from all boards (learning layout, not needed in docs)
-    # First remove Alpha from combo layer references, then delete the layer
-    yq -y '(.combos[].l) |= map(select(. != "Alpha")) | del(.layers.Alpha)' "$YAML_FILE" > "${YAML_FILE}.tmp"
+    # Hide Alpha layers from all boards (learning layout, not needed in docs).
+    # Prefix match, so a layout split across Alpha1/Alpha2 is caught as well.
+    # First remove them from combo layer references, then delete the layers.
+    yq -y '(.combos[].l) |= map(select(startswith("Alpha") | not)) | .layers |= with_entries(select(.key | startswith("Alpha") | not))' "$YAML_FILE" > "${YAML_FILE}.tmp"
     mv "${YAML_FILE}.tmp" "$YAML_FILE"
 
     keymap -c "draw/config.yaml" draw "$YAML_FILE" $LAYOUT_ARGS >"$SVG_FILE"
