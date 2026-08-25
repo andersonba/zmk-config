@@ -12,41 +12,42 @@ manifest:
     - name: efogdev
       url-base: https://github.com/efogdev
 
+  # Revisions pinned to the tested checkouts of 2026-08-25; bump deliberately.
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: 268b1b1e82150460f00fd701bcd08583d5c75d29 # main @ 2026-08-06
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: main
+      revision: bc114546392b4615ac90a99140eaf21dde31209d # main @ 2026-05-20
 
     # Shields
     - name: urchin-zmk-module
       remote: duckyb
-      revision: main
+      revision: a3ab64fa7779f82675695f3d7d17f705f840da25 # main @ 2024-11-14
     - name: zmk-pmw3610-driver
       remote: efogdev
-      revision: zephyr-4.1
+      revision: 38105b4f09d6d5b94ef5a3073428719e3c356af1 # zephyr-4.1 @ 2026-04-17
 
     # ZMK modules
     - name: zmk-adaptive-key
       remote: urob
-      revision: main
+      revision: e5b335a7b1076cb122582f5a892b118b02a3be34 # main @ 2026-05-20
     - name: zmk-auto-layer
       remote: urob
-      revision: main
+      revision: 62c201934711369d50a28df12e1d055d05cb6460 # main @ 2026-05-20
     - name: zmk-tri-state
       remote: urob
-      revision: main
+      revision: 269b13eb3f5491292b627ac3892589af32de3e17 # main @ 2026-08-07
     - name: zmk-unicode
       remote: urob
-      revision: main
+      revision: a1e3d3eed54dea800b5342a251eb3b83eee3b5ec # main @ 2026-08-06
 
     # Custom Nice!View
     - name: nice-view-gem
       remote: m165437
-      revision: main
+      revision: 0a50fe209d929c916c5664c6affd0f4977c6b012 # main @ 2026-02-27
 
   self:
     path: config

@@ -206,13 +206,14 @@ layers:
       type: trans
   Sys:
     - $$mdi:keyboard-tab$$
+    - $$mdi:power$$
+    - t: $$mdi:usb$$
+      s: $$mdi:bluetooth$$
+    - ''
+    - ''
     - t: Gallium
       s: $$mdi:keyboard-variant$$
       type: alpha_toggle
-    - ''
-    - ''
-    - ''
-    - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
@@ -230,7 +231,8 @@ layers:
     - ''
     - ''
     - ''
-    - ''
+    - h: '5'
+      s: $$mdi:bluetooth-connect$$
     - ''
     - ''
     - ''
@@ -238,14 +240,16 @@ layers:
     - $$mdi:apple-keyboard-control$$
     - $$mdi:apple-keyboard-shift$$
     - $$mdi:progress-download$$
-    - ''
+    - t: $$mdi:backup-restore$$
+      type: bootloader
     - ''
     - ''
     - ''
     - $$mdi:lock$$
     - ''
     - ''
-    - ''
+    - t: $$mdi:backup-restore$$
+      type: bootloader
     - $$mdi:progress-download$$
     - $$escape$$
     - t: ▽
