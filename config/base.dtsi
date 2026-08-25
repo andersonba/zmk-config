@@ -98,6 +98,13 @@ ZMK_LAYER(name, \
 #endif
 /// }}}
 
+// Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
+ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)
 
@@ -129,6 +136,7 @@ ZMK_COMBO(caps, &kp CAPS,
 
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
+#define SMART_NUM &smart_num NUM NUM
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
@@ -141,7 +149,7 @@ ZMK_BASE_LAYER(Base,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &kp Z            &kp X            &kp C            &kp V            &kp B          ,   &kp N            &kp M            COMMA_SEMI       DOT_COLON        QMARK_EXCL     ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
-                                                       &mo NUM          MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
+                                                       SMART_NUM        MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
 //                                                   ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
@@ -153,7 +161,7 @@ ZMK_BASE_LAYER(Alpha, // Gallium v1 (colstag)
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &kp X            &kp Q            &kp M            &kp W            &kp Z          ,   &kp K            &kp F            &kp SQT          &kp SEMI         DOT_COLON      ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
-                                                       &mo NUM          MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
+                                                       SMART_NUM        MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
 //                                                   ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
