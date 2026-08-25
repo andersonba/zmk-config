@@ -45,7 +45,8 @@ layers:
     - t: '?'
       s: '!'
     - Mouse
-    - Num
+    - t: $$mdi:numeric$$
+      h: Num
     - t: $$mdi:apple-keyboard-shift$$
       h: $$mdi:gesture-tap-hold$$
     - $$mdi:keyboard-space$$
@@ -186,13 +187,17 @@ layers:
     - t: Gallium
       s: $$mdi:keyboard-variant$$
       type: alpha_toggle
-    - h: '1'
+    - t: '1'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - h: '2'
+    - t: '2'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - h: '3'
+    - t: '3'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - h: '4'
+    - t: '4'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
     - ''
@@ -200,7 +205,8 @@ layers:
     - ''
     - ''
     - ''
-    - h: '5'
+    - t: '5'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
     - ''
     - ''

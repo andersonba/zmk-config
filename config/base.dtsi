@@ -8,17 +8,8 @@
 
 #include <dt-bindings/zmk/behaviors.h>
 #include <behaviors/num_word.dtsi>
-#include <behaviors/unicode.dtsi>
 
-// Layers
-#define BASE 0
-#define ALPHA 1
-#define NUM 2
-#define SYM 3
-#define FN 4
-#define SYS 5
-#define MOUSE 6
-#define SCROLL 7
+#include "layers.h"
 
 #define BASES BASE ALPHA
 
@@ -27,13 +18,10 @@
 #define HRM_TAPPING_TERM 230
 #define HRM_PRIOR_IDLE 130
 #define TAPPING_TERM_MS 230
-#define TAPPING_TERM_MS_TAP 230
 #define STICKY_RELEASE_MS 900
 #define PASTE_DELAY_MS 300
 #define COMBO_TERM_FAST 35
-#define COMBO_TERM_SLOW 50
 #define COMBO_IDLE_FAST 100
-#define COMBO_IDLE_SLOW 50
 
 // Mouse layer behavior (hold: momentary | double-tap: toggle)
 #ifdef ENABLE_MOUSE_LAYER
@@ -67,8 +55,8 @@ ZMK_TAP_DANCE(td_mouse,
 // Trigger tap-action on all interrupts.
 #define MT_CORE \
   flavor = "tap-preferred"; \
-  tapping-term-ms = <TAPPING_TERM_MS_TAP>; \
-  quick-tap-ms = <TAPPING_TERM_MS_TAP>; \
+  tapping-term-ms = <TAPPING_TERM_MS>; \
+  quick-tap-ms = <TAPPING_TERM_MS>; \
   hold-trigger-key-positions = <0>;
 
 #include "./macros.dtsi"
@@ -106,6 +94,21 @@ ZMK_LAYER(name, \
 #endif
 /// }}}
 
+// BT profile keys: tap = select | hold = disconnect that profile (keeps the bond).
+ZMK_MACRO_ONE_PARAM(bt_sel, bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;)
+ZMK_MACRO_ONE_PARAM(bt_disc, bindings = <&macro_param_1to2>, <&bt BT_DISC MACRO_PLACEHOLDER>;)
+ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+)
+
+// Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
+ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)
 
@@ -137,6 +140,7 @@ ZMK_COMBO(caps, &kp CAPS,
 
 // LAYERS {{{
 #define MAGIC_SHIFT &magic_shift LSHFT 0
+#define SMART_NUM &smart_num NUM NUM
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
 #define COMMA_SEMI &comma_semicolon
@@ -149,7 +153,7 @@ ZMK_BASE_LAYER(Base,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &kp Z            &kp X            &kp C            &kp V            &kp B          ,   &kp N            &kp M            COMMA_SEMI       DOT_COLON        QMARK_EXCL     ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
-                                                       &mo NUM          MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
+                                                       SMART_NUM        MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
 //                                                   ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
@@ -161,7 +165,7 @@ ZMK_BASE_LAYER(Alpha, // Gallium v1 (colstag)
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &kp X            &kp Q            &kp M            &kp W            &kp Z          ,   &kp K            &kp F            &kp SQT          &kp SEMI         DOT_COLON      ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
-                                                       &mo NUM          MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
+                                                       SMART_NUM        MAGIC_SHIFT    ,   SMART_SPACE      &mo SYM
 //                                                   ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
 )
 
@@ -214,9 +218,9 @@ ZMK_BASE_LAYER(Fn,
 
 ZMK_BASE_LAYER(Sys,
 //╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-    &soft_off        &out OUT_TOG     XXX              XXX              &tog ALPHA     ,   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_CLR     ,
+    &soft_off        &out OUT_TOG     XXX              XXX              &tog ALPHA     ,   &bt_prof 0 0     &bt_prof 1 1     &bt_prof 2 2     &bt_prof 3 3     &bt BT_CLR     ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
-    XXX              XXX              XXX              XXX              XXX            ,   &bt BT_SEL 4     XXX              XXX              XXX              XXX            ,
+    XXX              XXX              XXX              XXX              XXX            ,   &bt_prof 4 4     XXX              XXX              XXX              XXX            ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &bootloader      &sys_reset       XXX              XXX              XXX            ,   &lock            XXX              XXX              &sys_reset       &bootloader    ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
