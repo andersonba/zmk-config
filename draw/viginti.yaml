@@ -147,8 +147,8 @@ layers:
     - t: Gallium
       s: $$mdi:keyboard-variant$$
       type: alpha_toggle
-    - ''
-    - ''
+    - '&soft_off'
+    - OUT TOG
     - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$
@@ -158,12 +158,15 @@ layers:
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
     - $$mdi:progress-download$$
-    - ''
+    - t: $$mdi:backup-restore$$
+      type: bootloader
     - ''
     - ''
     - $$mdi:lock$$
-    - ''
-    - ''
+    - h: '4'
+      s: $$mdi:bluetooth-connect$$
+    - t: $$mdi:backup-restore$$
+      type: bootloader
     - $$mdi:progress-download$$
     - t: ▽
       type: trans
