@@ -1,12 +1,12 @@
 # Multi-Board ZMK Config
 
-| [🌿 Raii](https://github.com/unspecworks/raii-wireless)                                               | [🪸 Urchin](https://github.com/duckyb/urchin)             |
-| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| <img src="resources/raii.jpg" alt="Raii keyboard" /> | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> |
-| **34 keys** (3x5+2)                                                                                   | **34 keys** (3x5+2)                                      |
-| [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
-| <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
-| **36 keys** (3x5+3)                                                 | **42 keys** (3x6+3)                                    |
+| [🌿 Raii](https://github.com/unspecworks/raii-wireless) | [🪸 Urchin](https://github.com/duckyb/urchin)              | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) |
+| ------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------- |
+| <img src="resources/raii.jpg" alt="Raii keyboard" />    | <img src="resources/urchin.jpg" alt="Urchin keyboard" />   | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          |
+| **34 keys** (3x5+2)                                     | **34 keys** (3x5+2)                                        | **36 keys** (3x5+3)                                                 |
+| [🪶 Corne](https://github.com/foostan/crkbd)            | [🔟 Viginti](https://github.com/Verdi127/Viginti)          |                                                                     |
+| <img src="resources/corne.jpg" alt="Corne keyboard" />  | <img src="resources/viginti.jpg" alt="Viginti keyboard" /> |                                                                     |
+| **42 keys** (3x6+3)                                     | **20 keys** (2x4+2)                                        |                                                                     |
 
 My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
@@ -19,6 +19,7 @@ This project uses a **modular architecture** to share keymap logic across differ
   - `cradio.keymap` / `urchin.keymap`: 34 keys (direct mapping)
   - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
   - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
+  - `viginti.keymap`: 20 keys (self-contained keymap — too small for the 34-key base)
 
 ## Features
 
@@ -30,9 +31,9 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 ## Layout
 
-| [🌿 Raii](https://github.com/unspecworks/raii-wireless) / [🪸 Urchin](https://github.com/duckyb/urchin) | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)    |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
-| <img src="draw/raii.svg" alt="Raii / Urchin layout" />                                                  | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> |
+| **34 keys** (3x5+2)                             | **36 keys** (3x5+3)                                | **42 keys** (3x6+3)                              | **20 keys** (2x4+2)                                |
+| ----------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| <img src="draw/raii.svg" alt="34-key layout" /> | <img src="draw/crosses.svg" alt="36-key layout" /> | <img src="draw/corne.svg" alt="42-key layout" /> | <img src="draw/viginti.svg" alt="20-key layout" /> |
 
 ## Setup
 
@@ -64,7 +65,7 @@ just use           # show the current default
 ### Build Firmware
 
 ```bash
-just build [board] [side]    # board: raii, urchin, corne, crosses (default: see `just use`)
+just build [board] [side]    # board: raii, urchin, corne, crosses, viginti (default: see `just use`)
                              # side: left, right, all (default)
 ```
 
@@ -77,7 +78,7 @@ Examples:
 ### Flash Firmware
 
 ```bash
-just flash [board] [side]    # board: raii, urchin, corne, crosses
+just flash [board] [side]    # board: raii, urchin, corne, crosses, viginti
                              # side: left, right
 ```
 
@@ -88,7 +89,7 @@ Examples:
 ### Generate Keymap Visualization
 
 ```bash
-just draw [board]             # board: raii, urchin, corne, crosses
+just draw [board]             # board: raii, urchin, corne, crosses, viginti
 ```
 
 Examples:
@@ -131,3 +132,4 @@ output files.
 - [duckyb/urchin](https://github.com/duckyb/urchin) — Urchin keyboard design
 - [Good-Great-Grand-Wonderful/crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) — Crosses keyboard design
 - [foostan/crkbd](https://github.com/foostan/crkbd) — Corne keyboard design
+- [Verdi127/Viginti](https://github.com/Verdi127/Viginti) — Viginti keyboard design

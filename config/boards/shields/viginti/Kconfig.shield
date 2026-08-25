@@ -1,0 +1,5 @@
+config SHIELD_VIGINTI_LEFT
+    def_bool $(shields_list_contains,viginti_left)
+
+config SHIELD_VIGINTI_RIGHT
+    def_bool $(shields_list_contains,viginti_right)

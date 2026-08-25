@@ -8,6 +8,7 @@
 | Urchin | 34 | Direct mapping | Nice!Nano v2 + Nice!View |
 | Corne | 42 | 34 logical + 8 edge | 3x6+3 layout |
 | Crosses | 36 | 34 logical + 2 thumb | 3x5+3 layout |
+| Viginti | 20 | Own layers (2x4+2) | Custom split, does **not** use `base.dtsi` |
 
 ## Modular Design
 
@@ -18,6 +19,25 @@ config/base.dtsi          # Core 34-key logic (layers, combos, behaviors)
     ↓ included by
 config/[board].keymap     # Physical layout mapping
 ```
+
+### Exception: Viginti (20 keys)
+
+The Viginti has fewer keys than the 34-key logical layout, so it cannot include
+`base.dtsi`. Its keymap (`config/viginti.keymap`) is self-contained.
+
+Each alpha layout is split across two layers: the home and bottom rows of the
+four outer columns, plus a shift layer holding the top row and the dropped
+index-inner column, momentary on the left inner thumb. QWERTY sits on
+`BASE1`/`BASE2` and Gallium on `ALPHA1`/`ALPHA2`, toggled from Sys — the same
+role split `base.dtsi` uses, so swapping either layout is a content change
+rather than a rename.
+
+`Num`, `Sym`, `Fn` and `Sys` mirror the `base.dtsi` layers, with `Fn` and `Sys`
+on the same thumb pairs. Symbols that do not fit the Sym layer (`@ # $ % ^`)
+live on Num, on the fingers `base.dtsi` assigns them.
+
+It shares `config/default.conf` and the behaviors in `config/macros.dtsi`, and
+follows the zmk-helpers coding standards.
 
 ## Extra Keys System
 
@@ -80,6 +100,7 @@ Layer suffixes: `Base`, `Sym`, `Num`, `Fn`, `Sys`, `Mouse`, `Scroll`
 - `config/urchin.keymap` - Direct 34-key mapping
 - `config/corne.keymap` - 34 logical + 8 edge keys
 - `config/crosses.keymap` - 34 logical + 2 thumb keys
+- `config/viginti.keymap` - Self-contained 20-key keymap (no `base.dtsi`)
 - `config/[board].conf` - Board-specific settings
 
 ## Conditional Features

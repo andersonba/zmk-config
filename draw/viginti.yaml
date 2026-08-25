@@ -1,0 +1,280 @@
+layout:
+  zmk_keyboard: viginti
+layers:
+  Base1:
+    - t: A
+      h: $$mdi:apple-keyboard-command$$
+    - t: S
+      h: $$mdi:apple-keyboard-option$$
+    - t: D
+      h: $$mdi:apple-keyboard-shift$$
+    - t: F
+      h: $$mdi:apple-keyboard-control$$
+    - t: J
+      h: $$mdi:apple-keyboard-control$$
+    - t: K
+      h: $$mdi:apple-keyboard-shift$$
+    - t: L
+      h: $$mdi:apple-keyboard-option$$
+    - t: ''''
+      h: $$mdi:apple-keyboard-command$$
+      s: '"'
+    - Z
+    - X
+    - C
+    - V
+    - M
+    - t: ','
+      s: ;
+    - t: .
+      s: ':'
+    - t: '?'
+      s: '!'
+    - t: $$mdi:numeric$$
+      h: Num
+    - Base2
+    - $$mdi:keyboard-space$$
+    - Sym
+  Base2:
+    - t: Q
+      h: $$mdi:apple-keyboard-command$$
+    - t: W
+      h: $$mdi:apple-keyboard-option$$
+    - t: E
+      h: $$mdi:apple-keyboard-shift$$
+    - t: R
+      h: $$mdi:apple-keyboard-control$$
+    - t: U
+      h: $$mdi:apple-keyboard-control$$
+    - t: I
+      h: $$mdi:apple-keyboard-shift$$
+    - t: O
+      h: $$mdi:apple-keyboard-option$$
+    - t: P
+      h: $$mdi:apple-keyboard-command$$
+    - T
+    - G
+    - B
+    - $$mdi:apple-keyboard-shift$$
+    - $$mdi:apple-keyboard-shift$$
+    - N
+    - H
+    - Y
+    - t: ▽
+      type: trans
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+  Num:
+    - '%'
+    - '7'
+    - '8'
+    - '9'
+    - '4'
+    - '5'
+    - '6'
+    - ''
+    - ^
+    - '@'
+    - '#'
+    - $
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - type: held
+    - t: ▽
+      type: trans
+    - '0'
+    - t: ▽
+      type: trans
+  Sym:
+    - t: '~'
+      h: $$mdi:apple-keyboard-command$$
+    - t: \
+      h: $$mdi:apple-keyboard-option$$
+    - t: /
+      h: $$mdi:apple-keyboard-shift$$
+    - t: '&'
+      h: $$mdi:apple-keyboard-control$$
+    - $$mdi:arrow-left-bold$$
+    - $$mdi:arrow-down-bold$$
+    - $$mdi:arrow-up-bold$$
+    - $$mdi:arrow-right-bold$$
+    - '`'
+    - <
+    - '>'
+    - '*'
+    - t: '['
+      h: '{'
+    - (
+    - )
+    - t: ']'
+      h: '}'
+    - _
+    - '-'
+    - '='
+    - type: held
+  Fn:
+    - ''
+    - $$mdi:volume-off$$
+    - $$mdi:volume-high$$
+    - $$mdi:play-pause$$
+    - t: F4
+      h: F7
+    - t: F5
+      h: F8
+    - t: F6
+      h: F9
+    - t: F11
+      h: F12
+    - ''
+    - $$mdi:skip-previous$$
+    - $$mdi:volume-low$$
+    - $$mdi:skip-next$$
+    - F1
+    - F2
+    - F3
+    - F10
+    - type: held
+    - t: ▽
+      type: trans
+    - t: ▽
+      type: trans
+    - type: held
+  Sys:
+    - $$mdi:power$$
+    - t: $$mdi:usb$$
+      s: $$mdi:bluetooth$$
+    - t: '5'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - t: Alpha1
+      h: toggle
+    - t: '1'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - t: '2'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - t: '3'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - $$mdi:bluetooth-off$$
+    - $$mdi:progress-download$$
+    - t: $$mdi:backup-restore$$
+      type: bootloader
+    - ''
+    - ''
+    - $$mdi:lock$$
+    - t: '4'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - t: $$mdi:backup-restore$$
+      type: bootloader
+    - $$mdi:progress-download$$
+    - t: ▽
+      type: trans
+    - type: held
+    - type: held
+    - t: ▽
+      type: trans
+combos:
+  - p:
+      - 2
+      - 1
+    k: $$escape$$
+    l:
+      - Base1
+      - Base2
+      - Sym
+  - p:
+      - 3
+      - 2
+    k: $$mdi:keyboard-tab$$
+    l:
+      - Base1
+      - Base2
+      - Sym
+  - p:
+      - 4
+      - 5
+    k:
+      t: $$mdi:keyboard-return$$
+      type: enter
+    l:
+      - Base1
+      - Base2
+      - Num
+  - p:
+      - 5
+      - 6
+    k: $$escape$$
+    l:
+      - Base1
+      - Base2
+      - Num
+  - p:
+      - 12
+      - 13
+    k:
+      t: $$mdi:backspace$$
+      type: backspace
+    l:
+      - Base1
+      - Base2
+      - Num
+      - Sym
+  - p:
+      - 13
+      - 14
+    k:
+      t: AltGr+$$mdi:backspace$$
+      type: backspace
+    l:
+      - Base1
+      - Base2
+      - Num
+      - Sym
+  - p:
+      - 2
+      - 5
+    k: $$mdi:apple-keyboard-caps$$
+    l:
+      - Base1
+      - Base2
+  - p:
+      - 16
+      - 19
+    k: Fn
+    l:
+      - Base1
+  - p:
+      - 17
+      - 18
+    k: Sys
+    l:
+      - Base1
+  - p:
+      - 4
+      - 12
+    k: $$mdi:code-parentheses$$
+    l:
+      - Base1
+      - Base2
+  - p:
+      - 5
+      - 13
+    k: $$mdi:code-brackets$$
+    l:
+      - Base1
+      - Base2
+  - p:
+      - 6
+      - 14
+    k: $$mdi:code-braces$$
+    l:
+      - Base1
+      - Base2
