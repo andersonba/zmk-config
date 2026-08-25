@@ -7,6 +7,9 @@
 | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
 | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
 | **36 keys** (3x5+3)                                                 | **42 keys** (3x6+3)                                    |
+| [🔟 Viginti](https://github.com/Verdi127/Viginti)                   |                                                        |
+| <img src="resources/viginti.jpg" alt="Viginti keyboard" />          |                                                        |
+| **20 keys** (2x4+2)                                                 |                                                        |
 
 My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
