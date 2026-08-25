@@ -47,6 +47,7 @@
 #include <input/processors/code_mapper.dtsi>
 #include <input/processors/transform.dtsi>
 #include <input/processors/scaler.dtsi>
+#include <scroll-snap.dtsi>
 
 &spi0 {
     status = "okay";
@@ -80,7 +81,8 @@
 
         scroll {
             layers = <SCROLL>;
-            input-processors = <&zip_xy_scaler 1 40>, <&zip_xy_to_scroll_mapper>;
+            // snap must come after the mapper: it locks each gesture to the dominant wheel axis
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_snap>, <&zip_scroll_scaler 1 40>;
         };
     };
 };
