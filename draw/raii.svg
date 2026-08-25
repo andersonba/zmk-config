@@ -1153,30 +1153,30 @@ rect.held, rect.combo.held {
 <g transform="translate(40, 1354)" class="layer-Sys">
 <text x="0" y="28" class="label" id="Sys">Sys:</text>
 <g transform="translate(0, 56)">
-<g transform="translate(34, 76) rotate(-14.0)" class="key alpha_toggle keypos-0">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key alpha_toggle side"/>
-<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key alpha_toggle"/>
-<text x="0" y="-4" class="key alpha_toggle tap"><tspan style="font-size: 86%">Gallium</tspan></text>
-<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key alpha_toggle shifted glyph mdi:keyboard-variant"/>
-</g>
-<g transform="translate(101, 43) rotate(-7.0)" class="key keypos-1">
+<g transform="translate(34, 76) rotate(-14.0)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
 <use href="#mdi:power" xlink:href="#mdi:power" x="-9" y="-13" height="18" width="18.0" class="key tap glyph mdi:power"/>
 </g>
-<g transform="translate(167, 28)" class="key keypos-2">
+<g transform="translate(101, 43) rotate(-7.0)" class="key keypos-1">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
 <use href="#mdi:usb" xlink:href="#mdi:usb" x="-9" y="-13" height="18" width="18.0" class="key tap glyph mdi:usb"/>
 <use href="#mdi:bluetooth" xlink:href="#mdi:bluetooth" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth"/>
 </g>
+<g transform="translate(167, 28)" class="key keypos-2">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
+<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+</g>
 <g transform="translate(223, 44)" class="key keypos-3">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
 </g>
-<g transform="translate(279, 52)" class="key keypos-4">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
-<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+<g transform="translate(279, 52)" class="key alpha_toggle keypos-4">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key alpha_toggle side"/>
+<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key alpha_toggle"/>
+<text x="0" y="-4" class="key alpha_toggle tap"><tspan style="font-size: 86%">Gallium</tspan></text>
+<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key alpha_toggle shifted glyph mdi:keyboard-variant"/>
 </g>
 <g transform="translate(447, 52)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>

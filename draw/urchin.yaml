@@ -163,14 +163,14 @@ layers:
       type: trans
     - type: held
   Sys:
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
     - $$mdi:power$$
     - t: $$mdi:usb$$
       s: $$mdi:bluetooth$$
     - ''
     - ''
+    - t: Gallium
+      s: $$mdi:keyboard-variant$$
+      type: alpha_toggle
     - h: '1'
       s: $$mdi:bluetooth-connect$$
     - h: '2'
