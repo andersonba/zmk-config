@@ -31,11 +31,11 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 ## Layout
 
-| **34 keys** (3x5+2)                                   | **36 keys** (3x5+3)                                    |
-| ----------------------------------------------------- | ------------------------------------------------------ |
-| <img src="draw/raii.svg" alt="34-key layout" />       | <img src="draw/crosses.svg" alt="36-key layout" />     |
-| **42 keys** (3x6+3)                                   | **20 keys** (2x4+2)                                    |
-| <img src="draw/corne.svg" alt="42-key layout" />      | <img src="draw/viginti.svg" alt="20-key layout" />     |
+| **34 keys** (3x5+2)                             | **36 keys** (3x5+3)                                | **42 keys** (3x6+3)                              |
+| ----------------------------------------------- | -------------------------------------------------- | ------------------------------------------------ |
+| <img src="draw/raii.svg" alt="34-key layout" /> | <img src="draw/crosses.svg" alt="36-key layout" /> | <img src="draw/corne.svg" alt="42-key layout" /> |
+| **20 keys** (2x4+2)                             |                                                    |                                                  |
+| <img src="draw/viginti.svg" alt="20-key layout" /> |                                                 |                                                  |
 
 ## Setup
 
