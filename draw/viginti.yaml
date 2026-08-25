@@ -147,8 +147,9 @@ layers:
     - t: Gallium
       s: $$mdi:keyboard-variant$$
       type: alpha_toggle
-    - '&soft_off'
-    - OUT TOG
+    - $$mdi:power$$
+    - t: $$mdi:usb$$
+      s: $$mdi:bluetooth$$
     - ''
     - h: '1'
       s: $$mdi:bluetooth-connect$$

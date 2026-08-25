@@ -162,6 +162,12 @@ parse_config:
     "&bootloader":
       tap: $$mdi:progress-download$$
 
+    # Power & output
+    "&soft_off": $$mdi:power$$
+    "&out OUT_TOG":
+      shifted: $$mdi:bluetooth$$
+      tap: $$mdi:usb$$
+
     # Studio
     "&studio_unlock": $$mdi:lock-open$$
 
