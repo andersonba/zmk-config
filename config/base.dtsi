@@ -8,7 +8,6 @@
 
 #include <dt-bindings/zmk/behaviors.h>
 #include <behaviors/num_word.dtsi>
-#include <behaviors/unicode.dtsi>
 
 #include "layers.h"
 
@@ -19,13 +18,10 @@
 #define HRM_TAPPING_TERM 230
 #define HRM_PRIOR_IDLE 130
 #define TAPPING_TERM_MS 230
-#define TAPPING_TERM_MS_TAP 230
 #define STICKY_RELEASE_MS 900
 #define PASTE_DELAY_MS 300
 #define COMBO_TERM_FAST 35
-#define COMBO_TERM_SLOW 50
 #define COMBO_IDLE_FAST 100
-#define COMBO_IDLE_SLOW 50
 
 // Mouse layer behavior (hold: momentary | double-tap: toggle)
 #ifdef ENABLE_MOUSE_LAYER
@@ -59,8 +55,8 @@ ZMK_TAP_DANCE(td_mouse,
 // Trigger tap-action on all interrupts.
 #define MT_CORE \
   flavor = "tap-preferred"; \
-  tapping-term-ms = <TAPPING_TERM_MS_TAP>; \
-  quick-tap-ms = <TAPPING_TERM_MS_TAP>; \
+  tapping-term-ms = <TAPPING_TERM_MS>; \
+  quick-tap-ms = <TAPPING_TERM_MS>; \
   hold-trigger-key-positions = <0>;
 
 #include "./macros.dtsi"

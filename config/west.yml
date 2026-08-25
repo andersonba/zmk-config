@@ -40,9 +40,6 @@ manifest:
     - name: zmk-tri-state
       remote: urob
       revision: 269b13eb3f5491292b627ac3892589af32de3e17 # main @ 2026-08-07
-    - name: zmk-unicode
-      remote: urob
-      revision: a1e3d3eed54dea800b5342a251eb3b83eee3b5ec # main @ 2026-08-06
 
     # Custom Nice!View
     - name: nice-view-gem
