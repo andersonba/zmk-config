@@ -1,15 +1,9 @@
 # Multi-Board ZMK Config
 
-| [🌿 Raii](https://github.com/unspecworks/raii-wireless)                                               | [🪸 Urchin](https://github.com/duckyb/urchin)             |
-| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| <img src="resources/raii.jpg" alt="Raii keyboard" /> | <img src="resources/urchin.jpg" alt="Urchin keyboard" /> |
-| **34 keys** (3x5+2)                                                                                   | **34 keys** (3x5+2)                                      |
-| [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)           |
-| <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/corne.jpg" alt="Corne keyboard" /> |
-| **36 keys** (3x5+3)                                                 | **42 keys** (3x6+3)                                    |
-| [🔟 Viginti](https://github.com/Verdi127/Viginti)                   |                                                        |
-| <img src="resources/viginti.jpg" alt="Viginti keyboard" />          |                                                        |
-| **20 keys** (2x4+2)                                                 |                                                        |
+| [🪶 Corne](https://github.com/foostan/crkbd)           | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🌿 Raii](https://github.com/unspecworks/raii-wireless) | [🪸 Urchin](https://github.com/duckyb/urchin)             | [🔟 Viginti](https://github.com/Verdi127/Viginti)          |
+| ------------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+| <img src="resources/corne.jpg" alt="Corne keyboard" /> | <img src="resources/crosses.jpg" alt="Crosses keyboard" />          | <img src="resources/raii.jpg" alt="Raii keyboard" />    | <img src="resources/urchin.jpg" alt="Urchin keyboard" />  | <img src="resources/viginti.jpg" alt="Viginti keyboard" /> |
+| **42 keys** (3x6+3)                                    | **36 keys** (3x5+3)                                                 | **34 keys** (3x5+2)                                     | **34 keys** (3x5+2)                                       | **20 keys** (2x4+2)                                        |
 
 My personal [ZMK](https://zmk.dev/) firmware configuration shared across some different keyboards. Features a unified logical layout with board-specific physical mappings.
 
