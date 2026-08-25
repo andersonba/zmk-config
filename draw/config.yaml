@@ -133,27 +133,27 @@ parse_config:
     # Modifiers
     "&caps_word": $$mdi:alpha-w-box$$
 
-    # Bluetooth
-    "&bt BT_SEL 0":
+    # Bluetooth: tap selects the profile, hold disconnects it
+    "&bt_prof 0 0":
       shifted: $$mdi:bluetooth-connect$$
-      tap: ""
-      hold: 1
-    "&bt BT_SEL 1":
+      tap: "1"
+      hold: $$mdi:link-off$$
+    "&bt_prof 1 1":
       shifted: $$mdi:bluetooth-connect$$
-      tap: ""
-      hold: 2
-    "&bt BT_SEL 2":
+      tap: "2"
+      hold: $$mdi:link-off$$
+    "&bt_prof 2 2":
       shifted: $$mdi:bluetooth-connect$$
-      tap: ""
-      hold: 3
-    "&bt BT_SEL 3":
+      tap: "3"
+      hold: $$mdi:link-off$$
+    "&bt_prof 3 3":
       shifted: $$mdi:bluetooth-connect$$
-      tap: ""
-      hold: 4
-    "&bt BT_SEL 4":
+      tap: "4"
+      hold: $$mdi:link-off$$
+    "&bt_prof 4 4":
       shifted: $$mdi:bluetooth-connect$$
-      tap: ""
-      hold: 5
+      tap: "5"
+      hold: $$mdi:link-off$$
 
     # Reset
     "&sys_reset":
@@ -172,12 +172,10 @@ parse_config:
     "&studio_unlock": $$mdi:lock-open$$
 
     # Layer Toggle
-    "&tog ALPHA": &alpha_toggle
+    "&tog ALPHA":
       type: alpha_toggle
       tap: Gallium
       shifted: $$mdi:keyboard-variant$$
-    # Viginti splits Gallium across ALPHA1/ALPHA2; the toggle drives ALPHA1.
-    "&tog ALPHA1": *alpha_toggle
 
     # Behaviors
     "&swapper": $$mdi:swap-horizontal$$

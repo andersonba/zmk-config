@@ -67,11 +67,14 @@
 <svg id="mdi:keyboard-tab">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-tab" viewBox="0 0 24 24"><path d="M20,18H22V6H20M11.59,7.41L15.17,11H1V13H15.17L11.59,16.58L13,18L19,12L13,6L11.59,7.41Z" /></svg>
 </svg>
-<svg id="mdi:keyboard-variant">
-<svg xmlns="http://www.w3.org/2000/svg" id="mdi-keyboard-variant" viewBox="0 0 24 24"><path d="M6,16H18V18H6V16M6,13V15H2V13H6M7,15V13H10V15H7M11,15V13H13V15H11M14,15V13H17V15H14M18,15V13H22V15H18M2,10H5V12H2V10M19,12V10H22V12H19M18,12H16V10H18V12M8,12H6V10H8V12M12,12H9V10H12V12M15,12H13V10H15V12M2,9V7H4V9H2M5,9V7H7V9H5M8,9V7H10V9H8M11,9V7H13V9H11M14,9V7H16V9H14M17,9V7H22V9H17Z" /></svg>
+<svg id="mdi:link-off">
+<svg xmlns="http://www.w3.org/2000/svg" id="mdi-link-off" viewBox="0 0 24 24"><path d="M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.43 19.12,14.63 17.79,15L19.25,16.44C20.88,15.61 22,13.95 22,12A5,5 0 0,0 17,7M16,11H13.81L15.81,13H16V11M2,4.27L5.11,7.38C3.29,8.12 2,9.91 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12C3.9,10.41 5.11,9.1 6.66,8.93L8.73,11H8V13H10.73L13,15.27V17H14.73L18.74,21L20,19.74L3.27,3L2,4.27Z" /></svg>
 </svg>
 <svg id="mdi:lock">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-lock" viewBox="0 0 24 24"><path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" /></svg>
+</svg>
+<svg id="mdi:numeric">
+<svg xmlns="http://www.w3.org/2000/svg" id="mdi-numeric" viewBox="0 0 24 24"><path d="M4,17V9H2V7H6V17H4M22,15C22,16.11 21.1,17 20,17H16V15H20V13H18V11H20V9H16V7H20A2,2 0 0,1 22,9V10.5A1.5,1.5 0 0,1 20.5,12A1.5,1.5 0 0,1 22,13.5V15M14,15V17H8V13C8,11.89 8.9,11 10,11H12V9H8V7H12A2,2 0 0,1 14,9V11C14,12.11 13.1,13 12,13H10V15H14Z" /></svg>
 </svg>
 <svg id="mdi:play-pause">
 <svg xmlns="http://www.w3.org/2000/svg" id="mdi-play-pause" viewBox="0 0 24 24"><path d="M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5" /></svg>
@@ -419,8 +422,9 @@ rect.held, rect.combo.held {
 <g transform="translate(229, 155) rotate(15.0)" class="key keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+<use href="#mdi:numeric" xlink:href="#mdi:numeric" x="-9" y="-13" height="18" width="18.0" class="key tap glyph mdi:numeric"/>
 <a href="#Num">
-<text x="0" y="-4" class="key tap layer-activator">Num</text>
+<text x="0" y="24" class="key hold layer-activator">Num</text>
 </a></g>
 <g transform="translate(286, 179) rotate(30.0)" class="key keypos-17">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
@@ -1017,29 +1021,35 @@ rect.held, rect.combo.held {
 <g transform="translate(140, 28)" class="key keypos-2">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+<text x="0" y="-4" class="key tap">5</text>
+<use href="#mdi:link-off" xlink:href="#mdi:link-off" x="-8" y="9" height="15" width="15.0" class="key hold glyph mdi:link-off"/>
+<use href="#mdi:bluetooth-connect" xlink:href="#mdi:bluetooth-connect" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth-connect"/>
 </g>
-<g transform="translate(196, 35)" class="key alpha_toggle keypos-3">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key alpha_toggle side"/>
-<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key alpha_toggle"/>
-<text x="0" y="-4" class="key alpha_toggle tap"><tspan style="font-size: 86%">Gallium</tspan></text>
-<use href="#mdi:keyboard-variant" xlink:href="#mdi:keyboard-variant" x="-8" y="-24" height="15" width="15.0" class="key alpha_toggle shifted glyph mdi:keyboard-variant"/>
+<g transform="translate(196, 35)" class="key keypos-3">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
+<rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
+<text x="0" y="-4" class="key tap">Alpha1</text>
+<text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g transform="translate(532, 35)" class="key keypos-4">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
-<text x="0" y="24" class="key hold">1</text>
+<text x="0" y="-4" class="key tap">1</text>
+<use href="#mdi:link-off" xlink:href="#mdi:link-off" x="-8" y="9" height="15" width="15.0" class="key hold glyph mdi:link-off"/>
 <use href="#mdi:bluetooth-connect" xlink:href="#mdi:bluetooth-connect" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth-connect"/>
 </g>
 <g transform="translate(588, 28)" class="key keypos-5">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
-<text x="0" y="24" class="key hold">2</text>
+<text x="0" y="-4" class="key tap">2</text>
+<use href="#mdi:link-off" xlink:href="#mdi:link-off" x="-8" y="9" height="15" width="15.0" class="key hold glyph mdi:link-off"/>
 <use href="#mdi:bluetooth-connect" xlink:href="#mdi:bluetooth-connect" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth-connect"/>
 </g>
 <g transform="translate(644, 35)" class="key keypos-6">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
-<text x="0" y="24" class="key hold">3</text>
+<text x="0" y="-4" class="key tap">3</text>
+<use href="#mdi:link-off" xlink:href="#mdi:link-off" x="-8" y="9" height="15" width="15.0" class="key hold glyph mdi:link-off"/>
 <use href="#mdi:bluetooth-connect" xlink:href="#mdi:bluetooth-connect" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth-connect"/>
 </g>
 <g transform="translate(700, 60)" class="key keypos-7">
@@ -1073,7 +1083,8 @@ rect.held, rect.combo.held {
 <g transform="translate(588, 84)" class="key keypos-13">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key side"/>
 <rect rx="4" ry="4" x="-20" y="-24" width="40" height="40" class="key"/>
-<text x="0" y="24" class="key hold">4</text>
+<text x="0" y="-4" class="key tap">4</text>
+<use href="#mdi:link-off" xlink:href="#mdi:link-off" x="-8" y="9" height="15" width="15.0" class="key hold glyph mdi:link-off"/>
 <use href="#mdi:bluetooth-connect" xlink:href="#mdi:bluetooth-connect" x="-8" y="-24" height="15" width="15.0" class="key shifted glyph mdi:bluetooth-connect"/>
 </g>
 <g transform="translate(644, 91)" class="key bootloader keypos-14">

@@ -30,7 +30,8 @@ layers:
       s: ':'
     - t: '?'
       s: '!'
-    - Num
+    - t: $$mdi:numeric$$
+      h: Num
     - Base2
     - $$mdi:keyboard-space$$
     - Sym
@@ -147,15 +148,19 @@ layers:
     - $$mdi:power$$
     - t: $$mdi:usb$$
       s: $$mdi:bluetooth$$
-    - ''
-    - t: Gallium
-      s: $$mdi:keyboard-variant$$
-      type: alpha_toggle
-    - h: '1'
+    - t: '5'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - h: '2'
+    - t: Alpha1
+      h: toggle
+    - t: '1'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - h: '3'
+    - t: '2'
+      h: $$mdi:link-off$$
+      s: $$mdi:bluetooth-connect$$
+    - t: '3'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
     - $$mdi:bluetooth-off$$
     - $$mdi:progress-download$$
@@ -164,7 +169,8 @@ layers:
     - ''
     - ''
     - $$mdi:lock$$
-    - h: '4'
+    - t: '4'
+      h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
     - t: $$mdi:backup-restore$$
       type: bootloader

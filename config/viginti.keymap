@@ -11,6 +11,8 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <zmk-helpers/helper.h>
 
+#include <behaviors/num_word.dtsi>
+
 // Layers
 #define BASE1 0   // QWERTY
 #define BASE2 1   // QWERTY, top row + inner column
@@ -27,6 +29,7 @@
 // Timings
 #define QUICK_TAP_MS 140
 #define STICKY_RELEASE_MS 900
+#define TAPPING_TERM_MS 230
 #define HRM_TAPPING_TERM 230
 #define HRM_PRIOR_IDLE 130
 #define PAIR_TAPPING_TERM 150
@@ -104,6 +107,21 @@ ZMK_LAYER(name, \
 MAKE_HRM(hml, KEYS_R THUMBS) // Left-hand HRMs.
 MAKE_HRM(hmr, KEYS_L THUMBS) // Right-hand HRMs.
 
+// BT profile keys: tap = select | hold = disconnect that profile (keeps the bond).
+ZMK_MACRO_ONE_PARAM(bt_sel, bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;)
+ZMK_MACRO_ONE_PARAM(bt_disc, bindings = <&macro_param_1to2>, <&bt BT_DISC MACRO_PLACEHOLDER>;)
+ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+)
+
+// Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
+ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
+  flavor = "balanced";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  quick-tap-ms = <QUICK_TAP_MS>;
+)
+
 // Tap/hold char pairs (F-keys, brackets) — resolve by timeout only
 ZMK_HOLD_TAP(ht_pair,
   bindings = <&kp>, <&kp>;
@@ -141,7 +159,7 @@ ZMK_VIGINTI_LAYER(Base1, // QWERTY (home + bottom rows)
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
     &kp Z              &kp X              &kp C              &kp V            ,   &kp M              COMMA_SEMI         DOT_COLON          QMARK_EXCL       ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
-                                          &mo NUM            &mo BASE2        ,   SMART_SPACE        &mo SYM
+                                          &smart_num NUM NUM &mo BASE2        ,   SMART_SPACE        &mo SYM
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
 )
 
@@ -161,7 +179,7 @@ ZMK_VIGINTI_LAYER(Alpha1, // Gallium v1 (home + bottom rows)
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
     &kp X              &kp Q              &kp M              &kp W            ,   &kp F              &kp SQT            &kp SEMI           DOT_COLON        ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
-                                          &mo NUM            &mo ALPHA2       ,   SMART_SPACE        &mo SYM
+                                          &smart_num NUM NUM &mo ALPHA2       ,   SMART_SPACE        &mo SYM
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
 )
 
@@ -212,9 +230,9 @@ ZMK_VIGINTI_LAYER(Fn,
 
 ZMK_VIGINTI_LAYER(Sys,
 //╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮ ╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮
-    &soft_off          &out OUT_TOG       XXX                &tog ALPHA1      ,   &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_CLR       ,
+    &soft_off          &out OUT_TOG       &bt_prof 4 4       &tog ALPHA1      ,   &bt_prof 0 0       &bt_prof 1 1       &bt_prof 2 2       &bt BT_CLR       ,
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-    &bootloader        &sys_reset         XXX                XXX              ,   &lock              &bt BT_SEL 3       &sys_reset         &bootloader      ,
+    &bootloader        &sys_reset         XXX                XXX              ,   &lock              &bt_prof 3 3       &sys_reset         &bootloader      ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
                                           ___                ___              ,   ___                ___
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
