@@ -28,9 +28,11 @@ This project uses a **modular architecture** to share keymap logic across differ
 
 ## Layout
 
-| [🌿 Raii](https://github.com/unspecworks/raii-wireless) / [🪸 Urchin](https://github.com/duckyb/urchin) | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) | [🪶 Corne](https://github.com/foostan/crkbd)    | [🔟 Viginti](https://github.com/Verdi127/Viginti)     |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------- |
-| <img src="draw/raii.svg" alt="Raii / Urchin layout" />                                                  | <img src="draw/crosses.svg" alt="Crosses layout" />                 | <img src="draw/corne.svg" alt="Corne layout" /> | <img src="draw/viginti.svg" alt="Viginti layout" />   |
+| [🌿 Raii](https://github.com/unspecworks/raii-wireless) / [🪸 Urchin](https://github.com/duckyb/urchin) | [✖️ Crosses](https://github.com/Good-Great-Grand-Wonderful/crosses) |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| <img src="draw/raii.svg" alt="Raii / Urchin layout" />                                                  | <img src="draw/crosses.svg" alt="Crosses layout" />                 |
+| [🪶 Corne](https://github.com/foostan/crkbd)                                                            | [🔟 Viginti](https://github.com/Verdi127/Viginti)                   |
+| <img src="draw/corne.svg" alt="Corne layout" />                                                         | <img src="draw/viginti.svg" alt="Viginti layout" />                 |
 
 ## Setup
 
