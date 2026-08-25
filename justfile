@@ -274,6 +274,7 @@ _west_build board shield flags="":
         west build -b {{board}} app -- \
             -DSHIELD="{{shield}}" \
             -DZMK_CONFIG="${PROJECT_ROOT}/config" \
+            -DZMK_EXTRA_MODULES="${PROJECT_ROOT}" \
             {{flags}}
     )
 

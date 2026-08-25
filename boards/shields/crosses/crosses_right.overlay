@@ -43,7 +43,7 @@
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/input_transform.h>
-#include "../../../layers.h"
+#include "../../../config/layers.h"
 #include <input/processors/code_mapper.dtsi>
 #include <input/processors/transform.dtsi>
 #include <input/processors/scaler.dtsi>
