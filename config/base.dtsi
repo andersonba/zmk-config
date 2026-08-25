@@ -7,7 +7,6 @@
 #include <zmk-helpers/helper.h>
 
 #include <dt-bindings/zmk/behaviors.h>
-#include <behaviors/num_word.dtsi>
 
 #include "layers.h"
 
@@ -43,15 +42,6 @@ ZMK_TAP_DANCE(td_mouse,
 #define XXX &none
 #define ___ &trans
 
-&sk { // Sticky Key
-  release-after-ms = <STICKY_RELEASE_MS>;
-  quick-release;
-};
-
-&soft_off {
-  hold-time-ms = <2000>;
-};
-
 // Trigger tap-action on all interrupts.
 #define MT_CORE \
   flavor = "tap-preferred"; \
@@ -59,21 +49,11 @@ ZMK_TAP_DANCE(td_mouse,
   quick-tap-ms = <TAPPING_TERM_MS>; \
   hold-trigger-key-positions = <0>;
 
+#include "./behaviors.dtsi"
 #include "./macros.dtsi"
 #include "./extra.dtsi"
 
 // HRM {{{
-#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS, TAPPING_TERM, PRIOR_IDLE) \
-  ZMK_HOLD_TAP(NAME, \
-    bindings = <HOLD>, <TAP>; \
-    flavor = "balanced"; \
-    tapping-term-ms = <TAPPING_TERM>; \
-    quick-tap-ms = <QUICK_TAP_MS>; \
-    require-prior-idle-ms = <PRIOR_IDLE>; \
-    hold-trigger-key-positions = <TRIGGER_POS>; \
-    hold-trigger-on-release; \
-  )
-
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Left-hand HRMs.
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Right-hand HRMs.
 
@@ -93,21 +73,6 @@ ZMK_LAYER(name, \
 )
 #endif
 /// }}}
-
-// BT profile keys: tap = select | hold = disconnect that profile (keeps the bond).
-ZMK_MACRO_ONE_PARAM(bt_sel, bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;)
-ZMK_MACRO_ONE_PARAM(bt_disc, bindings = <&macro_param_1to2>, <&bt BT_DISC MACRO_PLACEHOLDER>;)
-ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
-  flavor = "tap-preferred";
-  tapping-term-ms = <TAPPING_TERM_MS>;
-)
-
-// Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
-ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
-  flavor = "balanced";
-  tapping-term-ms = <TAPPING_TERM_MS>;
-  quick-tap-ms = <QUICK_TAP_MS>;
-)
 
 // Tap: copy | long-tap: cut (single execution, no repeat).
 ZMK_HOLD_TAP(tap_copy_cut, bindings = <&cut>, <&kp>; MT_CORE)

@@ -11,8 +11,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <zmk-helpers/helper.h>
 
-#include <behaviors/num_word.dtsi>
-
 // Layers
 #define BASE1 0   // QWERTY
 #define BASE2 1   // QWERTY, top row + inner column
@@ -27,7 +25,7 @@
 #define LAYOUT_HOMES BASE1 ALPHA1
 
 // Timings
-#define QUICK_TAP_MS 140
+#define QUICK_TAP_MS 150
 #define STICKY_RELEASE_MS 900
 #define TAPPING_TERM_MS 230
 #define HRM_TAPPING_TERM 230
@@ -36,7 +34,8 @@
 #define COMBO_TERM_FAST 35
 #define COMBO_IDLE_FAST 100
 
-// After the timings — macros.dtsi reads them.
+// After the timings — behaviors.dtsi and macros.dtsi read them.
+#include "./behaviors.dtsi"
 #include "./macros.dtsi"
 
 /*                KEY POSITIONS
@@ -81,46 +80,11 @@ ZMK_LAYER(name, \
   LH RH \
 )
 
-&sk { // Sticky Key
-  release-after-ms = <STICKY_RELEASE_MS>;
-  quick-release;
-};
-
-&soft_off {
-  hold-time-ms = <2000>;
-};
-
 #define SMART_SPACE &spc_morph
 
-// HRMs — timeless recipe, same values as base.dtsi
-#define MAKE_HRM(NAME, TRIGGER_POS) \
-  ZMK_HOLD_TAP(NAME, \
-    bindings = <&kp>, <&kp>; \
-    flavor = "balanced"; \
-    tapping-term-ms = <HRM_TAPPING_TERM>; \
-    quick-tap-ms = <QUICK_TAP_MS>; \
-    require-prior-idle-ms = <HRM_PRIOR_IDLE>; \
-    hold-trigger-key-positions = <TRIGGER_POS>; \
-    hold-trigger-on-release; \
-  )
-
-MAKE_HRM(hml, KEYS_R THUMBS) // Left-hand HRMs.
-MAKE_HRM(hmr, KEYS_L THUMBS) // Right-hand HRMs.
-
-// BT profile keys: tap = select | hold = disconnect that profile (keeps the bond).
-ZMK_MACRO_ONE_PARAM(bt_sel, bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;)
-ZMK_MACRO_ONE_PARAM(bt_disc, bindings = <&macro_param_1to2>, <&bt BT_DISC MACRO_PLACEHOLDER>;)
-ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
-  flavor = "tap-preferred";
-  tapping-term-ms = <TAPPING_TERM_MS>;
-)
-
-// Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
-ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
-  flavor = "balanced";
-  tapping-term-ms = <TAPPING_TERM_MS>;
-  quick-tap-ms = <QUICK_TAP_MS>;
-)
+// HRMs — timeless recipe from behaviors.dtsi, positions of this board
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS, HRM_TAPPING_TERM, HRM_PRIOR_IDLE) // Right-hand HRMs.
 
 // Tap/hold char pairs (F-keys, brackets) — resolve by timeout only
 ZMK_HOLD_TAP(ht_pair,
