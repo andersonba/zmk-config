@@ -94,6 +94,14 @@ ZMK_LAYER(name, \
 #endif
 /// }}}
 
+// BT profile keys: tap = select | hold = disconnect that profile (keeps the bond).
+ZMK_MACRO_ONE_PARAM(bt_sel, bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;)
+ZMK_MACRO_ONE_PARAM(bt_disc, bindings = <&macro_param_1to2>, <&bt BT_DISC MACRO_PLACEHOLDER>;)
+ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <TAPPING_TERM_MS>;
+)
+
 // Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
   flavor = "balanced";
@@ -210,9 +218,9 @@ ZMK_BASE_LAYER(Fn,
 
 ZMK_BASE_LAYER(Sys,
 //╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-    &soft_off        &out OUT_TOG     XXX              XXX              &tog ALPHA     ,   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_CLR     ,
+    &soft_off        &out OUT_TOG     XXX              XXX              &tog ALPHA     ,   &bt_prof 0 0     &bt_prof 1 1     &bt_prof 2 2     &bt_prof 3 3     &bt BT_CLR     ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
-    XXX              XXX              XXX              XXX              XXX            ,   &bt BT_SEL 4     XXX              XXX              XXX              XXX            ,
+    XXX              XXX              XXX              XXX              XXX            ,   &bt_prof 4 4     XXX              XXX              XXX              XXX            ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
     &bootloader      &sys_reset       XXX              XXX              XXX            ,   &lock            XXX              XXX              &sys_reset       &bootloader    ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
