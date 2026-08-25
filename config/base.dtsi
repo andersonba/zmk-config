@@ -60,10 +60,8 @@ ZMK_TAP_DANCE(td_mouse,
   quick-release;
 };
 
-&lt { // Layer Tap
-  flavor = "balanced";
-  tapping-term-ms = <TAPPING_TERM_MS>;
-  quick-tap-ms = <QUICK_TAP_MS>;
+&soft_off {
+  hold-time-ms = <2000>;
 };
 
 // Trigger tap-action on all interrupts.
@@ -72,10 +70,6 @@ ZMK_TAP_DANCE(td_mouse,
   tapping-term-ms = <TAPPING_TERM_MS_TAP>; \
   quick-tap-ms = <TAPPING_TERM_MS_TAP>; \
   hold-trigger-key-positions = <0>;
-
-&mt { 
-  MT_CORE
-};
 
 #include "./macros.dtsi"
 #include "./extra.dtsi"
@@ -220,11 +214,11 @@ ZMK_BASE_LAYER(Fn,
 
 ZMK_BASE_LAYER(Sys,
 //╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮
-    &tog ALPHA       XXX              XXX              XXX              XXX            ,   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_CLR     ,
+    &tog ALPHA       &soft_off        &out OUT_TOG     XXX              XXX            ,   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_CLR     ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
-    XXX              XXX              XXX              XXX              XXX            ,   XXX              XXX              XXX              XXX              XXX            ,
+    XXX              XXX              XXX              XXX              XXX            ,   &bt BT_SEL 4     XXX              XXX              XXX              XXX            ,
 //├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤
-    &bootloader      XXX              XXX              XXX              XXX            ,   &lock            XXX              XXX              XXX              &bootloader    ,
+    &bootloader      &sys_reset       XXX              XXX              XXX            ,   &lock            XXX              XXX              &sys_reset       &bootloader    ,
 //╰────────────────┴────────────────┴────────────────┼────────────────┼────────────────┤ ├────────────────┼────────────────┴────────────────┴────────────────┴────────────────╯
                                                        ___              ___            ,   ___              ___
 //                                                   ╰────────────────┴────────────────╯ ╰────────────────┴────────────────╯
