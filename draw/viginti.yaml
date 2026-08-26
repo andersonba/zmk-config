@@ -75,7 +75,7 @@ layers:
     - '4'
     - '5'
     - '6'
-    - ''
+    - '-'
     - ^
     - '@'
     - '#'
@@ -83,7 +83,7 @@ layers:
     - '1'
     - '2'
     - '3'
-    - ''
+    - .
     - type: held
     - t: ▽
       type: trans
@@ -199,8 +199,8 @@ combos:
       - Base2
       - Sym
   - p:
-      - 4
-      - 5
+      - 12
+      - 13
     k:
       t: $$mdi:keyboard-return$$
       type: enter
@@ -217,8 +217,8 @@ combos:
       - Base2
       - Num
   - p:
-      - 12
-      - 13
+      - 4
+      - 5
     k:
       t: $$mdi:backspace$$
       type: backspace
@@ -226,22 +226,18 @@ combos:
       - Base1
       - Base2
       - Num
-      - Sym
   - p:
-      - 13
-      - 14
+      - 4
+      - 5
     k:
       t: AltGr+$$mdi:backspace$$
       type: backspace
     l:
-      - Base1
-      - Base2
-      - Num
       - Sym
   - p:
       - 2
       - 5
-    k: $$mdi:apple-keyboard-caps$$
+    k: '&td_caps'
     l:
       - Base1
   - p:
