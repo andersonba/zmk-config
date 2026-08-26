@@ -94,14 +94,23 @@ ZMK_HOLD_TAP(ht_pair,
   quick-tap-ms = <QUICK_TAP_MS>;
 )
 
+// Caps: tap = caps-word | double-tap = caps lock (no magic_shift thumb here)
+ZMK_TAP_DANCE(td_caps,
+  tapping-term-ms = <TAPPING_TERM_MS>;
+  bindings = <&caps_word>, <&kp CAPS>;
+)
+
 // Combos (same finger pairs and layer reach as combos.dtsi on the 34-key boards)
 ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_enter,    &kp ENTER,      RM0 RM1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+/* right hand: backspace on the home pair (the viginti HRMs have no row above,
+ * so deletion lives strongest under the fingers). No delete-word combo: hold
+ * the left HRM alt (or cmd) with the same pair — S+JK = ⌥⌫, A+JK = ⌘⌫.
+ * Esc keeps the home K+L; enter takes the bottom. */
+ZMK_COMBO(r_enter,    &kp ENTER,      RB0 RB1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RB0 RB1, LAYOUTS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RB1 RB2, LAYOUTS NUM SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(caps,       &kp CAPS,       LM1 RM1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RM0 RM1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(caps,       &td_caps,       LM1 RM1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(fn,         &mo FN,         LH1 RH1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(sys,        &mo SYS,        LH0 RH0, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
@@ -159,9 +168,9 @@ ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 
 ZMK_VIGINTI_LAYER(Num,
 //╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮ ╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮
-    &kp PERCENT        &kp N7             &kp N8             &kp N9           ,   &kp N4             &kp N5             &kp N6             XXX              ,
+    &kp PERCENT        &kp N7             &kp N8             &kp N9           ,   &kp N4             &kp N5             &kp N6             &kp MINUS        ,
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-    &kp CARET          &kp AT             &kp HASH           &kp DOLLAR       ,   &kp N1             &kp N2             &kp N3             XXX              ,
+    &kp CARET          &kp AT             &kp HASH           &kp DOLLAR       ,   &kp N1             &kp N2             &kp N3             &kp DOT          ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
                                           ___                ___              ,   &kp N0             ___
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
