@@ -25,6 +25,7 @@ just draw [board]           # Generate keymap visualization
 | `config/base.dtsi` | Core keymap logic (all boards) |
 | `config/[board].keymap` | Board-specific physical mapping |
 | `config/default.conf` | Shared settings |
+| `boards/shields/[board]/` | In-repo shields, hardware level (Crosses, Viginti) — repo is a Zephyr module via `zephyr/module.yml` |
 
 ## More Details
 

@@ -11,6 +11,8 @@ manifest:
 
     - name: efogdev
       url-base: https://github.com/efogdev
+    - name: kot149
+      url-base: https://github.com/kot149
 
   # Revisions pinned to the tested checkouts of 2026-08-25; bump deliberately.
   projects:
@@ -40,6 +42,9 @@ manifest:
     - name: zmk-tri-state
       remote: urob
       revision: 269b13eb3f5491292b627ac3892589af32de3e17 # main @ 2026-08-07
+    - name: zmk-scroll-snap
+      remote: kot149
+      revision: dd21a0f71df7f0d2a55017000c6dd0ff0ebd8d6f # v1 @ 2026-06-27
 
     # Custom Nice!View
     - name: nice-view-gem

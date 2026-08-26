@@ -262,9 +262,11 @@ _west_build board shield flags="":
     (
         cd zmk-workspace/zmk
         
-        # Check if we're building a different target than last time
-        if [ -f build/.last_shield ] && [ "$(cat build/.last_shield)" != "{{shield}}" ]; then
-            echo "🧹 Shield changed, cleaning build directory..."
+        # CMakeCache is the source of truth for the configured shield; a marker
+        # file desyncs if a build is interrupted between configure and marker write.
+        cached_shield=$(sed -n 's/^SHIELD:[^=]*=//p' build/CMakeCache.txt 2>/dev/null || true)
+        if [ -d build ] && [ "$cached_shield" != "{{shield}}" ]; then
+            echo "🧹 Shield changed (was '${cached_shield:-unknown}'), cleaning build directory..."
             rm -rf build
         fi
 
@@ -272,10 +274,8 @@ _west_build board shield flags="":
         west build -b {{board}} app -- \
             -DSHIELD="{{shield}}" \
             -DZMK_CONFIG="${PROJECT_ROOT}/config" \
+            -DZMK_EXTRA_MODULES="${PROJECT_ROOT}" \
             {{flags}}
-
-        # Save the current shield for next time
-        echo "{{shield}}" > build/.last_shield
     )
 
     mkdir -p firmware

@@ -90,7 +90,9 @@ Layer suffixes: `Base`, `Sym`, `Num`, `Fn`, `Sys`, `Mouse`, `Scroll`
 
 ### Core Files
 - `config/base.dtsi` - Keymap logic for 34 logical keys (layers, combos, behaviors, timings)
+- `config/behaviors.dtsi` - Position-independent behaviors shared with the Viginti keymap
 - `config/extra.dtsi` - Extra key macros for boards with >34 keys (LH2/RH2)
+- `config/layers.h` - Symbolic layer indices (shared with shield overlays)
 - `config/default.conf` - Shared settings (Bluetooth, sleep, debouncing, ZMK Studio)
 - `config/combos.dtsi` - Combo definitions
 - `config/macros.dtsi` - Macro definitions
@@ -102,6 +104,16 @@ Layer suffixes: `Base`, `Sym`, `Num`, `Fn`, `Sys`, `Mouse`, `Scroll`
 - `config/crosses.keymap` - 34 logical + 2 thumb keys
 - `config/viginti.keymap` - Self-contained 20-key keymap (no `base.dtsi`)
 - `config/[board].conf` - Board-specific settings
+
+### In-Repo Shields (Zephyr module)
+
+The Crosses and Viginti shields are defined in this repo, under
+`boards/shields/[board]/` (kscan, matrix transform, physical layout, and the
+Crosses trackball overlay). `zephyr/module.yml` at the repo root makes the
+repo a Zephyr module so ZMK discovers them — the deprecated `config/boards`
+mechanism is not used. Wiring is automatic: locally the justfile passes
+`-DZMK_EXTRA_MODULES`, and in CI the `build-user-config` workflow detects
+`zephyr/module.yml` on its own.
 
 ## Conditional Features
 
