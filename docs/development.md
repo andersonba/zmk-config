@@ -40,8 +40,22 @@ just fmt [files]            # Align keymap layer grids (default: base.dtsi + key
                             # (enabled by `just init` → core.hooksPath)
 just clean                  # Clean build artifacts
 just clean-all              # Clean everything (workspace + venv)
-just update                 # Update ZMK and dependencies
+just update                 # Sync Python tools + ZMK/modules to west.yml pins
+just bump [--dry-run]       # Move west.yml pins to each tracked branch's head
+just verify                 # Full validation: draw all, clean, build all
 just check                  # Check environment setup
+```
+
+## Dependency Pinning
+
+`west.yml` pins every module to a commit; the comment on each pin
+(`# <branch> @ <date>`) names the branch it tracks. `just update` never moves
+pins — it syncs to them, so local builds match CI. To take newer upstream:
+
+```bash
+just bump --dry-run   # preview what would move
+just bump             # rewrite pins + west update
+just verify           # full build battery before committing the bump
 ```
 
 ## Workflow

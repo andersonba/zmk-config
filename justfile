@@ -202,7 +202,7 @@ init:
 
     echo "✨ Setup complete! Run 'just build' to build firmware"
 
-# Update ZMK and dependencies (Python packages + ZMK/modules)
+# Sync dependencies: Python tools + ZMK/modules at their west.yml pins
 update:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -215,13 +215,33 @@ update:
         pip install --upgrade $package --quiet
     done
 
-    echo "📥 Updating ZMK and modules..."
+    echo "📥 Syncing ZMK and modules to west.yml pins..."
     cd zmk-workspace/zmk
-    git pull --ff-only
     west update
     west zephyr-export
 
-    echo "✅ Everything up to date"
+    echo "✅ In sync with west.yml (to move the pins forward, use 'just bump')"
+
+# Bump west.yml pins to each tracked branch's head; pass --dry-run to preview
+bump *flags="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    source .venv/bin/activate
+
+    python3 scripts/bump_pins.py {{flags}}
+
+    case " {{flags}} " in *" --dry-run "*) exit 0 ;; esac
+
+    cd zmk-workspace/zmk
+    west update
+    west zephyr-export
+    echo "✅ Pins bumped and synced — run 'just verify' before committing"
+
+# Full validation ritual: regenerate diagrams, then clean-build every target
+verify:
+    just draw all
+    just clean
+    just build all
 
 _validate_args board side:
     #!/usr/bin/env bash
@@ -250,8 +270,8 @@ _validate_args board side:
             ;;
     esac
 
-# Build firmware: board (defaults to `just use`) and side (left/right/all)
-# Internal: Build firmware with West
+# Internal: Build firmware with West. One build directory per shield keeps
+# every target incremental and makes cross-shield cache clashes impossible.
 _west_build board shield flags="":
     #!/usr/bin/env bash
     set -euo pipefail
@@ -261,17 +281,11 @@ _west_build board shield flags="":
 
     (
         cd zmk-workspace/zmk
-        
-        # CMakeCache is the source of truth for the configured shield; a marker
-        # file desyncs if a build is interrupted between configure and marker write.
-        cached_shield=$(sed -n 's/^SHIELD:[^=]*=//p' build/CMakeCache.txt 2>/dev/null || true)
-        if [ -d build ] && [ "$cached_shield" != "{{shield}}" ]; then
-            echo "🧹 Shield changed (was '${cached_shield:-unknown}'), cleaning build directory..."
-            rm -rf build
-        fi
-
+        shield="{{shield}}"
         PROJECT_ROOT=$(cd ../.. && pwd)
-        west build -b {{board}} app -- \
+        # zmk/app is the west-managed checkout, honoring the west.yml pin;
+        # the outer clone only hosts the workspace and is never built.
+        west build -b {{board}} -d "build/${shield%% *}" zmk/app -- \
             -DSHIELD="{{shield}}" \
             -DZMK_CONFIG="${PROJECT_ROOT}/config" \
             -DZMK_EXTRA_MODULES="${PROJECT_ROOT}" \
@@ -279,7 +293,7 @@ _west_build board shield flags="":
     )
 
     mkdir -p firmware
-    
+
 # Internal: Flash UF2 file to NICENANO
 _flash_uf2 file_path:
     #!/usr/bin/env bash
@@ -363,14 +377,14 @@ build board=default_board side="all":
     esac
 
     just _west_build "$BOARD_TARGET" "$SHIELD"
-    
-    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/{{board}}_{{side}}.uf2
+
+    cp "zmk-workspace/zmk/build/${SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_{{side}}.uf2
     echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
 
 # Build settings reset firmware
 build-reset:
     just _west_build "nice_nano//zmk" "settings_reset"
-    cp zmk-workspace/zmk/build/zephyr/zmk.uf2 firmware/settings_reset.uf2
+    cp zmk-workspace/zmk/build/settings_reset/zephyr/zmk.uf2 firmware/settings_reset.uf2
     echo "✅ Firmware built: firmware/settings_reset.uf2"
 
 # Flash settings reset firmware
