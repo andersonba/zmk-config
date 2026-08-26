@@ -202,7 +202,7 @@ init:
 
     echo "✨ Setup complete! Run 'just build' to build firmware"
 
-# Update ZMK and dependencies (Python packages + ZMK/modules)
+# Sync dependencies: Python tools + ZMK/modules at their west.yml pins
 update:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -215,13 +215,33 @@ update:
         pip install --upgrade $package --quiet
     done
 
-    echo "📥 Updating ZMK and modules..."
+    echo "📥 Syncing ZMK and modules to west.yml pins..."
     cd zmk-workspace/zmk
-    git pull --ff-only
     west update
     west zephyr-export
 
-    echo "✅ Everything up to date"
+    echo "✅ In sync with west.yml (to move the pins forward, use 'just bump')"
+
+# Bump west.yml pins to each tracked branch's head; pass --dry-run to preview
+bump *flags="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    source .venv/bin/activate
+
+    python3 scripts/bump_pins.py {{flags}}
+
+    case " {{flags}} " in *" --dry-run "*) exit 0 ;; esac
+
+    cd zmk-workspace/zmk
+    west update
+    west zephyr-export
+    echo "✅ Pins bumped and synced — run 'just verify' before committing"
+
+# Full validation ritual: regenerate diagrams, then clean-build every target
+verify:
+    just draw all
+    just clean
+    just build all
 
 _validate_args board side:
     #!/usr/bin/env bash
@@ -263,7 +283,9 @@ _west_build board shield flags="":
         cd zmk-workspace/zmk
         shield="{{shield}}"
         PROJECT_ROOT=$(cd ../.. && pwd)
-        west build -b {{board}} -d "build/${shield%% *}" app -- \
+        # zmk/app is the west-managed checkout, honoring the west.yml pin;
+        # the outer clone only hosts the workspace and is never built.
+        west build -b {{board}} -d "build/${shield%% *}" zmk/app -- \
             -DSHIELD="{{shield}}" \
             -DZMK_CONFIG="${PROJECT_ROOT}/config" \
             -DZMK_EXTRA_MODULES="${PROJECT_ROOT}" \
