@@ -41,8 +41,9 @@ manifest:
     - name: zmk-auto-layer
       remote: urob
       revision: 62c201934711369d50a28df12e1d055d05cb6460 # main @ 2026-05-20
-    # Interim fork: urob/zmk-tri-state + interrupt-on-layer-deactivation,
-    # until the upstream PR lands; then repoint at urob and drop the fork.
+    # Interim fork: urob/zmk-tri-state + interrupt-on-layer-deactivation.
+    # Once https://github.com/urob/zmk-tri-state/pull/16 lands, repoint at
+    # urob and drop the fork.
     - name: zmk-tri-state
       remote: andersonba
       revision: 4298de07f913d3f6f8888366b68fed805772f150 # interrupt-on-layer-deactivation @ 2026-08-26
