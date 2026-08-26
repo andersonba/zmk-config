@@ -86,6 +86,9 @@ ZMK_TRI_STATE(swapper,
   bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
   ignored-key-positions = <LT2 LM1 LM2 LM3>;  // Allow UP, LEFT, DOWN, RIGHT while swapping
   timeout-ms = <1500>;
+  // num-word can drop the Num layer with no key held; without this the swapper
+  // would keep CMD pressed until timeout (needs the patched zmk-tri-state)
+  interrupt-on-layer-deactivation;
 )
 
 #include "./combos.dtsi"
