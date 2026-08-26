@@ -870,10 +870,6 @@ rect.held, rect.combo.held {
 <rect rx="6" ry="6" x="154" y="18" width="28" height="26" class="combo"/>
 <use href="#mdi:keyboard-tab" xlink:href="#mdi:keyboard-tab" x="159" y="22" height="18" width="18.0" class="combo tap glyph mdi:keyboard-tab"/>
 </g>
-<g class="combo backspace combopos-2">
-<rect rx="6" ry="6" x="546" y="18" width="28" height="26" class="combo backspace"/>
-<use href="#mdi:backspace" xlink:href="#mdi:backspace" x="551" y="22" height="18" width="18.0" class="combo backspace tap glyph mdi:backspace"/>
-</g>
 </g>
 </g>
 <g transform="translate(40, 1093)" class="layer-Fn">

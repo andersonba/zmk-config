@@ -227,14 +227,6 @@ combos:
       - Base2
       - Num
   - p:
-      - 4
-      - 5
-    k:
-      t: AltGr+$$mdi:backspace$$
-      type: backspace
-    l:
-      - Sym
-  - p:
       - 2
       - 5
     k: '&td_caps'

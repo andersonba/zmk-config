@@ -104,12 +104,12 @@ ZMK_TAP_DANCE(td_caps,
 ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 /* right hand: backspace on the home pair (the viginti HRMs have no row above,
- * so deletion lives strongest under the fingers); the SAME pair held with Sym
- * upgrades it to delete-word. Esc keeps the home K+L; enter takes the bottom. */
+ * so deletion lives strongest under the fingers). No delete-word combo: hold
+ * the left HRM alt (or cmd) with the same pair — S+JK = ⌥⌫, A+JK = ⌘⌫.
+ * Esc keeps the home K+L; enter takes the bottom. */
 ZMK_COMBO(r_enter,    &kp ENTER,      RB0 RB1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(r_esc,      &kp ESC,        RM1 RM2, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(r_bkp,      &kp BACKSPACE,  RM0 RM1, LAYOUTS NUM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(r_bkp_word, &kp RA(BSPC),   RM0 RM1, SYM,             COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(caps,       &td_caps,       LM1 RM1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(fn,         &mo FN,         LH1 RH1, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(sys,        &mo SYS,        LH0 RH0, LAYOUT_HOMES,    COMBO_TERM_FAST, COMBO_IDLE_FAST)
