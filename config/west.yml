@@ -46,7 +46,7 @@ manifest:
     # urob and drop the fork.
     - name: zmk-tri-state
       remote: andersonba
-      revision: 81a1f71603a7f784c4d05bc14fba6ce6601ea488 # interrupt-on-layer-deactivation @ 2026-08-27
+      revision: 6699a2ade9d70d46bb0e9568a4271d1275e89713 # interrupt-on-layer-deactivation @ 2026-08-27
     - name: zmk-scroll-snap
       remote: kot149
       revision: dd21a0f71df7f0d2a55017000c6dd0ff0ebd8d6f # v1 @ 2026-06-27
