@@ -88,7 +88,7 @@ ZMK_TRI_STATE(swapper,
   timeout-ms = <1500>;
   // num-word can drop the Num layer with no key held; without this the swapper
   // would keep CMD pressed until timeout (needs the patched zmk-tri-state)
-  interrupt-on-layer-deactivation;
+  end-on-layer-deactivation = <NUM>;
 )
 
 #include "./combos.dtsi"
