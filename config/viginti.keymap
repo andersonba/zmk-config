@@ -100,6 +100,13 @@ ZMK_TAP_DANCE(td_caps,
   bindings = <&caps_word>, <&kp CAPS>;
 )
 
+// CMD+Tab swapper on Fn. The Fn combo is a cross-hand thumb chord, so
+// releasing either thumb interrupts the tri-state and closes the switcher.
+ZMK_TRI_STATE(swapper,
+  bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+  timeout-ms = <1500>;
+)
+
 // Combos (same finger pairs and layer reach as combos.dtsi on the 34-key boards)
 ZMK_COMBO(l_esc,      &kp ESC,        LM1 LM2, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(l_tab,      &kp TAB,        LM0 LM1, LAYOUTS SYM,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -168,11 +175,11 @@ ZMK_VIGINTI_LAYER(Alpha2, // Gallium v1 (top row via layer shift)
 
 ZMK_VIGINTI_LAYER(Num,
 //╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮ ╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮
-    &kp PERCENT        &kp N7             &kp N8             &kp N9           ,   &kp N4             &kp N5             &kp N6             &kp MINUS        ,
+    &kp PERCENT        &kp N7             &kp N8             &kp N9           ,   &kp N4             &kp N5             &kp N6             &kp SLASH        ,
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-    &kp CARET          &kp AT             &kp HASH           &kp DOLLAR       ,   &kp N1             &kp N2             &kp N3             &kp DOT          ,
+    &kp GRAVE          &kp AT             &kp HASH           &kp DOLLAR       ,   &kp N1             &kp N2             &kp N3             &kp DOT          ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
-                                          ___                ___              ,   &kp N0             ___
+                                          ___                ___              ,   &kp N0             &kp MINUS
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
 )
 
@@ -183,9 +190,9 @@ ZMK_VIGINTI_LAYER(Sym,
 //╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮ ╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮
     &hml LGUI TILDE    &hml LALT BSLH     &hml LSHFT SLASH   &hml LCTRL AMPS  ,   &kp LEFT           &kp DOWN           &kp UP             &kp RIGHT        ,
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
-    &kp GRAVE          &kp LT             &kp GT             &kp ASTRK        ,   &ht_pair LBRC LBKT &kp LPAR           &kp RPAR           &ht_pair RBRC RBKT,
+    &kp CARET          &kp LT             &kp GT             &kp EQUAL        ,   &ht_pair LBRC LBKT &kp LPAR           &kp RPAR           &ht_pair RBRC RBKT,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
-                                          &kp UNDERSCORE     &kp MINUS        ,   &kp EQUAL          ___
+                                          &kp UNDERSCORE     &kp MINUS        ,   &kp ASTRK          ___
 //                                      ╰──────────────────┴──────────────────╯ ╰──────────────────┴──────────────────╯
 )
 
@@ -193,7 +200,7 @@ ZMK_VIGINTI_LAYER(Sym,
 // No third row here, so F7-F9 and F12 ride as the hold of the row above.
 ZMK_VIGINTI_LAYER(Fn,
 //╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮ ╭──────────────────┬──────────────────┬──────────────────┬──────────────────╮
-    XXX                &kp C_MUTE         &kp C_VOL_UP       &kp C_PP         ,   &ht_pair F7 F4     &ht_pair F8 F5     &ht_pair F9 F6     &ht_pair F12 F11 ,
+    &swapper           &kp C_MUTE         &kp C_VOL_UP       &kp C_PP         ,   &ht_pair F7 F4     &ht_pair F8 F5     &ht_pair F9 F6     &ht_pair F12 F11 ,
 //├──────────────────┼──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
     XXX                &kp C_PREV         &kp C_VOL_DN       &kp C_NEXT       ,   &kp F1             &kp F2             &kp F3             &kp F10          ,
 //╰──────────────────┴──────────────────┼──────────────────┼──────────────────┤ ├──────────────────┼──────────────────┴──────────────────┴──────────────────╯
