@@ -13,8 +13,6 @@ manifest:
       url-base: https://github.com/efogdev
     - name: kot149
       url-base: https://github.com/kot149
-    - name: andersonba
-      url-base: https://github.com/andersonba
 
   # Revisions pinned to the tested checkouts of 2026-08-25; bump deliberately.
   projects:
@@ -41,12 +39,9 @@ manifest:
     - name: zmk-auto-layer
       remote: urob
       revision: 62c201934711369d50a28df12e1d055d05cb6460 # main @ 2026-05-20
-    # Interim fork: urob/zmk-tri-state + interrupt-on-layer-deactivation.
-    # Once https://github.com/urob/zmk-tri-state/pull/16 lands, repoint at
-    # urob and drop the fork.
     - name: zmk-tri-state
-      remote: andersonba
-      revision: 6699a2ade9d70d46bb0e9568a4271d1275e89713 # interrupt-on-layer-deactivation @ 2026-08-27
+      remote: urob
+      revision: 0c6eaf55d2da0d85b943e02d72831c2d8ea64501 # main @ 2026-08-27
     - name: zmk-scroll-snap
       remote: kot149
       revision: dd21a0f71df7f0d2a55017000c6dd0ff0ebd8d6f # v1 @ 2026-06-27
