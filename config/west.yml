@@ -18,11 +18,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: 268b1b1e82150460f00fd701bcd08583d5c75d29 # main @ 2026-08-06
+      revision: 641514a97db345f499dd50b0360e594270f008fe # main @ 2026-08-21
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: bc114546392b4615ac90a99140eaf21dde31209d # main @ 2026-05-20
+      revision: 95edb8f15ef1d1bd8332810555f8cf5837fbdd27 # main @ 2026-08-19
 
     # Shields
     - name: urchin-zmk-module
