@@ -142,7 +142,7 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
-    - Sft+Gui+3
+    - $$mdi:monitor-screenshot$$
     - ''
     - F7
     - F8
@@ -152,7 +152,7 @@ layers:
     - $$mdi:skip-previous$$
     - $$mdi:volume-low$$
     - $$mdi:skip-next$$
-    - Sft+Gui+4
+    - $$mdi:selection-drag$$
     - ''
     - F4
     - F5
@@ -162,7 +162,7 @@ layers:
     - ''
     - ''
     - ''
-    - Sft+Gui+5
+    - $$mdi:video$$
     - ''
     - F1
     - F2

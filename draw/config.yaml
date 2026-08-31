@@ -211,6 +211,11 @@ parse_config:
     "&kp LG(RIGHT)": $$mdi:arrow-collapse-right$$
     "&num_word": $$mdi:numeric$$
 
+    # Screenshots
+    "&kp LS(LG(N3))": $$mdi:monitor-screenshot$$
+    "&kp LS(LG(N4))": $$mdi:selection-drag$$
+    "&kp LS(LG(N5))": $$mdi:video$$
+
     # Macros
     "&lock": $$mdi:lock$$
     "&dot_spc": ""
