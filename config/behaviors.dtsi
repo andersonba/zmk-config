@@ -33,6 +33,14 @@ ZMK_HOLD_TAP(bt_prof, bindings = <&bt_disc>, <&bt_sel>;
   tapping-term-ms = <TAPPING_TERM_MS>;
 )
 
+// Clearing a bond is destructive: only fires on a long hold, tap does nothing.
+// &bt takes two cells, so it rides a param-less macro to fit the hold-tap.
+ZMK_MACRO(bt_clr_macro, bindings = <&bt BT_CLR>;)
+ZMK_HOLD_TAP(bt_clr_hold, bindings = <&bt_clr_macro>, <&none>;
+  flavor = "hold-preferred";
+  tapping-term-ms = <500>;
+)
+
 // Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
   flavor = "balanced";

@@ -154,6 +154,8 @@ parse_config:
       shifted: $$mdi:bluetooth-connect$$
       tap: "5"
       hold: $$mdi:link-off$$
+    "&bt_clr_hold 0 0":
+      hold: $$mdi:bluetooth-off$$
 
     # Reset
     "&sys_reset":
@@ -208,6 +210,11 @@ parse_config:
     "&kp LG(LEFT)": $$mdi:arrow-collapse-left$$
     "&kp LG(RIGHT)": $$mdi:arrow-collapse-right$$
     "&num_word": $$mdi:numeric$$
+
+    # Screenshots
+    "&kp LS(LG(N3))": $$mdi:monitor-screenshot$$
+    "&kp LS(LG(N4))": $$mdi:selection-drag$$
+    "&kp LS(LG(N5))": $$mdi:video$$
 
     # Macros
     "&lock": $$mdi:lock$$

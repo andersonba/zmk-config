@@ -142,7 +142,7 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
-    - ''
+    - $$mdi:monitor-screenshot$$
     - ''
     - F7
     - F8
@@ -152,7 +152,7 @@ layers:
     - $$mdi:skip-previous$$
     - $$mdi:volume-low$$
     - $$mdi:skip-next$$
-    - ''
+    - $$mdi:selection-drag$$
     - ''
     - F4
     - F5
@@ -162,7 +162,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
+    - $$mdi:video$$
     - ''
     - F1
     - F2
@@ -199,7 +199,7 @@ layers:
     - t: '4'
       h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - $$mdi:bluetooth-off$$
+    - h: $$mdi:bluetooth-off$$
     - ''
     - ''
     - ''

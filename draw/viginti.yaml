@@ -161,7 +161,7 @@ layers:
     - t: '3'
       h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - $$mdi:bluetooth-off$$
+    - h: $$mdi:bluetooth-off$$
     - $$mdi:progress-download$$
     - t: $$mdi:backup-restore$$
       type: bootloader
