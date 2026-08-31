@@ -163,7 +163,7 @@ layers:
     - $$mdi:volume-off$$
     - $$mdi:volume-high$$
     - $$mdi:play-pause$$
-    - ''
+    - Sft+Gui+3
     - ''
     - F7
     - F8
@@ -176,7 +176,7 @@ layers:
     - $$mdi:skip-previous$$
     - $$mdi:volume-low$$
     - $$mdi:skip-next$$
-    - ''
+    - Sft+Gui+4
     - ''
     - F4
     - F5
@@ -188,7 +188,7 @@ layers:
     - ''
     - ''
     - ''
-    - ''
+    - Sft+Gui+5
     - ''
     - F1
     - F2
@@ -227,7 +227,7 @@ layers:
     - t: '4'
       h: $$mdi:link-off$$
       s: $$mdi:bluetooth-connect$$
-    - $$mdi:bluetooth-off$$
+    - h: $$mdi:bluetooth-off$$
     - t: $$mdi:backspace$$
       type: backspace
     - $$mdi:apple-keyboard-control$$

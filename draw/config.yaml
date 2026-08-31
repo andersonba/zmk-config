@@ -154,6 +154,8 @@ parse_config:
       shifted: $$mdi:bluetooth-connect$$
       tap: "5"
       hold: $$mdi:link-off$$
+    "&bt_clr_hold 0 0":
+      hold: $$mdi:bluetooth-off$$
 
     # Reset
     "&sys_reset":
