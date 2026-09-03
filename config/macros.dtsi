@@ -34,7 +34,7 @@ SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
 
 // magic shift {{{
 ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
-  flavor = "balanced"; tapping-term-ms = <TAPPING_TERM_MS>;
+  flavor = "hold-preferred"; tapping-term-ms = <TAPPING_TERM_MS>;
   quick-tap-ms = <QUICK_TAP_MS>;)
 ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
   mods = <(MOD_LSFT)>;)
