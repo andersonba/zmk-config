@@ -43,7 +43,7 @@ ZMK_HOLD_TAP(bt_clr_hold, bindings = <&bt_clr_macro>, <&none>;
 
 // Smart num: hold = momentary Num | tap = num-word (sticks while typing digits).
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_word>;
-  flavor = "balanced";
+  flavor = "hold-preferred";
   tapping-term-ms = <TAPPING_TERM_MS>;
   quick-tap-ms = <QUICK_TAP_MS>;
 )
