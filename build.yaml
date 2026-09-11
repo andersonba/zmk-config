@@ -33,3 +33,44 @@ include:
   # Settings reset
   - board: nice_nano//zmk
     shield: settings_reset
+
+  # Dongle builds
+  - board: nice_nano//zmk
+    shield: cradio_dongle
+    artifact-name: raii_dongle
+  - board: nice_nano//zmk
+    shield: cradio_left
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: raii_left_peripheral
+
+  - board: nice_nano//zmk
+    shield: urchin_dongle
+    artifact-name: urchin_dongle
+  - board: nice_nano//zmk
+    shield: urchin_left nice_view_adapter nice_view_gem
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: urchin_left_peripheral
+
+  - board: nice_nano//zmk
+    shield: corne_dongle
+    artifact-name: corne_dongle
+  - board: nice_nano//zmk
+    shield: corne_left nice_view_adapter nice_view
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: corne_left_peripheral
+
+  - board: nice_nano//zmk
+    shield: crosses_dongle
+    artifact-name: crosses_dongle
+  - board: nice_nano//zmk
+    shield: crosses_right
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: crosses_right_peripheral
+
+  - board: nice_nano//zmk
+    shield: viginti_dongle
+    artifact-name: viginti_dongle
+  - board: nice_nano//zmk
+    shield: viginti_left
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: viginti_left_peripheral

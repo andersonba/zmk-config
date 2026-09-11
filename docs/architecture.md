@@ -115,6 +115,16 @@ mechanism is not used. Wiring is automatic: locally the justfile passes
 `-DZMK_EXTRA_MODULES`, and in CI the `build-user-config` workflow detects
 `zephyr/module.yml` on its own.
 
+### Dongle Architecture (3-Unit Topology)
+
+Every keyboard can optionally run via a wireless USB dongle (e.g. Pro Micro nRF52840):
+- **Dongle as Central:** Powered continuously via USB host, runs the full keymap, combos, macros, and layer logic. Sleep is disabled (`CONFIG_ZMK_SLEEP=n`), and battery levels from both peripherals are queried and proxied to the host OS (`CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y`).
+- **Shared infrastructure (DRY):**
+  - `config/dongle.conf` shares central power and battery settings across dongles.
+  - `boards/shields/mock_kscan.dtsi` provides a single shared `zmk,kscan-mock` driver.
+  - Keymaps are 100% reused from the base keyboards (zero layout duplication).
+- **Peripherals:** Both keyboard halves act as peripherals sending raw matrix events.
+
 ## Conditional Features
 
 Some features are opt-in via preprocessor flags defined in board keymaps:

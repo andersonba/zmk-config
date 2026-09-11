@@ -1,0 +1,14 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+#include "../mock_kscan.dtsi"
+#include "crosses-layouts.dtsi"
+
+&physical_layout0 {
+    kscan = <&mock_kscan>;
+};
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zmk,physical-layout = &physical_layout0;
+    };
+};

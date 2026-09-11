@@ -1,0 +1,14 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+#include "../mock_kscan.dtsi"
+#include "viginti.dtsi"
+
+&viginti_physical_layout {
+    kscan = <&mock_kscan>;
+};
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zmk,physical-layout = &viginti_physical_layout;
+    };
+};
