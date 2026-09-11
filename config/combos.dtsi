@@ -13,6 +13,12 @@ ZMK_COMBO(both_par, &both_par, LT0 RT0, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(both_brk, &both_brk, LM0 RM0, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(both_brc, &both_brc, LB0 RB0, BASES, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
+/* system (dongle triggers on Sys layer) */
+ZMK_COMBO(boot_dongle,  &bootloader,
+    LB4 RB4,        SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(reset_dongle, &sys_reset,
+    LB3 RB3,        SYS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
 /* left hand */
 ZMK_COMBO(esc,      &kp ESC,
     LM3 LM2,        BASES SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)

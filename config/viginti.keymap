@@ -128,6 +128,10 @@ ZMK_COMBO(both_par, &both_par, RM0 RB0, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAS
 ZMK_COMBO(both_brk, &both_brk, RM1 RB1, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(both_brc, &both_brc, RM2 RB2, LAYOUTS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
+/* system (dongle triggers on Sys layer) */
+ZMK_COMBO(boot_dongle,  &bootloader,    LB3 RB3, SYS,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(reset_dongle, &sys_reset,     LB2 RB2, SYS,     COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
 // LAYERS {{{
 #define QMARK_EXCL &qmark_excl
 #define DOT_COLON &dot_colon
