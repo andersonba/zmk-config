@@ -397,7 +397,8 @@ build board=default_board target="all" part="":
         # Build dongle itself when part is empty or "all"
         if [ -z "$p" ] || [ "$p" == "all" ]; then
             echo "🔨 Building {{board}} dongle..."
-            just _west_build "$BOARD_TARGET" "$DONGLE_SHIELD"
+            PROJECT_ROOT=$(pwd)
+            just _west_build "$BOARD_TARGET" "$DONGLE_SHIELD" "-DEXTRA_CONF_FILE=${PROJECT_ROOT}/config/dongle.conf"
             cp "zmk-workspace/zmk/build/${DONGLE_SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_dongle.uf2
             echo "✅ Dongle firmware built: firmware/{{board}}_dongle.uf2"
         fi
