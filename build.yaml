@@ -37,7 +37,6 @@ include:
   # Dongle builds
   - board: nice_nano//zmk
     shield: cradio_dongle
-    cmake-args: -DEXTRA_CONF_FILE=config/dongle.conf
     artifact-name: raii_dongle
   - board: nice_nano//zmk
     shield: cradio_left
@@ -46,7 +45,6 @@ include:
 
   - board: nice_nano//zmk
     shield: urchin_dongle
-    cmake-args: -DEXTRA_CONF_FILE=config/dongle.conf
     artifact-name: urchin_dongle
   - board: nice_nano//zmk
     shield: urchin_left nice_view_adapter nice_view_gem
@@ -55,7 +53,6 @@ include:
 
   - board: nice_nano//zmk
     shield: corne_dongle
-    cmake-args: -DEXTRA_CONF_FILE=config/dongle.conf
     artifact-name: corne_dongle
   - board: nice_nano//zmk
     shield: corne_left nice_view_adapter nice_view
@@ -64,7 +61,6 @@ include:
 
   - board: nice_nano//zmk
     shield: crosses_dongle
-    cmake-args: -DEXTRA_CONF_FILE=config/dongle.conf
     artifact-name: crosses_dongle
   - board: nice_nano//zmk
     shield: crosses_right
@@ -73,7 +69,6 @@ include:
 
   - board: nice_nano//zmk
     shield: viginti_dongle
-    cmake-args: -DEXTRA_CONF_FILE=config/dongle.conf
     artifact-name: viginti_dongle
   - board: nice_nano//zmk
     shield: viginti_left
