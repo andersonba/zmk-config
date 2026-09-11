@@ -18,17 +18,25 @@ This initializes the Python venv, installs West, downloads ZMK/modules, and inst
 ### Build & Flash
 
 ```bash
-just build [board] [side]   # board: raii|urchin|corne|crosses|viginti (default: see `just use`)
-                            # side: left|right|all (default: all)
+just build [board] [target] [part] # board: raii|urchin|corne|crosses|viginti (default: see `just use`)
+                                   # target: left|right|all|dongle (default: all)
+                                   # part (for dongle): left|right|peripheral|all (default: dongle only)
 
-just flash [board] [side]   # side default: left
+just flash [board] [target] [part] # target: left|right|dongle (default: left)
+                                   # part (for dongle): left|right|peripheral
 ```
 
 Examples:
 ```bash
-just build                  # Build the default board, both sides
-just build corne left       # Build Corne left side only
-just flash corne right      # Flash Corne right side
+just build                     # Build the default board, both sides (standard split)
+just build corne left          # Build Corne left side only
+just flash corne right         # Flash Corne right side
+
+# Dongle workflow
+just build raii dongle         # Build dongle firmware for Raii (runs on Pro Micro dongle)
+just build raii dongle left    # Build left peripheral firmware (talks to dongle)
+just flash raii dongle         # Flash dongle
+just flash raii dongle left    # Flash left peripheral
 ```
 
 ### Utilities

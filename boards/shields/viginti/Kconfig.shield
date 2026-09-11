@@ -3,3 +3,6 @@ config SHIELD_VIGINTI_LEFT
 
 config SHIELD_VIGINTI_RIGHT
     def_bool $(shields_list_contains,viginti_right)
+
+config SHIELD_VIGINTI_DONGLE
+    def_bool $(shields_list_contains,viginti_dongle)

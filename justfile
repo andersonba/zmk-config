@@ -243,14 +243,15 @@ verify:
     just clean
     just build all
 
-_validate_args board side:
+_validate_args board target part="":
     #!/usr/bin/env bash
     set -euo pipefail
 
     b={{quote(board)}}
-    s={{quote(side)}}
+    t={{quote(target)}}
+    p={{quote(part)}}
 
-    case " {{boards}} " in
+    case " {{boards}} all " in
         *" $b "*)
             ;;
         *)
@@ -260,12 +261,23 @@ _validate_args board side:
             ;;
     esac
 
-    case "$s" in
-        "left"|"right")
+    case "$t" in
+        "left"|"right"|"all")
+            ;;
+        "dongle")
+            case "$p" in
+                ""|"left"|"right"|"peripheral"|"all")
+                    ;;
+                *)
+                    echo "❌ Invalid dongle part: $p"
+                    echo "   Valid parts: (empty for dongle only), left, right, peripheral, all"
+                    exit 1
+                    ;;
+            esac
             ;;
         *)
-            echo "❌ Invalid side: $s"
-            echo "   Valid sides: left, right"
+            echo "❌ Invalid target: $t"
+            echo "   Valid targets: left, right, all, dongle"
             exit 1
             ;;
     esac
@@ -332,54 +344,112 @@ _flash_uf2 file_path:
         fi
     }
 
-# Build firmware: board (defaults to `just use`) and side (left/right/all)
-build board=default_board side="all":
+# Build firmware: board (defaults to `just use`) and target (left/right/all/dongle)
+build board=default_board target="all" part="":
     #!/usr/bin/env bash
     set -euo pipefail
 
     if [ "{{board}}" == "all" ]; then
-        for b in {{boards}}; do just build "$b" {{side}}; done
+        for b in {{boards}}; do just build "$b" {{target}} {{part}}; done
         just build-reset
         exit 0
     fi
 
-    if [ "{{side}}" == "all" ]; then
+    just _validate_args {{board}} {{target}} {{part}}
+
+    # Handle dongle builds
+    if [ "{{target}}" == "dongle" ]; then
+        case {{board}} in
+            "raii")
+                BOARD_TARGET="nice_nano//zmk"
+                DONGLE_SHIELD="cradio_dongle"
+                PERIPHERAL_SIDE="left"
+                PERIPHERAL_SHIELD="cradio_left"
+                ;;
+            "urchin")
+                BOARD_TARGET="nice_nano//zmk"
+                DONGLE_SHIELD="urchin_dongle"
+                PERIPHERAL_SIDE="left"
+                PERIPHERAL_SHIELD="urchin_left nice_view_adapter nice_view_gem"
+                ;;
+            "corne")
+                BOARD_TARGET="nice_nano//zmk"
+                DONGLE_SHIELD="corne_dongle"
+                PERIPHERAL_SIDE="left"
+                PERIPHERAL_SHIELD="corne_left nice_view_adapter nice_view"
+                ;;
+            "crosses")
+                BOARD_TARGET="nice_nano//zmk"
+                DONGLE_SHIELD="crosses_dongle"
+                PERIPHERAL_SIDE="right"
+                PERIPHERAL_SHIELD="crosses_right"
+                ;;
+            "viginti")
+                BOARD_TARGET="nice_nano//zmk"
+                DONGLE_SHIELD="viginti_dongle"
+                PERIPHERAL_SIDE="left"
+                PERIPHERAL_SHIELD="viginti_left"
+                ;;
+        esac
+
+        p="{{part}}"
+
+        # Build dongle itself when part is empty or "all"
+        if [ -z "$p" ] || [ "$p" == "all" ]; then
+            echo "🔨 Building {{board}} dongle..."
+            just _west_build "$BOARD_TARGET" "$DONGLE_SHIELD"
+            cp "zmk-workspace/zmk/build/${DONGLE_SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_dongle.uf2
+            echo "✅ Dongle firmware built: firmware/{{board}}_dongle.uf2"
+        fi
+
+        # Build peripheral when part is requested
+        if [ "$p" == "$PERIPHERAL_SIDE" ] || [ "$p" == "peripheral" ] || [ "$p" == "all" ]; then
+            echo "🔨 Building {{board}} $PERIPHERAL_SIDE peripheral for dongle..."
+            just _west_build "$BOARD_TARGET" "$PERIPHERAL_SHIELD" "-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n"
+            cp "zmk-workspace/zmk/build/${PERIPHERAL_SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2
+            echo "✅ Peripheral firmware built: firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2"
+        elif [ -n "$p" ] && [ "$p" != "all" ]; then
+            echo "ℹ️ Note: For {{board}}, the side converted to peripheral is '$PERIPHERAL_SIDE' (use 'just build {{board}} dongle $PERIPHERAL_SIDE' or 'peripheral')."
+        fi
+        exit 0
+    fi
+
+    # Standard split builds (both sides)
+    if [ "{{target}}" == "all" ]; then
         echo "🔨 Building {{board}} (both sides)..."
         just build {{board}} left
         just build {{board}} right
         exit 0
     fi
 
-    just _validate_args {{board}} {{side}}
-
     # Define shields based on board
     case {{board}} in
         "raii")
             BOARD_TARGET="nice_nano//zmk"
-            SHIELD="cradio_{{side}}"
+            SHIELD="cradio_{{target}}"
             ;;
         "urchin")
             BOARD_TARGET="nice_nano//zmk"
-            SHIELD="urchin_{{side}} nice_view_adapter nice_view_gem"
+            SHIELD="urchin_{{target}} nice_view_adapter nice_view_gem"
             ;;
         "corne")
             BOARD_TARGET="nice_nano//zmk"
-            SHIELD="corne_{{side}} nice_view_adapter nice_view"
+            SHIELD="corne_{{target}} nice_view_adapter nice_view"
             ;;
         "crosses")
             BOARD_TARGET="nice_nano//zmk"
-            SHIELD="crosses_{{side}}"
+            SHIELD="crosses_{{target}}"
             ;;
         "viginti")
             BOARD_TARGET="nice_nano//zmk"
-            SHIELD="viginti_{{side}}"
+            SHIELD="viginti_{{target}}"
             ;;
     esac
 
     just _west_build "$BOARD_TARGET" "$SHIELD"
 
-    cp "zmk-workspace/zmk/build/${SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_{{side}}.uf2
-    echo "✅ Firmware built: firmware/{{board}}_{{side}}.uf2"
+    cp "zmk-workspace/zmk/build/${SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_{{target}}.uf2
+    echo "✅ Firmware built: firmware/{{board}}_{{target}}.uf2"
 
 # Build settings reset firmware
 build-reset:
@@ -401,18 +471,52 @@ flash-reset:
     echo "✅ Flashed settings_reset"
 
 # Flash firmware (requires keyboard in bootloader mode)
-flash board side:
+flash board target part="":
     #!/usr/bin/env bash
     set -euo pipefail
-    just _validate_args {{board}} {{side}}
-    FIRMWARE_FILE="firmware/{{board}}_{{side}}.uf2"
+    just _validate_args {{board}} {{target}} {{part}}
+
+    if [ "{{target}}" == "dongle" ]; then
+        case {{board}} in
+            "crosses") PERIPHERAL_SIDE="right" ;;
+            *) PERIPHERAL_SIDE="left" ;;
+        esac
+
+        p="{{part}}"
+        if [ -z "$p" ]; then
+            FIRMWARE_FILE="firmware/{{board}}_dongle.uf2"
+            if [ ! -f "$FIRMWARE_FILE" ]; then
+                echo "No firmware found at $FIRMWARE_FILE. Building first..."
+                just build {{board}} dongle
+            fi
+            echo "❯ Flashing {{board}} dongle..."
+            just _flash_uf2 "$FIRMWARE_FILE"
+            echo "✅ Flashed {{board}} dongle"
+            exit 0
+        elif [ "$p" == "$PERIPHERAL_SIDE" ] || [ "$p" == "peripheral" ]; then
+            FIRMWARE_FILE="firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2"
+            if [ ! -f "$FIRMWARE_FILE" ]; then
+                echo "No firmware found at $FIRMWARE_FILE. Building first..."
+                just build {{board}} dongle "$p"
+            fi
+            echo "❯ Flashing {{board}} ${PERIPHERAL_SIDE} peripheral..."
+            just _flash_uf2 "$FIRMWARE_FILE"
+            echo "✅ Flashed {{board}} ${PERIPHERAL_SIDE} peripheral"
+            exit 0
+        else
+            echo "❌ For {{board}}, the peripheral side is '$PERIPHERAL_SIDE'. Use 'just flash {{board}} dongle $PERIPHERAL_SIDE'"
+            exit 1
+        fi
+    fi
+
+    FIRMWARE_FILE="firmware/{{board}}_{{target}}.uf2"
     if [ ! -f "$FIRMWARE_FILE" ]; then
         echo "No firmware found at $FIRMWARE_FILE. Building first..."
-        just build {{board}} {{side}}
+        just build {{board}} {{target}}
     fi
-    echo "❯ Flashing {{board}} {{side}}..."
+    echo "❯ Flashing {{board}} {{target}}..."
     just _flash_uf2 "$FIRMWARE_FILE"
-    echo "✅ Flashed {{board}} {{side}}"
+    echo "✅ Flashed {{board}} {{target}}"
 
 draw board=default_board method="default":
     #!/usr/bin/env bash
