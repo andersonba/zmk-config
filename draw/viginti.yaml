@@ -264,3 +264,19 @@ combos:
     l:
       - Base1
       - Base2
+  - p:
+      - 8
+      - 15
+    k: $$mdi:progress-download$$
+    l:
+      - Sys
+    hidden: true
+  - p:
+      - 9
+      - 14
+    k:
+      t: $$mdi:backup-restore$$
+      type: bootloader
+    l:
+      - Sys
+    hidden: true

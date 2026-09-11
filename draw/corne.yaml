@@ -288,6 +288,22 @@ combos:
     l:
       - Base
   - p:
+      - 25
+      - 34
+    k: $$mdi:progress-download$$
+    l:
+      - Sys
+    hidden: true
+  - p:
+      - 26
+      - 33
+    k:
+      t: $$mdi:backup-restore$$
+      type: bootloader
+    l:
+      - Sys
+    hidden: true
+  - p:
       - 14
       - 15
     k: $$escape$$

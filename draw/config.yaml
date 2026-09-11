@@ -473,3 +473,5 @@ parse_config:
 
   zmk_combos:
     combo_cut: { align: bottom, o: 0.1 }
+    combo_boot_dongle: { hidden: true }
+    combo_reset_dongle: { hidden: true }
