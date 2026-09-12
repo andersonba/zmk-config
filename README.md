@@ -20,6 +20,7 @@ This project uses a **modular architecture** to share keymap logic across differ
   - `crosses.keymap`: 36 keys (34 logical + 2 thumb keys)
   - `corne.keymap`: 42 keys (34 logical + 8 edge keys)
   - `viginti.keymap`: 20 keys (self-contained keymap — too small for the 34-key base)
+- **Dongle shields (opt-in)**: Dedicated wireless receiver shields for each board (`cradio_dongle`, `urchin_dongle`, etc.)
 
 ## Features
 
@@ -27,6 +28,7 @@ This project uses a **modular architecture** to share keymap logic across differ
 - **Smart Combos**: Essential actions (Esc, Enter, Cut/Copy/Paste) without extra keys
 - **Auto-Sentence**: Automatic capitalization and period insertion
 - **Mouse Layer**: Pointing device support with tap-toggle/hold-momentary behavior (board-dependent)
+- **Wireless Dongle (Optional)**: Support for a dedicated USB receiver across all boards, with remote bootloader combo from the keyboard
 - **Shared Configuration**: DRY approach with `default.conf` for common settings
 
 ## Layout
@@ -65,8 +67,9 @@ just use           # show the current default
 ### Build Firmware
 
 ```bash
-just build [board] [side]    # board: raii, urchin, corne, crosses, viginti (default: see `just use`)
-                             # side: left, right, all (default)
+just build [board] [target] [part]   # board: raii, urchin, corne, crosses, viginti (default: see `just use`)
+                                     # target: left, right, all (default), or dongle
+                                     # part (dongle): left, right, peripheral, all
 ```
 
 Examples:
@@ -74,17 +77,18 @@ Examples:
 - `just build` → Build the default board (both sides)
 - `just build corne left` → Build Corne left side
 - `just build crosses all` → Build Crosses (both sides)
+- `just build raii dongle` → Build dedicated USB dongle firmware
 
 ### Flash Firmware
 
 ```bash
-just flash [board] [side]    # board: raii, urchin, corne, crosses, viginti
-                             # side: left, right
+just flash [board] [target] [part]   # target: left, right, or dongle
 ```
 
 Examples:
 
 - `just flash corne right` → Flash Corne right side
+- `just flash raii dongle` → Flash dedicated USB dongle
 
 ### Generate Keymap Visualization
 
