@@ -169,6 +169,7 @@ parse_config:
     "&out OUT_TOG":
       shifted: $$mdi:bluetooth$$
       tap: $$mdi:usb$$
+    "&bapp": $$mdi:battery$$
 
     # Studio
     "&studio_unlock": $$mdi:lock-open$$

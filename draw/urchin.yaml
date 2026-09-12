@@ -200,12 +200,12 @@ layers:
     - $$mdi:progress-download$$
     - t: $$mdi:backup-restore$$
       type: bootloader
-    - ''
+    - $$mdi:battery$$
     - ''
     - ''
     - $$mdi:lock$$
     - ''
-    - ''
+    - $$mdi:battery$$
     - t: $$mdi:backup-restore$$
       type: bootloader
     - $$mdi:progress-download$$
