@@ -4,6 +4,7 @@
 
 #include <dt-bindings/zmk/bt.h>
 #include <behaviors/num_word.dtsi>
+#include <behaviors/battery_percentage_printer.dtsi>
 
 &sk { // Sticky Key
   release-after-ms = <STICKY_RELEASE_MS>;

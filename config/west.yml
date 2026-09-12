@@ -13,6 +13,8 @@ manifest:
       url-base: https://github.com/efogdev
     - name: kot149
       url-base: https://github.com/kot149
+    - name: badjeff
+      url-base: https://github.com/badjeff
 
   # Revisions pinned to the tested checkouts of 2026-08-25; bump deliberately.
   projects:
@@ -45,6 +47,9 @@ manifest:
     - name: zmk-scroll-snap
       remote: kot149
       revision: dd21a0f71df7f0d2a55017000c6dd0ff0ebd8d6f # v1 @ 2026-06-27
+    - name: zmk-behavior-battery-percentage-printer
+      remote: badjeff
+      revision: e111cbc6ac66caaa157daeb58eda3c8e2b43153a # main @ 2025-11-17
 
     # Custom Nice!View
     - name: nice-view-gem
