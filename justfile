@@ -487,6 +487,13 @@ flash board target part="":
     set -euo pipefail
     just _validate_args {{board}} {{target}} {{part}}
 
+    if [ "{{target}}" == "all" ]; then
+        echo "❌ Cannot flash both sides at once. Flash each side individually:"
+        echo "   just flash {{board}} left"
+        echo "   just flash {{board}} right"
+        exit 1
+    fi
+
     if [ "{{target}}" == "dongle" ]; then
         p="{{part}}"
         if [ -z "$p" ]; then
@@ -521,6 +528,16 @@ flash board target part="":
             exit 0
         elif [ "$p" == "peripheral" ]; then
             echo "❌ Please specify which peripheral side to flash: 'just flash {{board}} dongle left' or 'just flash {{board}} dongle right'"
+            exit 1
+        elif [ "$p" == "all" ]; then
+            echo "❌ Cannot flash all dongle targets at once. Flash each device individually:"
+            echo "   just flash {{board}} dongle"
+            echo "   just flash {{board}} dongle left"
+            echo "   just flash {{board}} dongle right"
+            exit 1
+        else
+            echo "❌ Invalid dongle part: $p"
+            echo "   Valid parts for flash: (empty for dongle), left, right"
             exit 1
         fi
     fi
