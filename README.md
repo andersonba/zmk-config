@@ -78,11 +78,18 @@ Examples:
 - `just build corne left` → Build Corne left side
 - `just build crosses all` → Build Crosses (both sides)
 - `just build raii dongle` → Build dedicated USB dongle firmware
+- `just build raii dongle peripheral` → Build both peripheral halves for the dongle
+- `just build raii dongle all` → Build the dongle and both peripheral halves
+
+Standard split builds sleep after 30 minutes of inactivity. Dongle peripheral
+builds sleep after 2 hours; the USB dongle itself never sleeps. Flash both halves
+with their dongle peripheral firmware to use the 2-hour timeout on both sides.
 
 ### Flash Firmware
 
 ```bash
 just flash [board] [target] [part]   # target: left, right, or dongle
+                                     # part (dongle): omit for dongle itself, or left/right
 ```
 
 Examples:
@@ -90,6 +97,10 @@ Examples:
 - `just flash corne right` → Flash Corne right side
 - `just flash raii dongle` → Flash dedicated USB dongle
 - `just flash raii dongle left` → Flash left peripheral for dongle
+- `just flash raii dongle right` → Flash right peripheral for dongle
+
+Flash each device individually, with that device in bootloader mode. Flash does
+not accept `all` or `peripheral`; choose the dongle or a specific side.
 
 ### Generate Keymap Visualization
 
