@@ -89,6 +89,7 @@ Examples:
 
 - `just flash corne right` → Flash Corne right side
 - `just flash raii dongle` → Flash dedicated USB dongle
+- `just flash raii dongle left` → Flash left peripheral for dongle
 
 ### Generate Keymap Visualization
 

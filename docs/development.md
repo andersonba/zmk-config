@@ -23,20 +23,21 @@ just build [board] [target] [part] # board: raii|urchin|corne|crosses|viginti (d
                                    # part (for dongle): left|right|peripheral|all (default: dongle only)
 
 just flash [board] [target] [part] # target: left|right|dongle (default: left)
-                                   # part (for dongle): left|right|peripheral
+                                   # part (for dongle): left|right
 ```
 
 Examples:
 ```bash
-just build                     # Build the default board, both sides (standard split)
+just build                     # Build the default board, both sides (standard split, 30m sleep)
 just build corne left          # Build Corne left side only
 just flash corne right         # Flash Corne right side
 
-# Dongle workflow
+# Dongle workflow (desk setup: 2h sleep on peripherals, no sleep on dongle)
 just build raii dongle         # Build dongle firmware for Raii (runs on Pro Micro dongle)
-just build raii dongle left    # Build left peripheral firmware (talks to dongle)
+just build raii dongle all     # Build dongle and both peripherals
 just flash raii dongle         # Flash dongle
 just flash raii dongle left    # Flash left peripheral
+just flash raii dongle right   # Flash right peripheral
 ```
 
 ### Utilities
