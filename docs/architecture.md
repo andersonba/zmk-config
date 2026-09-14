@@ -134,6 +134,7 @@ Every keyboard can optionally run via a wireless USB dongle (e.g. Pro Micro nRF5
 Board targets and hardware mapping are centralized in `justfile` (`_board_info`) as the single source of truth:
 - **Local Builds:** `just build` queries `_board_info` to resolve hardware targets, left/right/dongle shields, and display names without duplicated logic.
 - **CI Matrix Generation:** `just gen-ci` derives `build.yaml` directly from these definitions for the 26 matrix entries executed by ZMK's official GitHub Actions workflow.
+- **Shared Flags:** Peripheral dongle compilation flags (`dongle_peripheral_flags`) are declared once at top level in `justfile`, ensuring identical timeouts and settings between local builds and CI matrix generation.
 - **Drift Prevention:** CI enforces synchronization (`just gen-ci && git diff --exit-code build.yaml`) so manual edits to `build.yaml` are never needed and changes can never diverge silently.
 
 ## Conditional Features

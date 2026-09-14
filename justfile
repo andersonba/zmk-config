@@ -1,9 +1,9 @@
-boards := "raii urchin corne crosses viginti"
-board_pattern := "^(" + replace(boards, " ", "|") + ")$"
+# Shared peripheral build flags for dongle setups (desk setup: 2h sleep, peripheral role)
+dongle_peripheral_flags := "-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
 
 board_file := justfile_directory() / ".default-board"
 saved_board := if path_exists(board_file) == "true" { trim(read(board_file)) } else { "" }
-default_board := if saved_board =~ board_pattern { saved_board } else { "raii" }
+default_board := if saved_board != "" { saved_board } else { "raii" }
 
 default:
     @echo "▸ default board: {{default_board}}   (change with 'just use <board>')"
@@ -20,12 +20,13 @@ use board="":
         exit 0
     fi
 
-    case " {{boards}} " in
+    valid_boards=$(just _board_info list)
+    case " $valid_boards " in
         *" $b "*)
             ;;
         *)
             echo "❌ Unknown board: $b"
-            echo "   Valid boards: {{boards}}"
+            echo "   Valid boards: $valid_boards"
             exit 1
             ;;
     esac
@@ -252,12 +253,13 @@ _validate_args board target part="":
     t={{quote(target)}}
     p={{quote(part)}}
 
-    case " {{boards}} all " in
+    valid_boards=$(just _board_info list)
+    case " $valid_boards all " in
         *" $b "*)
             ;;
         *)
             echo "❌ Unknown board: $b"
-            echo "   Valid boards: {{boards}}"
+            echo "   Valid boards: $valid_boards"
             exit 1
             ;;
     esac
@@ -285,30 +287,34 @@ _validate_args board target part="":
 
 # Internal: Board hardware definitions (single source of truth for build & CI)
 # Format: BOARD_TARGET | SHIELD_LEFT | SHIELD_RIGHT | DONGLE_SHIELD | BOARD_TITLE
-_board_info board:
+# Call with "list" or empty to get all board names.
+_board_info board="list":
     #!/usr/bin/env bash
     set -euo pipefail
-    case "{{board}}" in
-        "raii")
-            echo "nice_nano//zmk|cradio_left|cradio_right|cradio_dongle|Raii"
-            ;;
-        "urchin")
-            echo "nice_nano//zmk|urchin_left nice_view_adapter nice_view_gem|urchin_right nice_view_adapter nice_view_gem|urchin_dongle|Urchin"
-            ;;
-        "corne")
-            echo "nice_nano//zmk|corne_left nice_view_adapter nice_view|corne_right nice_view_adapter nice_view|corne_dongle|Corne"
-            ;;
-        "crosses")
-            echo "nice_nano//zmk|crosses_left|crosses_right|crosses_dongle|Crosses"
-            ;;
-        "viginti")
-            echo "nice_nano//zmk|viginti_left|viginti_right|viginti_dongle|Viginti"
-            ;;
-        *)
-            echo "❌ Unknown board: {{board}}" >&2
-            exit 1
-            ;;
-    esac
+
+    registry="
+    raii|nice_nano//zmk|cradio_left|cradio_right|cradio_dongle|Raii
+    urchin|nice_nano//zmk|urchin_left nice_view_adapter nice_view_gem|urchin_right nice_view_adapter nice_view_gem|urchin_dongle|Urchin
+    corne|nice_nano//zmk|corne_left nice_view_adapter nice_view|corne_right nice_view_adapter nice_view|corne_dongle|Corne
+    crosses|nice_nano//zmk|crosses_left|crosses_right|crosses_dongle|Crosses
+    viginti|nice_nano//zmk|viginti_left|viginti_right|viginti_dongle|Viginti
+    "
+
+    if [ "{{board}}" == "list" ] || [ -z "{{board}}" ]; then
+        echo "$registry" | grep -v "^[[:space:]]*$" | awk -F"|" '{print $1}' | xargs
+        exit 0
+    fi
+
+    match=$(echo "$registry" | grep "^[[:space:]]*{{board}}|" || true)
+    if [ -z "$match" ]; then
+        valid=$(echo "$registry" | grep -v "^[[:space:]]*$" | awk -F"|" '{print $1}' | xargs)
+        echo "❌ Unknown board: {{board}}" >&2
+        echo "   Valid boards: $valid" >&2
+        exit 1
+    fi
+
+    match_clean=$(echo "$match" | xargs)
+    echo "${match_clean#*|}"
 
 # Internal: Build firmware with West. One build directory per shield keeps
 # every target incremental and makes cross-shield cache clashes impossible.
@@ -382,7 +388,7 @@ build board=default_board target="all" part="":
     set -euo pipefail
 
     if [ "{{board}}" == "all" ]; then
-        for b in {{boards}}; do just build "$b" {{target}} {{part}}; done
+        for b in $(just _board_info list); do just build "$b" {{target}} {{part}}; done
         just build-reset
         exit 0
     fi
@@ -394,7 +400,7 @@ build board=default_board target="all" part="":
     # Handle dongle builds
     if [ "{{target}}" == "dongle" ]; then
         p="{{part}}"
-        DONGLE_PERIPHERAL_FLAGS="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
+        DONGLE_PERIPHERAL_FLAGS="{{dongle_peripheral_flags}}"
 
         # Build dongle itself when part is empty or "all"
         if [ -z "$p" ] || [ "$p" == "all" ]; then
@@ -537,7 +543,7 @@ draw board=default_board method="default":
     source .venv/bin/activate
 
     if [ "{{board}}" == "all" ]; then
-        for b in {{boards}}; do just draw "$b"; done
+        for b in $(just _board_info list); do just draw "$b"; done
         exit 0
     fi
 
@@ -599,8 +605,10 @@ gen-ci:
 
     printf '%s\n' "---" "include:" > "$out"
 
+    boards=$(just _board_info list)
+
     # 1. Standalone split builds (both sides)
-    for b in {{boards}}; do
+    for b in $boards; do
         IFS='|' read -r target left right dongle title < <(just _board_info "$b")
         printf '  # %s builds\n' "$title" >> "$out"
         printf '  - board: %s\n    shield: %s\n' "$target" "$left" >> "$out"
@@ -612,9 +620,9 @@ gen-ci:
     printf '  # Dongle builds (2-hour sleep timeout for desk setup)\n' >> "$out"
 
     # 3. Dongle builds (dongle + left peripheral + right peripheral)
-    dongle_flags="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
+    dongle_flags="{{dongle_peripheral_flags}}"
     sep=""
-    for b in {{boards}}; do
+    for b in $boards; do
         IFS='|' read -r target left right dongle title < <(just _board_info "$b")
         printf '%s' "$sep" >> "$out"
         printf '  - board: %s\n    shield: %s\n    artifact-name: %s_dongle\n' "$target" "$dongle" "$b" >> "$out"
