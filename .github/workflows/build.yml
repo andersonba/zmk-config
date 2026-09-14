@@ -21,6 +21,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Verify build.yaml is synchronized with justfile
+        run: |
+          just gen-ci
+          if ! git diff --exit-code build.yaml; then
+            echo "❌ build.yaml is out of date with justfile. Run 'just gen-ci' and commit the changes."
+            exit 1
+          fi
+
       - id: filter
         env:
           EVENT: ${{ github.event_name }}

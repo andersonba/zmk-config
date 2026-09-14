@@ -237,8 +237,9 @@ bump *flags="":
     west zephyr-export
     echo "✅ Pins bumped and synced — run 'just verify' before committing"
 
-# Full validation ritual: regenerate diagrams, then clean-build every target
+# Full validation ritual: regenerate CI matrix and diagrams, then clean-build every target
 verify:
+    just gen-ci
     just draw all
     just clean
     just build all
@@ -278,6 +279,33 @@ _validate_args board target part="":
         *)
             echo "❌ Invalid target: $t"
             echo "   Valid targets: left, right, all, dongle"
+            exit 1
+            ;;
+    esac
+
+# Internal: Board hardware definitions (single source of truth for build & CI)
+# Format: BOARD_TARGET | SHIELD_LEFT | SHIELD_RIGHT | DONGLE_SHIELD | BOARD_TITLE
+_board_info board:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    case "{{board}}" in
+        "raii")
+            echo "nice_nano//zmk|cradio_left|cradio_right|cradio_dongle|Raii"
+            ;;
+        "urchin")
+            echo "nice_nano//zmk|urchin_left nice_view_adapter nice_view_gem|urchin_right nice_view_adapter nice_view_gem|urchin_dongle|Urchin"
+            ;;
+        "corne")
+            echo "nice_nano//zmk|corne_left nice_view_adapter nice_view|corne_right nice_view_adapter nice_view|corne_dongle|Corne"
+            ;;
+        "crosses")
+            echo "nice_nano//zmk|crosses_left|crosses_right|crosses_dongle|Crosses"
+            ;;
+        "viginti")
+            echo "nice_nano//zmk|viginti_left|viginti_right|viginti_dongle|Viginti"
+            ;;
+        *)
+            echo "❌ Unknown board: {{board}}" >&2
             exit 1
             ;;
     esac
@@ -361,41 +389,10 @@ build board=default_board target="all" part="":
 
     just _validate_args {{board}} {{target}} {{part}}
 
+    IFS='|' read -r BOARD_TARGET SHIELD_LEFT SHIELD_RIGHT DONGLE_SHIELD BOARD_TITLE < <(just _board_info "{{board}}")
+
     # Handle dongle builds
     if [ "{{target}}" == "dongle" ]; then
-        case {{board}} in
-            "raii")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="cradio_dongle"
-                SHIELD_LEFT="cradio_left"
-                SHIELD_RIGHT="cradio_right"
-                ;;
-            "urchin")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="urchin_dongle"
-                SHIELD_LEFT="urchin_left nice_view_adapter nice_view_gem"
-                SHIELD_RIGHT="urchin_right nice_view_adapter nice_view_gem"
-                ;;
-            "corne")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="corne_dongle"
-                SHIELD_LEFT="corne_left nice_view_adapter nice_view"
-                SHIELD_RIGHT="corne_right nice_view_adapter nice_view"
-                ;;
-            "crosses")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="crosses_dongle"
-                SHIELD_LEFT="crosses_left"
-                SHIELD_RIGHT="crosses_right"
-                ;;
-            "viginti")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="viginti_dongle"
-                SHIELD_LEFT="viginti_left"
-                SHIELD_RIGHT="viginti_right"
-                ;;
-        esac
-
         p="{{part}}"
         DONGLE_PERIPHERAL_FLAGS="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
 
@@ -433,29 +430,12 @@ build board=default_board target="all" part="":
         exit 0
     fi
 
-    # Define shields based on board
-    case {{board}} in
-        "raii")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="cradio_{{target}}"
-            ;;
-        "urchin")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="urchin_{{target}} nice_view_adapter nice_view_gem"
-            ;;
-        "corne")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="corne_{{target}} nice_view_adapter nice_view"
-            ;;
-        "crosses")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="crosses_{{target}}"
-            ;;
-        "viginti")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="viginti_{{target}}"
-            ;;
-    esac
+    # Standard split single side
+    if [ "{{target}}" == "left" ]; then
+        SHIELD="$SHIELD_LEFT"
+    else
+        SHIELD="$SHIELD_RIGHT"
+    fi
 
     just _west_build "$BOARD_TARGET" "$SHIELD"
 
@@ -608,6 +588,42 @@ draw board=default_board method="default":
 # Align keymap layer grids (ZMK_*LAYER blocks); pass --check to verify only
 fmt *files="config/base.dtsi config/*.keymap":
     python3 scripts/format_keymap.py {{files}}
+
+# Generate build.yaml for GitHub Actions CI from board definitions
+gen-ci:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    out="build.yaml"
+    echo "Generating $out from board definitions..."
+
+    printf '%s\n' "---" "include:" > "$out"
+
+    # 1. Standalone split builds (both sides)
+    for b in {{boards}}; do
+        IFS='|' read -r target left right dongle title < <(just _board_info "$b")
+        printf '  # %s builds\n' "$title" >> "$out"
+        printf '  - board: %s\n    shield: %s\n' "$target" "$left" >> "$out"
+        printf '  - board: %s\n    shield: %s\n\n' "$target" "$right" >> "$out"
+    done
+
+    # 2. Settings reset
+    printf '  # Settings reset\n  - board: nice_nano//zmk\n    shield: settings_reset\n\n' >> "$out"
+    printf '  # Dongle builds (2-hour sleep timeout for desk setup)\n' >> "$out"
+
+    # 3. Dongle builds (dongle + left peripheral + right peripheral)
+    dongle_flags="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
+    sep=""
+    for b in {{boards}}; do
+        IFS='|' read -r target left right dongle title < <(just _board_info "$b")
+        printf '%s' "$sep" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    artifact-name: %s_dongle\n' "$target" "$dongle" "$b" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    cmake-args: %s\n    artifact-name: %s_left_peripheral\n' "$target" "$left" "$dongle_flags" "$b" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    cmake-args: %s\n    artifact-name: %s_right_peripheral\n' "$target" "$right" "$dongle_flags" "$b" >> "$out"
+        sep=$'\n'
+    done
+
+    echo "✅ $out generated successfully"
 
 # Re-run a command on every change; takes one or more boards, or `all`
 watch command='draw' *boards=default_board:

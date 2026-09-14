@@ -129,6 +129,13 @@ Every keyboard can optionally run via a wireless USB dongle (e.g. Pro Micro nRF5
   - **Travel / Direct Bluetooth Setup:** Standard split targets retain conservative 30-minute sleep (`CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=1800000`) to conserve battery and avoid accidental wakeups in transit.
   - **Fast Reconnection:** `CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y` is enabled in `default.conf` to improve BLE connection negotiation speed and stability across all targets.
 
+### Build & CI Matrix Architecture
+
+Board targets and hardware mapping are centralized in `justfile` (`_board_info`) as the single source of truth:
+- **Local Builds:** `just build` queries `_board_info` to resolve hardware targets, left/right/dongle shields, and display names without duplicated logic.
+- **CI Matrix Generation:** `just gen-ci` derives `build.yaml` directly from these definitions for the 26 matrix entries executed by ZMK's official GitHub Actions workflow.
+- **Drift Prevention:** CI enforces synchronization (`just gen-ci && git diff --exit-code build.yaml`) so manual edits to `build.yaml` are never needed and changes can never diverge silently.
+
 ## Conditional Features
 
 Some features are opt-in via preprocessor flags defined in board keymaps:

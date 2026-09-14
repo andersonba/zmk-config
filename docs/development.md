@@ -51,7 +51,8 @@ just clean                  # Clean build artifacts
 just clean-all              # Clean everything (workspace + venv)
 just update                 # Sync Python tools + ZMK/modules to west.yml pins
 just bump [--dry-run]       # Move west.yml pins to each tracked branch's head
-just verify                 # Full validation: draw all, clean, build all
+just gen-ci                 # Regenerate build.yaml from justfile board definitions
+just verify                 # Full validation: gen-ci, draw all, clean, build all
 just check                  # Check environment setup
 ```
 
