@@ -124,6 +124,10 @@ Every keyboard can optionally run via a wireless USB dongle (e.g. Pro Micro nRF5
   - `boards/shields/mock_kscan.dtsi` provides a single shared `zmk,kscan-mock` driver.
   - Keymaps are 100% reused from the base keyboards (zero layout duplication).
 - **Peripherals:** Both keyboard halves act as peripherals sending raw matrix events.
+- **Differentiated Power Profiles (Desk vs. Travel):**
+  - **Desk / Dongle Setup:** The dongle never sleeps (`CONFIG_ZMK_SLEEP=n`). Both peripheral halves use an extended 2-hour sleep timeout (`CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000`), keeping the keyboard responsive with 0ms wakeup during work pauses, while still protecting battery over weekends.
+  - **Travel / Direct Bluetooth Setup:** Standard split targets retain conservative 30-minute sleep (`CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=1800000`) to conserve battery and avoid accidental wakeups in transit.
+  - **Fast Reconnection:** `CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y` is enabled in `default.conf` to improve BLE connection negotiation speed and stability across all targets.
 
 ## Conditional Features
 

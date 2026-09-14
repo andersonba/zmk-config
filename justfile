@@ -284,7 +284,7 @@ _validate_args board target part="":
 
 # Internal: Build firmware with West. One build directory per shield keeps
 # every target incremental and makes cross-shield cache clashes impossible.
-_west_build board shield flags="":
+_west_build board shield flags="" build_dir="":
     #!/usr/bin/env bash
     set -euo pipefail
     source .venv/bin/activate
@@ -294,10 +294,14 @@ _west_build board shield flags="":
     (
         cd zmk-workspace/zmk
         shield="{{shield}}"
+        bdir="{{build_dir}}"
+        if [ -z "$bdir" ]; then
+            bdir="${shield%% *}"
+        fi
         PROJECT_ROOT=$(cd ../.. && pwd)
         # zmk/app is the west-managed checkout, honoring the west.yml pin;
         # the outer clone only hosts the workspace and is never built.
-        west build -b {{board}} -d "build/${shield%% *}" zmk/app -- \
+        west build -b {{board}} -d "build/${bdir}" zmk/app -- \
             -DSHIELD="{{shield}}" \
             -DZMK_CONFIG="${PROJECT_ROOT}/config" \
             -DZMK_EXTRA_MODULES="${PROJECT_ROOT}" \
@@ -363,36 +367,37 @@ build board=default_board target="all" part="":
             "raii")
                 BOARD_TARGET="nice_nano//zmk"
                 DONGLE_SHIELD="cradio_dongle"
-                PERIPHERAL_SIDE="left"
-                PERIPHERAL_SHIELD="cradio_left"
+                SHIELD_LEFT="cradio_left"
+                SHIELD_RIGHT="cradio_right"
                 ;;
             "urchin")
                 BOARD_TARGET="nice_nano//zmk"
                 DONGLE_SHIELD="urchin_dongle"
-                PERIPHERAL_SIDE="left"
-                PERIPHERAL_SHIELD="urchin_left nice_view_adapter nice_view_gem"
+                SHIELD_LEFT="urchin_left nice_view_adapter nice_view_gem"
+                SHIELD_RIGHT="urchin_right nice_view_adapter nice_view_gem"
                 ;;
             "corne")
                 BOARD_TARGET="nice_nano//zmk"
                 DONGLE_SHIELD="corne_dongle"
-                PERIPHERAL_SIDE="left"
-                PERIPHERAL_SHIELD="corne_left nice_view_adapter nice_view"
+                SHIELD_LEFT="corne_left nice_view_adapter nice_view"
+                SHIELD_RIGHT="corne_right nice_view_adapter nice_view"
                 ;;
             "crosses")
                 BOARD_TARGET="nice_nano//zmk"
                 DONGLE_SHIELD="crosses_dongle"
-                PERIPHERAL_SIDE="right"
-                PERIPHERAL_SHIELD="crosses_right"
+                SHIELD_LEFT="crosses_left"
+                SHIELD_RIGHT="crosses_right"
                 ;;
             "viginti")
                 BOARD_TARGET="nice_nano//zmk"
                 DONGLE_SHIELD="viginti_dongle"
-                PERIPHERAL_SIDE="left"
-                PERIPHERAL_SHIELD="viginti_left"
+                SHIELD_LEFT="viginti_left"
+                SHIELD_RIGHT="viginti_right"
                 ;;
         esac
 
         p="{{part}}"
+        DONGLE_PERIPHERAL_FLAGS="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
 
         # Build dongle itself when part is empty or "all"
         if [ -z "$p" ] || [ "$p" == "all" ]; then
@@ -402,14 +407,20 @@ build board=default_board target="all" part="":
             echo "✅ Dongle firmware built: firmware/{{board}}_dongle.uf2"
         fi
 
-        # Build peripheral when part is requested
-        if [ "$p" == "$PERIPHERAL_SIDE" ] || [ "$p" == "peripheral" ] || [ "$p" == "all" ]; then
-            echo "🔨 Building {{board}} $PERIPHERAL_SIDE peripheral for dongle..."
-            just _west_build "$BOARD_TARGET" "$PERIPHERAL_SHIELD" "-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n"
-            cp "zmk-workspace/zmk/build/${PERIPHERAL_SHIELD%% *}/zephyr/zmk.uf2" firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2
-            echo "✅ Peripheral firmware built: firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2"
-        elif [ -n "$p" ] && [ "$p" != "all" ]; then
-            echo "ℹ️ Note: For {{board}}, the side converted to peripheral is '$PERIPHERAL_SIDE' (use 'just build {{board}} dongle $PERIPHERAL_SIDE' or 'peripheral')."
+        # Build left peripheral when part is left, peripheral, or all
+        if [ "$p" == "left" ] || [ "$p" == "peripheral" ] || [ "$p" == "all" ]; then
+            echo "🔨 Building {{board}} left peripheral for dongle (2h sleep)..."
+            just _west_build "$BOARD_TARGET" "$SHIELD_LEFT" "$DONGLE_PERIPHERAL_FLAGS" "${SHIELD_LEFT%% *}_peripheral"
+            cp "zmk-workspace/zmk/build/${SHIELD_LEFT%% *}_peripheral/zephyr/zmk.uf2" firmware/{{board}}_left_peripheral.uf2
+            echo "✅ Left peripheral firmware built: firmware/{{board}}_left_peripheral.uf2"
+        fi
+
+        # Build right peripheral when part is right, peripheral, or all
+        if [ "$p" == "right" ] || [ "$p" == "peripheral" ] || [ "$p" == "all" ]; then
+            echo "🔨 Building {{board}} right peripheral for dongle (2h sleep)..."
+            just _west_build "$BOARD_TARGET" "$SHIELD_RIGHT" "$DONGLE_PERIPHERAL_FLAGS" "${SHIELD_RIGHT%% *}_peripheral"
+            cp "zmk-workspace/zmk/build/${SHIELD_RIGHT%% *}_peripheral/zephyr/zmk.uf2" firmware/{{board}}_right_peripheral.uf2
+            echo "✅ Right peripheral firmware built: firmware/{{board}}_right_peripheral.uf2"
         fi
         exit 0
     fi
@@ -476,12 +487,14 @@ flash board target part="":
     set -euo pipefail
     just _validate_args {{board}} {{target}} {{part}}
 
-    if [ "{{target}}" == "dongle" ]; then
-        case {{board}} in
-            "crosses") PERIPHERAL_SIDE="right" ;;
-            *) PERIPHERAL_SIDE="left" ;;
-        esac
+    if [ "{{target}}" == "all" ]; then
+        echo "❌ Cannot flash both sides at once. Flash each side individually:"
+        echo "   just flash {{board}} left"
+        echo "   just flash {{board}} right"
+        exit 1
+    fi
 
+    if [ "{{target}}" == "dongle" ]; then
         p="{{part}}"
         if [ -z "$p" ]; then
             FIRMWARE_FILE="firmware/{{board}}_dongle.uf2"
@@ -493,18 +506,38 @@ flash board target part="":
             just _flash_uf2 "$FIRMWARE_FILE"
             echo "✅ Flashed {{board}} dongle"
             exit 0
-        elif [ "$p" == "$PERIPHERAL_SIDE" ] || [ "$p" == "peripheral" ]; then
-            FIRMWARE_FILE="firmware/{{board}}_${PERIPHERAL_SIDE}_peripheral.uf2"
+        elif [ "$p" == "left" ]; then
+            FIRMWARE_FILE="firmware/{{board}}_left_peripheral.uf2"
             if [ ! -f "$FIRMWARE_FILE" ]; then
                 echo "No firmware found at $FIRMWARE_FILE. Building first..."
-                just build {{board}} dongle "$p"
+                just build {{board}} dongle left
             fi
-            echo "❯ Flashing {{board}} ${PERIPHERAL_SIDE} peripheral..."
+            echo "❯ Flashing {{board}} left peripheral..."
             just _flash_uf2 "$FIRMWARE_FILE"
-            echo "✅ Flashed {{board}} ${PERIPHERAL_SIDE} peripheral"
+            echo "✅ Flashed {{board}} left peripheral"
             exit 0
+        elif [ "$p" == "right" ]; then
+            FIRMWARE_FILE="firmware/{{board}}_right_peripheral.uf2"
+            if [ ! -f "$FIRMWARE_FILE" ]; then
+                echo "No firmware found at $FIRMWARE_FILE. Building first..."
+                just build {{board}} dongle right
+            fi
+            echo "❯ Flashing {{board}} right peripheral..."
+            just _flash_uf2 "$FIRMWARE_FILE"
+            echo "✅ Flashed {{board}} right peripheral"
+            exit 0
+        elif [ "$p" == "peripheral" ]; then
+            echo "❌ Please specify which peripheral side to flash: 'just flash {{board}} dongle left' or 'just flash {{board}} dongle right'"
+            exit 1
+        elif [ "$p" == "all" ]; then
+            echo "❌ Cannot flash all dongle targets at once. Flash each device individually:"
+            echo "   just flash {{board}} dongle"
+            echo "   just flash {{board}} dongle left"
+            echo "   just flash {{board}} dongle right"
+            exit 1
         else
-            echo "❌ For {{board}}, the peripheral side is '$PERIPHERAL_SIDE'. Use 'just flash {{board}} dongle $PERIPHERAL_SIDE'"
+            echo "❌ Invalid dongle part: $p"
+            echo "   Valid parts for flash: (empty for dongle), left, right"
             exit 1
         fi
     fi
