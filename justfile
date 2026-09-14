@@ -1,9 +1,9 @@
-boards := "raii urchin corne crosses viginti"
-board_pattern := "^(" + replace(boards, " ", "|") + ")$"
+# Shared peripheral build flags for dongle setups (desk setup: 2h sleep, peripheral role)
+dongle_peripheral_flags := "-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
 
 board_file := justfile_directory() / ".default-board"
 saved_board := if path_exists(board_file) == "true" { trim(read(board_file)) } else { "" }
-default_board := if saved_board =~ board_pattern { saved_board } else { "raii" }
+default_board := if saved_board != "" { saved_board } else { "raii" }
 
 default:
     @echo "▸ default board: {{default_board}}   (change with 'just use <board>')"
@@ -20,12 +20,13 @@ use board="":
         exit 0
     fi
 
-    case " {{boards}} " in
+    valid_boards=$(just _board_info list)
+    case " $valid_boards " in
         *" $b "*)
             ;;
         *)
             echo "❌ Unknown board: $b"
-            echo "   Valid boards: {{boards}}"
+            echo "   Valid boards: $valid_boards"
             exit 1
             ;;
     esac
@@ -237,8 +238,9 @@ bump *flags="":
     west zephyr-export
     echo "✅ Pins bumped and synced — run 'just verify' before committing"
 
-# Full validation ritual: regenerate diagrams, then clean-build every target
+# Full validation ritual: regenerate CI matrix and diagrams, then clean-build every target
 verify:
+    just gen-ci
     just draw all
     just clean
     just build all
@@ -251,12 +253,13 @@ _validate_args board target part="":
     t={{quote(target)}}
     p={{quote(part)}}
 
-    case " {{boards}} all " in
+    valid_boards=$(just _board_info list)
+    case " $valid_boards all " in
         *" $b "*)
             ;;
         *)
             echo "❌ Unknown board: $b"
-            echo "   Valid boards: {{boards}}"
+            echo "   Valid boards: $valid_boards"
             exit 1
             ;;
     esac
@@ -281,6 +284,37 @@ _validate_args board target part="":
             exit 1
             ;;
     esac
+
+# Internal: Board hardware definitions (single source of truth for build & CI)
+# Format: BOARD_TARGET | SHIELD_LEFT | SHIELD_RIGHT | DONGLE_SHIELD | BOARD_TITLE
+# Call with "list" or empty to get all board names.
+_board_info board="list":
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    registry="
+    raii|nice_nano//zmk|cradio_left|cradio_right|cradio_dongle|Raii
+    urchin|nice_nano//zmk|urchin_left nice_view_adapter nice_view_gem|urchin_right nice_view_adapter nice_view_gem|urchin_dongle|Urchin
+    corne|nice_nano//zmk|corne_left nice_view_adapter nice_view|corne_right nice_view_adapter nice_view|corne_dongle|Corne
+    crosses|nice_nano//zmk|crosses_left|crosses_right|crosses_dongle|Crosses
+    viginti|nice_nano//zmk|viginti_left|viginti_right|viginti_dongle|Viginti
+    "
+
+    if [ "{{board}}" == "list" ] || [ -z "{{board}}" ]; then
+        echo "$registry" | grep -v "^[[:space:]]*$" | awk -F"|" '{print $1}' | xargs
+        exit 0
+    fi
+
+    match=$(echo "$registry" | grep "^[[:space:]]*{{board}}|" || true)
+    if [ -z "$match" ]; then
+        valid=$(echo "$registry" | grep -v "^[[:space:]]*$" | awk -F"|" '{print $1}' | xargs)
+        echo "❌ Unknown board: {{board}}" >&2
+        echo "   Valid boards: $valid" >&2
+        exit 1
+    fi
+
+    match_clean=$(echo "$match" | xargs)
+    echo "${match_clean#*|}"
 
 # Internal: Build firmware with West. One build directory per shield keeps
 # every target incremental and makes cross-shield cache clashes impossible.
@@ -354,50 +388,19 @@ build board=default_board target="all" part="":
     set -euo pipefail
 
     if [ "{{board}}" == "all" ]; then
-        for b in {{boards}}; do just build "$b" {{target}} {{part}}; done
+        for b in $(just _board_info list); do just build "$b" {{target}} {{part}}; done
         just build-reset
         exit 0
     fi
 
     just _validate_args {{board}} {{target}} {{part}}
 
+    IFS='|' read -r BOARD_TARGET SHIELD_LEFT SHIELD_RIGHT DONGLE_SHIELD BOARD_TITLE < <(just _board_info "{{board}}")
+
     # Handle dongle builds
     if [ "{{target}}" == "dongle" ]; then
-        case {{board}} in
-            "raii")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="cradio_dongle"
-                SHIELD_LEFT="cradio_left"
-                SHIELD_RIGHT="cradio_right"
-                ;;
-            "urchin")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="urchin_dongle"
-                SHIELD_LEFT="urchin_left nice_view_adapter nice_view_gem"
-                SHIELD_RIGHT="urchin_right nice_view_adapter nice_view_gem"
-                ;;
-            "corne")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="corne_dongle"
-                SHIELD_LEFT="corne_left nice_view_adapter nice_view"
-                SHIELD_RIGHT="corne_right nice_view_adapter nice_view"
-                ;;
-            "crosses")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="crosses_dongle"
-                SHIELD_LEFT="crosses_left"
-                SHIELD_RIGHT="crosses_right"
-                ;;
-            "viginti")
-                BOARD_TARGET="nice_nano//zmk"
-                DONGLE_SHIELD="viginti_dongle"
-                SHIELD_LEFT="viginti_left"
-                SHIELD_RIGHT="viginti_right"
-                ;;
-        esac
-
         p="{{part}}"
-        DONGLE_PERIPHERAL_FLAGS="-DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=7200000"
+        DONGLE_PERIPHERAL_FLAGS="{{dongle_peripheral_flags}}"
 
         # Build dongle itself when part is empty or "all"
         if [ -z "$p" ] || [ "$p" == "all" ]; then
@@ -433,29 +436,12 @@ build board=default_board target="all" part="":
         exit 0
     fi
 
-    # Define shields based on board
-    case {{board}} in
-        "raii")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="cradio_{{target}}"
-            ;;
-        "urchin")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="urchin_{{target}} nice_view_adapter nice_view_gem"
-            ;;
-        "corne")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="corne_{{target}} nice_view_adapter nice_view"
-            ;;
-        "crosses")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="crosses_{{target}}"
-            ;;
-        "viginti")
-            BOARD_TARGET="nice_nano//zmk"
-            SHIELD="viginti_{{target}}"
-            ;;
-    esac
+    # Standard split single side
+    if [ "{{target}}" == "left" ]; then
+        SHIELD="$SHIELD_LEFT"
+    else
+        SHIELD="$SHIELD_RIGHT"
+    fi
 
     just _west_build "$BOARD_TARGET" "$SHIELD"
 
@@ -557,7 +543,7 @@ draw board=default_board method="default":
     source .venv/bin/activate
 
     if [ "{{board}}" == "all" ]; then
-        for b in {{boards}}; do just draw "$b"; done
+        for b in $(just _board_info list); do just draw "$b"; done
         exit 0
     fi
 
@@ -608,6 +594,44 @@ draw board=default_board method="default":
 # Align keymap layer grids (ZMK_*LAYER blocks); pass --check to verify only
 fmt *files="config/base.dtsi config/*.keymap":
     python3 scripts/format_keymap.py {{files}}
+
+# Generate build.yaml for GitHub Actions CI from board definitions
+gen-ci:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    out="build.yaml"
+    echo "Generating $out from board definitions..."
+
+    printf '%s\n' "---" "include:" > "$out"
+
+    boards=$(just _board_info list)
+
+    # 1. Standalone split builds (both sides)
+    for b in $boards; do
+        IFS='|' read -r target left right dongle title < <(just _board_info "$b")
+        printf '  # %s builds\n' "$title" >> "$out"
+        printf '  - board: %s\n    shield: %s\n' "$target" "$left" >> "$out"
+        printf '  - board: %s\n    shield: %s\n\n' "$target" "$right" >> "$out"
+    done
+
+    # 2. Settings reset
+    printf '  # Settings reset\n  - board: nice_nano//zmk\n    shield: settings_reset\n\n' >> "$out"
+    printf '  # Dongle builds (2-hour sleep timeout for desk setup)\n' >> "$out"
+
+    # 3. Dongle builds (dongle + left peripheral + right peripheral)
+    dongle_flags="{{dongle_peripheral_flags}}"
+    sep=""
+    for b in $boards; do
+        IFS='|' read -r target left right dongle title < <(just _board_info "$b")
+        printf '%s' "$sep" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    artifact-name: %s_dongle\n' "$target" "$dongle" "$b" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    cmake-args: %s\n    artifact-name: %s_left_peripheral\n' "$target" "$left" "$dongle_flags" "$b" >> "$out"
+        printf '  - board: %s\n    shield: %s\n    cmake-args: %s\n    artifact-name: %s_right_peripheral\n' "$target" "$right" "$dongle_flags" "$b" >> "$out"
+        sep=$'\n'
+    done
+
+    echo "✅ $out generated successfully"
 
 # Re-run a command on every change; takes one or more boards, or `all`
 watch command='draw' *boards=default_board:
