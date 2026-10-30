@@ -16,15 +16,15 @@ manifest:
     - name: badjeff
       url-base: https://github.com/badjeff
 
-  # Revisions pinned to the tested checkouts of 2026-08-25; bump deliberately.
+  # Revisions pinned to the tested checkouts of 2026-10-29; bump deliberately.
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: 641514a97db345f499dd50b0360e594270f008fe # main @ 2026-08-21
+      revision: 4dd95d7840eb3d5a3f59bb29fbf1ab054715ef85 # main @ 2026-10-09
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: 95edb8f15ef1d1bd8332810555f8cf5837fbdd27 # main @ 2026-08-19
+      revision: 7bcba18fc8df27303eb92a435d33ea870cc51f98 # main @ 2026-09-10
 
     # Shields
     - name: urchin-zmk-module
@@ -37,16 +37,16 @@ manifest:
     # ZMK modules
     - name: zmk-adaptive-key
       remote: urob
-      revision: e5b335a7b1076cb122582f5a892b118b02a3be34 # main @ 2026-05-20
+      revision: e987227d625e8863343baf16bd11ff90310482a5 # main @ 2026-09-09
     - name: zmk-auto-layer
       remote: urob
-      revision: 62c201934711369d50a28df12e1d055d05cb6460 # main @ 2026-05-20
+      revision: b50d514219c5ad61198f9a8be137c59d0674b11c # main @ 2026-09-09
     - name: zmk-tri-state
       remote: urob
-      revision: 0c6eaf55d2da0d85b943e02d72831c2d8ea64501 # main @ 2026-08-27
+      revision: c08969627245adeddbcdb6dfc1a4c167c04160e2 # main @ 2026-09-10
     - name: zmk-scroll-snap
       remote: kot149
-      revision: dd21a0f71df7f0d2a55017000c6dd0ff0ebd8d6f # v1 @ 2026-06-27
+      revision: 2feeb988f5b5a3c2b5e09ba6472e86e6902463a2 # v1 @ 2026-10-19
     - name: zmk-behavior-battery-percentage-printer
       remote: badjeff
       revision: e111cbc6ac66caaa157daeb58eda3c8e2b43153a # main @ 2025-11-17
